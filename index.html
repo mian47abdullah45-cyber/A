@@ -1,63 +1,286 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>NEX - World HD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>NEX World HD</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;-webkit-tap-highlight-color:transparent}
-body{background:#fbfbfb;height:100vh;overflow:hidden}
-.header{position:fixed;top:0;left:0;right:0;height:64px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:1000;border-bottom:1px solid #eee}
-.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:30px;letter-spacing:-1.5px}
-.logoA{width:40px;height:30px;display:flex;gap:4px}.logoA span{width:30%;height:100%;transform:skewX(-18deg);border-radius:3px;display:block}.logoA span:nth-child(1){background:#111}.logoA span:nth-child(2){background:#111}.logoA span:nth-child(3){background:#0B2B9A}
-.top-live{position:fixed;top:64px;left:0;right:0;height:36px;background:#111;color:#fff;display:flex;align-items:center;padding:0 14px;font-size:12px;z-index:999;overflow:hidden;white-space:nowrap}
-.tabs{position:fixed;top:100px;left:0;right:0;height:48px;background:#fff;display:flex;gap:8px;padding:0 14px;align-items:center;overflow-x:auto;z-index:999;border-bottom:1px solid #f0f0f0}
-.tabs::-webkit-scrollbar,.countries::-webkit-scrollbar{display:none}
-.chip{padding:8px 16px;border-radius:20px;background:#f5f5f7;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer;user-select:none;border:2px solid transparent;transition:all .2s}
-.chip.active{background:#111;color:#fff;border-color:#111;transform:scale(1.05)}
-.chip.live{background:#f5f5f7;color:#111}.chip.live.active{background:#ff3040;color:#fff;border-color:#ff3040}
-.countries{position:fixed;top:148px;left:0;right:0;height:44px;background:#fff;display:flex;gap:8px;padding:0 14px;align-items:center;overflow-x:auto;z-index:999;border-bottom:1px solid #f0f0f0}
-.country{padding:6px 12px;border-radius:16px;border:1.5px solid #eee;background:#fff;font-size:12px;white-space:nowrap;cursor:pointer;user-select:none;transition:all .2s}
-.country.active{background:#111;color:#fff;border-color:#111;transform:scale(1.05)}
-.feed{margin-top:192px;height:calc(100vh - 264px);overflow-y:scroll;scroll-snap-type:y mandatory;padding:12px;background:#fbfbfb}
-.feed::-webkit-scrollbar{display:none}
-.card{background:#fff;border-radius:18px;overflow:hidden;margin-bottom:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid #f0f0f0;scroll-snap-align:start}
-.media{position:relative;height:420px;background:#000;overflow:hidden}
-.media img{width:100%;height:100%;object-fit:cover}
-.badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.75);color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700}
-.right{position:absolute;right:0;top:0;bottom:0;width:74px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.96));display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:20px;gap:16px}
-.act{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
-.act-icon{width:46px;height:46px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-.act span{font-size:11px;font-weight:700}
-.info{padding:12px 14px}.title{font-size:15px;font-weight:700;line-height:1.35}.meta{font-size:12px;color:#666;margin-top:4px}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:72px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;z-index:1000}
-.nav{display:flex;flex-direction:column;align-items:center;gap:3px;opacity:0.6;cursor:pointer;transition:opacity .2s}.nav.active{opacity:1}
-.nav-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.nav-icon.videos{background:#FFF3E0}.nav-icon.photos{background:#E8F5E9}.nav-icon.circle{background:#E3F2FD}.nav-icon.bazaar{background:#FCE4EC}.nav-icon.profile{background:#E3F2FD}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f6fa;color:#111;padding-bottom:80px}
+button{cursor:pointer;font-family:inherit}
+header{height:62px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:sticky;top:0;z-index:10;border-bottom:1px solid #eee}
+.logo{font-size:30px;font-weight:900;letter-spacing:-2px}
+.logo span{color:#1539c5}
+.topbtn{border:0;background:#f1f2f5;border-radius:50%;width:39px;height:39px;font-size:19px;margin-left:5px}
+.livebar{background:#111;color:white;padding:11px;font-size:12px;white-space:nowrap;overflow:hidden}
+.tabs,.countries{display:flex;gap:9px;overflow-x:auto;padding:12px;background:white;scrollbar-width:none}
+.chip,.country{border:0;background:#eee;padding:9px 15px;border-radius:22px;white-space:nowrap;font-weight:bold;font-size:13px}
+.active{background:#111!important;color:white!important}
+.feed{padding:10px;max-width:650px;margin:auto}
+.card{background:white;border-radius:15px;overflow:hidden;margin-bottom:15px;box-shadow:0 2px 12px #00000010}
+.media{height:390px;background:#111;position:relative}
+.media img,.media video{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:12px;left:12px;background:#111c;color:white;padding:7px 12px;border-radius:20px;font-size:12px}
+.actions{position:absolute;right:10px;bottom:15px;display:flex;flex-direction:column;gap:12px}
+.act{border:0;background:white;width:44px;height:44px;border-radius:50%;font-size:20px;box-shadow:0 2px 7px #0003}
+.act.liked{color:#ef2548}
+.info{padding:13px}
+.title{font-size:15px;font-weight:bold;line-height:1.5}
+.meta{font-size:12px;color:#777;margin-top:6px}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:68px;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;z-index:20}
+.nav{border:0;background:none;font-size:11px;color:#666;display:flex;flex-direction:column;align-items:center;gap:4px}
+.nav b{font-size:22px}
+.nav.active{color:#1539c5!important;background:none!important}
+.page{background:white;border-radius:15px;padding:35px 15px;text-align:center;margin:15px 0}
+.page h2{margin-bottom:10px}
+.page p{color:#777;line-height:1.6;font-size:14px}
+.empty{text-align:center;padding:35px;color:#777}
+input{padding:12px;border:1px solid #ddd;border-radius:10px;width:100%;margin:10px 0}
+.primary{background:#1539c5;color:white;border:0;padding:12px 20px;border-radius:10px}
+.hidden{display:none!important}
 </style>
 </head>
 <body>
-<div class="header">
-<div class="logo"><div class="logoA"><span></span><span></span><span></span></div> NEX</div>
-<div style="display:flex;gap:8px"><div style="width:40px;height:40px;border-radius:50%;background:#f5f5f7;display:flex;align-items:center;justify-content:center">⌕</div><div style="width:40px;height:40px;border-radius:50%;background:#f5f5f7;display:flex;align-items:center;justify-content:center">🔔</div><div style="width:40px;height:40px;border-radius:50%;background:#0B2B9A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800">JD</div></div>
-</div>
-<div class="top-live"><b>🔴 LIVE:</b> &nbsp; Swat Valley Snowfall Live • Bitcoin $115K • NASA Mars Mission • All World News Live</div>
+
+<header>
+ <div class="logo">NEX<span>.</span></div>
+ <div>
+  <button class="topbtn" id="searchBtn">⌕</button>
+  <button class="topbtn" id="notifyBtn">♧</button>
+  <button class="topbtn" id="profileBtn">👤</button>
+ </div>
+</header>
+
+<div class="livebar">🔴 NEX LIVE • CONNECT WITH THE WORLD • GLOBAL COMMUNITY</div>
+
 <div class="tabs" id="tabs">
-<div class="chip active" data-tab="foryou">For You</div>
-<div class="chip live" data-tab="live">● LIVE</div>
-<div class="chip" data-tab="following">Following</div>
-<div class="chip" data-tab="news">News • World</div>
-</div>
-<div class="countries" id="countries">
-<div class="country active" data-c="all">🌍 All World</div>
-<div class="country" data-c="pk">🇵🇰 Pakistan</div>
-<div class="country" data-c="us">🇺🇸 USA</div>
-<div class="country" data-c="uk">🇬🇧 UK</div>
-<div class="country" data-c="uae">🇦🇪 UAE</div>
-<div class="country" data-c="india">🇮🇳 India</div>
-<div class="country" data-c="ksa">🇸🇦 KSA</div>
+ <button class="chip active" data-tab="foryou">For You</button>
+ <button class="chip" data-tab="live">● LIVE</button>
+ <button class="chip" data-tab="following">Following</button>
+ <button class="chip" data-tab="news">World News</button>
 </div>
 
-<div class="feed" id="feed">
-<div class="card" data-country="all us" data-tab="foryou"><div class="media"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"><div class="badge">Short • 0:42 • LIVE • HD</div><div class="right"><div class="act"><div class="act-icon">❤️</div><span>12.3K</span></div><div class="act"><div class="act-icon">💬</div><span>342</span></div><div class="act"><div class="act-icon">↗️</div><span>Share</span></div><div class="act"><div class="act-icon">🔖</div><span>Save</span></div></div></div><div class="info"><div class="title">Sourdough Bread Making — No Knead Starter Guide • HD 4K</div><div class="meta">Baking • 2h ago • @artisankitchen • 🇺🇸 USA • 12.3K likes</div></div></div>
-<div class="card" data-country="all pk" data-tab="foryou"><div class="media"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80"><div class="badge">🇵🇰 Pakistan • Swat Valley Live</div><div class="right"><div class="act"><div class="act-icon">❤️</div><span>45K</span></div><div class="act"><div class="act-icon">💬</div><span>892</span></div></div></div><div class="info"><div class="title">Swat Valley Looks Unreal 
+<div class="countries" id="countries">
+ <button class="country active" data-country="all">🌍 All World</button>
+ <button class="country" data-country="pk">🇵🇰 Pakistan</button>
+ <button class="country" data-country="us">🇺🇸 USA</button>
+ <button class="country" data-country="uk">🇬🇧 UK</button>
+ <button class="country" data-country="uae">🇦🇪 UAE</button>
+ <button class="country" data-country="india">🇮🇳 India</button>
+ <button class="country" data-country="ksa">🇸🇦 KSA</button>
+</div>
+
+<main class="feed" id="feed">
+
+<section id="videos">
+
+<article class="card" data-country="us" data-category="foryou">
+ <div class="media">
+  <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=900" alt="Food">
+  <span class="badge">HD • USA</span>
+  <div class="actions">
+   <button class="act like">♡</button>
+   <button class="act comment">💬</button>
+   <button class="act share">↗</button>
+   <button class="act save">🔖</button>
+  </div>
+ </div>
+ <div class="info">
+  <div class="title">Delicious Food Making 🍞</div>
+  <div class="meta">@artisankitchen • 🇺🇸 USA • <span class="likes">12.3K</span> likes</div>
+ </div>
+</article>
+
+<article class="card" data-country="pk" data-category="foryou">
+ <div class="media">
+  <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900" alt="Mountains">
+  <span class="badge">🇵🇰 Pakistan • HD</span>
+  <div class="actions">
+   <button class="act like">♡</button>
+   <button class="act comment">💬</button>
+   <button class="act share">↗</button>
+   <button class="act save">🔖</button>
+  </div>
+ </div>
+ <div class="info">
+  <div class="title">Beautiful Swat Valley 😍</div>
+  <div class="meta">@travelworld • 🇵🇰 Pakistan • <span class="likes">45K</span> likes</div>
+ </div>
+</article>
+
+<article class="card" data-country="uk" data-category="news">
+ <div class="media">
+  <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900" alt="News">
+  <span class="badge">WORLD NEWS</span>
+  <div class="actions">
+   <button class="act like">♡</button>
+   <button class="act comment">💬</button>
+   <button class="act share">↗</button>
+   <button class="act save">🔖</button>
+  </div>
+ </div>
+ <div class="info">
+  <div class="title">Discover World News 🌍</div>
+  <div class="meta">@worldnews • 🇬🇧 UK</div>
+ </div>
+</article>
+
+<article class="card" data-country="uae" data-category="following">
+ <div class="media">
+  <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900" alt="Dubai">
+  <span class="badge">UAE • HD</span>
+  <div class="actions">
+   <button class="act like">♡</button>
+   <button class="act comment">💬</button>
+   <button class="act share">↗</button>
+   <button class="act save">🔖</button>
+  </div>
+ </div>
+ <div class="info">
+  <div class="title">Beautiful Dubai City 🌆</div>
+  <div class="meta">@travelworld • 🇦🇪 UAE</div>
+ </div>
+</article>
+
+</section>
+<div id="extraPage" class="hidden"></div>
+</main>
+
+<nav class="bottom">
+ <button class="nav active" data-page="Videos"><b>▶</b>Videos</button>
+ <button class="nav" data-page="Photos"><b>▧</b>Photos</button>
+ <button class="nav" data-page="Circle"><b>♧</b>Circle</button>
+ <button class="nav" data-page="Bazaar"><b>🛍</b>Bazaar</button>
+ <button class="nav" data-page="Profile"><b>👤</b>Profile</button>
+</nav>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let currentTab='foryou';
+let currentCountry='all';
+
+function filterFeed(){
+ let count=0;
+ cards.forEach(card=>{
+  const countryOK=currentCountry==='all'||card.dataset.country===currentCountry;
+  const tabOK=currentTab==='foryou'||
+   card.dataset.category===currentTab||
+   (currentTab==='live'&&card.querySelector('.badge').textContent.includes('LIVE'));
+  card.style.display=countryOK&&tabOK?'block':'none';
+  if(card.style.display==='block')count++;
+ });
+ let empty=document.getElementById('empty');
+ if(!empty){
+  empty=document.createElement('div');
+  empty.id='empty';
+  empty.className='empty';
+  document.getElementById('videos').appendChild(empty);
+ }
+ empty.textContent=count?'':'No posts available in this section yet.';
+ empty.style.display=count?'none':'block';
+}
+
+document.querySelectorAll('.chip').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  currentTab=btn.dataset.tab;
+  document.getElementById('extraPage').classList.add('hidden');
+  document.getElementById('videos').classList.remove('hidden');
+  document.getElementById('countries').style.display='flex';
+  filterFeed();
+ });
+});
+
+document.querySelectorAll('.country').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('.country').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  currentCountry=btn.dataset.country;
+  filterFeed();
+ });
+});
+
+document.getElementById('feed').addEventListener('click',async e=>{
+ const card=e.target.closest('.card');
+ const btn=e.target.closest('.act');
+ if(!card||!btn)return;
+
+ if(btn.classList.contains('like')){
+  const liked=btn.classList.toggle('liked');
+  btn.textContent=liked?'♥':'♡';
+  const count=card.querySelector('.likes');
+  if(count){
+   let n=parseFloat(count.textContent);
+   count.textContent=(n+(liked?0.1:-0.1)).toFixed(1)+'K';
+  }
+ }
+ if(btn.classList.contains('save')){
+  const saved=btn.classList.toggle('liked');
+  btn.textContent=saved?'✓':'🔖';
+  alert(saved?'Post saved!':'Post unsaved!');
+ }
+ if(btn.classList.contains('comment')){
+  const comment=prompt('Write your comment:');
+  if(comment&&comment.trim())alert('Comment added on this device!');
+ }
+ if(btn.classList.contains('share')){
+  const data={title:'NEX World HD',text:card.querySelector('.title').textContent,url:location.href};
+  if(navigator.share){
+   try{await navigator.share(data)}catch(err){}
+  }else{
+   try{await navigator.clipboard.writeText(location.href);alert('Link copied!')}
+   catch(err){alert(location.href)}
+  }
+ }
+});
+
+function openPage(page){
+ document.getElementById('videos').classList.add('hidden');
+ document.getElementById('extraPage').classList.remove('hidden');
+ document.getElementById('countries').style.display='none';
+ document.getElementById('extraPage').innerHTML=
+ '<div class="page"><h2>'+page+'</h2><p>Welcome to NEX '+page+'.<br>This section is ready for its next development stage.</p>'+
+ (page==='Profile'?'<input placeholder="Your name"><input placeholder="Your username"><button class="primary" onclick="alert(\'Profile details entered\')">Save Profile</button>':'')+
+ (page==='Bazaar'?'<input placeholder="Search products"><button class="primary" onclick="alert(\'Product search coming soon\')">Search</button>':'')+
+ '</div>';
+}
+
+document.querySelectorAll('.nav').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  if(btn.dataset.page==='Videos'){
+   document.getElementById('videos').classList.remove('hidden');
+   document.getElementById('extraPage').classList.add('hidden');
+   document.getElementById('countries').style.display='flex';
+   currentTab='foryou';
+   currentCountry='all';
+   document.querySelector('[data-tab="foryou"]').click();
+   document.querySelector('[data-country="all"]').click();
+  }else openPage(btn.dataset.page);
+ });
+});
+
+document.getElementById('profileBtn').onclick=()=>openPage('Profile');
+document.getElementById('notifyBtn').onclick=()=>alert('No new notifications yet.');
+
+document.getElementById('searchBtn').onclick=()=>{
+ const q=prompt('Search posts:');
+ if(!q)return;
+ document.getElementById('videos').classList.remove('hidden');
+ document.getElementById('extraPage').classList.add('hidden');
+ document.getElementById('countries').style.display='none';
+ let found=0;
+ cards.forEach(card=>{
+  const match=card.textContent.toLowerCase().includes(q.toLowerCase());
+  card.style.display=match?'block':'none';
+  if(match)found++;
+ });
+ if(!found)alert('No matching posts found.');
+};
+</script>
+</body>
+</html>
