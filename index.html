@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>A - NEX White</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto; -webkit-tap-highlight-color:transparent}
+:root{--b:#111;--blue:#1E4A8A;--g:#f5f5f7;--bd:#efefef}
+body{background:#fff;color:#111;height:100vh;overflow:hidden}
+.header{position:fixed;top:0;left:0;right:0;height:62px;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;padding:0 12px;z-index:1000;border-bottom:1px solid var(--bd)}
+.logo{font-weight:900;font-size:26px;display:flex;align-items:center;gap:8px;letter-spacing:-1px}
+.logoA{width:32px;height:32px;display:flex;gap:4px}.logoA span{width:46%;height:100%;transform:skewX(-18deg);border-radius:2px;display:block}.logoA span:first-child{background:var(--b)}.logoA span:last-child{background:var(--blue)}
+.hdr{display:flex;gap:8px;align-items:center}
+.btn{border:none;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer}
+.btn-dark{background:var(--b);color:#fff}.btn-light{background:var(--g);color:#111}.btn-blue{background:var(--blue);color:#fff}
+.main{margin-top:62px;height:calc(100vh - 126px);display:flex}
+.feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
+.feed::-webkit-scrollbar{display:none}
+.card{height:100%;scroll-snap-align:start;background:#fff;display:flex;flex-direction:column;border-bottom:1px solid var(--bd);position:relative}
+.media{flex:1;background:#fafafa;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.media video,.media img{width:100%;height:100%;object-fit:cover}
+.right{position:absolute;right:10px;bottom:90px;display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,0.96);padding:10px 8px;border-radius:26px;box-shadow:0 8px 30px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.04)}
+.act{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:700;cursor:pointer;user-select:none}.act b{font-size:20px}
+.act.liked b{color:#ff3040}
+.info{padding:10px 12px;background:#fff}
+.row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px}
+.un{font-weight:700;font-size:13px}.follow{margin-left:auto;background:var(--b);color:#fff;border:none;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer}
+.title{font-size:14.5px;font-weight:600;line-height:1.35;margin-bottom:4px}
+.meta{font-size:11.5px;color:#777;display:flex;gap:6px;flex-wrap:wrap}.meta span{background:var(--g);padding:2px 7px;border-radius:10px}
+.progress{height:3px;background:#eee;margin:8px 12px 0;border-radius:2px;overflow:hidden}.bar{height:100%;background:var(--b);border-radius:2px}
+.hint{text-align:center;font-size:10.5px;color:#aaa;padding:6px 0 8px}
+.bazaar{display:flex;gap:10px;padding:10px 12px;border-top:1px solid var(--bd);align-items:center;background:#fff}
+.bimg{width:64px;height:64px;border-radius:10px;background-size:cover;background-position:center;flex-shrink:0}
+.binfo{flex:1}.binfo h4{font-size:12.5px;font-weight:700}.binfo p{font-size:11px;color:#666;margin:2px 0}.price{font-weight:800;font-size:13px}.price s{font-weight:400;color:#999;font-size:11px;margin-left:4px}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-top:1px solid var(--bd);display:flex;justify-content:space-around;align-items:center;z-index:1000}
+.nav{display:flex;flex-direction:column;align-items:center;gap:2px;color:#999;font-size:10px;font-weight:600;cursor:pointer;min-width:56px}.nav.active{color:var(--b)}.nav i{font-size:19px;font-style:normal}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:9999;padding:14px}
+.modal.show{display:flex}
+.box{background:#fff;width:100%;max-width:400px;border-radius:20px;padding:20px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.box h2{font-size:19px;font-weight:800}.box small{color:#666;font-size:12px}
+.input{width:100%;height:42px;border:1px solid #e8e8e8;background:#f9f9f9;border-radius:12px;padding:0 12px;margin-top:10px;font-size:14px;outline:none}.input:focus{border-color:var(--b);background:#fff}
+textarea.input{height:72px;padding:10px 12px;resize:none}
+.btn-full{width:100%;height:42px;background:var(--b);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:14px;margin-top:12px;cursor:pointer}.btn-full:disabled{opacity:.45}
+.err{color:#ff3040;font-size:11.5px;margin-top:6px;display:none}.err.show{display:block}.ok{color:#0a8a40;font-size:11.5px;margin-top:6px;display:none}.ok.show{display:block}
+.drop{border:2px dashed #ddd;border-radius:14px;padding:16px;text-align:center;margin-top:10px;background:#fafafa;cursor:pointer}.drop.dragover{border-color:var(--b);background:#fff}
+.fileInfo{font-size:11px;color:#444;margin-top:6px;background:#fff;border:1px solid #eee;padding:6px 8px;border-radius:8px;display:none}.fileInfo.show{display:block}
+.tabs{display:flex;gap:6px;margin:12px 0}.tab{flex:1;height:36px;border-radius:20px;border:1px solid #eee;background:#fff;font-size:12px;font-weight:700;cursor:pointer}.tab.active{background:var(--b);color:#fff;border-color:var(--b)}
+.cart{position:fixed;top:70px;right:12px;background:#111;color:#fff;padding:8px 12px;border-radius:20px;font-size:12px;font-weight:700;z-index:1001;display:none}.cart.show{display:block}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="logo"><div class="logoA"><span></span><span></span></div> NEX</div>
+<div class="hdr">
+<button class="btn btn-light" id="searchBtn">⌕</button>
+<button class="btn btn-light" id="loginBtn">Log in</button>
+<button class="btn btn-dark" id="signupBtn">Sign up</button>
+<button class="btn btn-blue" id="uploadBtn">+ Upload</button>
+</div>
+</div>
+<div class="cart" id="cartBadge">🛒 0 items</div>
+
+<div class="main">
+<div class="feed" id="feed">
+<!-- FEED WILL BE FILLED BY JS + DEFAULT -->
+</div>
+</div>
+
+<div class="bottom">
+<div class="nav active" data-tab="videos"><i>▶️</i><span>Videos</span></div>
+<div class="nav" data-tab="photos"><i>🖼️</i><span>Photos</span></div>
+<div class="nav" data-tab="circle"><i>👥</i><span>Circle</span></div>
+<div class="nav" data-tab="bazaar"><i>🛍️</i><span>Bazaar</span></div>
+<div class="nav" data-tab="profile"><i>👤</i><span>Profile</span></div>
+</div>
+
+<!-- LOGIN -->
+<div class="modal" id="loginModal"><div class="box">
+<h2>Login to A</h2><small>No error • Instant</small>
+<input class="input" id="lEmail" type="email" placeholder="Email">
+<input class="input" id="lPass" type="password" placeholder="Password">
+<div class="err" id="lErr"></div><div class="ok" id="lOk"></div>
+<button class="btn-full" id="doLogin">Log in</button>
+<div style="text-align:center;margin-top:10px;font-size:11px;color:#666"><b id="toSignup">Sign up</b> • <b id="cLogin">Close</b></div>
+</div></div>
+
+<!-- SIGNUP -->
+<div class="modal" id="signupModal"><div class="box">
+<h2>Create account</h2><small>Free • No error</small>
+<input class="input" id="sName" placeholder="Full Name">
+<input class="input" id="sEmail" type="email" placeholder="Email">
+<input class="input" id="sPass" type="password" placeholder="Password min 6">
+<div class="err" id="sErr"></div><div class="ok" id="sOk"></div>
+<button class="btn-full" id="doSignup">Sign up</button>
+<div style="text-align:center;margin-top:10px;font-size:11px;color:#666"><b id="toLogin">Log in</b> • <b id="cSignup">Close</b></div>
+</div></div>
+
+<!-- UPLOAD - NO ERROR -->
+<div class="modal" id="uploadModal"><div class="box">
+<h2>Upload to A • No Error</h2><small>Video / Photo • Max 100MB • Works offline</small>
+<div class="tabs"><button class="tab active" data-type="short">Short 15-60s</button><button class="tab" data-type="long">Long 2-30m</button><button class="tab" data-type="photo">Photo</button></div>
+<div class="drop" id="drop">📤 Click to select<br><small>MP4, MOV, JPG, PNG • Drag & Drop</small><input type="file" id="file" accept="video/*,image/*" style="display:none"></div>
+<div class="fileInfo" id="fInfo"></div>
+<input class="input" id="vTitle" placeholder="Title e.g. My Swat Valley vlog">
+<textarea class="input" id="vDesc" placeholder="Description + #hashtags #travel"></textarea>
+<div style="display:flex;gap:8px"><select id="vCat" class="input" style="flex:1"><option>Travel</option><option>Food</option><option>Bazaar</option><option>Education</option><option>Music</option></select><input class="input" id="vPrice" placeholder="Price $ if Bazaar (optional)" style="flex:1"></div>
+<div class="err" id="uErr"></div><div class="ok" id="uOk"></div>
+<button class="btn-full" id="doUpload" disabled>Publish to Feed</button>
+<div style="text-align:center;margin-top:10px;font-size:11px;color:#666"><b id="cUpload">Close</b></div>
+</div></div>
+
+<!-- BAZAAR CART -->
+<div class="modal" id="cartModal"><div class="box">
+<h2>🛒 Your Cart • Bazaar</h2><small id="cartItems">0 items</small>
+<div id="cartList" style="margin-top:12px"></div>
+<div class="err" id="cartErr"></div><div class="ok" id="cartOk"></div>
+<button class="btn-full" id="checkout">Checkout - No Error</button>
+<div style="text-align:center;margin-top:10px;font-size:11px"><b id="cCart">Close</b></div>
+</div></div>
+
+<script>
+// STORAGE
+const LS={U:'a_users_v2',C:'a_cur_v2',V:'a_vids_v2',CART:'a_cart_v2'};
+const get=(k,f)=>JSON.parse(localStorage.getItem(k)||f);
+const set=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const showM=id=>document.getElementById(id).classList.add('show');
+const hideM=id=>document.getElementById(id).classList.remove('show');
+
+// AUTH
+let curType='short', selFile=null, selURL=null;
+const updateAuth=()=>{
+  const cur=get(LS.C,'null');
+  if(cur){
+    document.getElementById('loginBtn').textContent=cur.name.split(' ')[0];
+    const sb=document.getElementById('signupBtn');
+    sb.textContent='Log out'; sb.onclick=()=>{localStorage.removeItem(LS.C); location.reload()};
+  }
+};
+updateAuth();
+
+// MODALS
+document.getElementById('loginBtn').onclick=()=>{if(get(LS.C,'null')){showM('cartModal')}else showM('loginModal')};
+document.getElementById('signupBtn').onclick=()=>{if(!get(LS.C,'null')) showM('signupModal')};
+document.getElementById('uploadBtn').onclick=()=>{if(!get(LS.C,'null')){showM('loginModal'); document.getElementById('lErr').textContent='Login first to upload'; document.getElementById('lErr').classList.add('show');}else showM('uploadModal')};
+document.getElementById('cLogin').onclick=()=>hideM('loginModal');
+document.getElementById('cSignup').onclick=()=>hideM('signupModal');
+document.getElementById('cUpload').onclick=()=>hideM('uploadModal');
+document.getElementById('cCart').onclick=()=>hideM('cartModal');
+document.getElementById('toSignup').onclick=()=>{hideM('loginModal');showM('signupModal')};
+document.getElementById('toLogin').onclick=()=>{hideM('signupModal');showM('loginModal')};
+document.getElementById('searchBtn').onclick=()=>{const q=prompt('Search NEX:'); if(q) alert('Searching: '+q+' • Results: Swat Valley, Bazaar, Food')};
+
+// SIGNUP - NO ERROR
+document.getElementById('doSignup').onclick=()=>{
+  const n=document.getElementById('sName').value.trim(), e=document.getElementById('sEmail').value.trim().toLowerCase(), p=document.getElementById('sPass').value;
+  const err=document.getElementById('sErr'), ok=document.getElementById('sOk'); err.classList.remove('show'); ok.classList.remove('show');
+  if(!n||!e||!p){err.textContent='All fields required';err.classList.add('show');return}
+  if(p.length<6){err.textContent='Password min 6 chars';err.classList.add('show');return}
+  if(!e.includes('@')){err.textContent='Invalid email';err.classList.add('show');return}
+  const users=get(LS.U,'[]'); if(users.find(u=>u.email===e)){err.textContent='Email exists - Login';err.classList.add('show');return}
+  const u={id:Date.now(),name:n,email:e,pass:p}; users.push(u); set(LS.U,users); set(LS.C,u);
+  ok.textContent='Account created ✔'; ok.classList.add('show'); setTimeout(()=>{hideM('signupModal'); updateAuth()},700);
+};
+// LOGIN - NO ERROR
+document.getElementById('doLogin').onclick=()=>{
+  const e=document.getElementById('lEmail').value.trim().toLowerCase(), p=document.getElementById('lPass').value;
+  const err=document.getElementById('lErr'), ok=document.getElementById('lOk'); err.classList.remove('show'); ok.classList.remove('show');
+  if(!e||!p){err.textContent='Email & pass required';err.classList.add('show');return}
+  const users=get(LS.U,'[]'); const u=users.find(x=>x.email===e&&x.pass===p);
+  if(!u){err.textContent='Wrong email/pass';err.classList.add('show');return}
+  set(LS.C,u); ok.textContent='Logged in ✔'; ok.classList.add('show'); setTimeout(()=>{hideM('loginModal'); updateAuth()},600);
+};
+
+// UPLOAD TYPE TABS
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active'); curType=t.dataset.type});
+
+// FILE - NO ERROR
+const drop=document.getElementById('drop'), fin=document.getElementById('file'), finfo=document.getElementById('fInfo'), doUp=document.getElementById('doUpload');
+drop.onclick=()=>fin.click();
+drop.ondragover=e=>{e.preventDefault(); drop.classList.add('dragover')};
+drop.ondragleave=()=>drop.classList.remove('dragover');
+drop.ondrop=e=>{e.preventDefault(); drop.classList.remove('dragover'); handleF(e.dataTransfer.files[0])};
+fin.onchange=e=>handleF(e.target.files[0]);
+function handleF(f){
+  const err=document.getElementById('uErr'); err.classList.remove('show');
+  if(!f) return;
+  if(f.size>100*1024*1024){err.textContent='Max 100MB';err.classList.add('show');return}
+  selFile=f; selURL=URL.createObjectURL(f);
+  finfo.innerHTML=`📁 ${f.name}<br>📦 ${(f.size/1024/1024).toFixed(2)}MB • ${f.type}`; finfo.classList.add('show'); doUp.disabled=false;
+}
+
+// CREATE CARD - A TO Z
+function createCard({title, desc, type, url, isVideo, user, price}){
+  const feed=document.getElementById('feed');
+  const card=document.createElement('div'); card.className='card';
+  const likeId='like_'+Date.now();
+  card.innerHTML=`
+    <div class="media">${isVideo?`<video src="${url}" autoplay loop muted playsinline></video>`:`<img src="${url}">`}
+      <div class="right">
+        <div class="act" onclick="this.classList.toggle('liked')"><b>❤️</b><span class="lc">0</span></div>
+        <div class="act"><b>💬</b><span>0</span></div>
+        <div class="act" onclick="navigator.share?navigator.share({title:'${title}'}):alert('Link copied!')"><b>↗️</b><span>Share</span></div>
+        <div class="act"><b>🔖</b><span>Save</span></div>
+        ${price?`<div class="act" onclick="addToCart('${title}','${price}')"><b>🛒</b><span>Cart</span></div>`:''}
+      </div>
+    </div>
+    <div class="info">
+      <div class="row"><div class="av">${user?user[0]:'Y'}</div><div class="un">@${user||'you'}</div><button class="follow">Follow</button></div>
+      <div class="title">${title}</div>
+      <div class="meta"><span>${type==='short'?'Short 0:45':'Long 12:30'}</span><span>${desc||'#travel'}</span><span>Just now</span>${price?`<span>🛍️ $${price}</span>`:''}</div>
+    </div>
+    ${price?`<div class="bazaar"><div class="bimg" style="background-image:url('${url}')"></div><div class="binfo"><h4>${title}</h4><p>${desc||'Bazaar product'} • In Stock</p><div class="price">$${price} <s>$${(parseInt(price)+20)}</s></div></div><button class="btn btn-dark" onclick="addToCart('${title}','${price}')">Add</button></div>`:''}
+    <div class="progress"><div class="bar" style="width:${type==='short'?'55%':'35%'};background:${type==='short'?'#111':'#1E4A8A'}"></div></div>
+    <div class="hint">⬆️ Swipe up • ${type} • A App • No error</div>
+  `;
+  feed.prepend(card);
+}
+
+// DO UPLOAD - NO ERROR
+document.getElementById('doUpload').onclick=()=>{
+  const title=document.getElementById('vTitle').value.trim()||'My video on A';
+  const desc=document.getElementById
