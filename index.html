@@ -3,284 +3,438 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
-<title>NEX World HD</title>
+<title>AG World Social</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f6fa;color:#111;padding-bottom:80px}
+body{font-family:Arial,sans-serif;background:#f5f6fa;color:#111;padding-bottom:75px}
 button{cursor:pointer;font-family:inherit}
-header{height:62px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:sticky;top:0;z-index:10;border-bottom:1px solid #eee}
-.logo{font-size:30px;font-weight:900;letter-spacing:-2px}
-.logo span{color:#1539c5}
-.topbtn{border:0;background:#f1f2f5;border-radius:50%;width:39px;height:39px;font-size:19px;margin-left:5px}
-.livebar{background:#111;color:white;padding:11px;font-size:12px;white-space:nowrap;overflow:hidden}
-.tabs,.countries{display:flex;gap:9px;overflow-x:auto;padding:12px;background:white;scrollbar-width:none}
-.chip,.country{border:0;background:#eee;padding:9px 15px;border-radius:22px;white-space:nowrap;font-weight:bold;font-size:13px}
-.active{background:#111!important;color:white!important}
+.header{height:62px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:sticky;top:0;z-index:20;border-bottom:1px solid #eee}
+.brand{display:flex;align-items:center;gap:9px;font-size:24px;font-weight:900}
+.aglogo{width:39px;height:39px;border-radius:12px;background:#102b91;color:white;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900;letter-spacing:-2px;box-shadow:0 3px 10px #102b9140}
+.header button{border:0;background:#f1f2f5;border-radius:50%;width:39px;height:39px;font-size:19px;margin-left:5px}
+.tabs{display:flex;gap:9px;overflow-x:auto;padding:12px;background:white;scrollbar-width:none;border-bottom:1px solid #eee}
+.chip{border:0;background:#eee;padding:10px 16px;border-radius:22px;white-space:nowrap;font-weight:bold;font-size:13px}
+.chip.active{background:#111;color:white}
 .feed{padding:10px;max-width:650px;margin:auto}
-.card{background:white;border-radius:15px;overflow:hidden;margin-bottom:15px;box-shadow:0 2px 12px #00000010}
+.card{background:white;border-radius:15px;overflow:hidden;margin-bottom:16px;box-shadow:0 2px 12px #00000010}
+.posthead{display:flex;align-items:center;gap:10px;padding:11px}
+.avatar{width:38px;height:38px;border-radius:50%;background:#1738a5;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.username{font-size:13px;font-weight:bold}
+.posttime{font-size:11px;color:#777;margin-top:3px}
 .media{height:390px;background:#111;position:relative}
 .media img,.media video{width:100%;height:100%;object-fit:cover}
 .badge{position:absolute;top:12px;left:12px;background:#111c;color:white;padding:7px 12px;border-radius:20px;font-size:12px}
-.actions{position:absolute;right:10px;bottom:15px;display:flex;flex-direction:column;gap:12px}
-.act{border:0;background:white;width:44px;height:44px;border-radius:50%;font-size:20px;box-shadow:0 2px 7px #0003}
-.act.liked{color:#ef2548}
-.info{padding:13px}
-.title{font-size:15px;font-weight:bold;line-height:1.5}
-.meta{font-size:12px;color:#777;margin-top:6px}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:68px;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;z-index:20}
-.nav{border:0;background:none;font-size:11px;color:#666;display:flex;flex-direction:column;align-items:center;gap:4px}
+.info{padding:12px}
+.title{font-size:14px;font-weight:bold;line-height:1.5}
+.actions{display:flex;align-items:center;gap:22px;padding:10px 13px}
+.act{border:0;background:none;font-size:22px}
+.act.liked{color:#ed244b}
+.actiontext{font-size:12px;color:#555}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:68px;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;z-index:30}
+.nav{border:0;background:none;font-size:10px;color:#666;display:flex;flex-direction:column;align-items:center;gap:4px}
 .nav b{font-size:22px}
-.nav.active{color:#1539c5!important;background:none!important}
-.page{background:white;border-radius:15px;padding:35px 15px;text-align:center;margin:15px 0}
-.page h2{margin-bottom:10px}
-.page p{color:#777;line-height:1.6;font-size:14px}
-.empty{text-align:center;padding:35px;color:#777}
-input{padding:12px;border:1px solid #ddd;border-radius:10px;width:100%;margin:10px 0}
-.primary{background:#1539c5;color:white;border:0;padding:12px 20px;border-radius:10px}
+.nav.active{color:#1738a5;font-weight:bold}
+.page{max-width:650px;margin:auto;padding:15px}
+.page-title{font-size:22px;font-weight:800;margin:8px 0 15px}
+.news-country{display:flex;gap:8px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+.news-country button{border:1px solid #ddd;background:white;padding:9px 13px;border-radius:20px;white-space:nowrap;font-size:12px;font-weight:bold}
+.news-country button.active{background:#111;color:white;border-color:#111}
+.newsitem{background:white;border-radius:13px;padding:14px;margin-bottom:11px;border:1px solid #eee}
+.newsitem h3{font-size:15px;margin:8px 0;line-height:1.4}
+.newsitem p{font-size:12px;color:#777;line-height:1.5}
+.news-tag{font-size:11px;color:#1738a5;font-weight:bold}
+.profile-cover{height:115px;background:linear-gradient(120deg,#102b91,#667fe8);border-radius:14px}
+.profile-top{padding:0 15px}
+.profile-avatar{width:88px;height:88px;border:4px solid white;border-radius:50%;background:#1738a5;color:white;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold;margin-top:-45px;overflow:hidden}
+.profile-avatar img{width:100%;height:100%;object-fit:cover}
+.profile-name{font-size:21px;font-weight:900;margin-top:10px}
+.profile-user{color:#777;font-size:13px;margin-top:4px}
+.bio{font-size:13px;margin-top:10px;line-height:1.5}
+.stats{display:flex;gap:30px;margin:17px 0}
+.stat{text-align:center;font-size:12px;color:#777}
+.stat strong{display:block;font-size:18px;color:#111;margin-bottom:3px}
+.profile-buttons{display:flex;gap:9px;margin-bottom:18px}
+.profile-buttons button{flex:1;border:0;border-radius:9px;padding:11px;background:#eee;font-weight:bold}
+.profile-buttons .blue{background:#1738a5;color:white}
+.profile-tabs{display:flex;border-bottom:1px solid #ddd}
+.profile-tabs button{flex:1;padding:13px;border:0;background:white;font-weight:bold}
+.profile-tabs button.active{border-bottom:3px solid #1738a5;color:#1738a5;background:white!important}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:5px}
+.grid-item{height:145px;background:#ddd;position:relative;overflow:hidden}
+.grid-item img,.grid-item video{width:100%;height:100%;object-fit:cover}
+.grid-item span{position:absolute;bottom:5px;left:5px;color:white;font-size:11px;text-shadow:0 1px 4px black}
+.uploadbox{background:white;border-radius:15px;padding:20px;text-align:center}
+.uploadbox input,.uploadbox textarea{width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:9px}
+.uploadbox textarea{min-height:75px}
+.primary{background:#1738a5;color:white;border:0;border-radius:9px;padding:13px 20px;font-weight:bold;width:100%}
+.preview{width:100%;max-height:350px;object-fit:contain;background:#111;border-radius:10px;margin:10px 0}
 .hidden{display:none!important}
+.empty{text-align:center;padding:40px;color:#777}
 </style>
 </head>
 <body>
 
-<header>
- <div class="logo">NEX<span>.</span></div>
+<header class="header">
+ <div class="brand">
+  <div class="aglogo">AG</div>
+  <span>WORLD</span>
+ </div>
  <div>
-  <button class="topbtn" id="searchBtn">⌕</button>
-  <button class="topbtn" id="notifyBtn">♧</button>
-  <button class="topbtn" id="profileBtn">👤</button>
+  <button id="searchBtn">⌕</button>
+  <button id="notifyBtn">♧</button>
  </div>
 </header>
 
-<div class="livebar">🔴 NEX LIVE • CONNECT WITH THE WORLD • GLOBAL COMMUNITY</div>
-
 <div class="tabs" id="tabs">
  <button class="chip active" data-tab="foryou">For You</button>
- <button class="chip" data-tab="live">● LIVE</button>
  <button class="chip" data-tab="following">Following</button>
+ <button class="chip" data-tab="live">● LIVE</button>
  <button class="chip" data-tab="news">World News</button>
 </div>
 
-<div class="countries" id="countries">
- <button class="country active" data-country="all">🌍 All World</button>
- <button class="country" data-country="pk">🇵🇰 Pakistan</button>
- <button class="country" data-country="us">🇺🇸 USA</button>
- <button class="country" data-country="uk">🇬🇧 UK</button>
- <button class="country" data-country="uae">🇦🇪 UAE</button>
- <button class="country" data-country="india">🇮🇳 India</button>
- <button class="country" data-country="ksa">🇸🇦 KSA</button>
-</div>
+<main id="home" class="feed">
 
-<main class="feed" id="feed">
-
-<section id="videos">
-
-<article class="card" data-country="us" data-category="foryou">
+<article class="card">
+ <div class="posthead">
+  <div class="avatar">AK</div>
+  <div><div class="username">Artisan Kitchen ✓</div><div class="posttime">2 hours ago • USA</div></div>
+ </div>
  <div class="media">
   <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=900" alt="Food">
-  <span class="badge">HD • USA</span>
-  <div class="actions">
-   <button class="act like">♡</button>
-   <button class="act comment">💬</button>
-   <button class="act share">↗</button>
-   <button class="act save">🔖</button>
-  </div>
  </div>
- <div class="info">
-  <div class="title">Delicious Food Making 🍞</div>
-  <div class="meta">@artisankitchen • 🇺🇸 USA • <span class="likes">12.3K</span> likes</div>
+ <div class="info"><div class="title">Delicious Food Making 🍞 #food #cooking</div></div>
+ <div class="actions">
+  <button class="act like">♡</button><span class="actiontext">12.3K</span>
+  <button class="act comment">💬</button>
+  <button class="act share">↗</button>
+  <button class="act save">🔖</button>
  </div>
 </article>
 
-<article class="card" data-country="pk" data-category="foryou">
+<article class="card">
+ <div class="posthead">
+  <div class="avatar">SW</div>
+  <div><div class="username">Swat Travel ✓</div><div class="posttime">3 hours ago • Pakistan</div></div>
+ </div>
  <div class="media">
   <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900" alt="Mountains">
-  <span class="badge">🇵🇰 Pakistan • HD</span>
-  <div class="actions">
-   <button class="act like">♡</button>
-   <button class="act comment">💬</button>
-   <button class="act share">↗</button>
-   <button class="act save">🔖</button>
-  </div>
  </div>
- <div class="info">
-  <div class="title">Beautiful Swat Valley 😍</div>
-  <div class="meta">@travelworld • 🇵🇰 Pakistan • <span class="likes">45K</span> likes</div>
+ <div class="info"><div class="title">Beautiful Swat Valley 😍 #Pakistan #Travel</div></div>
+ <div class="actions">
+  <button class="act like">♡</button><span class="actiontext">45K</span>
+  <button class="act comment">💬</button>
+  <button class="act share">↗</button>
+  <button class="act save">🔖</button>
  </div>
 </article>
 
-<article class="card" data-country="uk" data-category="news">
- <div class="media">
-  <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900" alt="News">
-  <span class="badge">WORLD NEWS</span>
-  <div class="actions">
-   <button class="act like">♡</button>
-   <button class="act comment">💬</button>
-   <button class="act share">↗</button>
-   <button class="act save">🔖</button>
-  </div>
- </div>
- <div class="info">
-  <div class="title">Discover World News 🌍</div>
-  <div class="meta">@worldnews • 🇬🇧 UK</div>
- </div>
-</article>
-
-<article class="card" data-country="uae" data-category="following">
- <div class="media">
-  <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900" alt="Dubai">
-  <span class="badge">UAE • HD</span>
-  <div class="actions">
-   <button class="act like">♡</button>
-   <button class="act comment">💬</button>
-   <button class="act share">↗</button>
-   <button class="act save">🔖</button>
-  </div>
- </div>
- <div class="info">
-  <div class="title">Beautiful Dubai City 🌆</div>
-  <div class="meta">@travelworld • 🇦🇪 UAE</div>
- </div>
-</article>
-
-</section>
-<div id="extraPage" class="hidden"></div>
 </main>
 
+<section id="newsPage" class="page hidden">
+ <h2 class="page-title">🌍 World News</h2>
+ <p style="font-size:12px;color:#777">Choose a country to explore its news.</p>
+ <div class="news-country" id="newsCountries">
+  <button class="active" data-news="Pakistan">🇵🇰 Pakistan</button>
+  <button data-news="USA">🇺🇸 USA</button>
+  <button data-news="UK">🇬🇧 UK</button>
+  <button data-news="UAE">🇦🇪 UAE</button>
+  <button data-news="India">🇮🇳 India</button>
+  <button data-news="Saudi Arabia">🇸🇦 Saudi Arabia</button>
+  <button data-news="Canada">🇨🇦 Canada</button>
+  <button data-news="Australia">🇦🇺 Australia</button>
+  <button data-news="Germany">🇩🇪 Germany</button>
+  <button data-news="Turkey">🇹🇷 Turkey</button>
+  <button data-news="Japan">🇯🇵 Japan</button>
+  <button data-news="China">🇨🇳 China</button>
+ </div>
+ <div id="newsList">
+  <div class="newsitem">
+   <div class="news-tag">PAKISTAN • NEWS</div>
+   <h3>Welcome to NEX Pakistan News</h3>
+   <p>Country news will appear here when a live news service is connected.</p>
+  </div>
+ </div>
+ <button class="primary" id="moreCountries">Explore more countries</button>
+</section>
+
+<section id="uploadPage" class="page hidden">
+ <h2 class="page-title">＋ Upload Video</h2>
+ <div class="uploadbox">
+  <h3>Select a video from your phone</h3>
+  <p style="font-size:12px;color:#777;margin-top:8px">Choose a video to preview before posting.</p>
+  <input type="file" id="videoFile" accept="video/*">
+  <video id="videoPreview" class="preview hidden" controls playsinline></video>
+  <textarea id="caption" placeholder="Write a caption..."></textarea>
+  <button class="primary" id="publishBtn">Publish Video</button>
+  <p style="font-size:11px;color:#888;margin-top:12px">This version adds the video to this browser session only.</p>
+ </div>
+</section>
+
+<section id="profilePage" class="page hidden">
+ <div class="profile-cover"></div>
+ <div class="profile-top">
+  <div class="profile-avatar" id="profileAvatar">AG</div>
+  <div class="profile-name" id="profileName">AG World User</div>
+  <div class="profile-user" id="profileHandle">@agworld</div>
+  <div class="bio" id="profileBio">Welcome to my NEX World profile 🌍</div>
+  <div class="stats">
+   <div class="stat"><strong id="postCount">0</strong>Posts</div>
+   <div class="stat"><strong>0</strong>Followers</div>
+   <div class="stat"><strong>0</strong>Following</div>
+   <div class="stat"><strong>0</strong>Likes</div>
+  </div>
+  <div class="profile-buttons">
+   <button class="blue" id="editProfile">Edit Profile</button>
+   <button id="shareProfile">Share Profile</button>
+  </div>
+ </div>
+ <div class="profile-tabs">
+  <button class="active" data-profile-tab="videos">▦ Videos</button>
+  <button data-profile-tab="saved">🔖 Saved</button>
+ </div>
+ <div class="video-grid" id="profileGrid"></div>
+</section>
+
+<section id="otherPage" class="page hidden"></section>
+
 <nav class="bottom">
- <button class="nav active" data-page="Videos"><b>▶</b>Videos</button>
- <button class="nav" data-page="Photos"><b>▧</b>Photos</button>
- <button class="nav" data-page="Circle"><b>♧</b>Circle</button>
- <button class="nav" data-page="Bazaar"><b>🛍</b>Bazaar</button>
- <button class="nav" data-page="Profile"><b>👤</b>Profile</button>
+ <button class="nav active" data-page="home"><b>⌂</b>Home</button>
+ <button class="nav" data-page="news"><b>🌍</b>News</button>
+ <button class="nav" data-page="upload"><b>⊕</b>Upload</button>
+ <button class="nav" data-page="circle"><b>♧</b>Circle</button>
+ <button class="nav" data-page="profile"><b>👤</b>Profile</button>
 </nav>
 
 <script>
-const cards=[...document.querySelectorAll('.card')];
-let currentTab='foryou';
-let currentCountry='all';
+const pages=['home','newsPage','uploadPage','profilePage','otherPage'];
+let myPosts=[];
+let savedPosts=[];
+let profileName='AG World User';
+let profileBio='Welcome to my NEX World profile 🌍';
+let profilePhoto='';
+let selectedNews='Pakistan';
+let activeProfileTab='videos';
+let currentFilter='foryou';
 
-function filterFeed(){
- let count=0;
- cards.forEach(card=>{
-  const countryOK=currentCountry==='all'||card.dataset.country===currentCountry;
-  const tabOK=currentTab==='foryou'||
-   card.dataset.category===currentTab||
-   (currentTab==='live'&&card.querySelector('.badge').textContent.includes('LIVE'));
-  card.style.display=countryOK&&tabOK?'block':'none';
-  if(card.style.display==='block')count++;
- });
- let empty=document.getElementById('empty');
- if(!empty){
-  empty=document.createElement('div');
-  empty.id='empty';
-  empty.className='empty';
-  document.getElementById('videos').appendChild(empty);
- }
- empty.textContent=count?'':'No posts available in this section yet.';
- empty.style.display=count?'none':'block';
-}
-
-document.querySelectorAll('.chip').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
-  btn.classList.add('active');
-  currentTab=btn.dataset.tab;
-  document.getElementById('extraPage').classList.add('hidden');
-  document.getElementById('videos').classList.remove('hidden');
-  document.getElementById('countries').style.display='flex';
-  filterFeed();
- });
-});
-
-document.querySelectorAll('.country').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('.country').forEach(x=>x.classList.remove('active'));
-  btn.classList.add('active');
-  currentCountry=btn.dataset.country;
-  filterFeed();
- });
-});
-
-document.getElementById('feed').addEventListener('click',async e=>{
- const card=e.target.closest('.card');
- const btn=e.target.closest('.act');
- if(!card||!btn)return;
-
- if(btn.classList.contains('like')){
-  const liked=btn.classList.toggle('liked');
-  btn.textContent=liked?'♥':'♡';
-  const count=card.querySelector('.likes');
-  if(count){
-   let n=parseFloat(count.textContent);
-   count.textContent=(n+(liked?0.1:-0.1)).toFixed(1)+'K';
-  }
- }
- if(btn.classList.contains('save')){
-  const saved=btn.classList.toggle('liked');
-  btn.textContent=saved?'✓':'🔖';
-  alert(saved?'Post saved!':'Post unsaved!');
- }
- if(btn.classList.contains('comment')){
-  const comment=prompt('Write your comment:');
-  if(comment&&comment.trim())alert('Comment added on this device!');
- }
- if(btn.classList.contains('share')){
-  const data={title:'NEX World HD',text:card.querySelector('.title').textContent,url:location.href};
-  if(navigator.share){
-   try{await navigator.share(data)}catch(err){}
-  }else{
-   try{await navigator.clipboard.writeText(location.href);alert('Link copied!')}
-   catch(err){alert(location.href)}
-  }
- }
-});
-
-function openPage(page){
- document.getElementById('videos').classList.add('hidden');
- document.getElementById('extraPage').classList.remove('hidden');
- document.getElementById('countries').style.display='none';
- document.getElementById('extraPage').innerHTML=
- '<div class="page"><h2>'+page+'</h2><p>Welcome to NEX '+page+'.<br>This section is ready for its next development stage.</p>'+
- (page==='Profile'?'<input placeholder="Your name"><input placeholder="Your username"><button class="primary" onclick="alert(\'Profile details entered\')">Save Profile</button>':'')+
- (page==='Bazaar'?'<input placeholder="Search products"><button class="primary" onclick="alert(\'Product search coming soon\')">Search</button>':'')+
- '</div>';
+function showPage(name){
+ pages.forEach(id=>document.getElementById(id).classList.add('hidden'));
+ document.getElementById(name).classList.remove('hidden');
+ document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.page===name.replace('Page','')));
+ document.getElementById('tabs').style.display=name==='home'?'flex':'none';
 }
 
 document.querySelectorAll('.nav').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));
-  btn.classList.add('active');
-  if(btn.dataset.page==='Videos'){
-   document.getElementById('videos').classList.remove('hidden');
-   document.getElementById('extraPage').classList.add('hidden');
-   document.getElementById('countries').style.display='flex';
-   currentTab='foryou';
-   currentCountry='all';
-   document.querySelector('[data-tab="foryou"]').click();
-   document.querySelector('[data-country="all"]').click();
-  }else openPage(btn.dataset.page);
- });
+ btn.onclick=()=>{
+  const p=btn.dataset.page;
+  if(p==='home')showPage('home');
+  if(p==='news')showPage('newsPage');
+  if(p==='upload')showPage('uploadPage');
+  if(p==='profile')showPage('profilePage');
+  if(p==='circle'){
+   showPage('otherPage');
+   document.getElementById('otherPage').innerHTML='<div class="page"><h2>My Circle ♧</h2><p>Friends and followers section.</p></div>';
+  }
+  if(p==='home')document.querySelector('[data-tab="foryou"]').click();
+ };
 });
 
-document.getElementById('profileBtn').onclick=()=>openPage('Profile');
-document.getElementById('notifyBtn').onclick=()=>alert('No new notifications yet.');
+document.querySelectorAll('.chip').forEach(btn=>{
+ btn.onclick=()=>{
+  document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter=btn.dataset.tab;
+  showPage('home');
+  const cards=[...document.querySelectorAll('#home .card')];
+  cards.forEach(c=>{
+   if(currentFilter==='foryou')c.style.display='block';
+   else if(currentFilter==='following')c.style.display='none';
+   else if(currentFilter==='live')c.style.display='none';
+   else c.style.display='none';
+  });
+  if(currentFilter==='news'){
+   showPage('newsPage');
+   document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));
+   btn.classList.add('active');
+  }
+ };
+});
+
+document.getElementById('newsCountries').addEventListener('click',e=>{
+ const btn=e.target.closest('button[data-news]');
+ if(!btn)return;
+ selectedNews=btn.dataset.news;
+ document.querySelectorAll('#newsCountries button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ document.getElementById('newsList').innerHTML=
+ '<div class="newsitem"><div class="news-tag">'+selectedNews.toUpperCase()+' • NEWS</div><h3>'+selectedNews+' News</h3><p>Live news headlines for '+selectedNews+' will appear here after connecting a live news API.</p></div>';
+});
+
+document.getElementById('moreCountries').onclick=()=>{
+ alert('More countries can be added to this list.');
+};
+
+const fileInput=document.getElementById('videoFile');
+const preview=document.getElementById('videoPreview');
+let selectedFile=null;
+let previewURL=null;
+
+fileInput.onchange=()=>{
+ const file=fileInput.files[0];
+ if(!file)return;
+ if(!file.type.startsWith('video/')){
+  alert('Please select a video file.');
+  return;
+ }
+ selectedFile=file;
+ if(previewURL)URL.revokeObjectURL(previewURL);
+ previewURL=URL.createObjectURL(file);
+ preview.src=previewURL;
+ preview.classList.remove('hidden');
+};
+
+function addPost(file,caption,url){
+ const card=document.createElement('article');
+ card.className='card';
+ card.innerHTML=`
+ <div class="posthead">
+ <div class="avatar">AG</div>
+ <div><div class="username"></div><div class="posttime">Just now</div></div>
+ </div>
+ <div class="media"><video controls playsinline></video></div>
+ <div class="info"><div class="title"></div></div>
+ <div class="actions">
+ <button class="act like">♡</button>
+ <span class="actiontext">0</span>
+ <button class="act comment">💬</button>
+ <button class="act share">↗</button>
+ <button class="act save">🔖</button>
+ </div>`;
+ card.querySelector('.username').textContent=profileName;
+ card.querySelector('video').src=url;
+ card.querySelector('.title').textContent=caption||'My new video #NEX';
+ document.getElementById('home').prepend(card);
+ myPosts.unshift({url,caption});
+ updateProfileGrid();
+ document.getElementById('postCount').textContent=myPosts.length;
+}
+
+document.getElementById('publishBtn').onclick=()=>{
+ if(!selectedFile){
+  alert('Please select a video first.');
+  return;
+ }
+ const url=URL.createObjectURL(selectedFile);
+ const caption=document.getElementById('caption').value;
+ addPost(selectedFile,caption,url);
+ selectedFile=null;
+ fileInput.value='';
+ preview.classList.add('hidden');
+ preview.removeAttribute('src');
+ document.getElementById('caption').value='';
+ showPage('home');
+ document.querySelector('[data-tab="foryou"]').click();
+ alert('Video added to your local feed!');
+};
+
+function updateProfileGrid(){
+ const grid=document.getElementById('profileGrid');
+ grid.innerHTML='';
+ myPosts.forEach(p=>{
+  const item=document.createElement('div');
+  item.className='grid-item';
+  const video=document.createElement('video');
+  video.src=p.url;
+  item.appendChild(video);
+  const label=document.createElement('span');
+  label.textContent='▶ Video';
+  item.appendChild(label);
+  grid.appendChild(item);
+ });
+ if(activeProfileTab==='saved'){
+  grid.innerHTML='<div class="empty">Saved posts will appear here.</div>';
+ }
+}
+
+document.getElementById('editProfile').onclick=()=>{
+ const name=prompt('Enter your display name:',profileName);
+ if(name===null)return;
+ const bio=prompt('Enter your bio:',profileBio);
+ if(bio===null)return;
+ profileName=name.trim()||profileName;
+ profileBio=bio;
+ document.getElementById('profileName').textContent=profileName;
+ document.getElementById('profileBio').textContent=profileBio;
+};
+
+document.getElementById('profileAvatar').onclick=()=>{
+ const input=document.createElement('input');
+ input.type='file';
+ input.accept='image/*';
+ input.onchange=()=>{
+  const f=input.files[0];
+  if(!f)return;
+  profilePhoto=URL.createObjectURL(f);
+  document.getElementById('profileAvatar').innerHTML='<img src="'+profilePhoto+'" alt="Profile">';
+ };
+ input.click();
+};
+
+document.getElementById('shareProfile').onclick=async()=>{
+ const data={title:profileName,text:'Follow me on NEX World',url:location.href};
+ if(navigator.share){
+  try{await navigator.share(data)}catch(e){}
+ }else{
+  alert('Profile link: '+location.href);
+ }
+};
+
+document.querySelectorAll('[data-profile-tab]').forEach(btn=>{
+ btn.onclick=()=>{
+  document.querySelectorAll('[data-profile-tab]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeProfileTab=btn.dataset.profileTab;
+  updateProfileGrid();
+ };
+});
+
+document.getElementById('home').addEventListener('click',async e=>{
+ const card=e.target.closest('.card');
+ const btn=e.target.closest('.act');
+ if(!card||!btn)return;
+ if(btn.classList.contains('like')){
+  const yes=btn.classList.toggle('liked');
+  btn.textContent=yes?'♥':'♡';
+ }
+ if(btn.classList.contains('save')){
+  const yes=btn.classList.toggle('liked');
+  btn.textContent=yes?'✓':'🔖';
+  alert(yes?'Saved':'Removed from saved');
+ }
+ if(btn.classList.contains('comment')){
+  const comment=prompt('Write a comment:');
+  if(comment&&comment.trim())alert('Comment entered!');
+ }
+ if(btn.classList.contains('share')){
+  if(navigator.share){
+   try{await navigator.share({title:'NEX World',text:card.querySelector('.title').textContent,url:location.href})}catch(e){}
+  }else alert(location.href);
+ }
+});
 
 document.getElementById('searchBtn').onclick=()=>{
- const q=prompt('Search posts:');
+ const q=prompt('Search NEX posts:');
  if(!q)return;
- document.getElementById('videos').classList.remove('hidden');
- document.getElementById('extraPage').classList.add('hidden');
- document.getElementById('countries').style.display='none';
- let found=0;
- cards.forEach(card=>{
-  const match=card.textContent.toLowerCase().includes(q.toLowerCase());
-  card.style.display=match?'block':'none';
-  if(match)found++;
+ showPage('home');
+ document.querySelectorAll('#home .card').forEach(c=>{
+  c.style.display=c.textContent.toLowerCase().includes(q.toLowerCase())?'block':'none';
  });
- if(!found)alert('No matching posts found.');
 };
+
+document.getElementById('notifyBtn').onclick=()=>alert('No new notifications.');
+showPage('home');
 </script>
 </body>
 </html>
