@@ -3,160 +3,315 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#102b91">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b14">
 <title>AG World Social</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f3f5fa;color:#151515;padding-bottom:75px}
-button{cursor:pointer;font-family:inherit}
-.hidden{display:none!important}
-header{height:62px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:sticky;top:0;z-index:10;border-bottom:1px solid #eee}
-.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:900}
-.logo{width:43px;height:40px;border-radius:12px;background:linear-gradient(135deg,#078bff,#102b91);color:white;display:grid;place-items:center;font-size:23px;font-weight:900}
-header button{border:0;background:#eee;border-radius:50%;width:39px;height:39px;font-size:19px}
-.page{max-width:650px;margin:auto;padding:14px}
-.tabs{display:flex;gap:8px;overflow:auto;background:white;padding:11px;scrollbar-width:none}
-.chip{border:0;border-radius:22px;padding:10px 15px;background:#eee;white-space:nowrap;font-weight:bold}
-.chip.active{background:#102b91;color:white}
-.card{background:white;border-radius:15px;overflow:hidden;margin-bottom:15px;box-shadow:0 2px 10px #00000010}
-.posthead{display:flex;align-items:center;gap:10px;padding:12px}
-.avatar{width:39px;height:39px;border-radius:50%;background:#1738a5;color:white;display:grid;place-items:center;font-weight:bold;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.username{font-size:13px;font-weight:bold}
-.posttime{font-size:11px;color:#777;margin-top:4px}
-.media{background:#111;min-height:180px;max-height:520px;display:grid;place-items:center}
-.media video{width:100%;max-height:520px;object-fit:contain;background:#000}
-.info{padding:12px;font-size:14px;line-height:1.5}
-.actions{display:flex;align-items:center;gap:16px;padding:10px 13px;flex-wrap:wrap}
-.act{border:0;background:none;font-size:20px}
-.count{font-size:12px;color:#666}
-.delete{margin-left:auto;color:#d22;font-size:12px;border:0;background:#fff0f0;padding:7px 10px;border-radius:8px}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:67px;background:white;border-top:1px solid #ddd;display:flex;justify-content:space-around;align-items:center;z-index:20}
-.nav{border:0;background:none;color:#666;font-size:10px;display:flex;flex-direction:column;gap:4px;align-items:center}
-.nav b{font-size:22px}
-.nav.active{color:#102b91;font-weight:bold}
-.primary{background:#102b91;color:white;border:0;border-radius:10px;padding:13px;width:100%;font-weight:bold}
-input,textarea,select{width:100%;padding:13px;margin:8px 0;border:1px solid #ddd;border-radius:9px;font:14px Arial}
-textarea{min-height:75px}
-.auth-bg{min-height:calc(100vh - 62px);padding:22px 14px;background:linear-gradient(145deg,#07184fdd,#075bcebb),url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200') center/cover;display:flex;align-items:center;justify-content:center}
-.auth-box{background:white;border-radius:20px;padding:23px;width:100%;max-width:400px;box-shadow:0 10px 35px #0005}
-.auth-box h2{text-align:center;margin:12px 0 5px}
-.auth-box p{text-align:center;color:#777;font-size:12px;margin-bottom:14px}
-.auth-btn{width:100%;padding:13px;background:#102b91;color:white;border:0;border-radius:9px;font-weight:bold;margin-top:8px}
-.google{background:white;color:#222;border:1px solid #ddd}
-.link{text-align:center;margin-top:14px;font-size:13px;color:#102b91;cursor:pointer}
-h2.heading{font-size:22px;margin:10px 0 15px}
-.news-item{background:white;border-radius:13px;padding:14px;margin-bottom:12px}
-.news-item h3{font-size:15px;line-height:1.4;margin:8px 0}
-.news-item p{font-size:12px;color:#777;line-height:1.5}
-.news-item a{color:#102b91;font-size:12px;font-weight:bold;display:inline-block;margin-top:9px}
-.news-image{width:100%;max-height:190px;object-fit:cover;border-radius:9px}
-.profile-cover{height:110px;border-radius:14px;background:linear-gradient(120deg,#102b91,#438bff)}
-.profile-top{padding:0 14px}
-.profile-avatar{width:85px;height:85px;border-radius:50%;border:4px solid white;background:#102b91;color:white;display:grid;place-items:center;font-size:26px;font-weight:bold;margin-top:-42px;overflow:hidden}
-.profile-avatar img{width:100%;height:100%;object-fit:cover}
-.stats{display:flex;justify-content:space-around;margin:18px 0}
-.stat{text-align:center;font-size:11px;color:#777}
-.stat strong{display:block;color:#111;font-size:18px;margin-bottom:4px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:12px}
-.grid video{width:100%;height:145px;object-fit:cover;background:#111}
-.empty{text-align:center;padding:35px;color:#777;font-size:13px}
-.status{font-size:12px;color:#777;margin:8px 0}
+:root{
+ --bg:#090b14;--panel:#121727;--panel2:#1a2235;
+ --blue:#3987ff;--cyan:#24d5e8;--text:#f5f7ff;
+ --muted:#9ba8c2;--border:#273149;--danger:#ff5268;
+}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:85px}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;border:0}
+header{
+ position:sticky;top:0;z-index:10;background:#0b1020ee;
+ backdrop-filter:blur(15px);border-bottom:1px solid var(--border);
+ padding:13px 16px;display:flex;align-items:center;justify-content:space-between
+}
+.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900}
+.logo{
+ width:39px;height:39px;border-radius:13px;display:grid;place-items:center;
+ background:linear-gradient(135deg,#2475ff,#20d9e9);color:white;
+ box-shadow:0 5px 22px #2475ff55;font-weight:900
+}
+.header-right{display:flex;align-items:center;gap:9px}
+.avatar{
+ width:39px;height:39px;border-radius:50%;object-fit:cover;
+ background:linear-gradient(135deg,#2475ff,#22d5df);
+ display:grid;place-items:center;font-weight:bold;color:white
+}
+main{max-width:760px;margin:auto;padding:15px}
+.page{display:none}.page.active{display:block}
+.panel,.post,.news-card{
+ background:var(--panel);border:1px solid var(--border);
+ border-radius:17px;padding:15px;margin-bottom:15px
+}
+h2{font-size:20px;margin-bottom:14px}
+h3{font-size:16px}
+.muted{color:var(--muted);font-size:13px}
+.field{
+ width:100%;padding:13px;border:1px solid var(--border);
+ border-radius:12px;background:#0c1220;color:white;outline:none;margin:6px 0 12px
+}
+.field:focus{border-color:var(--blue)}
+.primary{
+ background:linear-gradient(110deg,#2879ff,#20c8e4);color:white;
+ padding:12px 17px;border-radius:12px;font-weight:bold
+}
+.secondary{background:var(--panel2);color:white;padding:10px 14px;border-radius:11px}
+.danger{background:#4a1d2b;color:#ff9aaa;padding:9px 12px;border-radius:10px}
+.full{width:100%}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.wrap{display:flex;flex-wrap:wrap;gap:8px}
+.story-row{display:flex;gap:13px;overflow:auto;padding:5px 0 15px}
+.story{min-width:65px;text-align:center;font-size:12px}
+.story-ring{width:57px;height:57px;border-radius:50%;padding:3px;margin:auto auto 5px;
+ background:linear-gradient(135deg,#267bff,#25d6df)}
+.story-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid var(--bg)}
+.post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.post-head .avatar{flex-shrink:0}
+.post-media{width:100%;max-height:540px;object-fit:contain;background:#05070c;border-radius:13px;margin-top:10px}
+.post-text{line-height:1.5;margin:10px 0;overflow-wrap:anywhere}
+.post-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.action{background:var(--panel2);color:white;border-radius:10px;padding:9px 12px;font-size:13px}
+.action.liked{color:#ff5878}
+.comment-area{display:none;margin-top:12px}
+.comment{border-top:1px solid var(--border);padding:9px 0;font-size:13px}
+.news-image{width:100%;height:175px;object-fit:cover;border-radius:12px;margin:10px 0}
+.news-title{font-weight:bold;line-height:1.4}
+.news-link{color:#65a9ff;text-decoration:none;font-size:13px}
+.news-meta{color:var(--muted);font-size:12px;margin:7px 0}
+.bottom-nav{
+ position:fixed;bottom:0;left:0;right:0;z-index:20;
+ background:#0c1120f5;backdrop-filter:blur(15px);
+ border-top:1px solid var(--border);display:flex;justify-content:space-around;
+ padding:9px 3px max(9px,env(safe-area-inset-bottom))
+}
+.nav-btn{background:none;color:#9ba8c2;font-size:11px;display:grid;gap:4px;justify-items:center;min-width:55px}
+.nav-btn span{font-size:21px}
+.nav-btn.active{color:#55a1ff}
+#authScreen{
+ position:fixed;inset:0;z-index:50;background:
+ radial-gradient(circle at 20% 15%,#173b78 0,transparent 38%),
+ radial-gradient(circle at 85% 80%,#124e59 0,transparent 38%),#080b15;
+ display:grid;place-items:center;padding:20px;overflow:auto
+}
+.auth-box{width:min(430px,100%);background:#11192a;border:1px solid #293754;
+ padding:25px;border-radius:23px;box-shadow:0 20px 70px #0009}
+.auth-logo{width:75px;height:75px;border-radius:23px;margin:0 auto 15px;
+ display:grid;place-items:center;background:linear-gradient(135deg,#287bff,#22d6df);
+ font-size:30px;font-weight:900}
+.auth-box h1{text-align:center;font-size:26px}
+.auth-box p{text-align:center;color:var(--muted);margin:8px 0 18px}
+.auth-switch{text-align:center;color:#72adff;margin-top:15px;cursor:pointer}
+#cameraModal{
+ display:none;position:fixed;inset:0;z-index:100;background:#03050b;
+ padding:12px;overflow:auto
+}
+.camera-box{max-width:600px;margin:auto}
+#cameraVideo{width:100%;max-height:65vh;object-fit:cover;border-radius:18px;background:#111}
+.filter-btn{background:#202b40;color:white;padding:9px 12px;border-radius:20px}
+.filter-btn.selected{background:#287bff}
+.camera-actions{display:flex;gap:10px;justify-content:center;margin:15px}
+#cameraStatus{color:#ffb4b4;font-size:13px;margin:8px}
+.empty{text-align:center;color:var(--muted);padding:25px}
+.profile-cover{height:105px;border-radius:15px;background:linear-gradient(120deg,#1b4c9c,#16a8b7);margin-bottom:-40px}
+.profile-top{position:relative;padding:0 12px 12px}
+.profile-top .avatar{width:85px;height:85px;border:4px solid var(--panel)}
+.stats{display:flex;gap:22px;margin:14px 0}
+.stats strong{display:block;font-size:18px}
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
+ background:#202b40;color:white;padding:11px 16px;border-radius:12px;
+ display:none;z-index:150;max-width:90%;text-align:center}
+@media(min-width:700px){main{padding-top:22px}}
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="brand"><div class="logo">AG</div> WORLD</div>
- <button id="accountBtn">👤</button>
+ <div class="brand"><div class="logo">AG</div> AG World Social</div>
+ <div class="header-right">
+  <span id="countryBadge" class="muted">🌍 World</span>
+  <img id="headerAvatar" class="avatar" alt="Profile" src="">
+ </div>
 </header>
 
-<section id="authPage" class="auth-bg">
+<div id="authScreen">
  <div class="auth-box">
-  <div style="display:flex;justify-content:center"><div class="logo" style="width:58px;height:55px;font-size:30px">AG</div></div>
-  <h2 id="authTitle">Join AG World</h2>
-  <p>Connect with your world • HD Videos • Local News</p>
-  <div id="signupFields">
-   <input id="name" placeholder="Full name">
-  </div>
-  <input id="email" type="email" placeholder="Email address">
-  <input id="password" type="password" placeholder="Password (minimum 6 characters)">
-  <button class="auth-btn" id="emailBtn">Create Account</button>
-  <button class="auth-btn google" id="googleBtn">Continue with Google</button>
-  <div class="link" id="switchAuth">Already have an account? Login</div>
-  <p id="authMessage" class="status"></p>
- </div>
-</section>
+  <div class="auth-logo">AG</div>
+  <h1>AG World Social</h1>
+  <p>Connect with the whole world 🌍</p>
 
-<section id="appPage" class="hidden">
- <div class="tabs" id="tabs">
-  <button class="chip active" data-tab="home">For You</button>
-  <button class="chip" data-tab="following">Following</button>
-  <button class="chip" data-tab="news">My Country News</button>
- </div>
- <main id="homePage" class="page">
-  <div id="feed"></div>
- </main>
- <main id="newsPage" class="page hidden">
-  <h2 class="heading">📰 My Country News</h2>
-  <p id="countryLabel" class="status">Loading your country...</p>
-  <div id="newsList"><p class="empty">Loading latest headlines...</p></div>
-  <button class="primary" id="refreshNews">Refresh News</button>
- </main>
- <main id="uploadPage" class="page hidden">
-  <h2 class="heading">＋ Upload HD Video</h2>
-  <div class="card" style="padding:17px">
-   <input id="videoFile" type="file" accept="video/*">
-   <video id="preview" class="hidden" controls style="width:100%;max-height:300px;background:#111"></video>
-   <textarea id="caption" placeholder="Write something about your video..."></textarea>
-   <p class="status">Video file is uploaded to your Firebase Storage.</p>
-   <button class="primary" id="publish">Publish Video</button>
-   <p id="uploadStatus" class="status"></p>
+  <div id="loginFields">
+   <input id="email" class="field" type="email" placeholder="Email address">
+   <input id="password" class="field" type="password" placeholder="Password">
+   <button class="primary full" onclick="login()">Login</button>
+   <button class="secondary full" style="margin-top:9px" onclick="googleLogin()">Continue with Google</button>
+   <div class="auth-switch" onclick="showSignup()">Create a new account</div>
   </div>
- </main>
- <main id="profilePage" class="page hidden">
-  <div class="profile-cover"></div>
-  <div class="profile-top">
-   <div class="profile-avatar" id="profileAvatar">AG</div>
-   <h2 id="profileName" style="margin-top:10px">My Profile</h2>
-   <p id="profileEmail" class="status"></p>
-   <p id="profileCountry" class="status"></p>
-   <div class="stats">
-    <div class="stat"><strong id="myPosts">0</strong>Posts</div>
-    <div class="stat"><strong id="myViews">0</strong>Views</div>
+
+  <div id="signupFields" style="display:none">
+   <input id="signupName" class="field" placeholder="Your full name">
+   <input id="signupEmail" class="field" type="email" placeholder="Email address">
+   <input id="signupPassword" class="field" type="password" placeholder="Password (6 characters minimum)">
+   <button class="primary full" onclick="signup()">Create Account</button>
+   <div class="auth-switch" onclick="showLogin()">Already have an account? Login</div>
+  </div>
+  <div id="authMessage" class="muted" style="margin-top:13px;text-align:center"></div>
+ </div>
+</div>
+
+<main>
+ <section id="homePage" class="page active">
+  <div class="story-row" id="storyRow">
+   <div class="story" onclick="openCamera()">
+    <div class="story-ring"><img id="storyAvatar" src="" alt=""></div>
+    Your story
    </div>
-   <button class="primary" id="logout">Logout</button>
   </div>
-  <h3 style="margin:20px 0 8px">My Videos</h3>
-  <div id="myGrid" class="grid"></div>
- </main>
-</section>
 
-<nav class="bottom hidden" id="bottomNav">
- <button class="nav active" data-page="homePage"><b>⌂</b>Home</button>
- <button class="nav" data-page="newsPage"><b>🌍</b>News</button>
- <button class="nav" data-page="uploadPage"><b>⊕</b>Upload</button>
- <button class="nav" data-page="profilePage"><b>👤</b>Profile</button>
+  <div class="panel">
+   <div class="row">
+    <img id="composerAvatar" class="avatar" src="" alt="">
+    <input id="postText" class="field" style="margin:0" placeholder="What's happening around the world?">
+   </div>
+   <div class="wrap" style="margin-top:12px">
+    <button class="secondary" onclick="document.getElementById('photoInput').click()">📷 Photo</button>
+    <button class="secondary" onclick="document.getElementById('videoInput').click()">🎬 HD Video</button>
+    <button class="primary" onclick="createTextPost()">Post</button>
+   </div>
+   <input id="photoInput" type="file" accept="image/*" hidden onchange="uploadMedia(this,'image')">
+   <input id="videoInput" type="file" accept="video/*" hidden onchange="uploadMedia(this,'video')">
+   <div id="uploadStatus" class="muted" style="margin-top:8px"></div>
+  </div>
+
+  <div class="row between" style="margin-bottom:12px">
+   <h2 style="margin:0">Your Feed</h2>
+   <select id="feedMode" class="field" style="width:auto;margin:0" onchange="renderFeed()">
+    <option value="all">🌍 Everyone</option>
+    <option value="following">Following</option>
+   </select>
+  </div>
+  <div id="feed"></div>
+ </section>
+
+ <section id="newsPage" class="page">
+  <h2>🌍 World News</h2>
+  <div class="panel">
+   <label class="muted">Choose country news</label>
+   <select id="newsCountry" class="field" onchange="loadNews()">
+    <option value="WORLD">Worldwide</option>
+    <option value="PK">Pakistan</option>
+    <option value="US">United States</option>
+    <option value="GB">United Kingdom</option>
+    <option value="IN">India</option>
+    <option value="SA">Saudi Arabia</option>
+    <option value="AE">United Arab Emirates</option>
+    <option value="TR">Turkey</option>
+    <option value="CN">China</option>
+    <option value="FR">France</option>
+    <option value="DE">Germany</option>
+    <option value="CA">Canada</option>
+    <option value="AU">Australia</option>
+    <option value="JP">Japan</option>
+    <option value="QA">Qatar</option>
+    <option value="AF">Afghanistan</option>
+   </select>
+   <button class="primary full" onclick="loadNews()">Refresh News</button>
+   <p class="muted" style="margin-top:9px">News headlines are collected from external Google News feeds. Open the publisher's link to read the full report.</p>
+  </div>
+  <div id="newsList"><div class="empty">Loading news...</div></div>
+ </section>
+
+ <section id="uploadPage" class="page">
+  <h2>🎥 Create Post</h2>
+  <div class="panel">
+   <h3>Upload HD Video or Photo</h3>
+   <p class="muted" style="margin:8px 0 14px">Choose a video or photo from your phone. Original quality depends on your selected file.</p>
+   <button class="primary full" onclick="document.getElementById('videoInput2').click()">Select Video</button>
+   <input id="videoInput2" type="file" accept="video/*" hidden onchange="uploadMedia(this,'video')">
+   <button class="secondary full" style="margin-top:10px" onclick="document.getElementById('photoInput2').click()">Select Photo</button>
+   <input id="photoInput2" type="file" accept="image/*" hidden onchange="uploadMedia(this,'image')">
+   <textarea id="uploadCaption" class="field" rows="3" placeholder="Write a caption..."></textarea>
+  </div>
+ </section>
+
+ <section id="profilePage" class="page">
+  <div class="panel" style="padding:12px">
+   <div class="profile-cover"></div>
+   <div class="profile-top">
+    <div class="row between">
+     <img id="profileAvatar" class="avatar" src="" alt="Profile photo">
+     <div class="wrap">
+      <button class="secondary" onclick="openCamera()">📸 Camera</button>
+      <button class="secondary" onclick="document.getElementById('dpInput').click()">🖼️ Gallery</button>
+      <input id="dpInput" type="file" accept="image/*" hidden onchange="uploadDP(this)">
+     </div>
+    </div>
+    <h2 id="profileName" style="margin-top:10px">Your Name</h2>
+    <p id="profileEmail" class="muted"></p>
+    <input id="editName" class="field" placeholder="Change your name">
+    <button class="primary" onclick="saveProfile()">Save Profile</button>
+    <div class="stats">
+     <div><strong id="myPostCount">0</strong><span class="muted">Posts</span></div>
+     <div><strong id="followerCount">0</strong><span class="muted">Followers</span></div>
+     <div><strong id="followingCount">0</strong><span class="muted">Following</span></div>
+    </div>
+   </div>
+  </div>
+  <h2>Your Posts</h2>
+  <div id="myPosts"></div>
+  <button class="danger full" onclick="logout()">Logout</button>
+ </section>
+</main>
+
+<nav class="bottom-nav">
+ <button class="nav-btn active" onclick="navigate('homePage',this)"><span>⌂</span>Home</button>
+ <button class="nav-btn" onclick="navigate('newsPage',this)"><span>🌍</span>News</button>
+ <button class="nav-btn" onclick="navigate('uploadPage',this)"><span>＋</span>Create</button>
+ <button class="nav-btn" onclick="navigate('profilePage',this)"><span>◉</span>Profile</button>
 </nav>
+
+<div id="cameraModal">
+ <div class="camera-box">
+  <div class="row between" style="padding:8px 0 14px">
+   <h2>📸 AG Camera</h2>
+   <button class="secondary" onclick="closeCamera()">✕ Close</button>
+  </div>
+  <video id="cameraVideo" autoplay playsinline muted></video>
+  <canvas id="cameraCanvas" hidden></canvas>
+  <div id="cameraStatus"></div>
+  <div class="wrap" style="margin:12px 0">
+   <button class="filter-btn selected" data-filter="none" onclick="setFilter(this,'none')">Normal</button>
+   <button class="filter-btn" data-filter="brightness(1.2) saturate(1.2)" onclick="setFilter(this,'brightness(1.2) saturate(1.2)')">Bright</button>
+   <button class="filter-btn" data-filter="contrast(1.2) saturate(1.4)" onclick="setFilter(this,'contrast(1.2) saturate(1.4)')">Vivid</button>
+   <button class="filter-btn" data-filter="sepia(.55)" onclick="setFilter(this,'sepia(.55)')">Vintage</button>
+   <button class="filter-btn" data-filter="grayscale(1)" onclick="setFilter(this,'grayscale(1)')">B&W</button>
+   <button class="filter-btn" data-filter="blur(.3px) brightness(1.12)" onclick="setFilter(this,'blur(.3px) brightness(1.12)')">Soft</button>
+   <button class="filter-btn" data-filter="hue-rotate(25deg) saturate(1.5)" onclick="setFilter(this,'hue-rotate(25deg) saturate(1.5)')">Color</button>
+  </div>
+  <div class="camera-actions">
+   <button class="secondary" onclick="switchCamera()">🔄 Flip</button>
+   <button class="primary" onclick="captureDP()">● Capture Photo</button>
+  </div>
+ </div>
+</div>
+
+<div id="toast"></div>
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
  getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
- signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
- signOut,updateProfile
+ signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,signOut,
+ updateProfile
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
- getDatabase,ref,set,get,update,push,onValue,runTransaction,remove
+ getDatabase,ref,set,get,push,onValue,update,remove
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 import {
- getStorage,ref as storageRef,uploadBytesResumable,
- getDownloadURL,deleteObject
+ getStorage,ref as storageRef,uploadBytesResumable,getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-const firebaseConfig = {
- apiKey:"AIzaSyBYBWflKXiqBSSDbyGdTGXJ6C1RCJziZFA",
+/* YOUR FIREBASE PROJECT CONFIGURATION */
+const firebaseConfig={
+ apiKey:"AIzaSyBYBWflKXiqBSSDbyGdTGJX6C1RCJziZFA",
  authDomain:"ag-world-7310e.firebaseapp.com",
  databaseURL:"https://ag-world-7310e-default-rtdb.firebaseio.com",
  projectId:"ag-world-7310e",
@@ -173,400 +328,526 @@ const storage=getStorage(app);
 const googleProvider=new GoogleAuthProvider();
 
 let currentUser=null;
-let userCountry="Pakistan";
-let loginMode="signup";
-let posts={};
-let selectedFile=null;
-let previewURL=null;
-let feedListener=null;
+let allPosts={};
+let allUsers={};
+let following={};
+let followers={};
+let currentCountry="PK";
+let cameraStream=null;
+let cameraFacing="user";
+let cameraFilter="none";
+let activeFeedListener=null;
 
 const $=id=>document.getElementById(id);
-const countryNames={
- PK:"Pakistan",US:"USA",GB:"United Kingdom",AE:"United Arab Emirates",
- IN:"India",SA:"Saudi Arabia",CA:"Canada",AU:"Australia",DE:"Germany",
- TR:"Turkey",JP:"Japan",CN:"China",FR:"France",IT:"Italy",BR:"Brazil",
- NG:"Nigeria",ZA:"South Africa",BD:"Bangladesh",NZ:"New Zealand",
- SG:"Singapore",MY:"Malaysia",ID:"Indonesia",PH:"Philippines",
- LK:"Sri Lanka",NP:"Nepal",QA:"Qatar",KW:"Kuwait",OM:"Oman"
-};
-const countryCodes={
- Pakistan:"PK",USA:"US","United Kingdom":"GB","United Arab Emirates":"AE",
- India:"IN","Saudi Arabia":"SA",Canada:"CA",Australia:"AU",Germany:"DE",
- Turkey:"TR",Japan:"JP",China:"CN",France:"FR",Italy:"IT",Brazil:"BR"
-};
+const safeName=(name)=>name||"AG Member";
 
-async function detectCountry(){
+function toast(message){
+ $("toast").textContent=message;
+ $("toast").style.display="block";
+ setTimeout(()=>$("toast").style.display="none",3000);
+}
+function authMessage(message){$("authMessage").textContent=message}
+function showLogin(){
+ $("loginFields").style.display="block";
+ $("signupFields").style.display="none";
+ authMessage("");
+}
+function showSignup(){
+ $("loginFields").style.display="none";
+ $("signupFields").style.display="block";
+ authMessage("");
+}
+window.showLogin=showLogin;
+window.showSignup=showSignup;
+
+function defaultAvatar(name){
+ return "https://ui-avatars.com/api/?name="+encodeURIComponent(name||"AG")+"&background=287bff&color=fff&bold=true";
+}
+function avatarFor(user){
+ return user?.photoURL||defaultAvatar(user?.displayName||user?.name||"AG");
+}
+function setAvatarImages(url){
+ ["headerAvatar","storyAvatar","composerAvatar","profileAvatar"].forEach(id=>{
+  $(id).src=url;
+ });
+}
+function navigate(page,button){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ $(page).classList.add("active");
+ document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ if(page==="profilePage")renderProfile();
+ if(page==="newsPage")loadNews();
+ if(page==="homePage")renderFeed();
+}
+window.navigate=navigate;
+
+async function login(){
+ const email=$("email").value.trim(),password=$("password").value;
+ if(!email||!password)return authMessage("Email aur password likhein.");
+ try{await signInWithEmailAndPassword(auth,email,password)}
+ catch(e){authMessage(e.message)}
+}
+window.login=login;
+
+async function signup(){
+ const name=$("signupName").value.trim();
+ const email=$("signupEmail").value.trim();
+ const password=$("signupPassword").value;
+ if(!name||!email||password.length<6)return authMessage("Name, email aur 6+ character password zaroori hain.");
  try{
-  const r=await fetch("https://ipapi.co/json/");
-  if(!r.ok)throw Error("Country lookup failed");
-  const d=await r.json();
-  return countryNames[d.country_code]||"Pakistan";
- }catch(e){return "Pakistan"}
+  const result=await createUserWithEmailAndPassword(auth,email,password);
+  await updateProfile(result.user,{displayName:name});
+  await set(ref(db,"users/"+result.user.uid),{
+   name,email,photoURL:"",createdAt:Date.now()
+  });
+  toast("Account created!");
+ }catch(e){authMessage(e.message)}
 }
+window.signup=signup;
 
-function showAppPage(page){
- ["homePage","newsPage","uploadPage","profilePage"].forEach(id=>$(id).classList.add("hidden"));
- $(page).classList.remove("hidden");
- document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
- $("tabs").classList.toggle("hidden",page!=="homePage");
+async function googleLogin(){
+ try{await signInWithPopup(auth,googleProvider)}
+ catch(e){authMessage(e.message)}
 }
+window.googleLogin=googleLogin;
 
-function setLoggedInUI(){
- $("authPage").classList.add("hidden");
- $("appPage").classList.remove("hidden");
- $("bottomNav").classList.remove("hidden");
- $("profileName").textContent=currentUser.displayName||"AG World User";
- $("profileEmail").textContent=currentUser.email||"";
- $("profileCountry").textContent="Your country: "+userCountry;
- $("profileAvatar").textContent=(currentUser.displayName||"AG").slice(0,2).toUpperCase();
- showAppPage("homePage");
- loadFeed();
- loadNews();
+async function logout(){
+ stopCamera();
+ try{await signOut(auth)}catch(e){toast(e.message)}
 }
-
-async function saveUser(user,name=""){
- const existing=await get(ref(db,"users/"+user.uid));
- let country=existing.exists()?existing.val().country:null;
- if(!country)country=await detectCountry();
- const data={
-  name:name||user.displayName||user.email.split("@")[0],
-  email:user.email||"",
-  country,
-  updatedAt:Date.now()
- };
- await update(ref(db,"users/"+user.uid),data);
- userCountry=country;
-}
+window.logout=logout;
 
 onAuthStateChanged(auth,async user=>{
  if(user){
   currentUser=user;
-  try{
-   await saveUser(user);
-   setLoggedInUI();
-  }catch(e){
-   alert("Firebase database error: "+e.message);
-   $("authPage").classList.remove("hidden");
-  }
+  $("authScreen").style.display="none";
+  await ensureUserRecord(user);
+  listenData();
+  detectCountry();
  }else{
   currentUser=null;
-  $("authPage").classList.remove("hidden");
-  $("appPage").classList.add("hidden");
-  $("bottomNav").classList.add("hidden");
+  $("authScreen").style.display="grid";
+  allPosts={};allUsers={};following={};followers={};
+  $("feed").innerHTML="";
  }
 });
 
-$("switchAuth").onclick=()=>{
- loginMode=loginMode==="signup"?"login":"signup";
- $("authTitle").textContent=loginMode==="signup"?"Join AG World":"Welcome Back";
- $("emailBtn").textContent=loginMode==="signup"?"Create Account":"Login";
- $("signupFields").classList.toggle("hidden",loginMode==="login");
- $("switchAuth").textContent=loginMode==="signup"?"Already have an account? Login":"New here? Create an account";
- $("authMessage").textContent="";
-};
-
-$("emailBtn").onclick=async()=>{
- const email=$("email").value.trim();
- const password=$("password").value;
- const name=$("name").value.trim();
- if(!email||!password){$("authMessage").textContent="Enter your email and password.";return}
- if(password.length<6){$("authMessage").textContent="Password must be at least 6 characters.";return}
- if(loginMode==="signup"&&!name){$("authMessage").textContent="Enter your name.";return}
- $("emailBtn").disabled=true;
- $("authMessage").textContent="Please wait...";
- try{
-  if(loginMode==="signup"){
-   const result=await createUserWithEmailAndPassword(auth,email,password);
-   await updateProfile(result.user,{displayName:name});
-   await saveUser(result.user,name);
-  }else{
-   await signInWithEmailAndPassword(auth,email,password);
-  }
- }catch(e){$("authMessage").textContent=e.message}
- $("emailBtn").disabled=false;
-};
-
-$("googleBtn").onclick=async()=>{
- $("authMessage").textContent="Opening Google sign in...";
- try{await signInWithPopup(auth,googleProvider)}
- catch(e){$("authMessage").textContent=e.message}
-};
-
-$("logout").onclick=()=>signOut(auth);
-$("accountBtn").onclick=()=>{if(currentUser)showAppPage("profilePage")};
-
-document.querySelectorAll(".nav").forEach(btn=>{
- btn.onclick=()=>showAppPage(btn.dataset.page);
-});
-document.querySelectorAll(".chip").forEach(btn=>{
- btn.onclick=()=>{
-  document.querySelectorAll(".chip").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  if(btn.dataset.tab==="news")showAppPage("newsPage");
-  else showAppPage("homePage");
- };
-});
-
-$("videoFile").onchange=()=>{
- selectedFile=$("videoFile").files[0];
- if(!selectedFile)return;
- if(!selectedFile.type.startsWith("video/")){alert("Please choose a video file.");return}
- if(previewURL)URL.revokeObjectURL(previewURL);
- previewURL=URL.createObjectURL(selectedFile);
- $("preview").src=previewURL;
- $("preview").classList.remove("hidden");
-};
-
-$("publish").onclick=async()=>{
- if(!currentUser){alert("Please login first.");return}
- if(!selectedFile){alert("Please select a video.");return}
- if(selectedFile.size>500*1024*1024){
-  alert("Video is larger than 500 MB. Choose a smaller file.");return;
+async function ensureUserRecord(user){
+ const userRef=ref(db,"users/"+user.uid);
+ const snap=await get(userRef);
+ if(!snap.exists()){
+  await set(userRef,{
+   name:user.displayName||"AG Member",
+   email:user.email||"",
+   photoURL:user.photoURL||"",
+   createdAt:Date.now()
+  });
  }
- const id=push(ref(db,"posts")).key;
- const path="videos/"+currentUser.uid+"/"+id;
- const fileRef=storageRef(storage,path);
- $("publish").disabled=true;
- const task=uploadBytesResumable(fileRef,selectedFile,{contentType:selectedFile.type});
- task.on("state_changed",
-  s=>{
-   const pct=Math.round(s.bytesTransferred/s.totalBytes*100);
-   $("uploadStatus").textContent="Uploading: "+pct+"%";
-  },
-  e=>{
-   $("uploadStatus").textContent="Upload failed: "+e.message;
-   $("publish").disabled=false;
-  },
-  async()=>{
-   try{
-    const url=await getDownloadURL(task.snapshot.ref);
-    await set(ref(db,"posts/"+id),{
-     uid:currentUser.uid,
-     name:currentUser.displayName||"AG User",
-     email:currentUser.email||"",
-     country:userCountry,
-     caption:$("caption").value.trim(),
-     videoURL:url,
-     storagePath:path,
-     createdAt:Date.now(),
-     views:0,
-     likes:0
-    });
-    $("uploadStatus").textContent="Video published successfully!";
-    $("caption").value="";
-    $("videoFile").value="";
-    $("preview").classList.add("hidden");
-    $("preview").removeAttribute("src");
-    selectedFile=null;
-    $("publish").disabled=false;
-    showAppPage("homePage");
-   }catch(e){
-    $("uploadStatus").textContent="Could not save post: "+e.message;
-    $("publish").disabled=false;
-   }
-  }
- );
-};
+}
 
-function loadFeed(){
- if(feedListener)feedListener();
- feedListener=onValue(ref(db,"posts"),snapshot=>{
-  posts=snapshot.val()||{};
+function listenData(){
+ onValue(ref(db,"posts"),snap=>{
+  allPosts=snap.val()||{};
   renderFeed();
-  renderMyGrid();
+  renderProfile();
+ });
+ onValue(ref(db,"users"),snap=>{
+  allUsers=snap.val()||{};
+  renderFeed();
+  renderProfile();
+ });
+ onValue(ref(db,"follows/"+currentUser.uid),snap=>{
+  following=snap.val()||{};
+  renderFeed();
+  renderProfile();
+ });
+ onValue(ref(db,"followers/"+currentUser.uid),snap=>{
+  followers=snap.val()||{};
+  renderProfile();
  });
 }
 
+async function detectCountry(){
+ try{
+  const response=await fetch("https://ipapi.co/json/");
+  const data=await response.json();
+  if(data.country_code){
+   currentCountry=data.country_code;
+   $("countryBadge").textContent="🌍 "+(data.country_name||currentCountry);
+   $("newsCountry").value=currentCountry;
+  }
+ }catch(e){console.log("Country detection unavailable")}
+}
+
+async function uploadFile(file,path,onProgress){
+ return new Promise((resolve,reject)=>{
+  const fileRef=storageRef(storage,path);
+  const task=uploadBytesResumable(fileRef,file);
+  task.on("state_changed",snapshot=>{
+   const progress=Math.round(snapshot.bytesTransferred/snapshot.totalBytes*100);
+   if(onProgress)onProgress(progress);
+  },reject,async()=>{
+   try{resolve(await getDownloadURL(task.snapshot.ref))}
+   catch(e){reject(e)}
+  });
+ });
+}
+
+async function createTextPost(){
+ const text=$("postText").value.trim();
+ if(!text)return toast("Pehle kuch likhein.");
+ try{
+  await push(ref(db,"posts"),{
+   uid:currentUser.uid,
+   name:currentUser.displayName||"AG Member",
+   text,
+   type:"text",
+   createdAt:Date.now(),
+   likes:{},
+   comments:{},
+   views:0
+  });
+  $("postText").value="";
+  toast("Post published!");
+ }catch(e){toast(e.message)}
+}
+window.createTextPost=createTextPost;
+
+async function uploadMedia(input,type){
+ const file=input.files?.[0];
+ if(!file)return;
+ if(type==="video"&&!file.type.startsWith("video/"))return toast("Video file select karein.");
+ if(type==="image"&&!file.type.startsWith("image/"))return toast("Image file select karein.");
+ const maxSize=500*1024*1024;
+ if(file.size>maxSize)return toast("Maximum file size 500 MB hai.");
+
+ const status=$("uploadStatus");
+ status.textContent="Uploading: 0%";
+ try{
+  const extension=(file.name.split(".").pop()||"file").replace(/[^a-z0-9]/gi,"");
+  const path="posts/"+currentUser.uid+"/"+Date.now()+"."+extension;
+  const url=await uploadFile(file,path,p=>status.textContent="Uploading: "+p+"%");
+  const caption=$("uploadCaption").value.trim()||$("postText").value.trim();
+  await push(ref(db,"posts"),{
+   uid:currentUser.uid,
+   name:currentUser.displayName||"AG Member",
+   text:caption,
+   type,
+   mediaUrl:url,
+   fileName:file.name,
+   createdAt:Date.now(),
+   likes:{},
+   comments:{},
+   views:0
+  });
+  status.textContent="Upload complete!";
+  $("uploadCaption").value="";
+  $("postText").value="";
+  toast("Your "+type+" has been posted!");
+  navigate("homePage",document.querySelector(".nav-btn"));
+ }catch(e){
+  status.textContent="Upload error: "+e.message;
+  toast(e.message);
+ }
+ input.value="";
+}
+window.uploadMedia=uploadMedia;
+
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,char=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[char]));
+}
+function timeAgo(time){
+ const mins=Math.floor((Date.now()-(time||Date.now()))/60000);
+ if(mins<1)return "Just now";
+ if(mins<60)return mins+"m ago";
+ if(mins<1440)return Math.floor(mins/60)+"h ago";
+ return Math.floor(mins/1440)+"d ago";
+}
 function renderFeed(){
- const feed=$("feed");
- feed.innerHTML="";
- const list=Object.entries(posts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
- const visible=list.filter(([id,p])=>p.country===userCountry);
- if(!visible.length){
-  feed.innerHTML='<div class="empty">No videos from your country yet. Be the first to upload!</div>';
+ if(!currentUser)return;
+ const mode=$("feedMode").value;
+ const entries=Object.entries(allPosts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+ const filtered=entries.filter(([id,p])=>
+  mode==="all"||p.uid===currentUser.uid||!!following[p.uid]
+ );
+ if(!filtered.length){
+  $("feed").innerHTML='<div class="empty">No posts yet. Be the first to share something!</div>';
   return;
  }
- visible.forEach(([id,p])=>{
-  const card=document.createElement("article");
-  card.className="card";
-  const head=document.createElement("div");
-  head.className="posthead";
-  const avatar=document.createElement("div");
-  avatar.className="avatar";
-  avatar.textContent=(p.name||"AG").slice(0,2).toUpperCase();
-  const user=document.createElement("div");
-  const username=document.createElement("div");
-  username.className="username";
-  username.textContent=p.name||"AG User";
-  const time=document.createElement("div");
-  time.className="posttime";
-  time.textContent=(p.country||"") +" • "+new Date(p.createdAt||Date.now()).toLocaleString();
-  user.append(username,time);
-  head.append(avatar,user);
+ $("feed").innerHTML=filtered.map(([id,p])=>postHTML(id,p)).join("");
+}
+window.renderFeed=renderFeed;
 
-  const media=document.createElement("div");
-  media.className="media";
-  const video=document.createElement("video");
-  video.src=p.videoURL;
-  video.controls=true;
-  video.playsInline=true;
-  video.preload="metadata";
-  media.append(video);
-
-  const info=document.createElement("div");
-  info.className="info";
-  info.textContent=p.caption||"AG World video";
-
-  const actions=document.createElement("div");
-  actions.className="actions";
-  const like=document.createElement("button");
-  like.className="act";
-  like.textContent="♡";
-  const likeCount=document.createElement("span");
-  likeCount.className="count";
-  likeCount.textContent=(p.likes||0)+" likes";
-  const viewCount=document.createElement("span");
-  viewCount.className="count";
-  viewCount.textContent=(p.views||0)+" views";
-  const comment=document.createElement("button");
-  comment.className="act";
-  comment.textContent="💬";
-  const share=document.createElement("button");
-  share.className="act";
-  share.textContent="↗";
-  actions.append(like,likeCount,viewCount,comment,share);
-
-  like.onclick=async()=>{
-   const likeRef=ref(db,"postLikes/"+id+"/"+currentUser.uid);
-   const s=await get(likeRef);
-   if(s.exists()){
-    await remove(likeRef);
-    await runTransaction(ref(db,"posts/"+id+"/likes"),v=>Math.max(0,(v||0)-1));
-   }else{
-    await set(likeRef,true);
-    await runTransaction(ref(db,"posts/"+id+"/likes"),v=>(v||0)+1);
-   }
-  };
-
-  comment.onclick=async()=>{
-   const text=prompt("Write your comment:");
-   if(!text||!text.trim())return;
-   await push(ref(db,"comments/"+id),{
-    uid:currentUser.uid,
-    name:currentUser.displayName||"AG User",
-    text:text.trim(),
-    createdAt:Date.now()
-   });
-   alert("Comment added.");
-  };
-
-  share.onclick=async()=>{
-   try{
-    if(navigator.share)await navigator.share({title:"AG World Social",text:p.caption||"Watch this video",url:p.videoURL});
-    else await navigator.clipboard.writeText(p.videoURL);
-   }catch(e){}
-  };
-
-  if(p.uid===currentUser.uid){
-   const del=document.createElement("button");
-   del.className="delete";
-   del.textContent="Delete video";
-   del.onclick=async()=>{
-    if(!confirm("Delete this video permanently?"))return;
-    try{
-     await remove(ref(db,"posts/"+id));
-     await remove(ref(db,"postLikes/"+id));
-     await remove(ref(db,"comments/"+id));
-     if(p.storagePath)await deleteObject(storageRef(storage,p.storagePath));
-    }catch(e){alert("Delete error: "+e.message)}
-   };
-   actions.append(del);
-  }
-
-  card.append(head,media,info,actions);
-  feed.append(card);
-
-  const viewKey="ag_view_"+id;
-  if(!sessionStorage.getItem(viewKey)){
-   sessionStorage.setItem(viewKey,"yes");
-   runTransaction(ref(db,"posts/"+id+"/views"),v=>(v||0)+1);
-  }
- });
+function postHTML(id,p){
+ const owner=allUsers[p.uid]||{};
+ const liked=!!p.likes?.[currentUser.uid];
+ const isOwner=p.uid===currentUser.uid;
+ const photo=owner.photoURL||defaultAvatar(p.name||owner.name);
+ let media="";
+ if(p.type==="video"&&p.mediaUrl){
+  media=`<video class="post-media" src="${escapeHTML(p.mediaUrl)}" controls playsinline preload="metadata" onplay="countView('${id}')"></video>`;
+ }else if(p.type==="image"&&p.mediaUrl){
+  media=`<img class="post-media" src="${escapeHTML(p.mediaUrl)}" alt="Post image" loading="lazy">`;
+ }
+ const comments=Object.entries(p.comments||{}).sort((a,b)=>(a[1].createdAt||0)-(b[1].createdAt||0));
+ return `
+ <article class="post">
+  <div class="post-head">
+   <img class="avatar" src="${escapeHTML(photo)}" alt="">
+   <div style="flex:1">
+    <strong>${escapeHTML(owner.name||p.name||"AG Member")}</strong>
+    <div class="muted">${timeAgo(p.createdAt)}</div>
+   </div>
+   ${!isOwner?`<button class="secondary" onclick="toggleFollow('${escapeHTML(p.uid)}')">${following[p.uid]?"Following":"＋ Follow"}</button>`:""}
+   ${isOwner?`<button class="danger" onclick="deletePost('${id}')">Delete</button>`:""}
+  </div>
+  ${p.text?`<div class="post-text">${escapeHTML(p.text)}</div>`:""}
+  ${media}
+  <div class="muted" style="margin-top:9px">👁 ${p.views||0} views</div>
+  <div class="post-actions">
+   <button class="action ${liked?"liked":""}" onclick="toggleLike('${id}')">♥ ${Object.keys(p.likes||{}).length} Like</button>
+   <button class="action" onclick="toggleComments('${id}')">💬 ${comments.length} Comments</button>
+   <button class="action" onclick="sharePost('${id}')">↗ Share</button>
+  </div>
+  <div class="comment-area" id="comments-${id}">
+   <div id="commentList-${id}">
+    ${comments.map(([cid,c])=>`<div class="comment"><strong>${escapeHTML(c.name||"Member")}</strong>: ${escapeHTML(c.text)}</div>`).join("")||'<p class="muted">No comments yet.</p>'}
+   </div>
+   <div class="row" style="margin-top:9px">
+    <input class="field" id="commentInput-${id}" style="margin:0" placeholder="Write a comment...">
+    <button class="primary" onclick="addComment('${id}')">Send</button>
+   </div>
+  </div>
+ </article>`;
 }
 
-function renderMyGrid(){
- const grid=$("myGrid");
- grid.innerHTML="";
- const mine=Object.entries(posts).filter(([id,p])=>p.uid===currentUser?.uid);
- $("myPosts").textContent=mine.length;
- $("myViews").textContent=mine.reduce((n,[id,p])=>n+(p.views||0),0);
- mine.forEach(([id,p])=>{
-  const v=document.createElement("video");
-  v.src=p.videoURL;
-  v.controls=true;
-  v.playsInline=true;
-  grid.append(v);
- });
- if(!mine.length)grid.innerHTML='<div class="empty">You have not uploaded a video yet.</div>';
-}
-
-const newsConfig={
- Pakistan:{hl:"en-PK",gl:"PK",ceid:"PK:en"},
- USA:{hl:"en-US",gl:"US",ceid:"US:en"},
- "United Kingdom":{hl:"en-GB",gl:"GB",ceid:"GB:en"},
- "United Arab Emirates":{hl:"en",gl:"AE",ceid:"AE:en"},
- India:{hl:"en-IN",gl:"IN",ceid:"IN:en"},
- "Saudi Arabia":{hl:"en",gl:"SA",ceid:"SA:en"},
- Canada:{hl:"en-CA",gl:"CA",ceid:"CA:en"},
- Australia:{hl:"en-AU",gl:"AU",ceid:"AU:en"},
- Germany:{hl:"de-DE",gl:"DE",ceid:"DE:de"},
- Turkey:{hl:"tr-TR",gl:"TR",ceid:"TR:tr"},
- Japan:{hl:"ja-JP",gl:"JP",ceid:"JP:ja"},
- China:{hl:"zh-CN",gl:"CN",ceid:"CN:zh-Hans"},
- France:{hl:"fr-FR",gl:"FR",ceid:"FR:fr"},
- Italy:{hl:"it-IT",gl:"IT",ceid:"IT:it"},
- Brazil:{hl:"pt-BR",gl:"BR",ceid:"BR:pt-419"}
+window.toggleLike=async id=>{
+ const post=allPosts[id];if(!post)return;
+ const likeRef=ref(db,"posts/"+id+"/likes/"+currentUser.uid);
+ try{
+  if(post.likes?.[currentUser.uid])await remove(likeRef);
+  else await set(likeRef,true);
+ }catch(e){toast(e.message)}
 };
 
-async function loadNews(){
- $("countryLabel").textContent="Showing news for "+userCountry;
- $("newsList").innerHTML='<p class="empty">Loading latest news...</p>';
- const c=newsConfig[userCountry]||{hl:"en",gl:"PK",ceid:"PK:en"};
- const rss="https://news.google.com/rss?hl="+c.hl+"&gl="+c.gl+"&ceid="+c.ceid;
- const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
+window.toggleComments=id=>{
+ const el=$("comments-"+id);
+ if(el)el.style.display=el.style.display==="block"?"none":"block";
+};
+
+window.addComment=async id=>{
+ const input=$("commentInput-"+id);
+ const text=input.value.trim();if(!text)return;
  try{
-  const response=await fetch(url);
-  if(!response.ok)throw Error("News service unavailable");
-  const data=await response.json();
-  if(data.status!=="ok"||!data.items?.length)throw Error("No headlines available");
-  $("newsList").innerHTML="";
-  data.items.slice(0,25).forEach(item=>{
-   const article=document.createElement("article");
-   article.className="news-item";
-   const tag=document.createElement("div");
-   tag.className="status";
-   tag.textContent=userCountry+" • "+(item.pubDate?new Date(item.pubDate).toLocaleString():"Latest");
-   const title=document.createElement("h3");
-   title.textContent=item.title||"News";
-   const desc=document.createElement("p");
-   desc.textContent=(item.description||"").replace(/<[^>]*>/g," ").slice(0,240);
-   const link=document.createElement("a");
-   link.href=item.link;
-   link.target="_blank";
-   link.rel="noopener";
-   link.textContent="Read full story ↗";
-   article.append(tag,title,desc,link);
-   $("newsList").append(article);
+  await push(ref(db,"posts/"+id+"/comments"),{
+   uid:currentUser.uid,
+   name:currentUser.displayName||"AG Member",
+   text,
+   createdAt:Date.now()
   });
- }catch(e){
-  $("newsList").innerHTML="";
-  const message=document.createElement("p");
-  message.className="empty";
-  message.textContent="News could not load right now. Please check your internet and try again. "+e.message;
-  $("newsList").append(message);
- }
+  input.value="";
+ }catch(e){toast(e.message)}
+};
+
+window.deletePost=async id=>{
+ if(!confirm("Delete this post?"))return;
+ try{await remove(ref(db,"posts/"+id));toast("Post deleted")}
+ catch(e){toast(e.message)}
+};
+
+window.sharePost=async id=>{
+ const url=location.origin+location.pathname+"?post="+encodeURIComponent(id);
+ try{
+  if(navigator.share)await navigator.share({title:"AG World Social",text:"Check out this post",url});
+  else{await navigator.clipboard.writeText(url);toast("Post link copied")}
+ }catch(e){console.log(e)}
+};
+
+const viewedPosts=new Set();
+window.countView=async id=>{
+ if(viewedPosts.has(id))return;
+ viewedPosts.add(id);
+ try{
+  const count=allPosts[id]?.views||0;
+  await update(ref(db,"posts/"+id),{views:count+1});
+ }catch(e){console.log(e)}
+};
+
+window.toggleFollow=async uid=>{
+ if(!uid||uid===currentUser.uid)return;
+ try{
+  const isFollowing=!!following[uid];
+  const changes={};
+  if(isFollowing){
+   changes["follows/"+currentUser.uid+"/"+uid]=null;
+   changes["followers/"+uid+"/"+currentUser.uid]=null;
+  }else{
+   changes["follows/"+currentUser.uid+"/"+uid]=true;
+   changes["followers/"+uid+"/"+currentUser.uid]=true;
+  }
+  await update(ref(db),changes);
+  toast(isFollowing?"Unfollowed":"Following!");
+ }catch(e){toast(e.message)}
+};
+
+async function saveProfile(){
+ const name=$("editName").value.trim();
+ if(!name)return toast("Name likhein.");
+ try{
+  await updateProfile(auth.currentUser,{displayName:name});
+  await update(ref(db,"users/"+currentUser.uid),{name});
+  $("profileName").textContent=name;
+  toast("Profile updated!");
+ }catch(e){toast(e.message)}
 }
-$("refreshNews").onclick=loadNews;
+window.saveProfile=saveProfile;
+
+function renderProfile(){
+ if(!currentUser)return;
+ const me=allUsers[currentUser.uid]||{};
+ const name=me.name||currentUser.displayName||"AG Member";
+ $("profileName").textContent=name;
+ $("profileEmail").textContent=currentUser.email||"";
+ $("editName").value=name;
+ setAvatarImages(avatarFor({...currentUser,...me}));
+ const my=Object.entries(allPosts).filter(([id,p])=>p.uid===currentUser.uid);
+ $("myPostCount").textContent=my.length;
+ $("followerCount").textContent=Object.keys(followers||{}).length;
+ $("followingCount").textContent=Object.keys(following||{}).length;
+ $("myPosts").innerHTML=my.sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0))
+  .map(([id,p])=>postHTML(id,p)).join("")||'<div class="empty">You have not posted anything yet.</div>';
+}
+
+async function uploadDP(input){
+ const file=input.files?.[0];if(!file)return;
+ if(!file.type.startsWith("image/"))return toast("Please select an image.");
+ if(file.size>10*1024*1024)return toast("Profile photo must be under 10 MB.");
+ try{
+  toast("Uploading profile photo...");
+  const url=await uploadFile(file,"profilePhotos/"+currentUser.uid+"/"+Date.now()+".jpg");
+  await update(ref(db,"users/"+currentUser.uid),{photoURL:url});
+  await updateProfile(auth.currentUser,{photoURL:url});
+  setAvatarImages(url);
+  toast("Profile photo updated!");
+ }catch(e){toast(e.message)}
+ input.value="";
+}
+window.uploadDP=uploadDP;
+
+/* CAMERA AND SNAPCHAT-STYLE COLOR FILTERS */
+window.openCamera=async()=>{
+ $("cameraModal").style.display="block";
+ $("cameraStatus").textContent="Camera permission ka intezar karein...";
+ try{
+  await startCamera();
+  $("cameraStatus").textContent="Camera ready. Filter choose karein.";
+ }catch(e){
+  $("cameraStatus").textContent="Camera error: "+e.message+". Browser camera permission check karein.";
+ }
+};
+
+async function startCamera(){
+ stopCamera();
+ if(!navigator.mediaDevices?.getUserMedia)throw new Error("Camera requires HTTPS and a supported browser.");
+ cameraStream=await navigator.mediaDevices.getUserMedia({
+  video:{facingMode:cameraFacing,width:{ideal:1280},height:{ideal:720}},
+  audio:false
+ });
+ $("cameraVideo").srcObject=cameraStream;
+ $("cameraVideo").style.filter=cameraFilter;
+ await $("cameraVideo").play();
+}
+window.switchCamera=async()=>{
+ cameraFacing=cameraFacing==="user"?"environment":"user";
+ try{await startCamera()}catch(e){$("cameraStatus").textContent=e.message}
+};
+
+window.setFilter=(button,filter)=>{
+ cameraFilter=filter;
+ $("cameraVideo").style.filter=filter==="none"?"none":filter;
+ document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("selected"));
+ button.classList.add("selected");
+};
+
+window.captureDP=async()=>{
+ const video=$("cameraVideo");
+ if(!video.videoWidth)return toast("Camera abhi ready nahi.");
+ const canvas=$("cameraCanvas");
+ canvas.width=video.videoWidth;
+ canvas.height=video.videoHeight;
+ const ctx=canvas.getContext("2d");
+ ctx.filter=cameraFilter==="none"?"none":cameraFilter;
+ if(cameraFacing==="user"){
+  ctx.translate(canvas.width,0);
+  ctx.scale(-1,1);
+ }
+ ctx.drawImage(video,0,0,canvas.width,canvas.height);
+ canvas.toBlob(async blob=>{
+  if(!blob)return toast("Photo capture nahi hui.");
+  try{
+   $("cameraStatus").textContent="Saving profile photo...";
+   const file=new File([blob],"ag-profile.jpg",{type:"image/jpeg"});
+   const url=await uploadFile(file,"profilePhotos/"+currentUser.uid+"/"+Date.now()+".jpg");
+   await update(ref(db,"users/"+currentUser.uid),{photoURL:url});
+   await updateProfile(auth.currentUser,{photoURL:url});
+   setAvatarImages(url);
+   $("cameraStatus").textContent="Profile photo saved!";
+   toast("New DP uploaded!");
+   closeCamera();
+  }catch(e){$("cameraStatus").textContent=e.message}
+ },"image/jpeg",.92);
+};
+window.closeCamera=()=>{
+ stopCamera();
+ $("cameraModal").style.display="none";
+};
+function stopCamera(){
+ if(cameraStream){
+  cameraStream.getTracks().forEach(track=>track.stop());
+  cameraStream=null;
+ }
+ $("cameraVideo").srcObject=null;
+}
+
+/* COUNTRY AND WORLD NEWS */
+const countryNames={
+ WORLD:"world",PK:"Pakistan",US:"United States",GB:"United Kingdom",
+ IN:"India",SA:"Saudi Arabia",AE:"United Arab Emirates",TR:"Turkey",
+ CN:"China",FR:"France",DE:"Germany",CA:"Canada",AU:"Australia",
+ JP:"Japan",QA:"Qatar",AF:"Afghanistan"
+};
+window.loadNews=async()=>{
+ const code=$("newsCountry").value||"WORLD";
+ const country=countryNames[code]||"world";
+ $("newsList").innerHTML='<div class="empty">Loading latest headlines...</div>';
+ let query=code==="WORLD"?"world news":"news "+country;
+ const rss="https://news.google.com/rss/search?q="+encodeURIComponent(query)+"&hl=en&gl="+(code==="WORLD"?"US":code)+"&ceid="+(code==="WORLD"?"US:en":code+":en");
+ const proxy="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
+ try{
+  const response=await fetch(proxy);
+  if(!response.ok)throw new Error("News service unavailable");
+  const data=await response.json();
+  if(!data.items?.length)throw new Error("No headlines returned");
+  $("newsList").innerHTML=data.items.slice(0,20).map(item=>{
+   const title=escapeHTML(item.title||"News headline");
+   const link=/^https?:\/\//i.test(item.link||"")?escapeHTML(item.link):"#";
+   const image=item.thumbnail||item.enclosure?.link||"";
+   const safeImage=/^https?:\/\//i.test(image)?escapeHTML(image):"";
+   const date=item.pubDate?new Date(item.pubDate).toLocaleString():"";
+   return `<article class="news-card">
+    <div class="news-title">${title}</div>
+    ${safeImage?`<img class="news-image" src="${safeImage}" alt="" loading="lazy">`:""}
+    <div class="news-meta">${escapeHTML(date)}</div>
+    <a class="news-link" href="${link}" target="_blank" rel="noopener noreferrer">Read original news ↗</a>
+   </article>`;
+  }).join("");
+ }catch(e){
+  $("newsList").innerHTML='<div class="panel"><p>News service abhi response nahi de raha. Internet connection check karein aur dobara refresh karein.</p><p class="muted" style="margin-top:8px">Headlines third-party RSS service se aati hain; har country ki tamam news ki guarantee nahi hai.</p></div>';
+ }
+};
 </script>
 </body>
 </html>
