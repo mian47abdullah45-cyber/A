@@ -3,121 +3,127 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090b14">
-<title>AG World Social</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#000000">
+<title>MAG World Social</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
- --bg:#090b14;--panel:#121727;--panel2:#1a2235;
- --blue:#3987ff;--cyan:#24d5e8;--text:#f5f7ff;
- --muted:#9ba8c2;--border:#273149;--danger:#ff5268;
+ --bg:#000;--card:#101010;--card2:#1b1b1b;
+ --white:#fff;--muted:#aaa;--border:#292929;
+ --blue:#2787ff;--cyan:#20d9e8;--red:#ff3155;
 }
-body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:85px}
+body{background:var(--bg);color:var(--white);font-family:Arial,sans-serif;padding-bottom:75px}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;border:0}
 header{
- position:sticky;top:0;z-index:10;background:#0b1020ee;
- backdrop-filter:blur(15px);border-bottom:1px solid var(--border);
- padding:13px 16px;display:flex;align-items:center;justify-content:space-between
+ height:62px;padding:0 15px;position:sticky;top:0;z-index:20;
+ background:#000e;border-bottom:1px solid #222;
+ display:flex;align-items:center;justify-content:space-between;
+ backdrop-filter:blur(15px)
 }
-.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px}
 .logo{
- width:39px;height:39px;border-radius:13px;display:grid;place-items:center;
- background:linear-gradient(135deg,#2475ff,#20d9e9);color:white;
- box-shadow:0 5px 22px #2475ff55;font-weight:900
+ width:42px;height:42px;border-radius:14px;
+ display:grid;place-items:center;font-size:20px;font-weight:1000;
+ color:white;background:linear-gradient(135deg,#267aff,#13d9e7);
+ box-shadow:0 0 20px #168cff66
 }
-.header-right{display:flex;align-items:center;gap:9px}
-.avatar{
- width:39px;height:39px;border-radius:50%;object-fit:cover;
- background:linear-gradient(135deg,#2475ff,#22d5df);
- display:grid;place-items:center;font-weight:bold;color:white
-}
-main{max-width:760px;margin:auto;padding:15px}
+.header-right{display:flex;align-items:center;gap:10px}
+.avatar{width:39px;height:39px;border-radius:50%;object-fit:cover;background:#222}
+main{max-width:760px;margin:auto;padding:13px}
 .page{display:none}.page.active{display:block}
 .panel,.post,.news-card{
- background:var(--panel);border:1px solid var(--border);
- border-radius:17px;padding:15px;margin-bottom:15px
+ background:var(--card);border:1px solid var(--border);
+ border-radius:15px;padding:14px;margin-bottom:13px
 }
-h2{font-size:20px;margin-bottom:14px}
+h2{font-size:20px;margin-bottom:13px}
 h3{font-size:16px}
-.muted{color:var(--muted);font-size:13px}
+.muted{color:var(--muted);font-size:12px}
 .field{
- width:100%;padding:13px;border:1px solid var(--border);
- border-radius:12px;background:#0c1220;color:white;outline:none;margin:6px 0 12px
+ width:100%;padding:13px;background:#111;color:#fff;
+ border:1px solid #333;border-radius:11px;outline:none;margin:7px 0 12px
 }
 .field:focus{border-color:var(--blue)}
 .primary{
- background:linear-gradient(110deg,#2879ff,#20c8e4);color:white;
- padding:12px 17px;border-radius:12px;font-weight:bold
+ background:linear-gradient(110deg,#247bff,#13cddd);
+ color:white;padding:12px 16px;border-radius:11px;font-weight:bold
 }
-.secondary{background:var(--panel2);color:white;padding:10px 14px;border-radius:11px}
-.danger{background:#4a1d2b;color:#ff9aaa;padding:9px 12px;border-radius:10px}
+.secondary{background:#252525;color:white;padding:11px 14px;border-radius:11px}
+.danger{background:#471522;color:#ff8a9e;padding:9px 12px;border-radius:10px}
 .full{width:100%}
 .row{display:flex;align-items:center;gap:10px}
 .between{justify-content:space-between}
-.wrap{display:flex;flex-wrap:wrap;gap:8px}
-.story-row{display:flex;gap:13px;overflow:auto;padding:5px 0 15px}
-.story{min-width:65px;text-align:center;font-size:12px}
-.story-ring{width:57px;height:57px;border-radius:50%;padding:3px;margin:auto auto 5px;
- background:linear-gradient(135deg,#267bff,#25d6df)}
-.story-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid var(--bg)}
-.post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.post-head .avatar{flex-shrink:0}
-.post-media{width:100%;max-height:540px;object-fit:contain;background:#05070c;border-radius:13px;margin-top:10px}
-.post-text{line-height:1.5;margin:10px 0;overflow-wrap:anywhere}
-.post-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.action{background:var(--panel2);color:white;border-radius:10px;padding:9px 12px;font-size:13px}
-.action.liked{color:#ff5878}
-.comment-area{display:none;margin-top:12px}
-.comment{border-top:1px solid var(--border);padding:9px 0;font-size:13px}
-.news-image{width:100%;height:175px;object-fit:cover;border-radius:12px;margin:10px 0}
-.news-title{font-weight:bold;line-height:1.4}
-.news-link{color:#65a9ff;text-decoration:none;font-size:13px}
-.news-meta{color:var(--muted);font-size:12px;margin:7px 0}
+.wrap{display:flex;gap:8px;flex-wrap:wrap}
 .bottom-nav{
- position:fixed;bottom:0;left:0;right:0;z-index:20;
- background:#0c1120f5;backdrop-filter:blur(15px);
- border-top:1px solid var(--border);display:flex;justify-content:space-around;
+ position:fixed;bottom:0;left:0;right:0;z-index:30;
+ background:#080808f5;border-top:1px solid #282828;
+ display:flex;justify-content:space-around;
  padding:9px 3px max(9px,env(safe-area-inset-bottom))
 }
-.nav-btn{background:none;color:#9ba8c2;font-size:11px;display:grid;gap:4px;justify-items:center;min-width:55px}
-.nav-btn span{font-size:21px}
-.nav-btn.active{color:#55a1ff}
+.nav-btn{background:none;color:#999;font-size:11px;display:grid;gap:4px;justify-items:center}
+.nav-btn span{font-size:22px}
+.nav-btn.active{color:#fff}
 #authScreen{
- position:fixed;inset:0;z-index:50;background:
- radial-gradient(circle at 20% 15%,#173b78 0,transparent 38%),
- radial-gradient(circle at 85% 80%,#124e59 0,transparent 38%),#080b15;
- display:grid;place-items:center;padding:20px;overflow:auto
+ position:fixed;inset:0;z-index:100;background:
+ radial-gradient(circle at 15% 10%,#092b57 0,transparent 38%),
+ radial-gradient(circle at 90% 90%,#073b43 0,transparent 35%),#000;
+ display:grid;place-items:center;padding:18px;overflow:auto
 }
-.auth-box{width:min(430px,100%);background:#11192a;border:1px solid #293754;
- padding:25px;border-radius:23px;box-shadow:0 20px 70px #0009}
-.auth-logo{width:75px;height:75px;border-radius:23px;margin:0 auto 15px;
- display:grid;place-items:center;background:linear-gradient(135deg,#287bff,#22d6df);
- font-size:30px;font-weight:900}
+.auth-box{
+ width:min(430px,100%);background:#101010;border:1px solid #303030;
+ padding:24px;border-radius:22px;box-shadow:0 20px 70px #000
+}
+.auth-logo{
+ width:82px;height:82px;border-radius:25px;margin:0 auto 15px;
+ display:grid;place-items:center;font-size:30px;font-weight:1000;
+ background:linear-gradient(135deg,#267aff,#13d9e7);
+ box-shadow:0 0 30px #167cff55
+}
 .auth-box h1{text-align:center;font-size:26px}
-.auth-box p{text-align:center;color:var(--muted);margin:8px 0 18px}
-.auth-switch{text-align:center;color:#72adff;margin-top:15px;cursor:pointer}
-#cameraModal{
- display:none;position:fixed;inset:0;z-index:100;background:#03050b;
- padding:12px;overflow:auto
-}
-.camera-box{max-width:600px;margin:auto}
-#cameraVideo{width:100%;max-height:65vh;object-fit:cover;border-radius:18px;background:#111}
-.filter-btn{background:#202b40;color:white;padding:9px 12px;border-radius:20px}
-.filter-btn.selected{background:#287bff}
-.camera-actions{display:flex;gap:10px;justify-content:center;margin:15px}
-#cameraStatus{color:#ffb4b4;font-size:13px;margin:8px}
-.empty{text-align:center;color:var(--muted);padding:25px}
-.profile-cover{height:105px;border-radius:15px;background:linear-gradient(120deg,#1b4c9c,#16a8b7);margin-bottom:-40px}
-.profile-top{position:relative;padding:0 12px 12px}
-.profile-top .avatar{width:85px;height:85px;border:4px solid var(--panel)}
-.stats{display:flex;gap:22px;margin:14px 0}
+.auth-box>p{text-align:center;color:#aaa;margin:8px 0 20px}
+.auth-switch{text-align:center;color:#62aaff;margin-top:15px;cursor:pointer}
+#authMessage{font-size:13px;line-height:1.5;color:#ff9ba9;margin-top:12px;text-align:center}
+.story-row{display:flex;gap:13px;overflow:auto;padding:8px 0 15px}
+.story{min-width:62px;text-align:center;font-size:11px}
+.story-ring{width:57px;height:57px;padding:3px;border-radius:50%;margin:auto auto 5px;background:linear-gradient(135deg,#267aff,#19dbe3)}
+.story-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid black}
+.post-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.post-head .avatar{flex-shrink:0}
+.post-text{line-height:1.5;margin:10px 0;overflow-wrap:anywhere}
+.post-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.action{background:#242424;color:#fff;border-radius:10px;padding:9px 12px;font-size:13px}
+.action.liked{color:#ff4b72}
+.video-card{position:relative;background:#050505;border-radius:14px;overflow:hidden;margin:10px 0}
+.video-card video{display:block;width:100%;height:min(68vh,650px);object-fit:contain;background:#000}
+.video-caption{padding:10px;line-height:1.4}
+.video-actions{display:flex;gap:8px;flex-wrap:wrap;padding:0 10px 12px}
+.comment-area{display:none;margin-top:12px}
+.comment{padding:9px 0;border-top:1px solid #292929;font-size:13px}
+.news-title{font-weight:bold;line-height:1.4}
+.news-meta{color:#aaa;font-size:12px;margin:8px 0}
+.news-link{color:#69aaff;text-decoration:none;font-size:13px}
+.news-image{width:100%;max-height:190px;object-fit:cover;border-radius:10px;margin-top:10px}
+.empty{text-align:center;color:#aaa;padding:25px}
+.profile-cover{height:105px;border-radius:13px;background:linear-gradient(120deg,#1554a8,#13a9b6);margin-bottom:-38px}
+.profile-top{position:relative;padding:0 10px 10px}
+.profile-top .avatar{width:83px;height:83px;border:4px solid #101010}
+.stats{display:flex;gap:23px;margin:15px 0}
 .stats strong{display:block;font-size:18px}
-#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
- background:#202b40;color:white;padding:11px 16px;border-radius:12px;
- display:none;z-index:150;max-width:90%;text-align:center}
+#cameraModal{display:none;position:fixed;inset:0;z-index:120;background:#000;padding:12px;overflow:auto}
+.camera-box{max-width:600px;margin:auto}
+#cameraVideo{width:100%;max-height:65vh;object-fit:cover;border-radius:15px;background:#111}
+.filter-btn{background:#222;color:white;padding:9px 12px;border-radius:20px}
+.filter-btn.selected{background:#267aff}
+#cameraStatus{color:#ffabb8;font-size:13px;margin:9px 0}
+#toast{
+ display:none;position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
+ z-index:200;background:#252525;color:white;padding:12px 17px;
+ border-radius:12px;max-width:90%;text-align:center
+}
+.progress{height:6px;background:#292929;border-radius:10px;overflow:hidden;margin-top:8px}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,#267aff,#19dbe3)}
 @media(min-width:700px){main{padding-top:22px}}
 </style>
 </head>
@@ -125,128 +131,154 @@ h3{font-size:16px}
 <body>
 
 <header>
- <div class="brand"><div class="logo">AG</div> AG World Social</div>
+ <div class="brand"><div class="logo">MAG</div> MAG World Social</div>
  <div class="header-right">
   <span id="countryBadge" class="muted">🌍 World</span>
-  <img id="headerAvatar" class="avatar" alt="Profile" src="">
+  <img id="headerAvatar" class="avatar" alt="Profile">
  </div>
 </header>
 
 <div id="authScreen">
  <div class="auth-box">
-  <div class="auth-logo">AG</div>
-  <h1>AG World Social</h1>
-  <p>Connect with the whole world 🌍</p>
+  <div class="auth-logo">MAG</div>
+  <h1>MAG World Social</h1>
+  <p>One world. One community. 🌍</p>
 
   <div id="loginFields">
    <input id="email" class="field" type="email" placeholder="Email address">
    <input id="password" class="field" type="password" placeholder="Password">
-   <button class="primary full" onclick="login()">Login</button>
+   <button class="primary full" onclick="login()">LOGIN</button>
    <button class="secondary full" style="margin-top:9px" onclick="googleLogin()">Continue with Google</button>
-   <div class="auth-switch" onclick="showSignup()">Create a new account</div>
+   <div class="auth-switch" onclick="showSignup()">Create New Account</div>
   </div>
 
   <div id="signupFields" style="display:none">
-   <input id="signupName" class="field" placeholder="Your full name">
+   <input id="signupName" class="field" placeholder="Full name">
    <input id="signupEmail" class="field" type="email" placeholder="Email address">
-   <input id="signupPassword" class="field" type="password" placeholder="Password (6 characters minimum)">
-   <button class="primary full" onclick="signup()">Create Account</button>
+   <input id="signupPassword" class="field" type="password" placeholder="Password (6+ characters)">
+   <select id="signupCountry" class="field">
+    <option value="">Select your country</option>
+    <option>Pakistan</option><option>United States</option>
+    <option>United Kingdom</option><option>India</option>
+    <option>Saudi Arabia</option><option>United Arab Emirates</option>
+    <option>Afghanistan</option><option>Canada</option>
+    <option>Australia</option><option>Turkey</option><option>China</option>
+    <option>Germany</option><option>France</option><option>Japan</option>
+    <option>Qatar</option><option>Other</option>
+   </select>
+   <button class="primary full" onclick="signup()">CREATE ACCOUNT</button>
    <div class="auth-switch" onclick="showLogin()">Already have an account? Login</div>
   </div>
-  <div id="authMessage" class="muted" style="margin-top:13px;text-align:center"></div>
+  <div id="authMessage"></div>
  </div>
 </div>
 
 <main>
  <section id="homePage" class="page active">
-  <div class="story-row" id="storyRow">
+  <div class="story-row">
    <div class="story" onclick="openCamera()">
-    <div class="story-ring"><img id="storyAvatar" src="" alt=""></div>
+    <div class="story-ring"><img id="storyAvatar" alt=""></div>
     Your story
    </div>
   </div>
 
   <div class="panel">
    <div class="row">
-    <img id="composerAvatar" class="avatar" src="" alt="">
-    <input id="postText" class="field" style="margin:0" placeholder="What's happening around the world?">
+    <img id="composerAvatar" class="avatar" alt="">
+    <input id="postText" class="field" style="margin:0" placeholder="Share something with the world...">
    </div>
    <div class="wrap" style="margin-top:12px">
     <button class="secondary" onclick="document.getElementById('photoInput').click()">📷 Photo</button>
-    <button class="secondary" onclick="document.getElementById('videoInput').click()">🎬 HD Video</button>
+    <button class="secondary" onclick="document.getElementById('videoInput').click()">🎬 Video</button>
     <button class="primary" onclick="createTextPost()">Post</button>
    </div>
    <input id="photoInput" type="file" accept="image/*" hidden onchange="uploadMedia(this,'image')">
    <input id="videoInput" type="file" accept="video/*" hidden onchange="uploadMedia(this,'video')">
    <div id="uploadStatus" class="muted" style="margin-top:8px"></div>
+   <div class="progress"><div id="uploadProgress"></div></div>
   </div>
 
-  <div class="row between" style="margin-bottom:12px">
-   <h2 style="margin:0">Your Feed</h2>
+  <div class="row between" style="margin:12px 0">
+   <h2 style="margin:0">For You</h2>
    <select id="feedMode" class="field" style="width:auto;margin:0" onchange="renderFeed()">
-    <option value="all">🌍 Everyone</option>
+    <option value="all">🌍 Global</option>
     <option value="following">Following</option>
    </select>
   </div>
-  <div id="feed"></div>
+  <div id="feed"><div class="empty">Loading posts...</div></div>
  </section>
 
  <section id="newsPage" class="page">
   <h2>🌍 World News</h2>
   <div class="panel">
-   <label class="muted">Choose country news</label>
+   <p class="muted">Choose a country to view its latest headlines.</p>
    <select id="newsCountry" class="field" onchange="loadNews()">
-    <option value="WORLD">Worldwide</option>
-    <option value="PK">Pakistan</option>
-    <option value="US">United States</option>
-    <option value="GB">United Kingdom</option>
-    <option value="IN">India</option>
-    <option value="SA">Saudi Arabia</option>
-    <option value="AE">United Arab Emirates</option>
-    <option value="TR">Turkey</option>
-    <option value="CN">China</option>
-    <option value="FR">France</option>
-    <option value="DE">Germany</option>
-    <option value="CA">Canada</option>
-    <option value="AU">Australia</option>
-    <option value="JP">Japan</option>
-    <option value="QA">Qatar</option>
-    <option value="AF">Afghanistan</option>
+    <option value="WORLD">🌍 Worldwide</option>
+    <option value="Pakistan">Pakistan</option>
+    <option value="United States">United States</option>
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="India">India</option>
+    <option value="Saudi Arabia">Saudi Arabia</option>
+    <option value="United Arab Emirates">UAE</option>
+    <option value="Afghanistan">Afghanistan</option>
+    <option value="Canada">Canada</option>
+    <option value="Australia">Australia</option>
+    <option value="Turkey">Turkey</option>
+    <option value="China">China</option>
+    <option value="Germany">Germany</option>
+    <option value="France">France</option>
+    <option value="Japan">Japan</option>
+    <option value="Qatar">Qatar</option>
+    <option value="Italy">Italy</option>
+    <option value="Spain">Spain</option>
+    <option value="Brazil">Brazil</option>
+    <option value="Russia">Russia</option>
+    <option value="South Africa">South Africa</option>
+    <option value="Indonesia">Indonesia</option>
+    <option value="Malaysia">Malaysia</option>
+    <option value="Bangladesh">Bangladesh</option>
+    <option value="Nepal">Nepal</option>
+    <option value="Iran">Iran</option>
+    <option value="Iraq">Iraq</option>
+    <option value="Egypt">Egypt</option>
+    <option value="Nigeria">Nigeria</option>
+    <option value="Mexico">Mexico</option>
    </select>
    <button class="primary full" onclick="loadNews()">Refresh News</button>
-   <p class="muted" style="margin-top:9px">News headlines are collected from external Google News feeds. Open the publisher's link to read the full report.</p>
+   <p class="muted" style="margin-top:9px">Headlines are retrieved from Google News RSS through an external feed service.</p>
   </div>
-  <div id="newsList"><div class="empty">Loading news...</div></div>
+  <div id="newsList"><div class="empty">Select a country to load news.</div></div>
  </section>
 
  <section id="uploadPage" class="page">
-  <h2>🎥 Create Post</h2>
+  <h2>＋ Create Video</h2>
   <div class="panel">
-   <h3>Upload HD Video or Photo</h3>
-   <p class="muted" style="margin:8px 0 14px">Choose a video or photo from your phone. Original quality depends on your selected file.</p>
-   <button class="primary full" onclick="document.getElementById('videoInput2').click()">Select Video</button>
+   <h3>Upload your video</h3>
+   <p class="muted" style="margin:9px 0 12px">Choose a video from your phone. Original file quality will be retained.</p>
+   <button class="primary full" onclick="document.getElementById('videoInput2').click()">🎬 Select Video</button>
    <input id="videoInput2" type="file" accept="video/*" hidden onchange="uploadMedia(this,'video')">
-   <button class="secondary full" style="margin-top:10px" onclick="document.getElementById('photoInput2').click()">Select Photo</button>
+   <button class="secondary full" style="margin-top:10px" onclick="document.getElementById('photoInput2').click()">📷 Select Photo</button>
    <input id="photoInput2" type="file" accept="image/*" hidden onchange="uploadMedia(this,'image')">
    <textarea id="uploadCaption" class="field" rows="3" placeholder="Write a caption..."></textarea>
   </div>
  </section>
 
  <section id="profilePage" class="page">
-  <div class="panel" style="padding:12px">
+  <div class="panel">
    <div class="profile-cover"></div>
    <div class="profile-top">
     <div class="row between">
-     <img id="profileAvatar" class="avatar" src="" alt="Profile photo">
+     <img id="profileAvatar" class="avatar" alt="Profile">
      <div class="wrap">
       <button class="secondary" onclick="openCamera()">📸 Camera</button>
       <button class="secondary" onclick="document.getElementById('dpInput').click()">🖼️ Gallery</button>
       <input id="dpInput" type="file" accept="image/*" hidden onchange="uploadDP(this)">
      </div>
     </div>
-    <h2 id="profileName" style="margin-top:10px">Your Name</h2>
+    <h2 id="profileName" style="margin-top:10px">Your Profile</h2>
     <p id="profileEmail" class="muted"></p>
-    <input id="editName" class="field" placeholder="Change your name">
+    <p id="profileCountry" class="muted"></p>
+    <input id="editName" class="field" placeholder="Edit your name">
     <button class="primary" onclick="saveProfile()">Save Profile</button>
     <div class="stats">
      <div><strong id="myPostCount">0</strong><span class="muted">Posts</span></div>
@@ -255,7 +287,7 @@ h3{font-size:16px}
     </div>
    </div>
   </div>
-  <h2>Your Posts</h2>
+  <h2>Your Videos & Posts</h2>
   <div id="myPosts"></div>
   <button class="danger full" onclick="logout()">Logout</button>
  </section>
@@ -271,24 +303,24 @@ h3{font-size:16px}
 <div id="cameraModal">
  <div class="camera-box">
   <div class="row between" style="padding:8px 0 14px">
-   <h2>📸 AG Camera</h2>
+   <h2>MAG Camera</h2>
    <button class="secondary" onclick="closeCamera()">✕ Close</button>
   </div>
   <video id="cameraVideo" autoplay playsinline muted></video>
   <canvas id="cameraCanvas" hidden></canvas>
   <div id="cameraStatus"></div>
   <div class="wrap" style="margin:12px 0">
-   <button class="filter-btn selected" data-filter="none" onclick="setFilter(this,'none')">Normal</button>
-   <button class="filter-btn" data-filter="brightness(1.2) saturate(1.2)" onclick="setFilter(this,'brightness(1.2) saturate(1.2)')">Bright</button>
-   <button class="filter-btn" data-filter="contrast(1.2) saturate(1.4)" onclick="setFilter(this,'contrast(1.2) saturate(1.4)')">Vivid</button>
-   <button class="filter-btn" data-filter="sepia(.55)" onclick="setFilter(this,'sepia(.55)')">Vintage</button>
-   <button class="filter-btn" data-filter="grayscale(1)" onclick="setFilter(this,'grayscale(1)')">B&W</button>
-   <button class="filter-btn" data-filter="blur(.3px) brightness(1.12)" onclick="setFilter(this,'blur(.3px) brightness(1.12)')">Soft</button>
-   <button class="filter-btn" data-filter="hue-rotate(25deg) saturate(1.5)" onclick="setFilter(this,'hue-rotate(25deg) saturate(1.5)')">Color</button>
+   <button class="filter-btn selected" onclick="setFilter(this,'none')">Normal</button>
+   <button class="filter-btn" onclick="setFilter(this,'brightness(1.2) saturate(1.2)')">Bright</button>
+   <button class="filter-btn" onclick="setFilter(this,'contrast(1.2) saturate(1.4)')">Vivid</button>
+   <button class="filter-btn" onclick="setFilter(this,'sepia(.55)')">Vintage</button>
+   <button class="filter-btn" onclick="setFilter(this,'grayscale(1)')">B&W</button>
+   <button class="filter-btn" onclick="setFilter(this,'brightness(1.12)')">Soft</button>
+   <button class="filter-btn" onclick="setFilter(this,'hue-rotate(25deg) saturate(1.5)')">Color</button>
   </div>
-  <div class="camera-actions">
+  <div class="row" style="justify-content:center;margin:15px">
    <button class="secondary" onclick="switchCamera()">🔄 Flip</button>
-   <button class="primary" onclick="captureDP()">● Capture Photo</button>
+   <button class="primary" onclick="captureDP()">● Capture DP</button>
   </div>
  </div>
 </div>
@@ -299,8 +331,8 @@ h3{font-size:16px}
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
  getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
- signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,signOut,
- updateProfile
+ signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
+ signOut,updateProfile
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
  getDatabase,ref,set,get,push,onValue,update,remove
@@ -309,7 +341,7 @@ import {
  getStorage,ref as storageRef,uploadBytesResumable,getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-/* YOUR FIREBASE PROJECT CONFIGURATION */
+/* YOUR FIREBASE CONFIG */
 const firebaseConfig={
  apiKey:"AIzaSyBYBWflKXiqBSSDbyGdTGJX6C1RCJziZFA",
  authDomain:"ag-world-7310e.firebaseapp.com",
@@ -332,136 +364,144 @@ let allPosts={};
 let allUsers={};
 let following={};
 let followers={};
-let currentCountry="PK";
 let cameraStream=null;
 let cameraFacing="user";
 let cameraFilter="none";
-let activeFeedListener=null;
 
 const $=id=>document.getElementById(id);
-const safeName=(name)=>name||"AG Member";
 
-function toast(message){
- $("toast").textContent=message;
+function toast(msg){
+ $("toast").textContent=msg;
  $("toast").style.display="block";
- setTimeout(()=>$("toast").style.display="none",3000);
+ setTimeout(()=>$("toast").style.display="none",3500);
 }
-function authMessage(message){$("authMessage").textContent=message}
-function showLogin(){
- $("loginFields").style.display="block";
- $("signupFields").style.display="none";
- authMessage("");
+function showAuthError(error){
+ const messages={
+  "auth/operation-not-allowed":"Firebase mein Email/Password sign-in enable nahi hai. Firebase Authentication settings mein enable karein.",
+  "auth/unauthorized-domain":"Aapki website ka domain Firebase Authorized Domains mein add nahi hai.",
+  "auth/email-already-in-use":"Ye email pehle se registered hai. Login karein.",
+  "auth/invalid-email":"Email address sahi nahi hai.",
+  "auth/weak-password":"Password kam az kam 6 characters ka hona chahiye.",
+  "auth/invalid-credential":"Email ya password ghalat hai.",
+  "auth/user-not-found":"Is email ka account nahi mila.",
+  "auth/wrong-password":"Password ghalat hai.",
+  "auth/network-request-failed":"Internet connection check karein.",
+  "auth/popup-blocked":"Google login popup block ho gaya. Browser popup allow karein.",
+  "auth/popup-closed-by-user":"Google login band kar diya gaya."
+ };
+ $("authMessage").textContent=messages[error.code]||("Error: "+error.message);
 }
-function showSignup(){
+
+window.showSignup=()=>{
  $("loginFields").style.display="none";
  $("signupFields").style.display="block";
- authMessage("");
-}
-window.showLogin=showLogin;
-window.showSignup=showSignup;
+ $("authMessage").textContent="";
+};
+window.showLogin=()=>{
+ $("loginFields").style.display="block";
+ $("signupFields").style.display="none";
+ $("authMessage").textContent="";
+};
 
-function defaultAvatar(name){
- return "https://ui-avatars.com/api/?name="+encodeURIComponent(name||"AG")+"&background=287bff&color=fff&bold=true";
-}
-function avatarFor(user){
- return user?.photoURL||defaultAvatar(user?.displayName||user?.name||"AG");
-}
-function setAvatarImages(url){
- ["headerAvatar","storyAvatar","composerAvatar","profileAvatar"].forEach(id=>{
-  $(id).src=url;
- });
-}
-function navigate(page,button){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- $(page).classList.add("active");
- document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
- if(button)button.classList.add("active");
- if(page==="profilePage")renderProfile();
- if(page==="newsPage")loadNews();
- if(page==="homePage")renderFeed();
-}
-window.navigate=navigate;
+window.login=async()=>{
+ const email=$("email").value.trim();
+ const password=$("password").value;
+ if(!email||!password){$("authMessage").textContent="Email aur password likhein.";return}
+ try{
+  $("authMessage").textContent="Logging in...";
+  await signInWithEmailAndPassword(auth,email,password);
+ }catch(e){showAuthError(e)}
+};
 
-async function login(){
- const email=$("email").value.trim(),password=$("password").value;
- if(!email||!password)return authMessage("Email aur password likhein.");
- try{await signInWithEmailAndPassword(auth,email,password)}
- catch(e){authMessage(e.message)}
-}
-window.login=login;
-
-async function signup(){
+window.signup=async()=>{
  const name=$("signupName").value.trim();
  const email=$("signupEmail").value.trim();
  const password=$("signupPassword").value;
- if(!name||!email||password.length<6)return authMessage("Name, email aur 6+ character password zaroori hain.");
+ const country=$("signupCountry").value;
+ if(!name||!email||!password||!country){
+  $("authMessage").textContent="Tamam fields fill karein.";return;
+ }
+ if(password.length<6){
+  $("authMessage").textContent="Password 6 characters se zyada hona chahiye.";return;
+ }
  try{
+  $("authMessage").textContent="Creating your account...";
   const result=await createUserWithEmailAndPassword(auth,email,password);
   await updateProfile(result.user,{displayName:name});
   await set(ref(db,"users/"+result.user.uid),{
-   name,email,photoURL:"",createdAt:Date.now()
-  });
-  toast("Account created!");
- }catch(e){authMessage(e.message)}
-}
-window.signup=signup;
-
-async function googleLogin(){
- try{await signInWithPopup(auth,googleProvider)}
- catch(e){authMessage(e.message)}
-}
-window.googleLogin=googleLogin;
-
-async function logout(){
- stopCamera();
- try{await signOut(auth)}catch(e){toast(e.message)}
-}
-window.logout=logout;
-
-onAuthStateChanged(auth,async user=>{
- if(user){
-  currentUser=user;
-  $("authScreen").style.display="none";
-  await ensureUserRecord(user);
-  listenData();
-  detectCountry();
- }else{
-  currentUser=null;
-  $("authScreen").style.display="grid";
-  allPosts={};allUsers={};following={};followers={};
-  $("feed").innerHTML="";
- }
-});
-
-async function ensureUserRecord(user){
- const userRef=ref(db,"users/"+user.uid);
- const snap=await get(userRef);
- if(!snap.exists()){
-  await set(userRef,{
-   name:user.displayName||"AG Member",
-   email:user.email||"",
-   photoURL:user.photoURL||"",
+   name,email,country,photoURL:"",
    createdAt:Date.now()
   });
- }
+ }catch(e){showAuthError(e)}
+};
+
+window.googleLogin=async()=>{
+ try{await signInWithPopup(auth,googleProvider)}
+ catch(e){showAuthError(e)}
+};
+
+window.logout=async()=>{
+ stopCamera();
+ try{await signOut(auth)}
+ catch(e){toast(e.message)}
+};
+
+function defaultAvatar(name){
+ return "https://ui-avatars.com/api/?name="+encodeURIComponent(name||"MAG")+"&background=222222&color=ffffff&bold=true";
 }
+function avatarFor(user){
+ return user?.photoURL||defaultAvatar(user?.displayName||user?.name||"MAG");
+}
+function setAvatars(url){
+ ["headerAvatar","storyAvatar","composerAvatar","profileAvatar"].forEach(id=>$(id).src=url);
+}
+
+onAuthStateChanged(auth,async user=>{
+ if(!user){
+  currentUser=null;
+  $("authScreen").style.display="grid";
+  return;
+ }
+ currentUser=user;
+ $("authScreen").style.display="none";
+ try{
+  const userRef=ref(db,"users/"+user.uid);
+  const snap=await get(userRef);
+  if(!snap.exists()){
+   await set(userRef,{
+    name:user.displayName||"MAG Member",
+    email:user.email||"",
+    photoURL:user.photoURL||"",
+    country:"Not selected",
+    createdAt:Date.now()
+   });
+  }
+  listenData();
+  detectCountry();
+ }catch(e){
+  toast("Firebase database error: "+e.message);
+ }
+});
 
 function listenData(){
  onValue(ref(db,"posts"),snap=>{
   allPosts=snap.val()||{};
   renderFeed();
   renderProfile();
- });
+ },error=>toast("Posts error: "+error.message));
+
  onValue(ref(db,"users"),snap=>{
   allUsers=snap.val()||{};
   renderFeed();
   renderProfile();
- });
+ },error=>toast("Users error: "+error.message));
+
  onValue(ref(db,"follows/"+currentUser.uid),snap=>{
   following=snap.val()||{};
   renderFeed();
   renderProfile();
  });
+
  onValue(ref(db,"followers/"+currentUser.uid),snap=>{
   followers=snap.val()||{};
   renderProfile();
@@ -472,21 +512,26 @@ async function detectCountry(){
  try{
   const response=await fetch("https://ipapi.co/json/");
   const data=await response.json();
-  if(data.country_code){
-   currentCountry=data.country_code;
-   $("countryBadge").textContent="🌍 "+(data.country_name||currentCountry);
-   $("newsCountry").value=currentCountry;
-  }
- }catch(e){console.log("Country detection unavailable")}
+  if(data.country_name)$("countryBadge").textContent="🌍 "+data.country_name;
+ }catch(e){}
 }
 
-async function uploadFile(file,path,onProgress){
+window.navigate=(page,button)=>{
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ $(page).classList.add("active");
+ document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ if(page==="profilePage")renderProfile();
+ if(page==="newsPage")loadNews();
+ if(page==="homePage")renderFeed();
+};
+
+async function uploadFile(file,path,progressCallback){
  return new Promise((resolve,reject)=>{
-  const fileRef=storageRef(storage,path);
-  const task=uploadBytesResumable(fileRef,file);
+  const task=uploadBytesResumable(storageRef(storage,path),file);
   task.on("state_changed",snapshot=>{
-   const progress=Math.round(snapshot.bytesTransferred/snapshot.totalBytes*100);
-   if(onProgress)onProgress(progress);
+   const percent=Math.round(snapshot.bytesTransferred/snapshot.totalBytes*100);
+   if(progressCallback)progressCallback(percent);
   },reject,async()=>{
    try{resolve(await getDownloadURL(task.snapshot.ref))}
    catch(e){reject(e)}
@@ -494,142 +539,129 @@ async function uploadFile(file,path,onProgress){
  });
 }
 
-async function createTextPost(){
+window.createTextPost=async()=>{
  const text=$("postText").value.trim();
- if(!text)return toast("Pehle kuch likhein.");
+ if(!text)return toast("Pehle post likhein.");
  try{
   await push(ref(db,"posts"),{
    uid:currentUser.uid,
-   name:currentUser.displayName||"AG Member",
-   text,
-   type:"text",
-   createdAt:Date.now(),
-   likes:{},
-   comments:{},
-   views:0
+   name:currentUser.displayName||"MAG Member",
+   text,type:"text",
+   createdAt:Date.now(),likes:{},comments:{},views:0
   });
   $("postText").value="";
   toast("Post published!");
- }catch(e){toast(e.message)}
-}
-window.createTextPost=createTextPost;
+ }catch(e){toast("Post error: "+e.message)}
+};
 
-async function uploadMedia(input,type){
+window.uploadMedia=async(input,type)=>{
  const file=input.files?.[0];
  if(!file)return;
- if(type==="video"&&!file.type.startsWith("video/"))return toast("Video file select karein.");
- if(type==="image"&&!file.type.startsWith("image/"))return toast("Image file select karein.");
- const maxSize=500*1024*1024;
- if(file.size>maxSize)return toast("Maximum file size 500 MB hai.");
+ if(file.size>500*1024*1024)return toast("Maximum upload size 500 MB.");
+ if(type==="video"&&!file.type.startsWith("video/"))return toast("Video select karein.");
+ if(type==="image"&&!file.type.startsWith("image/"))return toast("Image select karein.");
 
- const status=$("uploadStatus");
- status.textContent="Uploading: 0%";
+ $("uploadStatus").textContent="Uploading...";
  try{
-  const extension=(file.name.split(".").pop()||"file").replace(/[^a-z0-9]/gi,"");
-  const path="posts/"+currentUser.uid+"/"+Date.now()+"."+extension;
-  const url=await uploadFile(file,path,p=>status.textContent="Uploading: "+p+"%");
+  const ext=(file.name.split(".").pop()||"file").replace(/[^a-z0-9]/gi,"");
+  const url=await uploadFile(file,"posts/"+currentUser.uid+"/"+Date.now()+"."+ext,p=>{
+   $("uploadStatus").textContent="Uploading "+p+"%";
+   $("uploadProgress").style.width=p+"%";
+  });
   const caption=$("uploadCaption").value.trim()||$("postText").value.trim();
   await push(ref(db,"posts"),{
    uid:currentUser.uid,
-   name:currentUser.displayName||"AG Member",
-   text:caption,
-   type,
-   mediaUrl:url,
-   fileName:file.name,
-   createdAt:Date.now(),
-   likes:{},
-   comments:{},
-   views:0
+   name:currentUser.displayName||"MAG Member",
+   text:caption,type,mediaUrl:url,
+   createdAt:Date.now(),likes:{},comments:{},views:0
   });
-  status.textContent="Upload complete!";
+  $("uploadStatus").textContent="Upload completed!";
+  $("uploadProgress").style.width="100%";
   $("uploadCaption").value="";
   $("postText").value="";
-  toast("Your "+type+" has been posted!");
+  toast("Your "+type+" is online!");
   navigate("homePage",document.querySelector(".nav-btn"));
  }catch(e){
-  status.textContent="Upload error: "+e.message;
-  toast(e.message);
+  $("uploadStatus").textContent="Upload failed: "+e.message;
+  toast("Upload error: "+e.message);
  }
  input.value="";
-}
-window.uploadMedia=uploadMedia;
+};
 
-function escapeHTML(value){
- return String(value??"").replace(/[&<>"']/g,char=>({
+function esc(v){
+ return String(v??"").replace(/[&<>"']/g,c=>({
   "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[char]));
+ }[c]));
 }
-function timeAgo(time){
- const mins=Math.floor((Date.now()-(time||Date.now()))/60000);
- if(mins<1)return "Just now";
- if(mins<60)return mins+"m ago";
- if(mins<1440)return Math.floor(mins/60)+"h ago";
- return Math.floor(mins/1440)+"d ago";
+function ago(t){
+ const m=Math.floor((Date.now()-(t||Date.now()))/60000);
+ if(m<1)return "Just now";
+ if(m<60)return m+"m ago";
+ if(m<1440)return Math.floor(m/60)+"h ago";
+ return Math.floor(m/1440)+"d ago";
 }
-function renderFeed(){
- if(!currentUser)return;
- const mode=$("feedMode").value;
- const entries=Object.entries(allPosts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
- const filtered=entries.filter(([id,p])=>
-  mode==="all"||p.uid===currentUser.uid||!!following[p.uid]
- );
- if(!filtered.length){
-  $("feed").innerHTML='<div class="empty">No posts yet. Be the first to share something!</div>';
-  return;
- }
- $("feed").innerHTML=filtered.map(([id,p])=>postHTML(id,p)).join("");
-}
-window.renderFeed=renderFeed;
 
 function postHTML(id,p){
  const owner=allUsers[p.uid]||{};
  const liked=!!p.likes?.[currentUser.uid];
- const isOwner=p.uid===currentUser.uid;
- const photo=owner.photoURL||defaultAvatar(p.name||owner.name);
+ const own=p.uid===currentUser.uid;
+ const photo=owner.photoURL||defaultAvatar(p.name);
+ const comments=Object.entries(p.comments||{});
  let media="";
  if(p.type==="video"&&p.mediaUrl){
-  media=`<video class="post-media" src="${escapeHTML(p.mediaUrl)}" controls playsinline preload="metadata" onplay="countView('${id}')"></video>`;
- }else if(p.type==="image"&&p.mediaUrl){
-  media=`<img class="post-media" src="${escapeHTML(p.mediaUrl)}" alt="Post image" loading="lazy">`;
- }
- const comments=Object.entries(p.comments||{}).sort((a,b)=>(a[1].createdAt||0)-(b[1].createdAt||0));
- return `
- <article class="post">
-  <div class="post-head">
-   <img class="avatar" src="${escapeHTML(photo)}" alt="">
-   <div style="flex:1">
-    <strong>${escapeHTML(owner.name||p.name||"AG Member")}</strong>
-    <div class="muted">${timeAgo(p.createdAt)}</div>
+  media=`<div class="video-card">
+   <video src="${esc(p.mediaUrl)}" controls playsinline preload="metadata"></video>
+   <div class="video-caption">${esc(p.text||"")}</div>
+   <div class="video-actions">
+    <button class="action ${liked?"liked":""}" onclick="toggleLike('${id}')">♥ ${Object.keys(p.likes||{}).length}</button>
+    <button class="action" onclick="toggleComments('${id}')">💬 ${comments.length}</button>
+    <button class="action" onclick="sharePost('${id}')">↗ Share</button>
    </div>
-   ${!isOwner?`<button class="secondary" onclick="toggleFollow('${escapeHTML(p.uid)}')">${following[p.uid]?"Following":"＋ Follow"}</button>`:""}
-   ${isOwner?`<button class="danger" onclick="deletePost('${id}')">Delete</button>`:""}
+  </div>`;
+ }else if(p.type==="image"&&p.mediaUrl){
+  media=`<img class="news-image" style="width:100%;max-height:520px;object-fit:contain;background:#000" src="${esc(p.mediaUrl)}" alt="Post image">`;
+ }
+ return `<article class="post">
+  <div class="post-head">
+   <img class="avatar" src="${esc(photo)}" alt="">
+   <div style="flex:1">
+    <strong>${esc(owner.name||p.name||"MAG Member")}</strong>
+    <div class="muted">${esc(owner.country||"World")} · ${ago(p.createdAt)}</div>
+   </div>
+   ${!own?`<button class="secondary" onclick="toggleFollow('${esc(p.uid)}')">${following[p.uid]?"Following":"＋ Follow"}</button>`:""}
+   ${own?`<button class="danger" onclick="deletePost('${id}')">Delete</button>`:""}
   </div>
-  ${p.text?`<div class="post-text">${escapeHTML(p.text)}</div>`:""}
+  ${p.type!=="video"&&p.text?`<div class="post-text">${esc(p.text)}</div>`:""}
   ${media}
-  <div class="muted" style="margin-top:9px">👁 ${p.views||0} views</div>
-  <div class="post-actions">
+  ${p.type!=="video"?`<div class="post-actions">
    <button class="action ${liked?"liked":""}" onclick="toggleLike('${id}')">♥ ${Object.keys(p.likes||{}).length} Like</button>
    <button class="action" onclick="toggleComments('${id}')">💬 ${comments.length} Comments</button>
    <button class="action" onclick="sharePost('${id}')">↗ Share</button>
-  </div>
+  </div>`:""}
   <div class="comment-area" id="comments-${id}">
-   <div id="commentList-${id}">
-    ${comments.map(([cid,c])=>`<div class="comment"><strong>${escapeHTML(c.name||"Member")}</strong>: ${escapeHTML(c.text)}</div>`).join("")||'<p class="muted">No comments yet.</p>'}
-   </div>
+   <div>${comments.map(([cid,c])=>`<div class="comment"><b>${esc(c.name)}</b>: ${esc(c.text)}</div>`).join("")||'<p class="muted">No comments yet.</p>'}</div>
    <div class="row" style="margin-top:9px">
-    <input class="field" id="commentInput-${id}" style="margin:0" placeholder="Write a comment...">
+    <input id="commentInput-${id}" class="field" style="margin:0" placeholder="Write a comment...">
     <button class="primary" onclick="addComment('${id}')">Send</button>
    </div>
   </div>
  </article>`;
 }
 
+window.renderFeed=()=>{
+ if(!currentUser)return;
+ const mode=$("feedMode").value;
+ const posts=Object.entries(allPosts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+ const filtered=posts.filter(([id,p])=>mode==="all"||p.uid===currentUser.uid||following[p.uid]);
+ $("feed").innerHTML=filtered.length?filtered.map(([id,p])=>postHTML(id,p)).join(""):'<div class="empty">No posts yet. Share your first post!</div>';
+};
+
 window.toggleLike=async id=>{
  const post=allPosts[id];if(!post)return;
- const likeRef=ref(db,"posts/"+id+"/likes/"+currentUser.uid);
+ const like=ref(db,"posts/"+id+"/likes/"+currentUser.uid);
  try{
-  if(post.likes?.[currentUser.uid])await remove(likeRef);
-  else await set(likeRef,true);
+  if(post.likes?.[currentUser.uid])await remove(like);
+  else await set(like,true);
  }catch(e){toast(e.message)}
 };
 
@@ -644,9 +676,8 @@ window.addComment=async id=>{
  try{
   await push(ref(db,"posts/"+id+"/comments"),{
    uid:currentUser.uid,
-   name:currentUser.displayName||"AG Member",
-   text,
-   createdAt:Date.now()
+   name:currentUser.displayName||"MAG Member",
+   text,createdAt:Date.now()
   });
   input.value="";
  }catch(e){toast(e.message)}
@@ -661,97 +692,71 @@ window.deletePost=async id=>{
 window.sharePost=async id=>{
  const url=location.origin+location.pathname+"?post="+encodeURIComponent(id);
  try{
-  if(navigator.share)await navigator.share({title:"AG World Social",text:"Check out this post",url});
-  else{await navigator.clipboard.writeText(url);toast("Post link copied")}
- }catch(e){console.log(e)}
-};
-
-const viewedPosts=new Set();
-window.countView=async id=>{
- if(viewedPosts.has(id))return;
- viewedPosts.add(id);
- try{
-  const count=allPosts[id]?.views||0;
-  await update(ref(db,"posts/"+id),{views:count+1});
- }catch(e){console.log(e)}
+  if(navigator.share)await navigator.share({title:"MAG World Social",url});
+  else{await navigator.clipboard.writeText(url);toast("Link copied")}
+ }catch(e){}
 };
 
 window.toggleFollow=async uid=>{
  if(!uid||uid===currentUser.uid)return;
- try{
-  const isFollowing=!!following[uid];
-  const changes={};
-  if(isFollowing){
-   changes["follows/"+currentUser.uid+"/"+uid]=null;
-   changes["followers/"+uid+"/"+currentUser.uid]=null;
-  }else{
-   changes["follows/"+currentUser.uid+"/"+uid]=true;
-   changes["followers/"+uid+"/"+currentUser.uid]=true;
-  }
-  await update(ref(db),changes);
-  toast(isFollowing?"Unfollowed":"Following!");
- }catch(e){toast(e.message)}
+ const is=!!following[uid];
+ const changes={};
+ changes["follows/"+currentUser.uid+"/"+uid]=is?null:true;
+ changes["followers/"+uid+"/"+currentUser.uid]=is?null:true;
+ try{await update(ref(db),changes);toast(is?"Unfollowed":"Following")}
+ catch(e){toast(e.message)}
 };
 
-async function saveProfile(){
+window.saveProfile=async()=>{
  const name=$("editName").value.trim();
- if(!name)return toast("Name likhein.");
+ if(!name)return toast("Enter your name.");
  try{
   await updateProfile(auth.currentUser,{displayName:name});
   await update(ref(db,"users/"+currentUser.uid),{name});
-  $("profileName").textContent=name;
   toast("Profile updated!");
  }catch(e){toast(e.message)}
-}
-window.saveProfile=saveProfile;
+};
 
 function renderProfile(){
  if(!currentUser)return;
  const me=allUsers[currentUser.uid]||{};
- const name=me.name||currentUser.displayName||"AG Member";
+ const name=me.name||currentUser.displayName||"MAG Member";
  $("profileName").textContent=name;
  $("profileEmail").textContent=currentUser.email||"";
+ $("profileCountry").textContent="🌍 "+(me.country||"Country not set");
  $("editName").value=name;
- setAvatarImages(avatarFor({...currentUser,...me}));
- const my=Object.entries(allPosts).filter(([id,p])=>p.uid===currentUser.uid);
- $("myPostCount").textContent=my.length;
- $("followerCount").textContent=Object.keys(followers||{}).length;
- $("followingCount").textContent=Object.keys(following||{}).length;
- $("myPosts").innerHTML=my.sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0))
-  .map(([id,p])=>postHTML(id,p)).join("")||'<div class="empty">You have not posted anything yet.</div>';
+ setAvatars(avatarFor({...currentUser,...me}));
+ const mine=Object.entries(allPosts).filter(([id,p])=>p.uid===currentUser.uid);
+ $("myPostCount").textContent=mine.length;
+ $("followerCount").textContent=Object.keys(followers).length;
+ $("followingCount").textContent=Object.keys(following).length;
+ $("myPosts").innerHTML=mine.sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0))
+  .map(([id,p])=>postHTML(id,p)).join("")||'<div class="empty">No posts yet.</div>';
 }
 
-async function uploadDP(input){
+window.uploadDP=async input=>{
  const file=input.files?.[0];if(!file)return;
- if(!file.type.startsWith("image/"))return toast("Please select an image.");
- if(file.size>10*1024*1024)return toast("Profile photo must be under 10 MB.");
+ if(!file.type.startsWith("image/"))return toast("Choose an image.");
+ if(file.size>10*1024*1024)return toast("Image must be under 10 MB.");
  try{
-  toast("Uploading profile photo...");
   const url=await uploadFile(file,"profilePhotos/"+currentUser.uid+"/"+Date.now()+".jpg");
   await update(ref(db,"users/"+currentUser.uid),{photoURL:url});
   await updateProfile(auth.currentUser,{photoURL:url});
-  setAvatarImages(url);
-  toast("Profile photo updated!");
- }catch(e){toast(e.message)}
+  setAvatars(url);toast("Profile photo updated!");
+ }catch(e){toast("Photo error: "+e.message)}
  input.value="";
-}
-window.uploadDP=uploadDP;
-
-/* CAMERA AND SNAPCHAT-STYLE COLOR FILTERS */
-window.openCamera=async()=>{
- $("cameraModal").style.display="block";
- $("cameraStatus").textContent="Camera permission ka intezar karein...";
- try{
-  await startCamera();
-  $("cameraStatus").textContent="Camera ready. Filter choose karein.";
- }catch(e){
-  $("cameraStatus").textContent="Camera error: "+e.message+". Browser camera permission check karein.";
- }
 };
 
+/* CAMERA FILTERS */
+window.openCamera=async()=>{
+ $("cameraModal").style.display="block";
+ $("cameraStatus").textContent="Allow camera permission...";
+ try{await startCamera();$("cameraStatus").textContent="Camera ready."}
+ catch(e){$("cameraStatus").textContent="Camera error: "+e.message}
+};
 async function startCamera(){
  stopCamera();
- if(!navigator.mediaDevices?.getUserMedia)throw new Error("Camera requires HTTPS and a supported browser.");
+ if(!navigator.mediaDevices?.getUserMedia)throw new Error("Camera needs HTTPS website.");
  cameraStream=await navigator.mediaDevices.getUserMedia({
   video:{facingMode:cameraFacing,width:{ideal:1280},height:{ideal:720}},
   audio:false
@@ -764,90 +769,69 @@ window.switchCamera=async()=>{
  cameraFacing=cameraFacing==="user"?"environment":"user";
  try{await startCamera()}catch(e){$("cameraStatus").textContent=e.message}
 };
-
 window.setFilter=(button,filter)=>{
  cameraFilter=filter;
  $("cameraVideo").style.filter=filter==="none"?"none":filter;
  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("selected"));
  button.classList.add("selected");
 };
-
-window.captureDP=async()=>{
+window.captureDP=()=>{
  const video=$("cameraVideo");
- if(!video.videoWidth)return toast("Camera abhi ready nahi.");
+ if(!video.videoWidth)return toast("Camera is not ready.");
  const canvas=$("cameraCanvas");
- canvas.width=video.videoWidth;
- canvas.height=video.videoHeight;
+ canvas.width=video.videoWidth;canvas.height=video.videoHeight;
  const ctx=canvas.getContext("2d");
  ctx.filter=cameraFilter==="none"?"none":cameraFilter;
  if(cameraFacing==="user"){
-  ctx.translate(canvas.width,0);
-  ctx.scale(-1,1);
+  ctx.translate(canvas.width,0);ctx.scale(-1,1);
  }
  ctx.drawImage(video,0,0,canvas.width,canvas.height);
  canvas.toBlob(async blob=>{
-  if(!blob)return toast("Photo capture nahi hui.");
+  if(!blob)return toast("Photo capture failed.");
   try{
-   $("cameraStatus").textContent="Saving profile photo...";
-   const file=new File([blob],"ag-profile.jpg",{type:"image/jpeg"});
+   const file=new File([blob],"mag-profile.jpg",{type:"image/jpeg"});
    const url=await uploadFile(file,"profilePhotos/"+currentUser.uid+"/"+Date.now()+".jpg");
    await update(ref(db,"users/"+currentUser.uid),{photoURL:url});
    await updateProfile(auth.currentUser,{photoURL:url});
-   setAvatarImages(url);
-   $("cameraStatus").textContent="Profile photo saved!";
-   toast("New DP uploaded!");
-   closeCamera();
-  }catch(e){$("cameraStatus").textContent=e.message}
- },"image/jpeg",.92);
+   setAvatars(url);toast("New profile photo saved!");closeCamera();
+  }catch(e){toast(e.message)}
+ },"image/jpeg",.93);
 };
-window.closeCamera=()=>{
- stopCamera();
- $("cameraModal").style.display="none";
-};
+window.closeCamera=()=>{stopCamera();$("cameraModal").style.display="none"};
 function stopCamera(){
- if(cameraStream){
-  cameraStream.getTracks().forEach(track=>track.stop());
-  cameraStream=null;
- }
+ if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null}
  $("cameraVideo").srcObject=null;
 }
 
-/* COUNTRY AND WORLD NEWS */
-const countryNames={
- WORLD:"world",PK:"Pakistan",US:"United States",GB:"United Kingdom",
- IN:"India",SA:"Saudi Arabia",AE:"United Arab Emirates",TR:"Turkey",
- CN:"China",FR:"France",DE:"Germany",CA:"Canada",AU:"Australia",
- JP:"Japan",QA:"Qatar",AF:"Afghanistan"
-};
+/* COUNTRY-SPECIFIC NEWS */
 window.loadNews=async()=>{
- const code=$("newsCountry").value||"WORLD";
- const country=countryNames[code]||"world";
- $("newsList").innerHTML='<div class="empty">Loading latest headlines...</div>';
- let query=code==="WORLD"?"world news":"news "+country;
- const rss="https://news.google.com/rss/search?q="+encodeURIComponent(query)+"&hl=en&gl="+(code==="WORLD"?"US":code)+"&ceid="+(code==="WORLD"?"US:en":code+":en");
+ const country=$("newsCountry").value||"WORLD";
+ const query=country==="WORLD"?"world latest news":country+" latest news";
+ $("newsList").innerHTML='<div class="empty">Loading headlines...</div>';
+ const rss="https://news.google.com/rss/search?q="+encodeURIComponent(query)+"&hl=en&gl=US&ceid=US:en";
  const proxy="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
  try{
   const response=await fetch(proxy);
-  if(!response.ok)throw new Error("News service unavailable");
+  if(!response.ok)throw new Error("News service error");
   const data=await response.json();
-  if(!data.items?.length)throw new Error("No headlines returned");
-  $("newsList").innerHTML=data.items.slice(0,20).map(item=>{
-   const title=escapeHTML(item.title||"News headline");
-   const link=/^https?:\/\//i.test(item.link||"")?escapeHTML(item.link):"#";
+  if(!data.items?.length)throw new Error("No news found");
+  $("newsList").innerHTML=data.items.slice(0,25).map(item=>{
+   const title=esc(item.title||"News");
+   const link=/^https?:\/\//i.test(item.link||"")?esc(item.link):"#";
    const image=item.thumbnail||item.enclosure?.link||"";
-   const safeImage=/^https?:\/\//i.test(image)?escapeHTML(image):"";
-   const date=item.pubDate?new Date(item.pubDate).toLocaleString():"";
+   const img=/^https?:\/\//i.test(image)?`<img class="news-image" src="${esc(image)}" alt="">`:"";
    return `<article class="news-card">
     <div class="news-title">${title}</div>
-    ${safeImage?`<img class="news-image" src="${safeImage}" alt="" loading="lazy">`:""}
-    <div class="news-meta">${escapeHTML(date)}</div>
-    <a class="news-link" href="${link}" target="_blank" rel="noopener noreferrer">Read original news ↗</a>
+    ${img}
+    <div class="news-meta">${esc(item.pubDate||"")}</div>
+    <a class="news-link" href="${link}" target="_blank" rel="noopener">Read original news ↗</a>
    </article>`;
   }).join("");
  }catch(e){
-  $("newsList").innerHTML='<div class="panel"><p>News service abhi response nahi de raha. Internet connection check karein aur dobara refresh karein.</p><p class="muted" style="margin-top:8px">Headlines third-party RSS service se aati hain; har country ki tamam news ki guarantee nahi hai.</p></div>';
+  $("newsList").innerHTML='<div class="panel">News feed abhi load nahi hui. Dobara refresh karein ya internet check karein. News external provider se aati hai.</div>';
  }
 };
 </script>
 </body>
 </html>
+
