@@ -1,1 +1,572 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b91">
+<title>AG World Social</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f3f5fa;color:#151515;padding-bottom:75px}
+button{cursor:pointer;font-family:inherit}
+.hidden{display:none!important}
+header{height:62px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:sticky;top:0;z-index:10;border-bottom:1px solid #eee}
+.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:900}
+.logo{width:43px;height:40px;border-radius:12px;background:linear-gradient(135deg,#078bff,#102b91);color:white;display:grid;place-items:center;font-size:23px;font-weight:900}
+header button{border:0;background:#eee;border-radius:50%;width:39px;height:39px;font-size:19px}
+.page{max-width:650px;margin:auto;padding:14px}
+.tabs{display:flex;gap:8px;overflow:auto;background:white;padding:11px;scrollbar-width:none}
+.chip{border:0;border-radius:22px;padding:10px 15px;background:#eee;white-space:nowrap;font-weight:bold}
+.chip.active{background:#102b91;color:white}
+.card{background:white;border-radius:15px;overflow:hidden;margin-bottom:15px;box-shadow:0 2px 10px #00000010}
+.posthead{display:flex;align-items:center;gap:10px;padding:12px}
+.avatar{width:39px;height:39px;border-radius:50%;background:#1738a5;color:white;display:grid;place-items:center;font-weight:bold;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.username{font-size:13px;font-weight:bold}
+.posttime{font-size:11px;color:#777;margin-top:4px}
+.media{background:#111;min-height:180px;max-height:520px;display:grid;place-items:center}
+.media video{width:100%;max-height:520px;object-fit:contain;background:#000}
+.info{padding:12px;font-size:14px;line-height:1.5}
+.actions{display:flex;align-items:center;gap:16px;padding:10px 13px;flex-wrap:wrap}
+.act{border:0;background:none;font-size:20px}
+.count{font-size:12px;color:#666}
+.delete{margin-left:auto;color:#d22;font-size:12px;border:0;background:#fff0f0;padding:7px 10px;border-radius:8px}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:67px;background:white;border-top:1px solid #ddd;display:flex;justify-content:space-around;align-items:center;z-index:20}
+.nav{border:0;background:none;color:#666;font-size:10px;display:flex;flex-direction:column;gap:4px;align-items:center}
+.nav b{font-size:22px}
+.nav.active{color:#102b91;font-weight:bold}
+.primary{background:#102b91;color:white;border:0;border-radius:10px;padding:13px;width:100%;font-weight:bold}
+input,textarea,select{width:100%;padding:13px;margin:8px 0;border:1px solid #ddd;border-radius:9px;font:14px Arial}
+textarea{min-height:75px}
+.auth-bg{min-height:calc(100vh - 62px);padding:22px 14px;background:linear-gradient(145deg,#07184fdd,#075bcebb),url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200') center/cover;display:flex;align-items:center;justify-content:center}
+.auth-box{background:white;border-radius:20px;padding:23px;width:100%;max-width:400px;box-shadow:0 10px 35px #0005}
+.auth-box h2{text-align:center;margin:12px 0 5px}
+.auth-box p{text-align:center;color:#777;font-size:12px;margin-bottom:14px}
+.auth-btn{width:100%;padding:13px;background:#102b91;color:white;border:0;border-radius:9px;font-weight:bold;margin-top:8px}
+.google{background:white;color:#222;border:1px solid #ddd}
+.link{text-align:center;margin-top:14px;font-size:13px;color:#102b91;cursor:pointer}
+h2.heading{font-size:22px;margin:10px 0 15px}
+.news-item{background:white;border-radius:13px;padding:14px;margin-bottom:12px}
+.news-item h3{font-size:15px;line-height:1.4;margin:8px 0}
+.news-item p{font-size:12px;color:#777;line-height:1.5}
+.news-item a{color:#102b91;font-size:12px;font-weight:bold;display:inline-block;margin-top:9px}
+.news-image{width:100%;max-height:190px;object-fit:cover;border-radius:9px}
+.profile-cover{height:110px;border-radius:14px;background:linear-gradient(120deg,#102b91,#438bff)}
+.profile-top{padding:0 14px}
+.profile-avatar{width:85px;height:85px;border-radius:50%;border:4px solid white;background:#102b91;color:white;display:grid;place-items:center;font-size:26px;font-weight:bold;margin-top:-42px;overflow:hidden}
+.profile-avatar img{width:100%;height:100%;object-fit:cover}
+.stats{display:flex;justify-content:space-around;margin:18px 0}
+.stat{text-align:center;font-size:11px;color:#777}
+.stat strong{display:block;color:#111;font-size:18px;margin-bottom:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:12px}
+.grid video{width:100%;height:145px;object-fit:cover;background:#111}
+.empty{text-align:center;padding:35px;color:#777;font-size:13px}
+.status{font-size:12px;color:#777;margin:8px 0}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="brand"><div class="logo">AG</div> WORLD</div>
+ <button id="accountBtn">👤</button>
+</header>
+
+<section id="authPage" class="auth-bg">
+ <div class="auth-box">
+  <div style="display:flex;justify-content:center"><div class="logo" style="width:58px;height:55px;font-size:30px">AG</div></div>
+  <h2 id="authTitle">Join AG World</h2>
+  <p>Connect with your world • HD Videos • Local News</p>
+  <div id="signupFields">
+   <input id="name" placeholder="Full name">
+  </div>
+  <input id="email" type="email" placeholder="Email address">
+  <input id="password" type="password" placeholder="Password (minimum 6 characters)">
+  <button class="auth-btn" id="emailBtn">Create Account</button>
+  <button class="auth-btn google" id="googleBtn">Continue with Google</button>
+  <div class="link" id="switchAuth">Already have an account? Login</div>
+  <p id="authMessage" class="status"></p>
+ </div>
+</section>
+
+<section id="appPage" class="hidden">
+ <div class="tabs" id="tabs">
+  <button class="chip active" data-tab="home">For You</button>
+  <button class="chip" data-tab="following">Following</button>
+  <button class="chip" data-tab="news">My Country News</button>
+ </div>
+ <main id="homePage" class="page">
+  <div id="feed"></div>
+ </main>
+ <main id="newsPage" class="page hidden">
+  <h2 class="heading">📰 My Country News</h2>
+  <p id="countryLabel" class="status">Loading your country...</p>
+  <div id="newsList"><p class="empty">Loading latest headlines...</p></div>
+  <button class="primary" id="refreshNews">Refresh News</button>
+ </main>
+ <main id="uploadPage" class="page hidden">
+  <h2 class="heading">＋ Upload HD Video</h2>
+  <div class="card" style="padding:17px">
+   <input id="videoFile" type="file" accept="video/*">
+   <video id="preview" class="hidden" controls style="width:100%;max-height:300px;background:#111"></video>
+   <textarea id="caption" placeholder="Write something about your video..."></textarea>
+   <p class="status">Video file is uploaded to your Firebase Storage.</p>
+   <button class="primary" id="publish">Publish Video</button>
+   <p id="uploadStatus" class="status"></p>
+  </div>
+ </main>
+ <main id="profilePage" class="page hidden">
+  <div class="profile-cover"></div>
+  <div class="profile-top">
+   <div class="profile-avatar" id="profileAvatar">AG</div>
+   <h2 id="profileName" style="margin-top:10px">My Profile</h2>
+   <p id="profileEmail" class="status"></p>
+   <p id="profileCountry" class="status"></p>
+   <div class="stats">
+    <div class="stat"><strong id="myPosts">0</strong>Posts</div>
+    <div class="stat"><strong id="myViews">0</strong>Views</div>
+   </div>
+   <button class="primary" id="logout">Logout</button>
+  </div>
+  <h3 style="margin:20px 0 8px">My Videos</h3>
+  <div id="myGrid" class="grid"></div>
+ </main>
+</section>
+
+<nav class="bottom hidden" id="bottomNav">
+ <button class="nav active" data-page="homePage"><b>⌂</b>Home</button>
+ <button class="nav" data-page="newsPage"><b>🌍</b>News</button>
+ <button class="nav" data-page="uploadPage"><b>⊕</b>Upload</button>
+ <button class="nav" data-page="profilePage"><b>👤</b>Profile</button>
+</nav>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+ getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
+ signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
+ signOut,updateProfile
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+ getDatabase,ref,set,get,update,push,onValue,runTransaction,remove
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import {
+ getStorage,ref as storageRef,uploadBytesResumable,
+ getDownloadURL,deleteObject
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+const firebaseConfig = {
+ apiKey:"AIzaSyBYBWflKXiqBSSDbyGdTGXJ6C1RCJziZFA",
+ authDomain:"ag-world-7310e.firebaseapp.com",
+ databaseURL:"https://ag-world-7310e-default-rtdb.firebaseio.com",
+ projectId:"ag-world-7310e",
+ storageBucket:"ag-world-7310e.firebasestorage.app",
+ messagingSenderId:"874059134274",
+ appId:"1:874059134274:web:2ad78f97cc0101f46c44db",
+ measurementId:"G-7J5C992B7Q"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getDatabase(app);
+const storage=getStorage(app);
+const googleProvider=new GoogleAuthProvider();
+
+let currentUser=null;
+let userCountry="Pakistan";
+let loginMode="signup";
+let posts={};
+let selectedFile=null;
+let previewURL=null;
+let feedListener=null;
+
+const $=id=>document.getElementById(id);
+const countryNames={
+ PK:"Pakistan",US:"USA",GB:"United Kingdom",AE:"United Arab Emirates",
+ IN:"India",SA:"Saudi Arabia",CA:"Canada",AU:"Australia",DE:"Germany",
+ TR:"Turkey",JP:"Japan",CN:"China",FR:"France",IT:"Italy",BR:"Brazil",
+ NG:"Nigeria",ZA:"South Africa",BD:"Bangladesh",NZ:"New Zealand",
+ SG:"Singapore",MY:"Malaysia",ID:"Indonesia",PH:"Philippines",
+ LK:"Sri Lanka",NP:"Nepal",QA:"Qatar",KW:"Kuwait",OM:"Oman"
+};
+const countryCodes={
+ Pakistan:"PK",USA:"US","United Kingdom":"GB","United Arab Emirates":"AE",
+ India:"IN","Saudi Arabia":"SA",Canada:"CA",Australia:"AU",Germany:"DE",
+ Turkey:"TR",Japan:"JP",China:"CN",France:"FR",Italy:"IT",Brazil:"BR"
+};
+
+async function detectCountry(){
+ try{
+  const r=await fetch("https://ipapi.co/json/");
+  if(!r.ok)throw Error("Country lookup failed");
+  const d=await r.json();
+  return countryNames[d.country_code]||"Pakistan";
+ }catch(e){return "Pakistan"}
+}
+
+function showAppPage(page){
+ ["homePage","newsPage","uploadPage","profilePage"].forEach(id=>$(id).classList.add("hidden"));
+ $(page).classList.remove("hidden");
+ document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+ $("tabs").classList.toggle("hidden",page!=="homePage");
+}
+
+function setLoggedInUI(){
+ $("authPage").classList.add("hidden");
+ $("appPage").classList.remove("hidden");
+ $("bottomNav").classList.remove("hidden");
+ $("profileName").textContent=currentUser.displayName||"AG World User";
+ $("profileEmail").textContent=currentUser.email||"";
+ $("profileCountry").textContent="Your country: "+userCountry;
+ $("profileAvatar").textContent=(currentUser.displayName||"AG").slice(0,2).toUpperCase();
+ showAppPage("homePage");
+ loadFeed();
+ loadNews();
+}
+
+async function saveUser(user,name=""){
+ const existing=await get(ref(db,"users/"+user.uid));
+ let country=existing.exists()?existing.val().country:null;
+ if(!country)country=await detectCountry();
+ const data={
+  name:name||user.displayName||user.email.split("@")[0],
+  email:user.email||"",
+  country,
+  updatedAt:Date.now()
+ };
+ await update(ref(db,"users/"+user.uid),data);
+ userCountry=country;
+}
+
+onAuthStateChanged(auth,async user=>{
+ if(user){
+  currentUser=user;
+  try{
+   await saveUser(user);
+   setLoggedInUI();
+  }catch(e){
+   alert("Firebase database error: "+e.message);
+   $("authPage").classList.remove("hidden");
+  }
+ }else{
+  currentUser=null;
+  $("authPage").classList.remove("hidden");
+  $("appPage").classList.add("hidden");
+  $("bottomNav").classList.add("hidden");
+ }
+});
+
+$("switchAuth").onclick=()=>{
+ loginMode=loginMode==="signup"?"login":"signup";
+ $("authTitle").textContent=loginMode==="signup"?"Join AG World":"Welcome Back";
+ $("emailBtn").textContent=loginMode==="signup"?"Create Account":"Login";
+ $("signupFields").classList.toggle("hidden",loginMode==="login");
+ $("switchAuth").textContent=loginMode==="signup"?"Already have an account? Login":"New here? Create an account";
+ $("authMessage").textContent="";
+};
+
+$("emailBtn").onclick=async()=>{
+ const email=$("email").value.trim();
+ const password=$("password").value;
+ const name=$("name").value.trim();
+ if(!email||!password){$("authMessage").textContent="Enter your email and password.";return}
+ if(password.length<6){$("authMessage").textContent="Password must be at least 6 characters.";return}
+ if(loginMode==="signup"&&!name){$("authMessage").textContent="Enter your name.";return}
+ $("emailBtn").disabled=true;
+ $("authMessage").textContent="Please wait...";
+ try{
+  if(loginMode==="signup"){
+   const result=await createUserWithEmailAndPassword(auth,email,password);
+   await updateProfile(result.user,{displayName:name});
+   await saveUser(result.user,name);
+  }else{
+   await signInWithEmailAndPassword(auth,email,password);
+  }
+ }catch(e){$("authMessage").textContent=e.message}
+ $("emailBtn").disabled=false;
+};
+
+$("googleBtn").onclick=async()=>{
+ $("authMessage").textContent="Opening Google sign in...";
+ try{await signInWithPopup(auth,googleProvider)}
+ catch(e){$("authMessage").textContent=e.message}
+};
+
+$("logout").onclick=()=>signOut(auth);
+$("accountBtn").onclick=()=>{if(currentUser)showAppPage("profilePage")};
+
+document.querySelectorAll(".nav").forEach(btn=>{
+ btn.onclick=()=>showAppPage(btn.dataset.page);
+});
+document.querySelectorAll(".chip").forEach(btn=>{
+ btn.onclick=()=>{
+  document.querySelectorAll(".chip").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  if(btn.dataset.tab==="news")showAppPage("newsPage");
+  else showAppPage("homePage");
+ };
+});
+
+$("videoFile").onchange=()=>{
+ selectedFile=$("videoFile").files[0];
+ if(!selectedFile)return;
+ if(!selectedFile.type.startsWith("video/")){alert("Please choose a video file.");return}
+ if(previewURL)URL.revokeObjectURL(previewURL);
+ previewURL=URL.createObjectURL(selectedFile);
+ $("preview").src=previewURL;
+ $("preview").classList.remove("hidden");
+};
+
+$("publish").onclick=async()=>{
+ if(!currentUser){alert("Please login first.");return}
+ if(!selectedFile){alert("Please select a video.");return}
+ if(selectedFile.size>500*1024*1024){
+  alert("Video is larger than 500 MB. Choose a smaller file.");return;
+ }
+ const id=push(ref(db,"posts")).key;
+ const path="videos/"+currentUser.uid+"/"+id;
+ const fileRef=storageRef(storage,path);
+ $("publish").disabled=true;
+ const task=uploadBytesResumable(fileRef,selectedFile,{contentType:selectedFile.type});
+ task.on("state_changed",
+  s=>{
+   const pct=Math.round(s.bytesTransferred/s.totalBytes*100);
+   $("uploadStatus").textContent="Uploading: "+pct+"%";
+  },
+  e=>{
+   $("uploadStatus").textContent="Upload failed: "+e.message;
+   $("publish").disabled=false;
+  },
+  async()=>{
+   try{
+    const url=await getDownloadURL(task.snapshot.ref);
+    await set(ref(db,"posts/"+id),{
+     uid:currentUser.uid,
+     name:currentUser.displayName||"AG User",
+     email:currentUser.email||"",
+     country:userCountry,
+     caption:$("caption").value.trim(),
+     videoURL:url,
+     storagePath:path,
+     createdAt:Date.now(),
+     views:0,
+     likes:0
+    });
+    $("uploadStatus").textContent="Video published successfully!";
+    $("caption").value="";
+    $("videoFile").value="";
+    $("preview").classList.add("hidden");
+    $("preview").removeAttribute("src");
+    selectedFile=null;
+    $("publish").disabled=false;
+    showAppPage("homePage");
+   }catch(e){
+    $("uploadStatus").textContent="Could not save post: "+e.message;
+    $("publish").disabled=false;
+   }
+  }
+ );
+};
+
+function loadFeed(){
+ if(feedListener)feedListener();
+ feedListener=onValue(ref(db,"posts"),snapshot=>{
+  posts=snapshot.val()||{};
+  renderFeed();
+  renderMyGrid();
+ });
+}
+
+function renderFeed(){
+ const feed=$("feed");
+ feed.innerHTML="";
+ const list=Object.entries(posts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+ const visible=list.filter(([id,p])=>p.country===userCountry);
+ if(!visible.length){
+  feed.innerHTML='<div class="empty">No videos from your country yet. Be the first to upload!</div>';
+  return;
+ }
+ visible.forEach(([id,p])=>{
+  const card=document.createElement("article");
+  card.className="card";
+  const head=document.createElement("div");
+  head.className="posthead";
+  const avatar=document.createElement("div");
+  avatar.className="avatar";
+  avatar.textContent=(p.name||"AG").slice(0,2).toUpperCase();
+  const user=document.createElement("div");
+  const username=document.createElement("div");
+  username.className="username";
+  username.textContent=p.name||"AG User";
+  const time=document.createElement("div");
+  time.className="posttime";
+  time.textContent=(p.country||"") +" • "+new Date(p.createdAt||Date.now()).toLocaleString();
+  user.append(username,time);
+  head.append(avatar,user);
+
+  const media=document.createElement("div");
+  media.className="media";
+  const video=document.createElement("video");
+  video.src=p.videoURL;
+  video.controls=true;
+  video.playsInline=true;
+  video.preload="metadata";
+  media.append(video);
+
+  const info=document.createElement("div");
+  info.className="info";
+  info.textContent=p.caption||"AG World video";
+
+  const actions=document.createElement("div");
+  actions.className="actions";
+  const like=document.createElement("button");
+  like.className="act";
+  like.textContent="♡";
+  const likeCount=document.createElement("span");
+  likeCount.className="count";
+  likeCount.textContent=(p.likes||0)+" likes";
+  const viewCount=document.createElement("span");
+  viewCount.className="count";
+  viewCount.textContent=(p.views||0)+" views";
+  const comment=document.createElement("button");
+  comment.className="act";
+  comment.textContent="💬";
+  const share=document.createElement("button");
+  share.className="act";
+  share.textContent="↗";
+  actions.append(like,likeCount,viewCount,comment,share);
+
+  like.onclick=async()=>{
+   const likeRef=ref(db,"postLikes/"+id+"/"+currentUser.uid);
+   const s=await get(likeRef);
+   if(s.exists()){
+    await remove(likeRef);
+    await runTransaction(ref(db,"posts/"+id+"/likes"),v=>Math.max(0,(v||0)-1));
+   }else{
+    await set(likeRef,true);
+    await runTransaction(ref(db,"posts/"+id+"/likes"),v=>(v||0)+1);
+   }
+  };
+
+  comment.onclick=async()=>{
+   const text=prompt("Write your comment:");
+   if(!text||!text.trim())return;
+   await push(ref(db,"comments/"+id),{
+    uid:currentUser.uid,
+    name:currentUser.displayName||"AG User",
+    text:text.trim(),
+    createdAt:Date.now()
+   });
+   alert("Comment added.");
+  };
+
+  share.onclick=async()=>{
+   try{
+    if(navigator.share)await navigator.share({title:"AG World Social",text:p.caption||"Watch this video",url:p.videoURL});
+    else await navigator.clipboard.writeText(p.videoURL);
+   }catch(e){}
+  };
+
+  if(p.uid===currentUser.uid){
+   const del=document.createElement("button");
+   del.className="delete";
+   del.textContent="Delete video";
+   del.onclick=async()=>{
+    if(!confirm("Delete this video permanently?"))return;
+    try{
+     await remove(ref(db,"posts/"+id));
+     await remove(ref(db,"postLikes/"+id));
+     await remove(ref(db,"comments/"+id));
+     if(p.storagePath)await deleteObject(storageRef(storage,p.storagePath));
+    }catch(e){alert("Delete error: "+e.message)}
+   };
+   actions.append(del);
+  }
+
+  card.append(head,media,info,actions);
+  feed.append(card);
+
+  const viewKey="ag_view_"+id;
+  if(!sessionStorage.getItem(viewKey)){
+   sessionStorage.setItem(viewKey,"yes");
+   runTransaction(ref(db,"posts/"+id+"/views"),v=>(v||0)+1);
+  }
+ });
+}
+
+function renderMyGrid(){
+ const grid=$("myGrid");
+ grid.innerHTML="";
+ const mine=Object.entries(posts).filter(([id,p])=>p.uid===currentUser?.uid);
+ $("myPosts").textContent=mine.length;
+ $("myViews").textContent=mine.reduce((n,[id,p])=>n+(p.views||0),0);
+ mine.forEach(([id,p])=>{
+  const v=document.createElement("video");
+  v.src=p.videoURL;
+  v.controls=true;
+  v.playsInline=true;
+  grid.append(v);
+ });
+ if(!mine.length)grid.innerHTML='<div class="empty">You have not uploaded a video yet.</div>';
+}
+
+const newsConfig={
+ Pakistan:{hl:"en-PK",gl:"PK",ceid:"PK:en"},
+ USA:{hl:"en-US",gl:"US",ceid:"US:en"},
+ "United Kingdom":{hl:"en-GB",gl:"GB",ceid:"GB:en"},
+ "United Arab Emirates":{hl:"en",gl:"AE",ceid:"AE:en"},
+ India:{hl:"en-IN",gl:"IN",ceid:"IN:en"},
+ "Saudi Arabia":{hl:"en",gl:"SA",ceid:"SA:en"},
+ Canada:{hl:"en-CA",gl:"CA",ceid:"CA:en"},
+ Australia:{hl:"en-AU",gl:"AU",ceid:"AU:en"},
+ Germany:{hl:"de-DE",gl:"DE",ceid:"DE:de"},
+ Turkey:{hl:"tr-TR",gl:"TR",ceid:"TR:tr"},
+ Japan:{hl:"ja-JP",gl:"JP",ceid:"JP:ja"},
+ China:{hl:"zh-CN",gl:"CN",ceid:"CN:zh-Hans"},
+ France:{hl:"fr-FR",gl:"FR",ceid:"FR:fr"},
+ Italy:{hl:"it-IT",gl:"IT",ceid:"IT:it"},
+ Brazil:{hl:"pt-BR",gl:"BR",ceid:"BR:pt-419"}
+};
+
+async function loadNews(){
+ $("countryLabel").textContent="Showing news for "+userCountry;
+ $("newsList").innerHTML='<p class="empty">Loading latest news...</p>';
+ const c=newsConfig[userCountry]||{hl:"en",gl:"PK",ceid:"PK:en"};
+ const rss="https://news.google.com/rss?hl="+c.hl+"&gl="+c.gl+"&ceid="+c.ceid;
+ const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
+ try{
+  const response=await fetch(url);
+  if(!response.ok)throw Error("News service unavailable");
+  const data=await response.json();
+  if(data.status!=="ok"||!data.items?.length)throw Error("No headlines available");
+  $("newsList").innerHTML="";
+  data.items.slice(0,25).forEach(item=>{
+   const article=document.createElement("article");
+   article.className="news-item";
+   const tag=document.createElement("div");
+   tag.className="status";
+   tag.textContent=userCountry+" • "+(item.pubDate?new Date(item.pubDate).toLocaleString():"Latest");
+   const title=document.createElement("h3");
+   title.textContent=item.title||"News";
+   const desc=document.createElement("p");
+   desc.textContent=(item.description||"").replace(/<[^>]*>/g," ").slice(0,240);
+   const link=document.createElement("a");
+   link.href=item.link;
+   link.target="_blank";
+   link.rel="noopener";
+   link.textContent="Read full story ↗";
+   article.append(tag,title,desc,link);
+   $("newsList").append(article);
+  });
+ }catch(e){
+  $("newsList").innerHTML="";
+  const message=document.createElement("p");
+  message.className="empty";
+  message.textContent="News could not load right now. Please check your internet and try again. "+e.message;
+  $("newsList").append(message);
+ }
+}
+$("refreshNews").onclick=loadNews;
+</script>
+</body>
+</html>
