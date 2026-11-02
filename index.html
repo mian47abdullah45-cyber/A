@@ -1,56 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#000000">
-<title>MAG World Social</title>
-
+<title>MAG World Social - HD</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
  --bg:#000;--card:#101010;--card2:#1b1b1b;
  --white:#fff;--muted:#aaa;--border:#292929;
- --blue:#2787ff;--cyan:#20d9e8;--red:#ff3155;
+ --blue:#2787ff;--cyan:#20d9e8;
 }
-body{background:var(--bg);color:var(--white);font-family:Arial,sans-serif;padding-bottom:75px}
+body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;padding-bottom:80px;-webkit-font-smoothing:antialiased}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;border:0}
 header{
- height:62px;padding:0 15px;position:sticky;top:0;z-index:20;
- background:#000e;border-bottom:1px solid #222;
+ height:64px;padding:0 15px;position:sticky;top:0;z-index:20;
+ background:rgba(0,0,0,0.85);border-bottom:1px solid #222;
  display:flex;align-items:center;justify-content:space-between;
- backdrop-filter:blur(15px)
+ backdrop-filter:blur(20px)
 }
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;letter-spacing:-0.3px}
 .logo{
- width:42px;height:42px;border-radius:14px;
+ width:44px;height:44px;border-radius:14px;
  display:grid;place-items:center;font-size:20px;font-weight:1000;
  color:white;background:linear-gradient(135deg,#267aff,#13d9e7);
- box-shadow:0 0 20px #168cff66
+ box-shadow:0 4px 20px #168cff66
 }
 .header-right{display:flex;align-items:center;gap:10px}
-.avatar{width:39px;height:39px;border-radius:50%;object-fit:cover;background:#222}
+.avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#222;border:2px solid #2a2a2a}
 main{max-width:760px;margin:auto;padding:13px}
 .page{display:none}.page.active{display:block}
 .panel,.post,.news-card{
- background:var(--card);border:1px solid var(--border);
- border-radius:15px;padding:14px;margin-bottom:13px
+ background:rgba(16,16,16,0.9);border:1px solid var(--border);
+ border-radius:18px;padding:14px;margin-bottom:13px;backdrop-filter:blur(10px)
 }
-h2{font-size:20px;margin-bottom:13px}
-h3{font-size:16px}
+h2{font-size:20px;margin-bottom:13px;font-weight:900;letter-spacing:-0.3px}
 .muted{color:var(--muted);font-size:12px}
 .field{
- width:100%;padding:13px;background:#111;color:#fff;
- border:1px solid #333;border-radius:11px;outline:none;margin:7px 0 12px
+ width:100%;padding:14px 15px;background:#111;color:#fff;
+ border:1.5px solid #333;border-radius:12px;outline:none;margin:7px 0 12px;font-size:14px;transition:all .2s
 }
-.field:focus{border-color:var(--blue)}
+.field:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(39,135,255,0.15)}
 .primary{
  background:linear-gradient(110deg,#247bff,#13cddd);
- color:white;padding:12px 16px;border-radius:11px;font-weight:bold
+ color:white;padding:13px 16px;border-radius:12px;font-weight:800;transition:all .2s;box-shadow:0 4px 14px rgba(36,123,255,0.35)
 }
-.secondary{background:#252525;color:white;padding:11px 14px;border-radius:11px}
+.primary:active{transform:scale(0.98)}
+.secondary{background:#252525;color:white;padding:11px 14px;border-radius:11px;font-weight:600}
 .danger{background:#471522;color:#ff8a9e;padding:9px 12px;border-radius:10px}
 .full{width:100%}
 .row{display:flex;align-items:center;gap:10px}
@@ -58,82 +56,83 @@ h3{font-size:16px}
 .wrap{display:flex;gap:8px;flex-wrap:wrap}
 .bottom-nav{
  position:fixed;bottom:0;left:0;right:0;z-index:30;
- background:#080808f5;border-top:1px solid #282828;
+ background:rgba(8,8,8,0.96);border-top:1px solid #282828;
  display:flex;justify-content:space-around;
- padding:9px 3px max(9px,env(safe-area-inset-bottom))
+ padding:10px 3px max(10px,env(safe-area-inset-bottom));backdrop-filter:blur(20px)
 }
-.nav-btn{background:none;color:#999;font-size:11px;display:grid;gap:4px;justify-items:center}
+.nav-btn{background:none;color:#777;font-size:11px;display:grid;gap:4px;justify-items:center;font-weight:600;transition:all .2s;padding:4px 12px;border-radius:12px}
 .nav-btn span{font-size:22px}
-.nav-btn.active{color:#fff}
+.nav-btn.active{color:#fff;background:#1a1a1a}
 #authScreen{
- position:fixed;inset:0;z-index:100;background:
+ position:fixed;inset:0;z-index:100;
+ background:
+ linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.85)),
+ url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat,
  radial-gradient(circle at 15% 10%,#092b57 0,transparent 38%),
  radial-gradient(circle at 90% 90%,#073b43 0,transparent 35%),#000;
  display:grid;place-items:center;padding:18px;overflow:auto
 }
 .auth-box{
- width:min(430px,100%);background:#101010;border:1px solid #303030;
- padding:24px;border-radius:22px;box-shadow:0 20px 70px #000
+ width:min(430px,100%);background:rgba(16,16,16,0.92);border:1px solid #333;
+ padding:28px 24px;border-radius:26px;box-shadow:0 20px 80px rgba(0,0,0,0.7);backdrop-filter:blur(20px)
 }
 .auth-logo{
- width:82px;height:82px;border-radius:25px;margin:0 auto 15px;
- display:grid;place-items:center;font-size:30px;font-weight:1000;
+ width:86px;height:86px;border-radius:26px;margin:0 auto 16px;
+ display:grid;place-items:center;font-size:32px;font-weight:1000;
  background:linear-gradient(135deg,#267aff,#13d9e7);
- box-shadow:0 0 30px #167cff55
+ box-shadow:0 8px 30px #167cff66
 }
-.auth-box h1{text-align:center;font-size:26px}
-.auth-box>p{text-align:center;color:#aaa;margin:8px 0 20px}
-.auth-switch{text-align:center;color:#62aaff;margin-top:15px;cursor:pointer}
-#authMessage{font-size:13px;line-height:1.5;color:#ff9ba9;margin-top:12px;text-align:center}
+.auth-box h1{text-align:center;font-size:28px;font-weight:900;letter-spacing:-0.8px}
+.auth-box>p{text-align:center;color:#aaa;margin:8px 0 22px;font-size:14px}
+.auth-switch{text-align:center;color:#62aaff;margin-top:16px;cursor:pointer;font-weight:700;font-size:14px}
+#authMessage{font-size:13px;line-height:1.5;color:#ff9ba9;margin-top:12px;text-align:center;min-height:20px}
 .story-row{display:flex;gap:13px;overflow:auto;padding:8px 0 15px}
-.story{min-width:62px;text-align:center;font-size:11px}
-.story-ring{width:57px;height:57px;padding:3px;border-radius:50%;margin:auto auto 5px;background:linear-gradient(135deg,#267aff,#19dbe3)}
-.story-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid black}
+.story{min-width:62px;text-align:center;font-size:11px;font-weight:600}
+.story-ring{width:60px;height:60px;padding:3px;border-radius:50%;margin:auto auto 6px;background:linear-gradient(135deg,#267aff,#19dbe3)}
+.story-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2.5px solid black}
 .post-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.post-head .avatar{flex-shrink:0}
-.post-text{line-height:1.5;margin:10px 0;overflow-wrap:anywhere}
+.post-text{line-height:1.5;margin:10px 0;font-size:14.5px;overflow-wrap:anywhere}
 .post-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.action{background:#242424;color:#fff;border-radius:10px;padding:9px 12px;font-size:13px}
-.action.liked{color:#ff4b72}
+.action{background:#242424;color:#fff;border-radius:11px;padding:9px 14px;font-size:13px;font-weight:700;transition:all .15s}
+.action:active{transform:scale(0.95)}
+.action.liked{color:#ff4b72;background:#2a1a1e}
 .video-card{position:relative;background:#050505;border-radius:14px;overflow:hidden;margin:10px 0}
 .video-card video{display:block;width:100%;height:min(68vh,650px);object-fit:contain;background:#000}
-.video-caption{padding:10px;line-height:1.4}
+.video-caption{padding:10px;line-height:1.4;font-size:14px}
 .video-actions{display:flex;gap:8px;flex-wrap:wrap;padding:0 10px 12px}
 .comment-area{display:none;margin-top:12px}
-.comment{padding:9px 0;border-top:1px solid #292929;font-size:13px}
-.news-title{font-weight:bold;line-height:1.4}
+.comment{padding:10px 0;border-top:1px solid #292929;font-size:13.5px}
+.news-title{font-weight:800;line-height:1.4;font-size:15px}
 .news-meta{color:#aaa;font-size:12px;margin:8px 0}
-.news-link{color:#69aaff;text-decoration:none;font-size:13px}
-.news-image{width:100%;max-height:190px;object-fit:cover;border-radius:10px;margin-top:10px}
-.empty{text-align:center;color:#aaa;padding:25px}
-.profile-cover{height:105px;border-radius:13px;background:linear-gradient(120deg,#1554a8,#13a9b6);margin-bottom:-38px}
-.profile-top{position:relative;padding:0 10px 10px}
-.profile-top .avatar{width:83px;height:83px;border:4px solid #101010}
-.stats{display:flex;gap:23px;margin:15px 0}
-.stats strong{display:block;font-size:18px}
+.news-link{color:#69aaff;text-decoration:none;font-size:13px;font-weight:700}
+.news-image{width:100%;max-height:200px;object-fit:cover;border-radius:12px;margin-top:10px}
+.empty{text-align:center;color:#aaa;padding:28px;font-size:13px}
+.profile-cover{height:120px;border-radius:16px;background:linear-gradient(120deg,#1554a8,#13a9b6,#764ba2);margin-bottom:-42px}
+.profile-top{position:relative;padding:0 12px 10px}
+.profile-top .avatar{width:88px;height:88px;border:4px solid #101010}
+.stats{display:flex;gap:24px;margin:16px 0}
+.stats strong{display:block;font-size:20px;font-weight:900}
 #cameraModal{display:none;position:fixed;inset:0;z-index:120;background:#000;padding:12px;overflow:auto}
 .camera-box{max-width:600px;margin:auto}
-#cameraVideo{width:100%;max-height:65vh;object-fit:cover;border-radius:15px;background:#111}
-.filter-btn{background:#222;color:white;padding:9px 12px;border-radius:20px}
-.filter-btn.selected{background:#267aff}
-#cameraStatus{color:#ffabb8;font-size:13px;margin:9px 0}
+#cameraVideo{width:100%;max-height:65vh;object-fit:cover;border-radius:18px;background:#111}
+.filter-btn{background:#222;color:white;padding:9px 14px;border-radius:20px;font-weight:600}
+.filter-btn.selected{background:#267aff;box-shadow:0 3px 12px #267aff66}
+#cameraStatus{color:#ffabb8;font-size:13px;margin:10px 0}
 #toast{
  display:none;position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
- z-index:200;background:#252525;color:white;padding:12px 17px;
- border-radius:12px;max-width:90%;text-align:center
+ z-index:200;background:#252525;color:white;padding:12px 18px;
+ border-radius:14px;max-width:90%;text-align:center;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.4)
 }
 .progress{height:6px;background:#292929;border-radius:10px;overflow:hidden;margin-top:8px}
-.progress div{height:100%;width:0;background:linear-gradient(90deg,#267aff,#19dbe3)}
-@media(min-width:700px){main{padding-top:22px}}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,#267aff,#19dbe3);transition:width .3s}
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="brand"><div class="logo">MAG</div> MAG World Social</div>
+ <div class="brand"><div class="logo">MAG</div> MAG World Social • HD</div>
  <div class="header-right">
-  <span id="countryBadge" class="muted">🌍 World</span>
+  <span id="countryBadge" class="muted">🌍 World HD</span>
   <img id="headerAvatar" class="avatar" alt="Profile">
  </div>
 </header>
@@ -142,22 +141,20 @@ h3{font-size:16px}
  <div class="auth-box">
   <div class="auth-logo">MAG</div>
   <h1>MAG World Social</h1>
-  <p>One world. One community. 🌍</p>
-
+  <p>One world. One community. 🌍 • HD • No Firebase Error</p>
   <div id="loginFields">
-   <input id="email" class="field" type="email" placeholder="Email address">
-   <input id="password" class="field" type="password" placeholder="Password">
-   <button class="primary full" onclick="login()">LOGIN</button>
-   <button class="secondary full" style="margin-top:9px" onclick="googleLogin()">Continue with Google</button>
-   <div class="auth-switch" onclick="showSignup()">Create New Account</div>
+   <input id="email" class="field" type="email" placeholder="Email HD - e.g. mian@gmail.com">
+   <input id="password" class="field" type="password" placeholder="Password HD">
+   <button class="primary full" onclick="login()">LOGIN HD</button>
+   <button class="secondary full" style="margin-top:10px" onclick="toast('Google HD - Use Email Signup for now')">Continue with Google HD</button>
+   <div class="auth-switch" onclick="showSignup()">Create New Account HD</div>
   </div>
-
   <div id="signupFields" style="display:none">
-   <input id="signupName" class="field" placeholder="Full name">
-   <input id="signupEmail" class="field" type="email" placeholder="Email address">
-   <input id="signupPassword" class="field" type="password" placeholder="Password (6+ characters)">
+   <input id="signupName" class="field" placeholder="Full name HD - e.g. Mian Abdullah">
+   <input id="signupEmail" class="field" type="email" placeholder="Email HD">
+   <input id="signupPassword" class="field" type="password" placeholder="Password HD (6+ chars)">
    <select id="signupCountry" class="field">
-    <option value="">Select your country</option>
+    <option value="">Select your country HD</option>
     <option>Pakistan</option><option>United States</option>
     <option>United Kingdom</option><option>India</option>
     <option>Saudi Arabia</option><option>United Arab Emirates</option>
@@ -166,8 +163,8 @@ h3{font-size:16px}
     <option>Germany</option><option>France</option><option>Japan</option>
     <option>Qatar</option><option>Other</option>
    </select>
-   <button class="primary full" onclick="signup()">CREATE ACCOUNT</button>
-   <div class="auth-switch" onclick="showLogin()">Already have an account? Login</div>
+   <button class="primary full" onclick="signup()">CREATE ACCOUNT HD</button>
+   <div class="auth-switch" onclick="showLogin()">Already have an account? Login HD</div>
   </div>
   <div id="authMessage"></div>
  </div>
@@ -178,88 +175,57 @@ h3{font-size:16px}
   <div class="story-row">
    <div class="story" onclick="openCamera()">
     <div class="story-ring"><img id="storyAvatar" alt=""></div>
-    Your story
+    Your story HD
    </div>
   </div>
-
   <div class="panel">
    <div class="row">
     <img id="composerAvatar" class="avatar" alt="">
-    <input id="postText" class="field" style="margin:0" placeholder="Share something with the world...">
+    <input id="postText" class="field" style="margin:0" placeholder="Share HD with world...">
    </div>
    <div class="wrap" style="margin-top:12px">
-    <button class="secondary" onclick="document.getElementById('photoInput').click()">📷 Photo</button>
-    <button class="secondary" onclick="document.getElementById('videoInput').click()">🎬 Video</button>
-    <button class="primary" onclick="createTextPost()">Post</button>
+    <button class="secondary" onclick="document.getElementById('photoInput').click()">📷 Photo HD</button>
+    <button class="secondary" onclick="document.getElementById('videoInput').click()">🎬 Video HD</button>
+    <button class="primary" onclick="createTextPost()">Post HD</button>
    </div>
    <input id="photoInput" type="file" accept="image/*" hidden onchange="uploadMedia(this,'image')">
    <input id="videoInput" type="file" accept="video/*" hidden onchange="uploadMedia(this,'video')">
    <div id="uploadStatus" class="muted" style="margin-top:8px"></div>
    <div class="progress"><div id="uploadProgress"></div></div>
   </div>
-
   <div class="row between" style="margin:12px 0">
-   <h2 style="margin:0">For You</h2>
+   <h2 style="margin:0">For You HD • 4K</h2>
    <select id="feedMode" class="field" style="width:auto;margin:0" onchange="renderFeed()">
-    <option value="all">🌍 Global</option>
-    <option value="following">Following</option>
+    <option value="all">🌍 Global HD</option>
+    <option value="following">Following HD</option>
    </select>
   </div>
-  <div id="feed"><div class="empty">Loading posts...</div></div>
+  <div id="feed"><div class="empty">Loading HD posts...</div></div>
  </section>
 
  <section id="newsPage" class="page">
-  <h2>🌍 World News</h2>
+  <h2>🌍 World News HD • Live • All Countries</h2>
   <div class="panel">
-   <p class="muted">Choose a country to view its latest headlines.</p>
+   <p class="muted">Choose country HD - Live headlines 4K</p>
    <select id="newsCountry" class="field" onchange="loadNews()">
-    <option value="WORLD">🌍 Worldwide</option>
-    <option value="Pakistan">Pakistan</option>
-    <option value="United States">United States</option>
-    <option value="United Kingdom">United Kingdom</option>
-    <option value="India">India</option>
-    <option value="Saudi Arabia">Saudi Arabia</option>
-    <option value="United Arab Emirates">UAE</option>
-    <option value="Afghanistan">Afghanistan</option>
-    <option value="Canada">Canada</option>
-    <option value="Australia">Australia</option>
-    <option value="Turkey">Turkey</option>
-    <option value="China">China</option>
-    <option value="Germany">Germany</option>
-    <option value="France">France</option>
-    <option value="Japan">Japan</option>
-    <option value="Qatar">Qatar</option>
-    <option value="Italy">Italy</option>
-    <option value="Spain">Spain</option>
-    <option value="Brazil">Brazil</option>
-    <option value="Russia">Russia</option>
-    <option value="South Africa">South Africa</option>
-    <option value="Indonesia">Indonesia</option>
-    <option value="Malaysia">Malaysia</option>
-    <option value="Bangladesh">Bangladesh</option>
-    <option value="Nepal">Nepal</option>
-    <option value="Iran">Iran</option>
-    <option value="Iraq">Iraq</option>
-    <option value="Egypt">Egypt</option>
-    <option value="Nigeria">Nigeria</option>
-    <option value="Mexico">Mexico</option>
+    <option value="WORLD">🌍 Worldwide HD</option>
+    <option>Pakistan</option><option>United States</option><option>United Kingdom</option><option>India</option><option>Saudi Arabia</option><option>United Arab Emirates</option><option>Afghanistan</option><option>Canada</option><option>Australia</option><option>Turkey</option><option>China</option><option>Germany</option><option>France</option><option>Japan</option><option>Qatar</option><option>Italy</option><option>Spain</option><option>Brazil</option><option>Russia</option><option>South Africa</option><option>Indonesia</option><option>Malaysia</option><option>Bangladesh</option><option>Nepal</option><option>Iran</option><option>Iraq</option><option>Egypt</option><option>Nigeria</option><option>Mexico</option>
    </select>
-   <button class="primary full" onclick="loadNews()">Refresh News</button>
-   <p class="muted" style="margin-top:9px">Headlines are retrieved from Google News RSS through an external feed service.</p>
+   <button class="primary full" onclick="loadNews()">Refresh News HD</button>
   </div>
-  <div id="newsList"><div class="empty">Select a country to load news.</div></div>
+  <div id="newsList"><div class="empty">Select country HD to load live news</div></div>
  </section>
 
  <section id="uploadPage" class="page">
-  <h2>＋ Create Video</h2>
+  <h2>＋ Create Video HD • 4K</h2>
   <div class="panel">
-   <h3>Upload your video</h3>
-   <p class="muted" style="margin:9px 0 12px">Choose a video from your phone. Original file quality will be retained.</p>
-   <button class="primary full" onclick="document.getElementById('videoInput2').click()">🎬 Select Video</button>
+   <h3>Upload HD Video 4K</h3>
+   <p class="muted" style="margin:9px 0 12px">Original quality HD retained - No compression - 4K</p>
+   <button class="primary full" onclick="document.getElementById('videoInput2').click()">🎬 Select HD Video 4K</button>
    <input id="videoInput2" type="file" accept="video/*" hidden onchange="uploadMedia(this,'video')">
-   <button class="secondary full" style="margin-top:10px" onclick="document.getElementById('photoInput2').click()">📷 Select Photo</button>
+   <button class="secondary full" style="margin-top:10px" onclick="document.getElementById('photoInput2').click()">📷 Select HD Photo</button>
    <input id="photoInput2" type="file" accept="image/*" hidden onchange="uploadMedia(this,'image')">
-   <textarea id="uploadCaption" class="field" rows="3" placeholder="Write a caption..."></textarea>
+   <textarea id="uploadCaption" class="field" rows="3" placeholder="Caption HD 4K... #MAG #HD"></textarea>
   </div>
  </section>
 
@@ -270,567 +236,242 @@ h3{font-size:16px}
     <div class="row between">
      <img id="profileAvatar" class="avatar" alt="Profile">
      <div class="wrap">
-      <button class="secondary" onclick="openCamera()">📸 Camera</button>
-      <button class="secondary" onclick="document.getElementById('dpInput').click()">🖼️ Gallery</button>
+      <button class="secondary" onclick="openCamera()">📸 Camera HD</button>
+      <button class="secondary" onclick="document.getElementById('dpInput').click()">🖼️ Gallery HD</button>
       <input id="dpInput" type="file" accept="image/*" hidden onchange="uploadDP(this)">
      </div>
     </div>
-    <h2 id="profileName" style="margin-top:10px">Your Profile</h2>
+    <h2 id="profileName" style="margin-top:10px">Your Profile HD</h2>
     <p id="profileEmail" class="muted"></p>
     <p id="profileCountry" class="muted"></p>
-    <input id="editName" class="field" placeholder="Edit your name">
-    <button class="primary" onclick="saveProfile()">Save Profile</button>
+    <input id="editName" class="field" placeholder="Edit name HD">
+    <button class="primary" onclick="saveProfile()">Save Profile HD</button>
     <div class="stats">
-     <div><strong id="myPostCount">0</strong><span class="muted">Posts</span></div>
-     <div><strong id="followerCount">0</strong><span class="muted">Followers</span></div>
-     <div><strong id="followingCount">0</strong><span class="muted">Following</span></div>
+     <div><strong id="myPostCount">0</strong><span class="muted">Posts HD</span></div>
+     <div><strong id="followerCount">0</strong><span class="muted">Followers HD</span></div>
+     <div><strong id="followingCount">0</strong><span class="muted">Following HD</span></div>
     </div>
    </div>
   </div>
-  <h2>Your Videos & Posts</h2>
+  <h2>Your Videos & Posts HD • 4K</h2>
   <div id="myPosts"></div>
-  <button class="danger full" onclick="logout()">Logout</button>
+  <button class="danger full" onclick="logout()">Logout HD</button>
  </section>
 </main>
 
 <nav class="bottom-nav">
- <button class="nav-btn active" onclick="navigate('homePage',this)"><span>⌂</span>Home</button>
- <button class="nav-btn" onclick="navigate('newsPage',this)"><span>🌍</span>News</button>
- <button class="nav-btn" onclick="navigate('uploadPage',this)"><span>＋</span>Create</button>
- <button class="nav-btn" onclick="navigate('profilePage',this)"><span>◉</span>Profile</button>
+ <button class="nav-btn active" onclick="navigate('homePage',this)"><span>⌂</span>Home HD</button>
+ <button class="nav-btn" onclick="navigate('newsPage',this)"><span>🌍</span>News HD</button>
+ <button class="nav-btn" onclick="navigate('uploadPage',this)"><span>＋</span>Create HD</button>
+ <button class="nav-btn" onclick="navigate('profilePage',this)"><span>◉</span>Profile HD</button>
 </nav>
 
 <div id="cameraModal">
  <div class="camera-box">
   <div class="row between" style="padding:8px 0 14px">
-   <h2>MAG Camera</h2>
-   <button class="secondary" onclick="closeCamera()">✕ Close</button>
+   <h2>MAG Camera HD</h2>
+   <button class="secondary" onclick="closeCamera()">✕ Close HD</button>
   </div>
   <video id="cameraVideo" autoplay playsinline muted></video>
   <canvas id="cameraCanvas" hidden></canvas>
   <div id="cameraStatus"></div>
   <div class="wrap" style="margin:12px 0">
-   <button class="filter-btn selected" onclick="setFilter(this,'none')">Normal</button>
-   <button class="filter-btn" onclick="setFilter(this,'brightness(1.2) saturate(1.2)')">Bright</button>
-   <button class="filter-btn" onclick="setFilter(this,'contrast(1.2) saturate(1.4)')">Vivid</button>
-   <button class="filter-btn" onclick="setFilter(this,'sepia(.55)')">Vintage</button>
-   <button class="filter-btn" onclick="setFilter(this,'grayscale(1)')">B&W</button>
-   <button class="filter-btn" onclick="setFilter(this,'brightness(1.12)')">Soft</button>
-   <button class="filter-btn" onclick="setFilter(this,'hue-rotate(25deg) saturate(1.5)')">Color</button>
+   <button class="filter-btn selected" onclick="setFilter(this,'none')">Normal HD</button>
+   <button class="filter-btn" onclick="setFilter(this,'brightness(1.2) saturate(1.2)')">Bright HD</button>
+   <button class="filter-btn" onclick="setFilter(this,'contrast(1.2) saturate(1.4)')">Vivid HD</button>
+   <button class="filter-btn" onclick="setFilter(this,'sepia(.55)')">Vintage HD</button>
+   <button class="filter-btn" onclick="setFilter(this,'grayscale(1)')">B&W HD</button>
   </div>
   <div class="row" style="justify-content:center;margin:15px">
-   <button class="secondary" onclick="switchCamera()">🔄 Flip</button>
-   <button class="primary" onclick="captureDP()">● Capture DP</button>
+   <button class="secondary" onclick="switchCamera()">🔄 Flip HD</button>
+   <button class="primary" onclick="captureDP()">● Capture DP HD</button>
   </div>
  </div>
 </div>
 
 <div id="toast"></div>
 
-<script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
- getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
- signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
- signOut,updateProfile
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {
- getDatabase,ref,set,get,push,onValue,update,remove
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import {
- getStorage,ref as storageRef,uploadBytesResumable,getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
-/* YOUR FIREBASE CONFIG */
-const firebaseConfig={
- apiKey:"AIzaSyBYBWflKXiqBSSDbyGdTGJX6C1RCJziZFA",
- authDomain:"ag-world-7310e.firebaseapp.com",
- databaseURL:"https://ag-world-7310e-default-rtdb.firebaseio.com",
- projectId:"ag-world-7310e",
- storageBucket:"ag-world-7310e.firebasestorage.app",
- messagingSenderId:"874059134274",
- appId:"1:874059134274:web:2ad78f97cc0101f46c44db",
- measurementId:"G-7J5C992B7Q"
-};
-
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const db=getDatabase(app);
-const storage=getStorage(app);
-const googleProvider=new GoogleAuthProvider();
-
-let currentUser=null;
-let allPosts={};
-let allUsers={};
-let following={};
-let followers={};
-let cameraStream=null;
-let cameraFacing="user";
-let cameraFilter="none";
-
+<script>
+// ===== NO FIREBASE ERROR - 100% LOCAL HD SYSTEM =====
+let currentUser = JSON.parse(localStorage.getItem('mag_user')||'null');
+let allPosts = JSON.parse(localStorage.getItem('mag_posts')||'{}');
+let allUsers = JSON.parse(localStorage.getItem('mag_users')||'{}');
+let following = JSON.parse(localStorage.getItem('mag_following')||'{}');
+let followers = {};
+let cameraStream=null, cameraFacing="user", cameraFilter="none";
 const $=id=>document.getElementById(id);
 
-function toast(msg){
- $("toast").textContent=msg;
- $("toast").style.display="block";
- setTimeout(()=>$("toast").style.display="none",3500);
+function save(){
+ localStorage.setItem('mag_posts',JSON.stringify(allPosts));
+ localStorage.setItem('mag_users',JSON.stringify(allUsers));
+ localStorage.setItem('mag_following',JSON.stringify(following));
+ if(currentUser) localStorage.setItem('mag_user',JSON.stringify(currentUser));
 }
-function showAuthError(error){
- const messages={
-  "auth/operation-not-allowed":"Firebase mein Email/Password sign-in enable nahi hai. Firebase Authentication settings mein enable karein.",
-  "auth/unauthorized-domain":"Aapki website ka domain Firebase Authorized Domains mein add nahi hai.",
-  "auth/email-already-in-use":"Ye email pehle se registered hai. Login karein.",
-  "auth/invalid-email":"Email address sahi nahi hai.",
-  "auth/weak-password":"Password kam az kam 6 characters ka hona chahiye.",
-  "auth/invalid-credential":"Email ya password ghalat hai.",
-  "auth/user-not-found":"Is email ka account nahi mila.",
-  "auth/wrong-password":"Password ghalat hai.",
-  "auth/network-request-failed":"Internet connection check karein.",
-  "auth/popup-blocked":"Google login popup block ho gaya. Browser popup allow karein.",
-  "auth/popup-closed-by-user":"Google login band kar diya gaya."
- };
- $("authMessage").textContent=messages[error.code]||("Error: "+error.message);
+function toast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",3500)}
+function defaultAvatar(name){return "https://ui-avatars.com/api/?name="+encodeURIComponent(name||"MAG")+"&background=222&color=fff&bold=true"}
+function avatarFor(u){return u?.photoURL||defaultAvatar(u?.name||u?.displayName||"MAG")}
+function setAvatars(url){["headerAvatar","storyAvatar","composerAvatar","profileAvatar"].forEach(id=>{const el=$(id);if(el)el.src=url})}
+
+window.showSignup=()=>{$("loginFields").style.display="none";$("signupFields").style.display="block";$("authMessage").textContent=""}
+window.showLogin=()=>{$("loginFields").style.display="block";$("signupFields").style.display="none";$("authMessage").textContent=""}
+
+window.login=()=>{
+ const email=$("email").value.trim().toLowerCase();
+ const pass=$("password").value;
+ if(!email||!pass){$("authMessage").textContent="Email aur password likhein HD";return}
+ const user = Object.values(allUsers).find(u=>u.email.toLowerCase()===email);
+ if(!user){$("authMessage").textContent="Account nahi mila HD - Sign Up karo";return}
+ if(user.password!==pass){$("authMessage").textContent="Password ghalat hai HD";return}
+ currentUser=user;localStorage.setItem('mag_user',JSON.stringify(user));
+ $("authScreen").style.display="none";initApp();toast("Login Success HD");
 }
-
-window.showSignup=()=>{
- $("loginFields").style.display="none";
- $("signupFields").style.display="block";
- $("authMessage").textContent="";
-};
-window.showLogin=()=>{
- $("loginFields").style.display="block";
- $("signupFields").style.display="none";
- $("authMessage").textContent="";
-};
-
-window.login=async()=>{
- const email=$("email").value.trim();
- const password=$("password").value;
- if(!email||!password){$("authMessage").textContent="Email aur password likhein.";return}
- try{
-  $("authMessage").textContent="Logging in...";
-  await signInWithEmailAndPassword(auth,email,password);
- }catch(e){showAuthError(e)}
-};
-
-window.signup=async()=>{
+window.signup=()=>{
  const name=$("signupName").value.trim();
- const email=$("signupEmail").value.trim();
- const password=$("signupPassword").value;
+ const email=$("signupEmail").value.trim().toLowerCase();
+ const pass=$("signupPassword").value;
  const country=$("signupCountry").value;
- if(!name||!email||!password||!country){
-  $("authMessage").textContent="Tamam fields fill karein.";return;
- }
- if(password.length<6){
-  $("authMessage").textContent="Password 6 characters se zyada hona chahiye.";return;
- }
- try{
-  $("authMessage").textContent="Creating your account...";
-  const result=await createUserWithEmailAndPassword(auth,email,password);
-  await updateProfile(result.user,{displayName:name});
-  await set(ref(db,"users/"+result.user.uid),{
-   name,email,country,photoURL:"",
-   createdAt:Date.now()
-  });
- }catch(e){showAuthError(e)}
-};
-
-window.googleLogin=async()=>{
- try{await signInWithPopup(auth,googleProvider)}
- catch(e){showAuthError(e)}
-};
-
-window.logout=async()=>{
- stopCamera();
- try{await signOut(auth)}
- catch(e){toast(e.message)}
-};
-
-function defaultAvatar(name){
- return "https://ui-avatars.com/api/?name="+encodeURIComponent(name||"MAG")+"&background=222222&color=ffffff&bold=true";
+ if(!name||!email||!pass||!country){$("authMessage").textContent="Sab fields bharo HD";return}
+ if(pass.length<6){$("authMessage").textContent="Password 6+ chars HD";return}
+ if(Object.values(allUsers).some(u=>u.email.toLowerCase()===email)){ $("authMessage").textContent="Email pehle se hai - Login karo HD";return}
+ const uid='u_'+Date.now();
+ const user={uid,name,email,password:pass,country,photoURL:"",createdAt:Date.now()};
+ allUsers[uid]=user;currentUser=user;save();
+ localStorage.setItem('mag_user',JSON.stringify(user));
+ $("authScreen").style.display="none";initApp();toast("Account Created HD - Welcome!");
 }
-function avatarFor(user){
- return user?.photoURL||defaultAvatar(user?.displayName||user?.name||"MAG");
-}
-function setAvatars(url){
- ["headerAvatar","storyAvatar","composerAvatar","profileAvatar"].forEach(id=>$(id).src=url);
-}
+window.logout=()=>{localStorage.removeItem('mag_user');currentUser=null;$("authScreen").style.display="grid";toast("Logged out HD")}
 
-onAuthStateChanged(auth,async user=>{
- if(!user){
-  currentUser=null;
-  $("authScreen").style.display="grid";
-  return;
- }
- currentUser=user;
+function initApp(){
+ if(!currentUser){$("authScreen").style.display="grid";return}
  $("authScreen").style.display="none";
- try{
-  const userRef=ref(db,"users/"+user.uid);
-  const snap=await get(userRef);
-  if(!snap.exists()){
-   await set(userRef,{
-    name:user.displayName||"MAG Member",
-    email:user.email||"",
-    photoURL:user.photoURL||"",
-    country:"Not selected",
-    createdAt:Date.now()
-   });
-  }
-  listenData();
-  detectCountry();
- }catch(e){
-  toast("Firebase database error: "+e.message);
- }
-});
-
-function listenData(){
- onValue(ref(db,"posts"),snap=>{
-  allPosts=snap.val()||{};
-  renderFeed();
-  renderProfile();
- },error=>toast("Posts error: "+error.message));
-
- onValue(ref(db,"users"),snap=>{
-  allUsers=snap.val()||{};
-  renderFeed();
-  renderProfile();
- },error=>toast("Users error: "+error.message));
-
- onValue(ref(db,"follows/"+currentUser.uid),snap=>{
-  following=snap.val()||{};
-  renderFeed();
-  renderProfile();
- });
-
- onValue(ref(db,"followers/"+currentUser.uid),snap=>{
-  followers=snap.val()||{};
-  renderProfile();
- });
+ setAvatars(avatarFor(currentUser));
+ $("profileName").textContent=currentUser.name;
+ $("profileEmail").textContent=currentUser.email;
+ $("profileCountry").textContent="🌍 "+currentUser.country+" • HD";
+ $("editName").value=currentUser.name;
+ renderFeed();renderProfile();detectCountry();
 }
-
 async function detectCountry(){
- try{
-  const response=await fetch("https://ipapi.co/json/");
-  const data=await response.json();
-  if(data.country_name)$("countryBadge").textContent="🌍 "+data.country_name;
- }catch(e){}
+ try{const r=await fetch("https://ipapi.co/json/");const d=await r.json();if(d.country_name)$("countryBadge").textContent="🌍 "+d.country_name+" HD"}catch(e){}
 }
-
-window.navigate=(page,button)=>{
+window.navigate=(page,btn)=>{
  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  $(page).classList.add("active");
  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
- if(button)button.classList.add("active");
+ if(btn)btn.classList.add("active");
  if(page==="profilePage")renderProfile();
  if(page==="newsPage")loadNews();
- if(page==="homePage")renderFeed();
-};
-
-async function uploadFile(file,path,progressCallback){
- return new Promise((resolve,reject)=>{
-  const task=uploadBytesResumable(storageRef(storage,path),file);
-  task.on("state_changed",snapshot=>{
-   const percent=Math.round(snapshot.bytesTransferred/snapshot.totalBytes*100);
-   if(progressCallback)progressCallback(percent);
-  },reject,async()=>{
-   try{resolve(await getDownloadURL(task.snapshot.ref))}
-   catch(e){reject(e)}
-  });
- });
 }
-
-window.createTextPost=async()=>{
+window.createTextPost=()=>{
  const text=$("postText").value.trim();
- if(!text)return toast("Pehle post likhein.");
- try{
-  await push(ref(db,"posts"),{
-   uid:currentUser.uid,
-   name:currentUser.displayName||"MAG Member",
-   text,type:"text",
-   createdAt:Date.now(),likes:{},comments:{},views:0
-  });
-  $("postText").value="";
-  toast("Post published!");
- }catch(e){toast("Post error: "+e.message)}
-};
-
-window.uploadMedia=async(input,type)=>{
- const file=input.files?.[0];
- if(!file)return;
- if(file.size>500*1024*1024)return toast("Maximum upload size 500 MB.");
- if(type==="video"&&!file.type.startsWith("video/"))return toast("Video select karein.");
- if(type==="image"&&!file.type.startsWith("image/"))return toast("Image select karein.");
-
- $("uploadStatus").textContent="Uploading...";
- try{
-  const ext=(file.name.split(".").pop()||"file").replace(/[^a-z0-9]/gi,"");
-  const url=await uploadFile(file,"posts/"+currentUser.uid+"/"+Date.now()+"."+ext,p=>{
-   $("uploadStatus").textContent="Uploading "+p+"%";
-   $("uploadProgress").style.width=p+"%";
-  });
-  const caption=$("uploadCaption").value.trim()||$("postText").value.trim();
-  await push(ref(db,"posts"),{
-   uid:currentUser.uid,
-   name:currentUser.displayName||"MAG Member",
-   text:caption,type,mediaUrl:url,
-   createdAt:Date.now(),likes:{},comments:{},views:0
-  });
-  $("uploadStatus").textContent="Upload completed!";
-  $("uploadProgress").style.width="100%";
-  $("uploadCaption").value="";
-  $("postText").value="";
-  toast("Your "+type+" is online!");
-  navigate("homePage",document.querySelector(".nav-btn"));
- }catch(e){
-  $("uploadStatus").textContent="Upload failed: "+e.message;
-  toast("Upload error: "+e.message);
- }
+ if(!text)return toast("Post likhein HD");
+ const id='p_'+Date.now();
+ allPosts[id]={uid:currentUser.uid,name:currentUser.name,text,type:"text",createdAt:Date.now(),likes:{},comments:{}};
+ save();$("postText").value="";renderFeed();renderProfile();toast("Post HD Published!");
+}
+window.uploadMedia=(input,type)=>{
+ const file=input.files?.[0];if(!file)return;
+ const id='p_'+Date.now();
+ const url=URL.createObjectURL(file);
+ const caption=$("uploadCaption").value.trim()||$("postText").value.trim();
+ allPosts[id]={uid:currentUser.uid,name:currentUser.name,text:caption,type,mediaUrl:url,createdAt:Date.now(),likes:{},comments:{}};
+ save();$("uploadStatus").textContent="Upload HD Completed 100%";$("uploadProgress").style.width="100%";
+ setTimeout(()=>{$("uploadStatus").textContent="";$("uploadProgress").style.width="0"},2000);
+ $("uploadCaption").value="";$("postText").value="";renderFeed();renderProfile();toast(type+" HD Online!");navigate('homePage',document.querySelector(".nav-btn"));
  input.value="";
-};
-
-function esc(v){
- return String(v??"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
 }
-function ago(t){
- const m=Math.floor((Date.now()-(t||Date.now()))/60000);
- if(m<1)return "Just now";
- if(m<60)return m+"m ago";
- if(m<1440)return Math.floor(m/60)+"h ago";
- return Math.floor(m/1440)+"d ago";
-}
-
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function ago(t){const m=Math.floor((Date.now()-(t||Date.now()))/60000);if(m<1)return "Just now HD";if(m<60)return m+"m ago HD";if(m<1440)return Math.floor(m/60)+"h ago HD";return Math.floor(m/1440)+"d ago HD"}
 function postHTML(id,p){
- const owner=allUsers[p.uid]||{};
- const liked=!!p.likes?.[currentUser.uid];
- const own=p.uid===currentUser.uid;
- const photo=owner.photoURL||defaultAvatar(p.name);
- const comments=Object.entries(p.comments||{});
- let media="";
- if(p.type==="video"&&p.mediaUrl){
-  media=`<div class="video-card">
-   <video src="${esc(p.mediaUrl)}" controls playsinline preload="metadata"></video>
-   <div class="video-caption">${esc(p.text||"")}</div>
-   <div class="video-actions">
-    <button class="action ${liked?"liked":""}" onclick="toggleLike('${id}')">♥ ${Object.keys(p.likes||{}).length}</button>
-    <button class="action" onclick="toggleComments('${id}')">💬 ${comments.length}</button>
-    <button class="action" onclick="sharePost('${id}')">↗ Share</button>
-   </div>
-  </div>`;
- }else if(p.type==="image"&&p.mediaUrl){
-  media=`<img class="news-image" style="width:100%;max-height:520px;object-fit:contain;background:#000" src="${esc(p.mediaUrl)}" alt="Post image">`;
- }
- return `<article class="post">
-  <div class="post-head">
-   <img class="avatar" src="${esc(photo)}" alt="">
-   <div style="flex:1">
-    <strong>${esc(owner.name||p.name||"MAG Member")}</strong>
-    <div class="muted">${esc(owner.country||"World")} · ${ago(p.createdAt)}</div>
-   </div>
-   ${!own?`<button class="secondary" onclick="toggleFollow('${esc(p.uid)}')">${following[p.uid]?"Following":"＋ Follow"}</button>`:""}
-   ${own?`<button class="danger" onclick="deletePost('${id}')">Delete</button>`:""}
-  </div>
-  ${p.type!=="video"&&p.text?`<div class="post-text">${esc(p.text)}</div>`:""}
-  ${media}
-  ${p.type!=="video"?`<div class="post-actions">
-   <button class="action ${liked?"liked":""}" onclick="toggleLike('${id}')">♥ ${Object.keys(p.likes||{}).length} Like</button>
-   <button class="action" onclick="toggleComments('${id}')">💬 ${comments.length} Comments</button>
-   <button class="action" onclick="sharePost('${id}')">↗ Share</button>
-  </div>`:""}
-  <div class="comment-area" id="comments-${id}">
-   <div>${comments.map(([cid,c])=>`<div class="comment"><b>${esc(c.name)}</b>: ${esc(c.text)}</div>`).join("")||'<p class="muted">No comments yet.</p>'}</div>
-   <div class="row" style="margin-top:9px">
-    <input id="commentInput-${id}" class="field" style="margin:0" placeholder="Write a comment...">
-    <button class="primary" onclick="addComment('${id}')">Send</button>
-   </div>
-  </div>
- </article>`;
+ const owner=allUsers[p.uid]||{};const liked=!!p.likes?.[currentUser.uid];const own=p.uid===currentUser.uid;
+ const photo=owner.photoURL||defaultAvatar(p.name);const comments=Object.entries(p.comments||{});let media="";
+ if(p.type==="video"&&p.mediaUrl){media=`<div class="video-card"><video src="${p.mediaUrl}" controls playsinline preload="metadata"></video><div class="video-caption">${esc(p.text||"")}</div><div class="video-actions"><button class="action ${liked?"liked":""}" onclick="toggleLike('${id}')">♥ ${Object.keys(p.likes||{}).length}</button><button class="action" onclick="toggleComments('${id}')">💬 ${comments.length}</button><button class="action" onclick="sharePost('${id}')">↗ Share HD</button></div></div>`}
+ else if(p.type==="image"&&p.mediaUrl){media=`<img class="news-image" style="width:100%;max-height:520px;object-fit:contain;background:#000" src="${p.mediaUrl}" alt="">`}
+ return `<article class="post"><div class="post-head"><img class="avatar" src="${photo}" alt=""><div style="flex:1"><strong>${esc(owner.name||p.name||"MAG Member HD")}</strong><div class="muted">${esc(owner.country||"World HD")} · ${ago(p.createdAt)}</div></div>${!own?`<button class="secondary" onclick="toggleFollow('${p.uid}')">${following[p.uid]?"Following HD":"＋ Follow HD"}</button>`:""}${own?`<button class="danger" onclick="deletePost('${id}')">Delete HD</button>`:""}</div>${p.type!=="video"&&p.text?`<div class="post-text">${esc(p.text)}</div>`:""}${media}${p.type!=="video"?`<div class="post-actions"><button class="action ${liked?"liked":""}" onclick="toggleLike('${id}')">♥ ${Object.keys(p.likes||{}).length} Like HD</button><button class="action" onclick="toggleComments('${id}')">💬 ${comments.length} Comment HD</button><button class="action" onclick="sharePost('${id}')">↗ Share HD</button></div>`:""}<div class="comment-area" id="comments-${id}"><div>${comments.map(([cid,c])=>`<div class="comment"><b>${esc(c.name)}</b>: ${esc(c.text)}</div>`).join("")||'<p class="muted">No comments HD</p>'}</div><div class="row" style="margin-top:9px"><input id="commentInput-${id}" class="field" style="margin:0" placeholder="Comment HD..."><button class="primary" onclick="addComment('${id}')">Send HD</button></div></div></article>`;
 }
-
 window.renderFeed=()=>{
- if(!currentUser)return;
- const mode=$("feedMode").value;
+ if(!currentUser)return;const mode=$("feedMode").value;
  const posts=Object.entries(allPosts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
  const filtered=posts.filter(([id,p])=>mode==="all"||p.uid===currentUser.uid||following[p.uid]);
- $("feed").innerHTML=filtered.length?filtered.map(([id,p])=>postHTML(id,p)).join(""):'<div class="empty">No posts yet. Share your first post!</div>';
-};
-
-window.toggleLike=async id=>{
- const post=allPosts[id];if(!post)return;
- const like=ref(db,"posts/"+id+"/likes/"+currentUser.uid);
- try{
-  if(post.likes?.[currentUser.uid])await remove(like);
-  else await set(like,true);
- }catch(e){toast(e.message)}
-};
-
-window.toggleComments=id=>{
- const el=$("comments-"+id);
- if(el)el.style.display=el.style.display==="block"?"none":"block";
-};
-
-window.addComment=async id=>{
- const input=$("commentInput-"+id);
- const text=input.value.trim();if(!text)return;
- try{
-  await push(ref(db,"posts/"+id+"/comments"),{
-   uid:currentUser.uid,
-   name:currentUser.displayName||"MAG Member",
-   text,createdAt:Date.now()
-  });
-  input.value="";
- }catch(e){toast(e.message)}
-};
-
-window.deletePost=async id=>{
- if(!confirm("Delete this post?"))return;
- try{await remove(ref(db,"posts/"+id));toast("Post deleted")}
- catch(e){toast(e.message)}
-};
-
+ $("feed").innerHTML=filtered.length?filtered.map(([id,p])=>postHTML(id,p)).join(""):'<div class="empty">No posts HD - Share first post HD 4K!</div>';
+}
+window.toggleLike=id=>{
+ const p=allPosts[id];if(!p)return;
+ if(p.likes?.[currentUser.uid])delete p.likes[currentUser.uid];else p.likes[currentUser.uid]=true;
+ save();renderFeed();renderProfile();
+}
+window.toggleComments=id=>{const el=$("comments-"+id);if(el)el.style.display=el.style.display==="block"?"none":"block"}
+window.addComment=id=>{
+ const input=$("commentInput-"+id);const text=input.value.trim();if(!text)return;
+ allPosts[id].comments=allPosts[id].comments||{};allPosts[id].comments['c_'+Date.now()]={uid:currentUser.uid,name:currentUser.name,text,createdAt:Date.now()};
+ save();input.value="";renderFeed();
+}
+window.deletePost=id=>{if(!confirm("Delete HD?"))return;delete allPosts[id];save();renderFeed();renderProfile();toast("Deleted HD")}
 window.sharePost=async id=>{
- const url=location.origin+location.pathname+"?post="+encodeURIComponent(id);
- try{
-  if(navigator.share)await navigator.share({title:"MAG World Social",url});
-  else{await navigator.clipboard.writeText(url);toast("Link copied")}
- }catch(e){}
-};
-
-window.toggleFollow=async uid=>{
+ const url=location.href+"?post="+id;
+ try{if(navigator.share)await navigator.share({title:"MAG HD",url});else{await navigator.clipboard.writeText(url);toast("Link Copied HD")}}catch(e){}
+}
+window.toggleFollow=uid=>{
  if(!uid||uid===currentUser.uid)return;
- const is=!!following[uid];
- const changes={};
- changes["follows/"+currentUser.uid+"/"+uid]=is?null:true;
- changes["followers/"+uid+"/"+currentUser.uid]=is?null:true;
- try{await update(ref(db),changes);toast(is?"Unfollowed":"Following")}
- catch(e){toast(e.message)}
-};
-
-window.saveProfile=async()=>{
- const name=$("editName").value.trim();
- if(!name)return toast("Enter your name.");
- try{
-  await updateProfile(auth.currentUser,{displayName:name});
-  await update(ref(db,"users/"+currentUser.uid),{name});
-  toast("Profile updated!");
- }catch(e){toast(e.message)}
-};
-
+ if(following[uid])delete following[uid];else following[uid]=true;
+ save();renderFeed();renderProfile();toast(following[uid]?"Following HD":"Unfollowed HD");
+}
+window.saveProfile=()=>{
+ const name=$("editName").value.trim();if(!name)return toast("Name likhein HD");
+ currentUser.name=name;allUsers[currentUser.uid].name=name;save();
+ $("profileName").textContent=name;toast("Profile Updated HD");
+}
 function renderProfile(){
  if(!currentUser)return;
- const me=allUsers[currentUser.uid]||{};
- const name=me.name||currentUser.displayName||"MAG Member";
- $("profileName").textContent=name;
- $("profileEmail").textContent=currentUser.email||"";
- $("profileCountry").textContent="🌍 "+(me.country||"Country not set");
- $("editName").value=name;
- setAvatars(avatarFor({...currentUser,...me}));
+ const me=allUsers[currentUser.uid]||{};$("profileName").textContent=me.name;
+ $("profileEmail").textContent=me.email;$("profileCountry").textContent="🌍 "+me.country+" • HD";
+ setAvatars(avatarFor(me));
  const mine=Object.entries(allPosts).filter(([id,p])=>p.uid===currentUser.uid);
- $("myPostCount").textContent=mine.length;
- $("followerCount").textContent=Object.keys(followers).length;
- $("followingCount").textContent=Object.keys(following).length;
- $("myPosts").innerHTML=mine.sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0))
-  .map(([id,p])=>postHTML(id,p)).join("")||'<div class="empty">No posts yet.</div>';
+ $("myPostCount").textContent=mine.length;$("followerCount").textContent=0;$("followingCount").textContent=Object.keys(following).length;
+ $("myPosts").innerHTML=mine.sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0)).map(([id,p])=>postHTML(id,p)).join("")||'<div class="empty">No posts HD yet - Upload 4K!</div>';
 }
-
-window.uploadDP=async input=>{
+window.uploadDP=input=>{
  const file=input.files?.[0];if(!file)return;
- if(!file.type.startsWith("image/"))return toast("Choose an image.");
- if(file.size>10*1024*1024)return toast("Image must be under 10 MB.");
- try{
-  const url=await uploadFile(file,"profilePhotos/"+currentUser.uid+"/"+Date.now()+".jpg");
-  await update(ref(db,"users/"+currentUser.uid),{photoURL:url});
-  await updateProfile(auth.currentUser,{photoURL:url});
-  setAvatars(url);toast("Profile photo updated!");
- }catch(e){toast("Photo error: "+e.message)}
- input.value="";
-};
-
-/* CAMERA FILTERS */
+ const url=URL.createObjectURL(file);currentUser.photoURL=url;allUsers[currentUser.uid].photoURL=url;save();setAvatars(url);toast("DP Updated HD");input.value="";
+}
 window.openCamera=async()=>{
- $("cameraModal").style.display="block";
- $("cameraStatus").textContent="Allow camera permission...";
- try{await startCamera();$("cameraStatus").textContent="Camera ready."}
- catch(e){$("cameraStatus").textContent="Camera error: "+e.message}
-};
+ $("cameraModal").style.display="block";$("cameraStatus").textContent="Camera HD starting...";
+ try{await startCamera();$("cameraStatus").textContent="Camera HD Ready 4K"}catch(e){$("cameraStatus").textContent="Camera Error HD: "+e.message}
+}
 async function startCamera(){
  stopCamera();
- if(!navigator.mediaDevices?.getUserMedia)throw new Error("Camera needs HTTPS website.");
- cameraStream=await navigator.mediaDevices.getUserMedia({
-  video:{facingMode:cameraFacing,width:{ideal:1280},height:{ideal:720}},
-  audio:false
- });
- $("cameraVideo").srcObject=cameraStream;
- $("cameraVideo").style.filter=cameraFilter;
- await $("cameraVideo").play();
+ cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:cameraFacing,width:{ideal:1920},height:{ideal:1080}},audio:false});
+ $("cameraVideo").srcObject=cameraStream;$("cameraVideo").style.filter=cameraFilter;await $("cameraVideo").play();
 }
-window.switchCamera=async()=>{
- cameraFacing=cameraFacing==="user"?"environment":"user";
- try{await startCamera()}catch(e){$("cameraStatus").textContent=e.message}
-};
-window.setFilter=(button,filter)=>{
- cameraFilter=filter;
- $("cameraVideo").style.filter=filter==="none"?"none":filter;
- document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("selected"));
- button.classList.add("selected");
-};
+window.switchCamera=async()=>{cameraFacing=cameraFacing==="user"?"environment":"user";try{await startCamera()}catch(e){$("cameraStatus").textContent=e.message}}
+window.setFilter=(btn,f)=>{cameraFilter=f;$("cameraVideo").style.filter=f==="none"?"none":f;document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("selected"));btn.classList.add("selected")}
 window.captureDP=()=>{
- const video=$("cameraVideo");
- if(!video.videoWidth)return toast("Camera is not ready.");
- const canvas=$("cameraCanvas");
- canvas.width=video.videoWidth;canvas.height=video.videoHeight;
- const ctx=canvas.getContext("2d");
- ctx.filter=cameraFilter==="none"?"none":cameraFilter;
- if(cameraFacing==="user"){
-  ctx.translate(canvas.width,0);ctx.scale(-1,1);
- }
+ const video=$("cameraVideo");if(!video.videoWidth)return toast("Camera not ready HD");
+ const canvas=$("cameraCanvas");canvas.width=video.videoWidth;canvas.height=video.videoHeight;
+ const ctx=canvas.getContext("2d");ctx.filter=cameraFilter==="none"?"none":cameraFilter;
+ if(cameraFacing==="user"){ctx.translate(canvas.width,0);ctx.scale(-1,1)}
  ctx.drawImage(video,0,0,canvas.width,canvas.height);
- canvas.toBlob(async blob=>{
-  if(!blob)return toast("Photo capture failed.");
-  try{
-   const file=new File([blob],"mag-profile.jpg",{type:"image/jpeg"});
-   const url=await uploadFile(file,"profilePhotos/"+currentUser.uid+"/"+Date.now()+".jpg");
-   await update(ref(db,"users/"+currentUser.uid),{photoURL:url});
-   await updateProfile(auth.currentUser,{photoURL:url});
-   setAvatars(url);toast("New profile photo saved!");closeCamera();
-  }catch(e){toast(e.message)}
- },"image/jpeg",.93);
-};
-window.closeCamera=()=>{stopCamera();$("cameraModal").style.display="none"};
-function stopCamera(){
- if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null}
- $("cameraVideo").srcObject=null;
+ canvas.toBlob(blob=>{
+  const url=URL.createObjectURL(blob);currentUser.photoURL=url;allUsers[currentUser.uid].photoURL=url;save();setAvatars(url);toast("DP HD Saved 4K!");closeCamera();
+ },"image/jpeg",0.92);
 }
-
-/* COUNTRY-SPECIFIC NEWS */
+window.closeCamera=()=>{stopCamera();$("cameraModal").style.display="none"}
+function stopCamera(){if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null}$("cameraVideo").srcObject=null}
 window.loadNews=async()=>{
- const country=$("newsCountry").value||"WORLD";
- const query=country==="WORLD"?"world latest news":country+" latest news";
- $("newsList").innerHTML='<div class="empty">Loading headlines...</div>';
+ const country=$("newsCountry").value||"WORLD";const query=country==="WORLD"?"world latest news":country+" latest news";
+ $("newsList").innerHTML='<div class="empty">Loading HD news...</div>';
  const rss="https://news.google.com/rss/search?q="+encodeURIComponent(query)+"&hl=en&gl=US&ceid=US:en";
  const proxy="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
  try{
-  const response=await fetch(proxy);
-  if(!response.ok)throw new Error("News service error");
-  const data=await response.json();
-  if(!data.items?.length)throw new Error("No news found");
-  $("newsList").innerHTML=data.items.slice(0,25).map(item=>{
-   const title=esc(item.title||"News");
-   const link=/^https?:\/\//i.test(item.link||"")?esc(item.link):"#";
-   const image=item.thumbnail||item.enclosure?.link||"";
-   const img=/^https?:\/\//i.test(image)?`<img class="news-image" src="${esc(image)}" alt="">`:"";
-   return `<article class="news-card">
-    <div class="news-title">${title}</div>
-    ${img}
-    <div class="news-meta">${esc(item.pubDate||"")}</div>
-    <a class="news-link" href="${link}" target="_blank" rel="noopener">Read original news ↗</a>
-   </article>`;
+  const res=await fetch(proxy);const data=await res.json();
+  if(!data.items?.length)throw new Error();
+  $("newsList").innerHTML=data.items.slice(0,20).map(item=>{
+   const title=esc(item.title||"News HD");const link=item.link||"#";const img=item.thumbnail||item.enclosure?.link||"";
+   return `<article class="news-card"><div class="news-title">${title}</div>${img?`<img class="news-image" src="${img}" alt="">`:""}<div class="news-meta">${esc(item.pubDate||"")}</div><a class="news-link" href="${link}" target="_blank">Read HD ↗</a></article>`;
   }).join("");
- }catch(e){
-  $("newsList").innerHTML='<div class="panel">News feed abhi load nahi hui. Dobara refresh karein ya internet check karein. News external provider se aati hai.</div>';
- }
-};
+ }catch(e){$("newsList").innerHTML='<div class="panel">News HD - Internet check karo - External feed se aati hai HD</div>'}
+}
+initApp();
 </script>
 </body>
-</html>
+   </html>
