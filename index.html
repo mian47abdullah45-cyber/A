@@ -3,132 +3,111 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050711">
-<title>VYRA — The World in Motion</title>
-
+<title>VYRA | The World in Motion</title>
 <style>
 :root{
- --bg:#050711;--panel:#0d1425;--panel2:#111d33;
- --blue:#087cff;--cyan:#00d9ff;--text:#f7faff;
- --muted:#91a2bd;--line:#1b3152;--pink:#ff397d;
+ --bg:#050711;--panel:#0d1528;--panel2:#14223c;
+ --blue:#087cff;--cyan:#00dfff;--white:#f7faff;
+ --muted:#9aabc5;--line:#203453;--pink:#ff397e;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+body{background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
-button:disabled{opacity:.5;cursor:not-allowed}
-.primary{
- border:0;color:white;font-weight:bold;padding:12px 17px;border-radius:13px;
- background:linear-gradient(110deg,#087cff,#00c9ed);
- box-shadow:0 5px 22px #087cff35
-}
-.secondary{border:1px solid var(--line);background:#14213a;color:white;padding:11px 14px;border-radius:12px}
-.danger{border:0;background:#4b1a2d;color:#ff9ab6;padding:10px 13px;border-radius:10px}
-input,select,textarea{
- width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);
- background:#080f1e;color:white;outline:none;margin:6px 0
-}
+.primary{background:linear-gradient(110deg,#086bff,#00cfff);color:white;border:0;border-radius:13px;padding:13px 18px;font-weight:bold;box-shadow:0 5px 22px #087cff38}
+.secondary{background:#13213a;color:white;border:1px solid var(--line);padding:11px 15px;border-radius:12px}
+.danger{background:#45182d;color:#ff9ab6;border:0;padding:10px;border-radius:11px}
+input,select,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#080f20;color:white;outline:none;margin:6px 0}
 input:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 12px #00caff30}
-label{font-size:13px;color:#bdcce2}
-.card{background:linear-gradient(145deg,#101b30,#09101e);border:1px solid var(--line);border-radius:17px;padding:15px;margin:12px 0}
-.muted{color:var(--muted);font-size:13px}
-#authScreen{
- min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px;
- background:radial-gradient(ellipse at 20% 10%,#0754a044,transparent 42%),
- radial-gradient(ellipse at 90% 90%,#003d7444,transparent 40%),#050711
-}
-.authBox{width:100%;max-width:420px;background:#091225;border:1px solid #167cff55;border-radius:25px;padding:25px;box-shadow:0 0 55px #007bff22}
-.brandLogo{
- width:82px;height:82px;margin:0 auto 15px;border-radius:25px;
- display:grid;place-items:center;font-size:35px;font-weight:1000;
- background:linear-gradient(135deg,#006dff,#00ddff);box-shadow:0 0 32px #008cff77
-}
-.authBox h1{text-align:center;font-size:29px;letter-spacing:3px}
-.authSub{text-align:center;color:var(--cyan);font-size:11px;letter-spacing:3px;margin:7px 0 22px}
-.tabs{display:flex;gap:8px;margin-bottom:14px}
-.tabs button{flex:1}
-.msg{font-size:13px;line-height:1.5;margin:10px 0;color:#ff8da9}
-.ok{color:#4be6ad}
-header{
- height:60px;position:fixed;z-index:20;top:0;left:0;right:0;
- background:#070c19ed;border-bottom:1px solid var(--line);
- display:flex;align-items:center;justify-content:space-between;padding:0 15px;
- backdrop-filter:blur(15px)
-}
-.headBrand{display:flex;align-items:center;gap:10px}
-.smallLogo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#087cff,#00d9ff);display:grid;place-items:center;font-weight:1000}
-.headBrand b{letter-spacing:2px;font-size:18px}
-.headBrand small{display:block;color:var(--cyan);font-size:9px;letter-spacing:2px}
-.headerBtns{display:flex;gap:8px}
-.iconBtn{width:38px;height:38px;border:1px solid var(--line);border-radius:12px;background:#12203a;color:white;font-size:18px}
-#app{padding-top:60px;padding-bottom:65px}
-.page{display:none}
-.page.active{display:block}
-.topTitle{font-size:22px;margin:17px 15px}
-.bottomNav{
- position:fixed;z-index:30;bottom:0;left:0;right:0;height:62px;
- display:flex;justify-content:space-around;align-items:center;
- background:#080e1cf5;border-top:1px solid var(--line);
- padding-bottom:env(safe-area-inset-bottom);backdrop-filter:blur(15px)
-}
-.bottomNav button{border:0;background:none;color:#8395b5;font-size:10px;display:flex;flex-direction:column;gap:4px;align-items:center;min-width:55px}
-.bottomNav button span{font-size:21px}
+label{font-size:13px;color:#b8c9e4}
+.muted{font-size:13px;color:var(--muted)}
+.card{background:linear-gradient(145deg,#111d34,#091020);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}
+.msg{font-size:13px;color:#ff8da9;line-height:1.5;margin:10px 0}
+.good{color:#43e7af}
+svg{width:24px;height:24px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.iconButton{display:grid;place-items:center;border:0;background:transparent;color:white}
+#authScreen{min-height:100dvh;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse at 20% 10%,#0754a055,transparent 42%),radial-gradient(ellipse at 90% 90%,#003d7755,transparent 40%),#050711}
+.authBox{width:100%;max-width:420px;background:#091225;border:1px solid #168cff55;border-radius:26px;padding:25px;box-shadow:0 0 55px #007bff25}
+.brandLogo{width:86px;height:86px;margin:0 auto 15px;border-radius:27px;display:grid;place-items:center;font-size:39px;font-weight:1000;background:linear-gradient(135deg,#006dff,#00e2ff);box-shadow:0 0 35px #008cff88}
+.authBox h1{text-align:center;font-size:30px;letter-spacing:4px}
+.authSub{text-align:center;color:var(--cyan);font-size:10px;letter-spacing:3px;margin:8px 0 23px}
+.tabs{display:flex;gap:8px;margin-bottom:15px}.tabs button{flex:1}
+header{height:58px;position:fixed;z-index:20;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:#070c19ed;border-bottom:1px solid var(--line);backdrop-filter:blur(15px)}
+.brand{display:flex;align-items:center;gap:10px}
+.brandMark{height:37px;width:37px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#087cff,#00ddff);font-weight:1000}
+.brand b{letter-spacing:2px;font-size:18px}.brand small{display:block;font-size:9px;color:var(--cyan);letter-spacing:2px;margin-top:2px}
+.headActions{display:flex;gap:13px;align-items:center}
+.headActions button{color:white;background:none;border:0}
+#app{padding-top:58px;padding-bottom:66px}
+.page{display:none}.page.active{display:block}
+.bottomNav{position:fixed;z-index:30;bottom:0;left:0;right:0;height:65px;padding-bottom:env(safe-area-inset-bottom);display:flex;justify-content:space-around;align-items:center;background:#080e1cf5;border-top:1px solid var(--line);backdrop-filter:blur(15px)}
+.bottomNav button{border:0;background:none;color:#8799b9;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:55px}
+.bottomNav button svg{width:22px;height:22px}
 .bottomNav button.active{color:var(--cyan)}
-/* VIDEO FEED */
-#videoPage{height:calc(100dvh - 122px);overflow-y:auto;scroll-snap-type:y mandatory}
-.videoCard{
- height:calc(100dvh - 122px);min-height:450px;position:relative;
- background:#000;scroll-snap-align:start;overflow:hidden
-}
-.videoCard video,.videoCard .photoMedia{
- width:100%;height:100%;object-fit:contain;background:#000
-}
-.videoOverlay{
- position:absolute;inset:0;pointer-events:none;
- background:linear-gradient(transparent 55%,#000b 100%)
-}
-.videoInfo{position:absolute;left:15px;right:85px;bottom:22px;z-index:2;text-shadow:0 2px 5px #000}
-.videoInfo b{font-size:15px}
-.videoInfo p{font-size:14px;margin-top:7px;line-height:1.4}
-.videoActions{
- position:absolute;right:12px;bottom:35px;z-index:3;
- display:flex;flex-direction:column;gap:19px;align-items:center
-}
-.videoActions button{border:0;background:#101a2b99;color:white;border-radius:50%;width:48px;height:48px;font-size:21px;backdrop-filter:blur(8px)}
-.videoActions small{font-size:11px;color:white;text-shadow:0 1px 4px black}
-.followBtn{background:var(--blue)!important;width:auto!important;height:auto!important;border-radius:15px!important;padding:7px 12px!important;font-size:12px!important}
-.feedEmpty{padding:30px;text-align:center;color:var(--muted)}
-/* OTHER PAGES */
+.title{font-size:23px;margin:17px 15px}
 .content{max-width:760px;margin:auto;padding:0 13px}
+/* FULL SCREEN SHORT VIDEO FEED */
+#homePage{height:calc(100dvh - 123px);overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+#homePage::-webkit-scrollbar{display:none}
+.videoCard{height:calc(100dvh - 123px);min-height:430px;position:relative;background:#000;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+.videoMedia{width:100%;height:100%;object-fit:contain;background:#000}
+.videoShade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 45%,#0009 100%)}
+.videoTop{position:absolute;top:13px;left:0;right:0;z-index:2;display:flex;justify-content:center;gap:23px;text-shadow:0 2px 8px #000}
+.videoTop button{border:0;background:none;color:#ffffffa8;font-weight:bold;font-size:15px}
+.videoTop button.selected{color:white;border-bottom:2px solid var(--cyan);padding-bottom:6px}
+.videoInfo{position:absolute;left:14px;right:85px;bottom:21px;z-index:3;text-shadow:0 2px 7px #000}
+.videoInfo .creator{font-size:15px;font-weight:bold}
+.videoInfo p{font-size:14px;margin-top:7px;line-height:1.4}
+.videoInfo .music{font-size:12px;margin-top:9px}
+.videoActions{position:absolute;right:12px;bottom:28px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:16px}
+.videoActions button{border:0;background:#101a2b99;color:white;border-radius:50%;width:46px;height:46px;display:grid;place-items:center;backdrop-filter:blur(8px)}
+.videoActions button svg{width:25px;height:25px}
+.videoActions small{font-size:11px;text-shadow:0 1px 5px black}
+.videoActions .follow{background:var(--blue);width:26px;height:26px;margin-top:-15px;border-radius:50%;font-weight:bold;font-size:19px}
+.videoActions .liked{color:#ff397e}
+.videoAvatar{width:45px;height:45px;border-radius:50%;border:2px solid white;object-fit:cover}
+.feedMessage{height:100%;display:grid;place-items:center;text-align:center;padding:25px;color:#a7bad7;line-height:1.8}
+/* OTHER SECTIONS */
+.postImage,.postVideo{width:100%;max-height:550px;object-fit:contain;background:#000;border-radius:12px;margin-top:10px}
 .row{display:flex;align-items:center;gap:10px}
-.avatar{width:43px;height:43px;border-radius:50%;object-fit:cover;background:#152b4c;border:1px solid #168cff}
-.postImage,.postVideo{width:100%;max-height:600px;object-fit:contain;background:#000;border-radius:12px;margin-top:10px}
-.actions{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap}
+.avatar{width:43px;height:43px;border-radius:50%;object-fit:cover;background:#152b4c;border:1px solid var(--blue)}
+.actions{display:flex;gap:17px;margin-top:12px;flex-wrap:wrap}
 .actions button{background:none;border:0;color:#b9cce9}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.grid img,.grid video{width:100%;height:130px;object-fit:cover;border-radius:7px;background:#111}
 .profile{text-align:center;padding:20px}
 .profilePic{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--cyan)}
 .stats{display:flex;justify-content:space-around;margin:18px}
-.stats b{display:block;font-size:20px}
-.stats small{color:var(--muted)}
-.liveTag{color:#ff5b83;font-weight:bold}
+.stats b{display:block;font-size:20px}.stats small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.grid img,.grid video{width:100%;height:135px;object-fit:cover;border-radius:7px;background:#111}
 .newsItem a{color:var(--cyan);text-decoration:none}
-.sportScore{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
-.progress{height:6px;border-radius:8px;background:#192743;overflow:hidden}
+.sportRow{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);gap:12px}
+.liveTag{color:#ff5685;font-weight:bold}
+.progress{height:7px;border-radius:9px;background:#192743;overflow:hidden}
 .progress div{height:100%;width:0;background:linear-gradient(90deg,#087cff,#00eaff)}
-#cameraPreview{width:100%;background:#000;border-radius:13px;max-height:65vh}
-@media(min-width:800px){
- #videoPage{max-width:520px;margin:auto}
- .videoCard{height:calc(100dvh - 122px)}
-}
+#cameraPreview{width:100%;max-height:65vh;background:#000;border-radius:12px}
+@media(min-width:750px){#homePage{max-width:500px;margin:auto}.videoCard{height:calc(100dvh - 123px)}}
 </style>
 </head>
 <body>
 
-<!-- SIGN UP / LOGIN -->
+<!-- SVG ICON LIBRARY -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/></symbol>
+<symbol id="i-comment" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.5-4A8.5 8.5 0 1 1 21 11.5z"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 14v6h16v-6"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8m-4-4v4M7 4h10v6a5 5 0 0 1-10 0zM7 6H3v2a5 5 0 0 0 5 5m9-7h4v2a5 5 0 0 1-5 5"/></symbol>
+<symbol id="i-news" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h5v5H7zm8 0h2m-2 4h2M7 16h10"/></symbol>
+<symbol id="i-live" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
+<symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 8l12-2"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+</svg>
+
 <section id="authScreen">
  <div class="authBox">
   <div class="brandLogo">V</div>
@@ -147,75 +126,67 @@ header{
    <label>Full name</label><input id="signupName" placeholder="Your name">
    <label>Email</label><input id="signupEmail" type="email" placeholder="Your email">
    <label>Password (minimum 6 characters)</label><input id="signupPassword" type="password" placeholder="Create password">
-   <label>Your country</label><select id="signupCountry"></select>
-   <button class="primary" style="width:100%;margin-top:10px" onclick="signup()">Create VYRA Account</button>
+   <label>Country</label><select id="signupCountry"></select>
+   <button class="primary" style="width:100%;margin-top:10px" onclick="signup()">Create Account</button>
   </div>
   <div id="authMsg" class="msg"></div>
   <p class="muted" style="text-align:center;margin-top:15px">Create. Connect. Discover.</p>
  </div>
 </section>
 
-<!-- MAIN APP -->
 <div id="app" class="hidden">
 <header>
- <div class="headBrand"><div class="smallLogo">V</div><div><b>VYRA</b><small>THE WORLD IN MOTION</small></div></div>
- <div class="headerBtns">
-  <button class="iconBtn" onclick="openPage('sports')">🏆</button>
-  <button class="iconBtn" onclick="openPage('news')">🌍</button>
+ <div class="brand"><div class="brandMark">V</div><div><b>VYRA</b><small>THE WORLD IN MOTION</small></div></div>
+ <div class="headActions">
+  <button onclick="openPage('news')" aria-label="News"><svg><use href="#i-news"/></svg></button>
+  <button onclick="openPage('sports')" aria-label="Sports"><svg><use href="#i-trophy"/></svg></button>
  </div>
 </header>
 
-<!-- SHORT VIDEO FEED -->
-<section id="videoPage" class="page active">
- <div id="videoFeed"><div class="feedEmpty">Loading videos...</div></div>
+<!-- VIDEO FEED -->
+<section id="homePage" class="page active">
+ <div id="videoFeed"><div class="feedMessage">Welcome to VYRA<br>Loading videos...</div></div>
 </section>
 
 <!-- EXPLORE -->
 <section id="explorePage" class="page">
- <h2 class="topTitle">Explore ✨</h2>
- <div class="content">
-  <div class="card">
-   <h3>Discover VYRA</h3>
-   <p class="muted" style="margin:8px 0">Explore videos and posts from the community.</p>
-   <button class="primary" onclick="openPage('home')">Open video feed</button>
-  </div>
-  <div id="exploreFeed"></div>
- </div>
+ <h2 class="title">Discover VYRA ✨</h2>
+ <div class="content"><div id="exploreFeed"></div></div>
 </section>
 
 <!-- CREATE -->
 <section id="createPage" class="page">
- <h2 class="topTitle">Create video or post ＋</h2>
+ <h2 class="title">Create your video ＋</h2>
  <div class="content">
   <div class="card">
-   <p class="muted">Choose a video or photo from your device.</p>
+   <h3>Upload video or photo</h3>
+   <p class="muted" style="margin:8px 0">Select media from your phone gallery.</p>
    <input id="mediaFile" type="file" accept="video/*,image/*">
-   <textarea id="caption" rows="3" placeholder="Write a caption and #hashtags"></textarea>
+   <textarea id="caption" rows="3" placeholder="Write caption... #VYRA"></textarea>
    <div class="progress hidden" id="uploadProgress"><div id="uploadBar"></div></div>
-   <p class="muted" id="uploadStatus"></p>
+   <p id="uploadStatus" class="muted"></p>
    <button class="primary" style="width:100%" onclick="uploadPost()">Upload to VYRA</button>
   </div>
   <div class="card">
-   <h3>Camera</h3>
-   <p class="muted" style="margin:8px 0">Open your device camera to record or take a photo.</p>
-   <button class="secondary" onclick="openCamera()">📷 Open Camera</button>
+   <h3>Record with camera</h3>
+   <button class="secondary" style="margin-top:10px" onclick="openCamera()">📷 Open camera</button>
    <video id="cameraPreview" autoplay muted playsinline class="hidden"></video>
-   <div id="cameraButtons" class="hidden" style="display:flex;gap:8px;margin-top:8px">
-    <button class="primary" onclick="capturePhoto()">Take Photo</button>
-    <button class="secondary" onclick="closeCamera()">Close</button>
+   <div id="cameraControls" class="hidden" style="margin-top:8px">
+    <button class="primary" onclick="capturePhoto()">Capture photo</button>
+    <button class="secondary" onclick="closeCamera()">Close camera</button>
    </div>
-   <canvas id="captureCanvas" class="hidden"></canvas>
+   <canvas id="canvas" class="hidden"></canvas>
   </div>
  </div>
 </section>
 
 <!-- NEWS -->
 <section id="newsPage" class="page">
- <h2 class="topTitle">World News 🌍</h2>
+ <h2 class="title">World News 🌍</h2>
  <div class="content">
   <div class="card">
-   <label>Choose country</label><select id="newsCountry"></select>
-   <button class="primary" style="width:100%" onclick="loadNews()">Load latest headlines</button>
+   <label>Select country</label><select id="newsCountry"></select>
+   <button class="primary" style="width:100%" onclick="loadNews()">Get latest news</button>
   </div>
   <div id="newsResults"></div>
  </div>
@@ -223,103 +194,94 @@ header{
 
 <!-- SPORTS -->
 <section id="sportsPage" class="page">
- <h2 class="topTitle">Sports Live 🏆</h2>
+ <h2 class="title">All Sports Live 🏆</h2>
  <div class="content">
   <div class="card">
-   <h3>All Sports Centre</h3>
-   <p class="muted" style="margin:8px 0">Football, cricket, basketball, tennis, baseball, hockey, rugby, volleyball, handball and more.</p>
-   <label>Choose sport</label>
+   <h3>Sports Centre</h3>
+   <p class="muted" style="margin:8px 0">Football, cricket, tennis, basketball, baseball, hockey, rugby, volleyball and more.</p>
+   <label>Select sport</label>
    <select id="sportSelect">
-    <option value="football">Football / Soccer</option>
-    <option value="cricket">Cricket</option>
-    <option value="basketball">Basketball</option>
-    <option value="baseball">Baseball</option>
-    <option value="hockey">Ice Hockey</option>
-    <option value="rugby">Rugby</option>
-    <option value="volleyball">Volleyball</option>
-    <option value="handball">Handball</option>
+    <option value="football">⚽ Football</option>
+    <option value="cricket">🏏 Cricket</option>
+    <option value="basketball">🏀 Basketball</option>
+    <option value="tennis">🎾 Tennis</option>
+    <option value="baseball">⚾ Baseball</option>
+    <option value="hockey">🏒 Hockey</option>
+    <option value="rugby">🏉 Rugby</option>
+    <option value="volleyball">🏐 Volleyball</option>
+    <option value="handball">🤾 Handball</option>
    </select>
-   <label>Sports API key</label>
-   <input id="sportsKey" type="password" placeholder="Paste your API-Sports key">
-   <button class="secondary" style="width:100%" onclick="saveSportsKey()">Save API key on this device</button>
-   <button class="primary" style="width:100%;margin-top:8px" onclick="loadSports()">Get live scores</button>
-   <p class="muted" style="margin-top:8px">Live scores require an API key from a sports data provider. API access and supported sports depend on your provider plan.</p>
+   <label>Sports data API key</label>
+   <input id="sportsKey" type="password" placeholder="Enter your API provider key">
+   <button class="secondary" style="width:100%" onclick="saveSportsKey()">Save API key</button>
+   <button class="primary" style="width:100%;margin-top:8px" onclick="loadSports()">Load live scores</button>
+   <p class="muted" style="margin-top:10px">Real live scores require a sports-data provider account and an API key with access to the selected sport.</p>
   </div>
-  <div id="sportsResults" class="card">
-   <p class="muted">Choose a sport and connect a sports data API to see real fixtures and scores.</p>
-  </div>
+  <div class="card" id="sportsResults">Select a sport and connect your data API.</div>
  </div>
 </section>
 
 <!-- LIVE -->
 <section id="livePage" class="page">
- <h2 class="topTitle">VYRA Live 🔴</h2>
+ <h2 class="title">VYRA Live 🔴</h2>
  <div class="content">
   <div class="card">
-   <h3>Start a live room</h3>
-   <p class="muted" style="margin:8px 0">Create a live room. Camera preview and room chat are available here. Remote video streaming requires WebRTC connection and suitable Firebase rules.</p>
+   <h3>Start your live room</h3>
+   <p class="muted" style="margin:9px 0">Create a room and chat with members.</p>
    <button class="primary" style="width:100%" onclick="startLive()">🔴 Go Live</button>
   </div>
-  <div id="livePanel" class="card hidden">
-   <b class="liveTag">● LIVE ROOM</b>
-   <video id="livePreview" autoplay muted playsinline style="width:100%;background:#000;border-radius:12px;margin-top:12px"></video>
-   <p class="muted" id="liveStatus"></p>
-   <button class="danger" onclick="endLive()">End Live</button>
+  <div class="card hidden" id="livePanel">
+   <b style="color:#ff5483">● LIVE ROOM</b>
+   <video id="livePreview" autoplay muted playsinline style="width:100%;background:#000;border-radius:12px;margin-top:10px"></video>
+   <p id="liveStatus" class="muted"></p>
    <div id="liveChat" style="max-height:180px;overflow:auto;margin:12px 0"></div>
-   <div class="row"><input id="liveText" placeholder="Write a comment"><button class="primary" onclick="sendLive()">Send</button></div>
+   <div style="display:flex;gap:5px"><input id="liveText" placeholder="Write comment"><button class="primary" onclick="sendLive()">Send</button></div>
+   <button class="danger" style="margin-top:10px" onclick="endLive()">End Live</button>
   </div>
-  <h3 style="margin:18px 0">Live rooms</h3>
-  <div id="liveRooms"></div>
+  <h3 style="margin:20px 0 10px">Active rooms</h3><div id="liveRooms"></div>
  </div>
 </section>
 
 <!-- PROFILE -->
 <section id="profilePage" class="page">
- <h2 class="topTitle">Your Profile</h2>
+ <h2 class="title">My Profile</h2>
  <div class="content">
   <div class="card profile">
-   <img id="profilePhoto" class="profilePic" src="https://placehold.co/150x150">
-   <h2 id="profileName" style="margin-top:12px">VYRA User</h2>
+   <img class="profilePic" id="profilePhoto" src="https://placehold.co/150x150">
+   <h2 id="profileName" style="margin-top:10px">VYRA User</h2>
    <p class="muted" id="profileCountry"></p>
    <div class="stats">
-    <div><b id="myPostCount">0</b><small>Videos</small></div>
-    <div><b id="myFollowerCount">0</b><small>Followers</small></div>
-    <div><b id="myFollowingCount">0</b><small>Following</small></div>
+    <div><b id="postCount">0</b><small>Videos</small></div>
+    <div><b id="followerCount">0</b><small>Followers</small></div>
+    <div><b id="followingCount">0</b><small>Following</small></div>
    </div>
-   <label>Update profile photo</label><input id="profileFile" type="file" accept="image/*">
-   <button class="primary" style="width:100%" onclick="updatePhoto()">Update Photo</button>
+   <label>Profile photo</label><input id="profileFile" type="file" accept="image/*">
+   <button class="primary" style="width:100%" onclick="updatePhoto()">Update photo</button>
    <label>Display name</label><input id="newName" placeholder="Your name">
    <button class="secondary" style="width:100%" onclick="saveName()">Save name</button>
-   <button class="danger" style="width:100%;margin-top:15px" onclick="logout()">Logout</button>
+   <button class="danger" style="width:100%;margin-top:12px" onclick="logout()">Logout</button>
   </div>
-  <h3 style="margin:16px 0">Your uploads</h3>
-  <div id="myGrid" class="grid"></div>
+  <h3 style="margin:15px 0">My videos</h3>
+  <div class="grid" id="myGrid"></div>
  </div>
 </section>
 
 <nav class="bottomNav">
- <button class="active" data-page="home" onclick="openPage('home')"><span>⌂</span>Home</button>
- <button data-page="explore" onclick="openPage('explore')"><span>⌕</span>Explore</button>
- <button data-page="create" onclick="openPage('create')"><span>＋</span>Create</button>
- <button data-page="sports" onclick="openPage('sports')"><span>🏆</span>Sports</button>
- <button data-page="profile" onclick="openPage('profile')"><span>♙</span>Profile</button>
+ <button class="active" data-page="home" onclick="openPage('home')"><svg><use href="#i-home"/></svg>Home</button>
+ <button data-page="explore" onclick="openPage('explore')"><svg><use href="#i-search"/></svg>Explore</button>
+ <button data-page="create" onclick="openPage('create')"><svg><use href="#i-plus"/></svg>Create</button>
+ <button data-page="sports" onclick="openPage('sports')"><svg><use href="#i-trophy"/></svg>Sports</button>
+ <button data-page="profile" onclick="openPage('profile')"><svg><use href="#i-user"/></svg>Profile</button>
 </nav>
 </div>
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
- getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,
- updateProfile,onAuthStateChanged,signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {
- getDatabase,ref,set,push,onValue,update,remove
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import {
- getStorage,ref as storageRef,uploadBytesResumable,getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getDatabase,ref,set,push,onValue,update,remove} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import {getStorage,ref as storageRef,uploadBytesResumable,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-/* YOUR ORIGINAL FIREBASE CONFIG PRESERVED */
+/* ORIGINAL FIREBASE CONFIG */
 const firebaseConfig={
  apiKey:"AIzaSyBYBWflKXiqBSSDbyGdTGXJ6C1RCJziZFA",
  authDomain:"ag-world-7310e.firebaseapp.com",
@@ -330,108 +292,69 @@ const firebaseConfig={
  appId:"1:874059134274:web:2ad78f97cc0101f46c44db",
  measurementId:"G-7J5C992B7Q"
 };
-
 const firebaseApp=initializeApp(firebaseConfig);
-const auth=getAuth(firebaseApp);
-const db=getDatabase(firebaseApp);
-const storage=getStorage(firebaseApp);
-
-const countries=[
-"Pakistan","United States","United Kingdom","Canada","Australia","India",
-"Saudi Arabia","United Arab Emirates","Italy","Germany","France","Turkey",
-"Japan","China","Brazil","South Africa","Indonesia","Malaysia","Bangladesh",
-"Afghanistan","New Zealand","Spain","Netherlands","Sweden","Norway","Egypt",
-"Nigeria","Mexico","South Korea","Russia","Qatar","Kuwait","Oman"
-];
+const auth=getAuth(firebaseApp),db=getDatabase(firebaseApp),storage=getStorage(firebaseApp);
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let user=null,profile={},posts={},liveId=null,liveStream=null,liveStop=null;
+const countries=["Pakistan","United States","United Kingdom","Canada","Australia","India","Saudi Arabia","United Arab Emirates","Italy","Germany","France","Turkey","Japan","China","Brazil","South Africa","Indonesia","Malaysia","Bangladesh","Afghanistan","New Zealand","Spain","Netherlands","Sweden","Norway","Egypt","Nigeria","Mexico","South Korea","Russia","Qatar","Kuwait","Oman"];
+countries.forEach(c=>{$("signupCountry").add(new Option(c,c));$("newsCountry").add(new Option(c,c))});
+$("signupCountry").value="Pakistan";$("newsCountry").value="Pakistan";
 
-countries.forEach(c=>{
- $("signupCountry").add(new Option(c,c));
- $("newsCountry").add(new Option(c,c));
-});
-$("signupCountry").value="Pakistan";
-$("newsCountry").value="Pakistan";
+let user=null,profile={},posts={},cameraStream=null,liveStream=null,liveId=null,chatStop=null;
+window.currentLiveRoom=null;
 
-window.showAuth=function(mode){
+window.showAuth=mode=>{
  $("loginForm").classList.toggle("hidden",mode!=="login");
  $("signupForm").classList.toggle("hidden",mode!=="signup");
  $("loginTab").className=mode==="login"?"primary":"secondary";
  $("signupTab").className=mode==="signup"?"primary":"secondary";
  $("authMsg").textContent="";
 };
-
 function authError(e){
- const errors={
- "auth/operation-not-allowed":"Firebase Console mein Email/Password provider enable karein.",
- "auth/unauthorized-domain":"Firebase Authentication > Settings > Authorized domains mein website domain add karein.",
- "auth/email-already-in-use":"Is email ka account pehle se mojood hai. Login karein.",
- "auth/weak-password":"Password kam az kam 6 characters ka hona chahiye.",
+ const m={
+ "auth/operation-not-allowed":"Firebase Console mein Email/Password sign-in enable karein.",
+ "auth/unauthorized-domain":"Firebase Authentication > Settings > Authorized domains mein Netlify domain add karein.",
+ "auth/email-already-in-use":"Email ka account pehle se bana hai. Login karein.",
+ "auth/weak-password":"Password minimum 6 characters hona chahiye.",
  "auth/invalid-email":"Email address check karein.",
  "auth/invalid-credential":"Email ya password ghalat hai.",
  "auth/network-request-failed":"Internet connection check karein.",
- "auth/too-many-requests":"Bohat attempts ho chuke hain. Thori dair baad try karein."
+ "auth/too-many-requests":"Kuch dair baad dobara try karein."
  };
- return errors[e.code]||("Firebase error: "+(e.message||e.code));
+ return m[e.code]||e.message||"Unknown error";
 }
-function authMsg(s,ok=false){
- $("authMsg").textContent=s;
- $("authMsg").className=ok?"msg ok":"msg";
-}
+function authMsg(t,ok=false){$("authMsg").textContent=t;$("authMsg").className=ok?"msg good":"msg"}
 
-window.signup=async function(){
- const name=$("signupName").value.trim();
- const email=$("signupEmail").value.trim();
- const password=$("signupPassword").value;
- const country=$("signupCountry").value;
+window.signup=async()=>{
+ const name=$("signupName").value.trim(),email=$("signupEmail").value.trim(),password=$("signupPassword").value,country=$("signupCountry").value;
  if(!name||!email||!password){authMsg("Name, email aur password enter karein.");return}
- if(password.length<6){authMsg("Password kam az kam 6 characters ka hona chahiye.");return}
+ if(password.length<6){authMsg("Password minimum 6 characters hona chahiye.");return}
  try{
-  authMsg("Account create ho raha hai...",true);
+  authMsg("Creating account...",true);
   const result=await createUserWithEmailAndPassword(auth,email,password);
   await updateProfile(result.user,{displayName:name});
-  await set(ref(db,"users/"+result.user.uid),{
-   uid:result.user.uid,name,email,country,photoURL:"",
-   bio:"Welcome to VYRA",createdAt:Date.now()
-  });
+  await set(ref(db,"users/"+result.user.uid),{uid:result.user.uid,name,email,country,photoURL:"",bio:"Welcome to VYRA",createdAt:Date.now()});
  }catch(e){authMsg(authError(e))}
 };
-
-window.login=async function(){
- const email=$("loginEmail").value.trim();
- const password=$("loginPassword").value;
+window.login=async()=>{
+ const email=$("loginEmail").value.trim(),password=$("loginPassword").value;
  if(!email||!password){authMsg("Email aur password enter karein.");return}
- try{
-  authMsg("Logging in...",true);
-  await signInWithEmailAndPassword(auth,email,password);
- }catch(e){authMsg(authError(e))}
+ try{authMsg("Logging in...",true);await signInWithEmailAndPassword(auth,email,password)}
+ catch(e){authMsg(authError(e))}
 };
 window.logout=()=>signOut(auth).catch(e=>alert(e.message));
 
 onAuthStateChanged(auth,async u=>{
- if(!u){
-  user=null;$("app").classList.add("hidden");$("authScreen").classList.remove("hidden");return;
- }
+ if(!u){user=null;$("app").classList.add("hidden");$("authScreen").classList.remove("hidden");return}
  user=u;
  try{
-  await ensureUser();
+  const snap=await new Promise(resolve=>onValue(ref(db,"users/"+u.uid),resolve,{onlyOnce:true}));
+  if(!snap.exists())await set(ref(db,"users/"+u.uid),{uid:u.uid,name:u.displayName||"VYRA User",email:u.email||"",country:"Pakistan",photoURL:"",createdAt:Date.now()});
   $("authScreen").classList.add("hidden");$("app").classList.remove("hidden");
   listenProfile();listenPosts();listenLiveRooms();
- }catch(e){
-  alert("Account login hua, lekin database access error: "+e.message);
- }
+ }catch(e){alert("Database access error: "+e.message)}
 });
 
-async function ensureUser(){
- const s=await new Promise(resolve=>onValue(ref(db,"users/"+user.uid),resolve,{onlyOnce:true}));
- if(!s.exists()){
-  await set(ref(db,"users/"+user.uid),{
-   uid:user.uid,name:user.displayName||"VYRA User",email:user.email||"",
-   country:"Pakistan",photoURL:"",createdAt:Date.now()
-  });
- }
-}
 function listenProfile(){
  onValue(ref(db,"users/"+user.uid),s=>{
   profile=s.val()||{};
@@ -440,333 +363,250 @@ function listenProfile(){
   $("profilePhoto").src=profile.photoURL||"https://placehold.co/150x150/10294b/ffffff?text=V";
   $("newName").value=profile.name||"";
  });
+ onValue(ref(db,"followers/"+user.uid),s=>$("followerCount").textContent=Object.keys(s.val()||{}).length);
+ onValue(ref(db,"follows/"+user.uid),s=>$("followingCount").textContent=Object.keys(s.val()||{}).length);
 }
+function listenPosts(){onValue(ref(db,"posts"),s=>{posts=s.val()||{};renderVideos();renderExplore();renderProfile()})}
+function orderedPosts(){return Object.entries(posts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0))}
 
-function listenPosts(){
- onValue(ref(db,"posts"),s=>{
-  posts=s.val()||{};
-  renderVideos();
-  renderExplore();
-  renderMyGrid();
- });
-}
-function sortedPosts(){
- return Object.entries(posts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
-}
 function renderVideos(){
- const entries=sortedPosts().filter(([id,p])=>p.mediaURL);
- if(!entries.length){
-  $("videoFeed").innerHTML='<div class="feedEmpty">No videos yet.<br><br>Be the first to upload a video on VYRA!</div>';return;
- }
- $("videoFeed").innerHTML=entries.map(([id,p])=>{
-  const liked=!!p.likes?.[user.uid];
+ const list=orderedPosts().filter(([id,p])=>p.mediaURL);
+ if(!list.length){$("videoFeed").innerHTML='<div class="feedMessage">Welcome to VYRA 💙<br>No videos yet.<br>Be the first creator!</div>';return}
+ $("videoFeed").innerHTML=list.map(([id,p])=>{
+  const liked=!!p.likes?.[user.uid],likeCount=Object.keys(p.likes||{}).length;
   const media=p.mediaType==="video"
-   ?`<video src="${esc(p.mediaURL)}" controls playsinline loop preload="metadata"></video>`
-   :`<img class="photoMedia" src="${esc(p.mediaURL)}">`;
-  const count=Object.keys(p.likes||{}).length;
-  return `<article class="videoCard" id="post-${esc(id)}">
-   ${media}<div class="videoOverlay"></div>
+   ?`<video class="videoMedia" src="${esc(p.mediaURL)}" playsinline loop preload="metadata"></video>`
+   :`<img class="videoMedia" src="${esc(p.mediaURL)}" alt="VYRA post">`;
+  return `<article class="videoCard" data-id="${esc(id)}">
+   ${media}<div class="videoShade"></div>
+   <div class="videoTop"><button class="selected" onclick="feedMode('forYou')">For You</button><button onclick="feedMode('following')">Following</button></div>
    <div class="videoInfo">
-    <b>@${esc(p.name||"VYRA User")}</b>
+    <div class="creator">@${esc(p.name||"VYRA User")}</div>
     <p>${esc(p.caption||"")}</p>
-    <p class="muted">🌍 ${esc(p.country||"")}</p>
+    <p class="music"><svg style="width:15px;height:15px;display:inline-block;vertical-align:middle"><use href="#i-music"/></svg> Original sound · VYRA</p>
    </div>
    <div class="videoActions">
-    <img class="avatar" src="${esc(p.photoURL||"https://placehold.co/100x100")}" alt="">
-    <button onclick="likePost('${esc(id)}')">${liked?"💙":"♡"}</button><small>${count}</small>
-    <button onclick="commentPost('${esc(id)}')">💬</button><small>${Object.keys(p.comments||{}).length}</small>
-    <button onclick="sharePost('${esc(id)}')">↗</button><small>Share</small>
-    ${p.uid!==user.uid?`<button class="followBtn" onclick="followUser('${esc(p.uid)}')">Follow</button>`:""}
+    <img class="videoAvatar" src="${esc(p.photoURL||"https://placehold.co/100x100/10294b/ffffff?text=V")}" alt="">
+    ${p.uid!==user.uid?`<button class="follow" onclick="followUser('${esc(p.uid)}')">+</button>`:""}
+    <button class="${liked?"liked":""}" onclick="likePost('${esc(id)}')"><svg><use href="#i-heart"/></svg></button><small>${likeCount}</small>
+    <button onclick="commentPost('${esc(id)}')"><svg><use href="#i-comment"/></svg></button><small>${Object.keys(p.comments||{}).length}</small>
+    <button onclick="sharePost('${esc(id)}')"><svg><use href="#i-share"/></svg></button><small>Share</small>
    </div>
   </article>`;
  }).join("");
- // Play only the video currently visible in the feed.
- const observer=new IntersectionObserver(items=>{
-  items.forEach(item=>{
-   const video=item.target.querySelector("video");
-   if(video){if(item.isIntersecting)video.play().catch(()=>{});else video.pause()}
+ activateVideoPlayback();
+}
+function activateVideoPlayback(){
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   const v=entry.target.querySelector("video");
+   if(!v)return;
+   if(entry.isIntersecting){v.play().catch(()=>{})}else{v.pause()}
   });
- },{threshold:.65});
+ },{threshold:.7});
  document.querySelectorAll(".videoCard").forEach(card=>observer.observe(card));
+ // Tap the media to pause/play.
+ document.querySelectorAll(".videoCard video").forEach(v=>{
+  v.addEventListener("click",()=>{if(v.paused)v.play().catch(()=>{});else v.pause()});
+ });
+}
+window.feedMode=mode=>{
+ document.querySelectorAll(".videoTop button").forEach(b=>b.classList.toggle("selected",b.textContent.toLowerCase().replace(" ","")===(mode==="forYou"?"foryou":"following")));
+ if(mode==="following"){
+  onValue(ref(db,"follows/"+user.uid),s=>{
+   const follows=s.val()||{};
+   const filtered=orderedPosts().filter(([id,p])=>p.mediaURL&&(follows[p.uid]||p.uid===user.uid));
+   renderVideoList(filtered);
+  },{onlyOnce:true});
+ }else renderVideos();
+};
+function renderVideoList(list){
+ if(!list.length){$("videoFeed").innerHTML='<div class="feedMessage">Following creators ki videos yahan nazar aayengi.</div>';return}
+ const original=posts;const subset={};list.forEach(([id,p])=>subset[id]=p);
+ const saved=posts;posts=subset;renderVideos();posts=saved;
 }
 function renderExplore(){
- $("exploreFeed").innerHTML=sortedPosts().slice(0,30).map(([id,p])=>`
-  <div class="card">
-   <div class="row"><img class="avatar" src="${esc(p.photoURL||"https://placehold.co/100x100")}"><b>${esc(p.name||"VYRA User")}</b></div>
-   <p style="margin:10px 0">${esc(p.caption||"")}</p>
-   ${p.mediaURL?(p.mediaType==="video"?`<video class="postVideo" src="${esc(p.mediaURL)}" controls></video>`:`<img class="postImage" src="${esc(p.mediaURL)}">`):""}
-   <div class="actions"><button onclick="likePost('${esc(id)}')">♡ Like</button><button onclick="commentPost('${esc(id)}')">💬 Comment</button><button onclick="sharePost('${esc(id)}')">↗ Share</button></div>
-  </div>`).join("")||'<p class="muted">No posts yet.</p>';
+ $("exploreFeed").innerHTML=orderedPosts().slice(0,30).map(([id,p])=>`
+ <div class="card"><div class="row"><img class="avatar" src="${esc(p.photoURL||"https://placehold.co/100x100")}"><b>${esc(p.name||"VYRA User")}</b></div>
+ <p style="margin:10px 0">${esc(p.caption||"")}</p>
+ ${p.mediaURL?(p.mediaType==="video"?`<video class="postVideo" src="${esc(p.mediaURL)}" controls playsinline></video>`:`<img class="postImage" src="${esc(p.mediaURL)}">`):""}
+ <div class="actions"><button onclick="likePost('${esc(id)}')">♡ Like</button><button onclick="commentPost('${esc(id)}')">Comment</button><button onclick="sharePost('${esc(id)}')">Share</button></div></div>`).join("")||'<p class="muted">No posts yet.</p>';
 }
-function renderMyGrid(){
- const mine=sortedPosts().filter(([id,p])=>p.uid===user.uid);
- $("myPostCount").textContent=mine.length;
- $("myGrid").innerHTML=mine.map(([id,p])=>p.mediaType==="video"
-  ?`<video src="${esc(p.mediaURL)}" controls></video>`
-  :p.mediaURL?`<img src="${esc(p.mediaURL)}">`:`<div class="card">${esc(p.caption||"Post")}</div>`).join("");
+function renderProfile(){
+ const mine=orderedPosts().filter(([id,p])=>p.uid===user.uid);
+ $("postCount").textContent=mine.length;
+ $("myGrid").innerHTML=mine.map(([id,p])=>p.mediaType==="video"?`<video src="${esc(p.mediaURL)}" controls></video>`:p.mediaURL?`<img src="${esc(p.mediaURL)}">`:`<div>${esc(p.caption)}</div>`).join("");
 }
+window.likePost=async id=>{
+ try{if(posts[id]?.likes?.[user.uid])await remove(ref(db,`posts/${id}/likes/${user.uid}`));else await set(ref(db,`posts/${id}/likes/${user.uid}`),true)}
+ catch(e){alert(e.message)}
+};
+window.commentPost=async id=>{
+ const text=prompt("Write your comment:");
+ if(!text?.trim())return;
+ try{await set(push(ref(db,`posts/${id}/comments`)),{uid:user.uid,name:profile.name||"VYRA User",text:text.trim(),createdAt:Date.now()})}
+ catch(e){alert(e.message)}
+};
+window.sharePost=async id=>{
+ const url=location.origin+location.pathname+"#post-"+id;
+ try{if(navigator.share)await navigator.share({title:"VYRA video",url});else{await navigator.clipboard.writeText(url);alert("Link copied!")}}
+ catch(e){if(e.name!=="AbortError")prompt("Copy link",url)}
+};
+window.followUser=async uid=>{
+ if(uid===user.uid)return;
+ try{
+  const r=ref(db,`follows/${user.uid}/${uid}`);
+  const s=await new Promise(resolve=>onValue(r,resolve,{onlyOnce:true}));
+  if(s.exists()){await remove(r);await remove(ref(db,`followers/${uid}/${user.uid}`))}
+  else{await set(r,true);await set(ref(db,`followers/${uid}/${user.uid}`),true)}
+ }catch(e){alert(e.message)}
+};
 
-window.uploadPost=async function(){
- const file=$("mediaFile").files[0];
- const caption=$("caption").value.trim();
+window.uploadPost=async()=>{
+ const file=$("mediaFile").files[0],caption=$("caption").value.trim();
  if(!file&&!caption){alert("Video/photo ya caption add karein.");return}
- if(file&&file.size>500*1024*1024){alert("File 500 MB se bari hai.");return}
+ if(file&&file.size>500*1024*1024){alert("Maximum file size 500 MB.");return}
  try{
   let url="",type="";
   if(file){
-   $("uploadProgress").classList.remove("hidden");
-   $("uploadStatus").textContent="Uploading...";
-   const clean=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-   const task=uploadBytesResumable(storageRef(storage,"uploads/"+user.uid+"/"+Date.now()+"_"+clean),file);
-   url=await new Promise((resolve,reject)=>{
-    task.on("state_changed",s=>{
-     $("uploadBar").style.width=(s.bytesTransferred/s.totalBytes*100)+"%";
-     $("uploadStatus").textContent="Uploading "+Math.round(s.bytesTransferred/s.totalBytes*100)+"%";
-    },reject,async()=>resolve(await getDownloadURL(task.snapshot.ref)));
-   });
+   $("uploadProgress").classList.remove("hidden");$("uploadStatus").textContent="Uploading...";
+   const name=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+   const task=uploadBytesResumable(storageRef(storage,"uploads/"+user.uid+"/"+Date.now()+"_"+name),file);
+   url=await new Promise((resolve,reject)=>task.on("state_changed",s=>{
+    $("uploadBar").style.width=(s.bytesTransferred/s.totalBytes*100)+"%";
+    $("uploadStatus").textContent="Uploading "+Math.round(s.bytesTransferred/s.totalBytes*100)+"%";
+   },reject,async()=>resolve(await getDownloadURL(task.snapshot.ref))));
    type=file.type.startsWith("video/")?"video":"image";
   }
-  await set(push(ref(db,"posts")),{
-   uid:user.uid,name:profile.name||user.displayName||"VYRA User",
-   country:profile.country||"Pakistan",photoURL:profile.photoURL||"",
-   caption,mediaURL:url,mediaType:type,createdAt:Date.now(),likes:{},comments:{}
-  });
-  $("mediaFile").value="";$("caption").value="";
-  $("uploadProgress").classList.add("hidden");$("uploadStatus").textContent="Upload complete!";
-  openPage("home");
+  await set(push(ref(db,"posts")),{uid:user.uid,name:profile.name||user.displayName||"VYRA User",country:profile.country||"Pakistan",photoURL:profile.photoURL||"",caption,mediaURL:url,mediaType:type,createdAt:Date.now(),likes:{},comments:{}});
+  $("mediaFile").value="";$("caption").value="";$("uploadStatus").textContent="Upload complete!";
+  $("uploadProgress").classList.add("hidden");openPage("home");
  }catch(e){$("uploadStatus").textContent="Upload failed: "+e.message}
 };
 
-window.likePost=async function(id){
- try{
-  const liked=posts[id]?.likes?.[user.uid];
-  if(liked)await remove(ref(db,`posts/${id}/likes/${user.uid}`));
-  else await set(ref(db,`posts/${id}/likes/${user.uid}`),true);
- }catch(e){alert("Like error: "+e.message)}
+window.saveName=async()=>{
+ const name=$("newName").value.trim();if(!name)return;
+ try{await update(ref(db,"users/"+user.uid),{name});await updateProfile(user,{displayName:name});alert("Name updated")}
+ catch(e){alert(e.message)}
 };
-window.commentPost=async function(id){
- const text=prompt("Write your comment:");
- if(!text?.trim())return;
- try{
-  await set(push(ref(db,`posts/${id}/comments`)),{
-   uid:user.uid,name:profile.name||"VYRA User",text:text.trim(),createdAt:Date.now()
-  });
- }catch(e){alert(e.message)}
-};
-window.sharePost=async function(id){
- const link=location.href.split("#")[0]+"#post-"+id;
- try{await navigator.clipboard.writeText(link);alert("Link copied!")}
- catch(e){prompt("Copy this link",link)}
-};
-window.followUser=async function(uid){
- if(uid===user.uid)return;
- try{
-  const followingRef=ref(db,`follows/${user.uid}/${uid}`);
-  const s=await new Promise(resolve=>onValue(followingRef,resolve,{onlyOnce:true}));
-  if(s.exists()){
-   await remove(followingRef);
-   await remove(ref(db,`followers/${uid}/${user.uid}`));
-  }else{
-   await set(followingRef,true);
-   await set(ref(db,`followers/${uid}/${user.uid}`),true);
-  }
- }catch(e){alert("Follow error: "+e.message)}
-};
-
-window.saveName=async function(){
- const name=$("newName").value.trim();
- if(!name)return;
- try{
-  await update(ref(db,"users/"+user.uid),{name});
-  await updateProfile(user,{displayName:name});
-  alert("Name updated!");
- }catch(e){alert(e.message)}
-};
-window.updatePhoto=async function(){
- const file=$("profileFile").files[0];
- if(!file){alert("Photo select karein.");return}
+window.updatePhoto=async()=>{
+ const file=$("profileFile").files[0];if(!file)return alert("Select photo");
  try{
   const task=uploadBytesResumable(storageRef(storage,"profile/"+user.uid+"/"+Date.now()),file);
   const url=await new Promise((resolve,reject)=>task.on("state_changed",null,reject,async()=>resolve(await getDownloadURL(task.snapshot.ref))));
-  await update(ref(db,"users/"+user.uid),{photoURL:url});
-  await updateProfile(user,{photoURL:url});
-  alert("Profile photo updated!");
- }catch(e){alert("Photo error: "+e.message)}
+  await update(ref(db,"users/"+user.uid),{photoURL:url});await updateProfile(user,{photoURL:url});alert("Profile photo updated");
+ }catch(e){alert(e.message)}
 };
 
 /* CAMERA */
-window.openCamera=async function(){
- try{
-  liveStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:false});
-  $("cameraPreview").srcObject=liveStream;
-  $("cameraPreview").classList.remove("hidden");
-  $("cameraButtons").classList.remove("hidden");
- }catch(e){alert("Camera permission ya HTTPS required hai: "+e.message)}
+window.openCamera=async()=>{
+ try{cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:false});$("cameraPreview").srcObject=cameraStream;$("cameraPreview").classList.remove("hidden");$("cameraControls").classList.remove("hidden")}
+ catch(e){alert("Camera permission / HTTPS required: "+e.message)}
 };
-window.capturePhoto=async function(){
- const video=$("cameraPreview"),canvas=$("captureCanvas");
- if(!video.videoWidth)return;
- canvas.width=video.videoWidth;canvas.height=video.videoHeight;
- canvas.getContext("2d").drawImage(video,0,0);
- canvas.toBlob(blob=>{
-  const file=new File([blob],"vyra-camera.jpg",{type:"image/jpeg"});
-  const transfer=new DataTransfer();transfer.items.add(file);
-  $("mediaFile").files=transfer.files;
-  alert("Photo ready. Ab Upload to VYRA dabayein.");
-  closeCamera();
- },"image/jpeg",.94);
+window.capturePhoto=()=>{
+ const v=$("cameraPreview"),c=$("canvas");if(!v.videoWidth)return;
+ c.width=v.videoWidth;c.height=v.videoHeight;c.getContext("2d").drawImage(v,0,0);
+ c.toBlob(blob=>{
+  const f=new File([blob],"vyra-photo.jpg",{type:"image/jpeg"});
+  const dt=new DataTransfer();dt.items.add(f);$("mediaFile").files=dt.files;
+  alert("Photo ready. Upload button dabayein.");closeCamera();
+ },"image/jpeg",.95);
 };
-window.closeCamera=function(){
- if(liveStream){liveStream.getTracks().forEach(t=>t.stop());liveStream=null}
- $("cameraPreview").srcObject=null;
- $("cameraPreview").classList.add("hidden");
- $("cameraButtons").classList.add("hidden");
+window.closeCamera=()=>{
+ if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null}
+ $("cameraPreview").srcObject=null;$("cameraPreview").classList.add("hidden");$("cameraControls").classList.add("hidden");
 };
 
-/* NAVIGATION */
-window.openPage=function(page){
- const map={home:"videoPage",explore:"explorePage",create:"createPage",news:"newsPage",sports:"sportsPage",live:"livePage",profile:"profilePage"};
- Object.values(map).forEach(id=>$(id).classList.remove("active"));
- if(map[page])$(map[page]).classList.add("active");
+/* NAV */
+window.openPage=page=>{
+ const ids={home:"homePage",explore:"explorePage",create:"createPage",news:"newsPage",sports:"sportsPage",live:"livePage",profile:"profilePage"};
+ Object.values(ids).forEach(id=>$(id).classList.remove("active"));
+ if(ids[page])$(ids[page]).classList.add("active");
  document.querySelectorAll(".bottomNav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
  if(page==="news")loadNews();
- if(page==="sports")loadSports();
- if(page==="profile")renderMyGrid();
+ if(page==="profile")renderProfile();
 };
-
-/* WORLD NEWS: headlines fetched from Google News RSS via rss2json */
-window.loadNews=async function(){
+window.loadNews=async()=>{
  const country=$("newsCountry").value;
- $("newsResults").innerHTML='<div class="card muted">Loading headlines...</div>';
+ $("newsResults").innerHTML='<div class="card muted">Loading news...</div>';
  try{
   const rss="https://news.google.com/rss/search?q="+encodeURIComponent(country+" latest news")+"&hl=en&gl=US&ceid=US:en";
-  const endpoint="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
-  const response=await fetch(endpoint);
-  if(!response.ok)throw new Error("News service unavailable");
-  const data=await response.json();
-  if(!data.items?.length)throw new Error("No news found");
+  const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
+  const res=await fetch(url);if(!res.ok)throw Error("News provider unavailable");
+  const data=await res.json();if(!data.items?.length)throw Error("No headlines");
   $("newsResults").innerHTML=data.items.slice(0,20).map(n=>`
-   <div class="card newsItem">
-    <b>${esc(n.title)}</b>
-    <p class="muted" style="margin:8px 0">${esc(n.pubDate||"")}</p>
-    <a href="${esc(n.link)}" target="_blank" rel="noopener">Read full story ↗</a>
-   </div>`).join("");
- }catch(e){
-  $("newsResults").innerHTML='<div class="card muted">News feed abhi available nahi. Baad mein dobara try karein.</div>';
- }
+   <div class="card newsItem"><b>${esc(n.title)}</b><p class="muted" style="margin:8px 0">${esc(n.pubDate||"")}</p><a target="_blank" rel="noopener" href="${esc(n.link)}">Read full news ↗</a></div>`).join("");
+ }catch(e){$("newsResults").innerHTML='<div class="card muted">News service abhi available nahi. Baad mein try karein.</div>'}
 };
 
-/* SPORTS: real data requires a valid API-Sports key */
-const sportDomains={
+/* SPORTS DATA PROVIDER CONNECTION */
+const sportHosts={
  football:"v3.football.api-sports.io",
  basketball:"v1.basketball.api-sports.io",
  baseball:"v1.baseball.api-sports.io",
  hockey:"v1.hockey.api-sports.io",
  rugby:"v1.rugby.api-sports.io",
  volleyball:"v1.volleyball.api-sports.io",
- handball:"v1.handball.api-sports.io",
- cricket:"v1.cricket.api-sports.io"
+ handball:"v1.handball.api-sports.io"
 };
 $("sportsKey").value=localStorage.getItem("vyra_sports_key")||"";
-window.saveSportsKey=function(){
- const key=$("sportsKey").value.trim();
- if(!key){alert("API key paste karein.");return}
- localStorage.setItem("vyra_sports_key",key);
- alert("API key is device par save ho gayi.");
+window.saveSportsKey=()=>{
+ const key=$("sportsKey").value.trim();if(!key)return alert("API key enter karein");
+ localStorage.setItem("vyra_sports_key",key);alert("Sports key saved on this device");
 };
-window.loadSports=async function(){
- const key=$("sportsKey").value.trim()||localStorage.getItem("vyra_sports_key");
- const sport=$("sportSelect").value;
- if(!key){
-  $("sportsResults").innerHTML='<p class="muted">Real sports scores ke liye API-Sports key enter karein. Provider account se key hasil karein.</p>';return;
+window.loadSports=async()=>{
+ const sport=$("sportSelect").value,key=$("sportsKey").value.trim()||localStorage.getItem("vyra_sports_key");
+ if(!key){$("sportsResults").textContent="Real sports scores ke liye provider API key required hai.";return}
+ if(sport==="tennis"||sport==="cricket"){
+  $("sportsResults").textContent="Is sport ke liye provider ki dedicated API aur endpoint configuration required hai. Generic football API key har sport par kaam nahi karti.";return;
  }
- $("sportsResults").innerHTML='<p class="muted">Loading real '+esc(sport)+' scores...</p>';
+ $("sportsResults").textContent="Loading...";
  try{
-  const host=sportDomains[sport];
-  const response=await fetch("https://"+host+"/games?live=all",{headers:{"x-apisports-key":key}});
-  if(!response.ok)throw new Error("API response "+response.status+". Key, plan aur sport access check karein.");
-  const data=await response.json();
-  const games=data.response||[];
-  if(!games.length){
-   $("sportsResults").innerHTML='<p class="muted">Is waqt live matches nahi mile. Upcoming fixtures ke liye provider dashboard/API documentation check karein.</p>';return;
-  }
+  const response=await fetch("https://"+sportHosts[sport]+"/games?live=all",{headers:{"x-apisports-key":key}});
+  if(!response.ok)throw Error("API error "+response.status+"; key/plan check karein");
+  const data=await response.json(),games=data.response||[];
+  if(!games.length){$("sportsResults").textContent="Is waqt live games nahi mile.";return}
   $("sportsResults").innerHTML=games.map(g=>{
-   const teams=g.teams||{};
-   const home=teams.home?.name||g.home?.name||"Home";
-   const away=teams.away?.name||g.away?.name||"Away";
-   const scores=g.scores||g.goals||{};
-   const hs=scores.home??"-",as=scores.away??"-";
-   const league=g.league?.name||g.country?.name||sport.toUpperCase();
-   const time=g.time?.elapsed?g.time.elapsed+"'":g.status?.long||"LIVE";
-   return `<div class="sportScore">
-    <div><small class="muted">${esc(league)}</small><p>${esc(home)}</p><p>${esc(away)}</p></div>
-    <div style="text-align:right"><b>${esc(hs)} - ${esc(as)}</b><p class="liveTag">${esc(time)}</p></div>
-   </div>`;
+   const t=g.teams||{},sc=g.scores||g.goals||{};
+   return `<div class="sportRow"><div><small class="muted">${esc(g.league?.name||sport)}</small><p>${esc(t.home?.name||"Home")}</p><p>${esc(t.away?.name||"Away")}</p></div><div style="text-align:right"><b>${esc(sc.home??"-")} - ${esc(sc.away??"-")}</b><p class="liveTag">${esc(g.status?.long||"LIVE")}</p></div></div>`;
   }).join("");
- }catch(e){
-  $("sportsResults").innerHTML='<p class="msg">Scores load nahi huay: '+esc(e.message)+'</p>';
- }
+ }catch(e){$("sportsResults").textContent="Scores load nahi huay: "+e.message}
 };
 
-/* LIVE ROOMS: Firebase room and chat + local camera preview.
-   This does NOT transmit video to other users without a WebRTC/streaming service. */
+/* LIVE ROOMS AND CHAT. Remote video broadcast requires WebRTC/signaling integration. */
 function listenLiveRooms(){
  onValue(ref(db,"liveRooms"),s=>{
-  const rooms=s.val()||{};
-  const active=Object.entries(rooms).filter(([id,r])=>r.active);
-  $("liveRooms").innerHTML=active.map(([id,r])=>`
-   <div class="card">
-    <b class="liveTag">● LIVE</b>
-    <p style="margin:8px 0">${esc(r.name||"VYRA User")}</p>
-    <p class="muted">${esc(r.country||"")}</p>
-    <button class="secondary" onclick="joinLiveChat('${esc(id)}')">Join live chat</button>
-   </div>`).join("")||'<p class="muted">No active rooms right now.</p>';
+  const rooms=s.val()||{},active=Object.entries(rooms).filter(([id,r])=>r.active);
+  $("liveRooms").innerHTML=active.map(([id,r])=>`<div class="card"><b class="liveTag">● LIVE</b><p style="margin:8px 0">${esc(r.name||"VYRA User")}</p><p class="muted">${esc(r.country||"")}</p><button class="secondary" onclick="joinLiveChat('${esc(id)}')">Join chat</button></div>`).join("")||'<p class="muted">No active rooms.</p>';
  });
 }
-window.startLive=async function(){
+window.startLive=async()=>{
  try{
-  const stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
-  liveStream=stream;
+  liveStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
   const room=push(ref(db,"liveRooms"));liveId=room.key;
-  await set(room,{
-   uid:user.uid,name:profile.name||user.displayName||"VYRA User",
-   country:profile.country||"Pakistan",active:true,createdAt:Date.now()
-  });
-  $("livePanel").classList.remove("hidden");
-  $("livePreview").srcObject=stream;
-  $("liveStatus").textContent="Camera preview active. Remote broadcasting is not connected yet.";
+  await set(room,{uid:user.uid,name:profile.name||"VYRA User",country:profile.country||"Pakistan",active:true,createdAt:Date.now()});
+  $("livePanel").classList.remove("hidden");$("livePreview").srcObject=liveStream;
+  $("liveStatus").textContent="Your local camera preview is active. Remote broadcast requires WebRTC.";
   joinLiveChat(liveId);
- }catch(e){alert("Live start error: "+e.message)}
+ }catch(e){alert("Live error: "+e.message)}
 };
-window.joinLiveChat=function(id){
- window.currentLiveRoom=id;
- $("livePanel").classList.remove("hidden");
- if(liveStop){liveStop();liveStop=null}
- liveStop=onValue(ref(db,"liveRooms/"+id+"/messages"),s=>{
-  const messages=s.val()||{};
-  $("liveChat").innerHTML=Object.values(messages).map(m=>`<p style="padding:7px;border-bottom:1px solid #1b3152"><b>${esc(m.name)}:</b> ${esc(m.text)}</p>`).join("");
+window.joinLiveChat=id=>{
+ window.currentLiveRoom=id;$("livePanel").classList.remove("hidden");
+ if(chatStop)chatStop();
+ chatStop=onValue(ref(db,"liveRooms/"+id+"/messages"),s=>{
+  $("liveChat").innerHTML=Object.values(s.val()||{}).map(m=>`<p style="padding:7px;border-bottom:1px solid #203453"><b>${esc(m.name)}:</b> ${esc(m.text)}</p>`).join("");
  });
 };
-window.sendLive=async function(){
- const text=$("liveText").value.trim(),id=window.currentLiveRoom;
- if(!text||!id)return;
- try{
-  await set(push(ref(db,"liveRooms/"+id+"/messages")),{
-   uid:user.uid,name:profile.name||"VYRA User",text,createdAt:Date.now()
-  });
-  $("liveText").value="";
- }catch(e){alert(e.message)}
+window.sendLive=async()=>{
+ const text=$("liveText").value.trim(),id=window.currentLiveRoom;if(!text||!id)return;
+ try{await set(push(ref(db,"liveRooms/"+id+"/messages")),{uid:user.uid,name:profile.name||"VYRA User",text,createdAt:Date.now()});$("liveText").value=""}
+ catch(e){alert(e.message)}
 };
-window.endLive=async function(){
+window.endLive=async()=>{
  if(liveStream){liveStream.getTracks().forEach(t=>t.stop());liveStream=null}
- if(liveId){
-  try{await update(ref(db,"liveRooms/"+liveId),{active:false})}catch(e){}
-  liveId=null;
- }
- if(liveStop){liveStop();liveStop=null}
- $("livePreview").srcObject=null;
- $("livePanel").classList.add("hidden");
- window.currentLiveRoom=null;
+ if(liveId){try{await update(ref(db,"liveRooms/"+liveId),{active:false})}catch(e){}liveId=null}
+ if(chatStop){chatStop();chatStop=null}
+ $("livePreview").srcObject=null;$("livePanel").classList.add("hidden");window.currentLiveRoom=null;
 };
 </script>
 </body>
