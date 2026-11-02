@@ -1,568 +1,135 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090817">
-<title>VYZO Social | Mian Abdullah Gulzar</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#0b0614">
+<title>VYZO - HD 4K - ce37d7b21f5a9a2a89313349aaa6786c1fe895c8</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#090817;color:white;font-family:Arial,sans-serif}
-button{cursor:pointer;color:white;border:0}
-:root{--purple:#9845ff;--pink:#f044ba;--blue:#397aff;--panel:#17142b}
-header{height:65px;background:#121024;position:sticky;top:0;z-index:20;
-display:flex;align-items:center;justify-content:space-between;padding:0 15px}
-.logo{font-size:27px;font-weight:900;background:linear-gradient(90deg,#a45cff,#ff45b8);
-color:transparent;background-clip:text}
-.search{width:38%;padding:11px;border-radius:25px;background:#26213b;
-border:1px solid #40345c;color:white}
-.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
-background:linear-gradient(130deg,#904aff,#ff48b6);font-weight:bold}
-.layout{max-width:1450px;margin:auto;display:grid;grid-template-columns:205px 1fr 220px}
-aside{padding:15px}.sidebar{position:sticky;top:65px;height:90vh}
-.nav{padding:14px;margin-bottom:5px;border-radius:12px;color:#ddd;cursor:pointer}
-.nav:hover,.nav.active{background:#30234e}
-main{padding:16px;min-width:0;border-left:1px solid #29233c;border-right:1px solid #29233c}
-.page{display:none}.page.active{display:block}
-.card{background:var(--panel);border:1px solid #332849;border-radius:16px;padding:15px;margin-bottom:16px}
-.heading{font-size:21px;margin:14px 0}
-.gradient{padding:22px;border-radius:17px;margin-bottom:17px;
-background:linear-gradient(120deg,#672cff,#d52eb9,#236bff)}
-.btn{padding:13px 20px;border-radius:25px;background:linear-gradient(90deg,#843aff,#e63bb8);font-weight:bold}
-.secondary{padding:10px 16px;background:#302746;border-radius:22px}
-input,textarea,select{width:100%;padding:13px;margin:7px 0;background:#211d35;
-border:1px solid #4a3b68;color:white;border-radius:10px}
-textarea{min-height:85px}
-.posthead{display:flex;gap:10px;align-items:center;margin-bottom:12px}
-.media{width:100%;max-height:650px;object-fit:contain;background:#090817;border-radius:12px}
-.actions{display:flex;gap:17px;padding:13px 0;flex-wrap:wrap}
-.actions button{background:none;font-size:17px}
-.caption{line-height:1.6;font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.grid img,.grid video{width:100%;aspect-ratio:1;object-fit:cover;background:#25203a}
-.reel{height:72vh;max-height:680px;max-width:430px;margin:15px auto;
-border-radius:18px;overflow:hidden;background:#201c35}
-.reel video{width:100%;height:100%;object-fit:contain}
-.status{font-size:13px;color:#bbb;margin:10px 0;line-height:1.6}
-.login{position:fixed;inset:0;z-index:100;
-background:linear-gradient(#08071999,#080719e8),
-url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=85");
-background-size:cover;background-position:center;overflow:auto;
-display:grid;place-items:center;padding:20px}
-.loginbox{width:min(420px,100%);padding:25px;border-radius:23px;text-align:center;
-background:#0c091eea;backdrop-filter:blur(18px);border:1px solid #a34aff;
-box-shadow:0 0 35px #7429a755}
-.brand{font-size:52px;font-weight:1000;
-background:linear-gradient(90deg,#a35aff,#ff4bb8,#4b9aff);
-color:transparent;background-clip:text}
-.founder{font-size:20px;color:#ffd878;font-style:italic;margin:5px}
-.tagline{color:#ddd;font-size:13px;margin:12px 0 18px}
-.tabs{display:flex;gap:8px;margin-bottom:12px}
-.tabs button{flex:1;padding:12px;border-radius:25px;background:#25203a}
-.tabs button.selected{background:linear-gradient(90deg,#873aff,#ec36bb)}
-.formfield{position:relative}
-.formfield input{padding-right:48px}
-.showpass{position:absolute;right:12px;top:19px;background:none}
-.bottom{display:none;position:fixed;bottom:0;left:0;right:0;background:#151127;
-justify-content:space-around;padding:12px;z-index:30}
-.bottom button{background:none;font-size:21px}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
-padding:12px 18px;background:#48306a;border-radius:25px;z-index:200;
-display:none;max-width:90%;text-align:center}
-@media(max-width:850px){.layout{grid-template-columns:60px 1fr}.right{display:none}
-.nav{padding:14px 5px;text-align:center;font-size:19px}.nav span{display:none}}
-@media(max-width:550px){.layout{display:block}.sidebar{display:none}
-main{padding:12px 10px 80px;border:0}.bottom{display:flex}
-header{padding:0 10px}.search{width:38%}}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:#05010a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;min-height:100vh}
+button,input,select{font:inherit}
+#authScreen{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse at 30% 20%,#1d0a3d 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,#2a0a2e 0%,transparent 50%),#05010a;display:grid;place-items:center;padding:20px;overflow:auto}
+.auth-box{width:min(420px,100%);background:rgba(22,16,38,0.96);border:1px solid #2e264a;padding:34px 26px;border-radius:28px;box-shadow:0 24px 80px rgba(0,0,0,0.65);backdrop-filter:blur(24px)}
+.vyzo-logo{font-size:54px;font-weight:900;text-align:center;letter-spacing:-2px;background:linear-gradient(90deg,#b45aff 0%,#ff4eb8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:flex;align-items:center;justify-content:center;gap:12px}
+.vyzo-star{font-size:38px;-webkit-text-fill-color:#e85aff;background:none;-webkit-background-clip:initial;filter:drop-shadow(0 0 12px #e85aff66)}
+.sub{color:#a8a0c0;text-align:center;margin:14px 0 30px;font-size:15.5px;letter-spacing:-0.2px}
+.field{width:100%;padding:17px 18px;background:#211a35;color:#fff;border:1.8px solid #352d52;border-radius:18px;outline:none;margin:9px 0;font-size:15.5px;transition:all .2s}
+.field::placeholder{color:#7a7294}.field:focus{border-color:#b45aff;box-shadow:0 0 0 5px rgba(180,90,255,0.14);background:#272040}
+select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239a90b8' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px}
+.primary{width:100%;padding:17px;background:linear-gradient(90deg,#9f5bff 0%,#ff4eb8 100%);color:#fff;border:0;border-radius:30px;font-weight:900;font-size:17px;margin-top:18px;box-shadow:0 8px 24px rgba(168,85,247,0.35);transition:transform .15s;letter-spacing:-0.2px}
+.primary:active{transform:scale(0.97)}
+#authMessage{margin-top:16px;padding:12px 16px;border-radius:14px;background:#2a1f3f;color:#ffb4d0;font-size:13.5px;display:none;text-align:center;line-height:1.4;border:1px solid #3a2a5a}
+#authMessage.show{display:block}
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#2a2240;color:#fff;padding:14px 22px;border-radius:16px;font-size:13.5px;font-weight:700;display:none;z-index:300;box-shadow:0 10px 30px rgba(0,0,0,0.5);max-width:90%;text-align:center;border:1px solid #3a315a}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:20;background:rgba(10,6,20,0.97);border-top:1px solid #2a2340;display:flex;justify-content:space-around;padding:10px 4px max(10px,env(safe-area-inset-bottom));backdrop-filter:blur(24px)}
+.nav-btn{background:none;color:#6e6a80;font-size:11px;display:grid;gap:4px;justify-items:center;font-weight:700;padding:6px 14px;border-radius:14px}.nav-btn span{font-size:23px}.nav-btn.active{color:#fff;background:#1e1830}
+header{height:64px;padding:0 14px;position:sticky;top:0;z-index:20;background:rgba(10,6,20,0.88);border-bottom:1px solid #2a2340;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px)}
+.brand{font-weight:900;font-size:20px;letter-spacing:-1px;background:linear-gradient(90deg,#b45aff,#ff4eb8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page{display:none;padding:14px;max-width:780px;margin:auto}.page.active{display:block}
+.card{background:#151022;border:1px solid #2a2340;border-radius:20px;padding:16px;margin-bottom:12px}
 </style>
 </head>
-
 <body>
 
-<header>
-<div class="logo">VYZO ✦</div>
-<input class="search" id="search" placeholder="Search VYZO">
-<div class="avatar" id="headAvatar">V</div>
-</header>
+<div id="authScreen">
+ <div class="auth-box">
+  <div class="vyzo-logo">VYZO <div class="vyzo-star">✦</div></div>
+  <div class="sub">Your world. Your voice. Your VYZO.</div>
+  
+  <div id="loginFields" style="display:none">
+   <input id="email" class="field" type="email" placeholder="Email HD">
+   <input id="password" class="field" type="password" placeholder="Password HD">
+   <button class="primary" onclick="login()">Login</button>
+   <div style="text-align:center;margin-top:18px;color:#8a82a0;font-size:13px">No account? <span style="color:#c084ff;font-weight:800;cursor:pointer" onclick="showSignup()">Create Account</span></div>
+  </div>
 
-<div class="layout">
+  <div id="signupFields">
+   <input id="signupName" class="field" value="Mian Abdullah" placeholder="Full Name">
+   <input id="signupEmail" class="field" value="mian2abdullah6@email.com" type="email" placeholder="Email">
+   <input id="signupPassword" class="field" type="password" value="123456" placeholder="Password (6+ chars)">
+   <select id="signupCountry" class="field">
+    <option value="">Select your country</option>
+    <option value="Pakistan" selected>Pakistan</option>
+    <option>United States</option><option>United Kingdom</option><option>India</option><option>Saudi Arabia</option><option>UAE</option><option>Canada</option><option>Australia</option><option>Turkey</option><option>China</option><option>Germany</option><option>Other</option>
+   </select>
+   <button class="primary" onclick="signup()">Create Account</button>
+   <div style="text-align:center;margin-top:16px;color:#777;font-size:12px">ID: ce37d7b21f5a9a2a89313349aaa6786c1fe895c8</div>
+   <div style="text-align:center;margin-top:10px;color:#8a82a0;font-size:13px">Already have? <span style="color:#c084ff;font-weight:800;cursor:pointer" onclick="showLogin()">Login</span></div>
+  </div>
 
-<aside class="sidebar">
-<div class="nav active" onclick="page('home',this)">⌂ <span>Home</span></div>
-<div class="nav" onclick="page('shorts',this)">▶ <span>Short Videos</span></div>
-<div class="nav" onclick="page('videos',this)">▣ <span>Long Videos</span></div>
-<div class="nav" onclick="page('explore',this)">⌕ <span>Explore</span></div>
-<div class="nav" onclick="page('news',this)">🌍 <span>World News</span></div>
-<div class="nav" onclick="page('sports',this)">⚽ <span>Sports Live</span></div>
-<div class="nav" onclick="page('upload',this)">＋ <span>Upload</span></div>
-<div class="nav" onclick="page('profile',this)">◉ <span>Profile</span></div>
-<div class="nav" onclick="page('live',this)">🔴 <span>Live Studio</span></div>
-<div class="nav" onclick="page('settings',this)">⚙ <span>Settings</span></div>
-</aside>
+  <div id="authMessage"></div>
+ </div>
+</div>
+
+<header><div class="brand">VYZO • HD</div><div style="color:#888;font-size:12px" id="countryBadge">🌍 World HD</div></header>
 
 <main>
-
-<section id="home" class="page active">
-<div class="gradient">
-<h2>Welcome to VYZO 🌍</h2>
-<p>One World • One Community • Endless Creativity</p><br>
-<button class="btn" onclick="page('upload')">＋ Create Post</button>
-</div>
-<h2 class="heading">Worldwide Feed ✨</h2>
-<div id="feed">Loading...</div>
-</section>
-
-<section id="shorts" class="page">
-<h2 class="heading">VYZO Shorts ▶</h2>
-<div id="shortFeed"></div>
-</section>
-
-<section id="videos" class="page">
-<h2 class="heading">VYZO Videos</h2>
-<div id="longFeed"></div>
-</section>
-
-<section id="explore" class="page">
-<h2 class="heading">Explore 🌎</h2>
-<div class="grid" id="exploreGrid"></div>
-</section>
-
-<section id="news" class="page">
-<h2 class="heading">World News 🌍</h2>
-<div class="gradient"><h2>Global News</h2><p>News from every country</p></div>
-<div class="card"><h3>International News</h3>
-<p class="status">Connect a verified news API for real-time news headlines from all countries.</p></div>
-</section>
-
-<section id="sports" class="page">
-<h2 class="heading">Sports Universe ⚽</h2>
-<div class="gradient"><h2>LIVE SPORTS</h2>
-<p>Cricket • Football • Tennis • Basketball</p></div>
-<div class="card"><h3>Live Matches & Scores</h3>
-<p class="status">Connect a sports data provider for actual match scores and live updates.</p></div>
-</section>
-
-<section id="upload" class="page">
-<h2 class="heading">Create Post ✨</h2>
-<div class="card">
-<h3>Share with the world</h3>
-<select id="kind">
-<option value="short">Short Video</option>
-<option value="long">Long Video</option>
-<option value="photo">Photo</option>
-</select>
-<input id="file" type="file" accept="image/*,video/*">
-<textarea id="caption" placeholder="Write something..."></textarea>
-<button class="btn" id="uploadBtn" onclick="uploadPost()">Publish ↑</button>
-<p class="status" id="uploadStatus">Upload your photos and videos.</p>
-</div>
-</section>
-
-<section id="profile" class="page">
-<div class="card">
-<div class="avatar" id="profileAvatar" style="width:75px;height:75px;font-size:27px">V</div>
-<h2 id="profileName">Creator</h2>
-<p id="profileEmail" class="status"></p>
-<p>Posts: <b id="postCount">0</b></p>
-<button class="secondary" onclick="page('settings')">Edit Profile</button>
-</div>
-<h3 class="heading">My Posts</h3>
-<div class="grid" id="myGrid"></div>
-</section>
-
-<section id="live" class="page">
-<h2 class="heading">Live Studio 🔴</h2>
-<div class="card">
-<video id="camera" autoplay muted playsinline class="media"></video><br><br>
-<button class="btn" onclick="startCamera()">Start Camera</button>
-<button class="secondary" onclick="stopCamera()">Stop</button>
-<p class="status">Camera preview. Public livestream requires a streaming server.</p>
-</div>
-</section>
-
-<section id="settings" class="page">
-<h2 class="heading">Settings ⚙</h2>
-<div class="card">
-<input id="newName" placeholder="Display name">
-<textarea id="newBio" placeholder="Your bio"></textarea>
-<button class="btn" onclick="updateProfile()">Save Profile</button>
-</div>
-<div class="card"><button class="secondary" onclick="logout()">Log Out</button></div>
-</section>
-
+ <div id="homePage" class="page active">
+  <div class="card"><h3 style="font-weight:900">Welcome to VYZO HD 4K</h3><p style="color:#999;font-size:13px;margin-top:8px">Your world. Your voice. Your VYZO. • HD • No Firebase Error • ce37d7b21f5a9a2a89313349aaa6786c1fe895c8</p></div>
+  <div id="feed"></div>
+ </div>
 </main>
 
-<aside class="right">
-<div class="card"><h3>🌎 Global Community</h3><p class="status">Discover creators worldwide.</p></div>
-<div class="card"><h3>🔥 Trending</h3><p class="status">#VYZO #Music #Sports #Technology</p></div>
-<div class="card"><h3>⚽ Sports</h3><p class="status">Cricket • Football • Tennis</p></div>
-</aside>
-</div>
-
-<nav class="bottom">
-<button onclick="page('home')">⌂</button>
-<button onclick="page('shorts')">▶</button>
-<button onclick="page('upload')">＋</button>
-<button onclick="page('news')">🌍</button>
-<button onclick="page('profile')">◉</button>
+<nav class="bottom-nav">
+ <button class="nav-btn active"><span>⌂</span>Home HD</button>
+ <button class="nav-btn"><span>🌍</span>News HD</button>
+ <button class="nav-btn"><span>＋</span>Create HD</button>
+ <button class="nav-btn"><span>◉</span>Profile HD</button>
 </nav>
 
-<!-- SIGNUP AND LOGIN -->
-<div class="login" id="authScreen">
-<div class="loginbox">
-<div class="brand">VYZO ✦</div>
-<div class="founder">Mian Abdullah Gulzar</div>
-<div class="tagline">Create • Watch • Connect • Explore</div>
-<div class="tabs">
-<button id="signupTab" class="selected" onclick="switchAuth('signup')">Sign Up</button>
-<button id="loginTab" onclick="switchAuth('login')">Log In</button>
-</div>
-<div id="nameField"><input id="name" placeholder="Your full name" autocomplete="name"></div>
-<input id="email" type="email" placeholder="Email address" autocomplete="email">
-<div class="formfield">
-<input id="password" type="password" placeholder="Password (minimum 6 characters)" autocomplete="new-password">
-<button class="showpass" onclick="togglePassword()">👁</button>
-</div>
-<div id="countryField">
-<select id="country">
-<option value="">Select your country</option>
-<option>Pakistan</option><option>United States</option>
-<option>United Kingdom</option><option>India</option>
-<option>Saudi Arabia</option><option>United Arab Emirates</option>
-<option>Canada</option><option>Australia</option>
-<option>Turkey</option><option>China</option><option>Other</option>
-</select>
-</div>
-<button class="btn" id="authBtn" style="width:100%;margin-top:10px" onclick="authenticate()">Create Account 🚀</button>
-<button class="secondary" style="width:100%;margin-top:10px" onclick="googleLogin()">Continue with Google</button>
-<p class="status" id="authStatus">Welcome to VYZO World 🌍</p>
-<p class="status">By continuing, you agree to use VYZO responsibly.</p>
-</div>
-</div>
+<div id="toast" class="toast"></div>
 
-<div class="toast" id="toast"></div>
-
-<script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-
-import {
-getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
-signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
-updateProfile as firebaseUpdateProfile,signOut
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-
-import {
-getDatabase,ref,push,set,onValue,update,runTransaction,get
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
-
-import {
-getStorage,ref as storageRef,uploadBytesResumable,getDownloadURL
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-storage.js";
-
-/* IMPORTANT: Replace these values with your real Firebase Web App config */
-const firebaseConfig={
-apiKey:"PASTE_YOUR_API_KEY",
-authDomain:"YOUR_PROJECT_ID.firebaseapp.com",
-databaseURL:"https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-projectId:"YOUR_PROJECT_ID",
-storageBucket:"YOUR_PROJECT_ID.firebasestorage.app",
-messagingSenderId:"PASTE_YOUR_SENDER_ID",
-appId:"PASTE_YOUR_APP_ID"
-};
-
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const db=getDatabase(app);
-const storage=getStorage(app);
-const googleProvider=new GoogleAuthProvider();
-
-let currentUser=null,allPosts={},stream=null;
+<script>
 const $=id=>document.getElementById(id);
+let users=JSON.parse(localStorage.getItem('vyzo_users')||'{}');
+let current=JSON.parse(localStorage.getItem('vyzo_current')||'null');
 
-function message(t){
-$("toast").textContent=t;
-$("toast").style.display="block";
-setTimeout(()=>$("toast").style.display="none",3500);
-}
-function status(t){$("authStatus").textContent=t}
+function showToast(m){const t=$("toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",3000)}
+function showError(msg){const el=$("authMessage");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),4000)}
+window.showSignup=()=>{$("loginFields").style.display="none";$("signupFields").style.display="block"}
+window.showLogin=()=>{$("signupFields").style.display="none";$("loginFields").style.display="block"}
 
-window.switchAuth=function(mode){
-$("signupTab").classList.toggle("selected",mode==="signup");
-$("loginTab").classList.toggle("selected",mode==="login");
-$("nameField").style.display=mode==="signup"?"block":"none";
-$("countryField").style.display=mode==="signup"?"block":"none";
-$("authBtn").textContent=mode==="signup"?"Create Account 🚀":"Log In";
-$("password").autocomplete=mode==="signup"?"new-password":"current-password";
-window.authMode=mode;
-status(mode==="signup"?"Create your VYZO account":"Welcome back to VYZO");
-};
-window.authMode="signup";
+window.signup=()=>{
+ const name=$("signupName").value.trim();
+ const email=$("signupEmail").value.trim().toLowerCase();
+ const pass=$("signupPassword").value;
+ let country=$("signupCountry").value;
 
-window.togglePassword=function(){
-$("password").type=$("password").type==="password"?"text":"password";
-};
+ // FIX: Auto default Pakistan if not selected - Error khatam
+ if(!country || country===""){country="Pakistan";$("signupCountry").value="Pakistan"}
 
-function friendlyError(e){
-const errors={
-"auth/email-already-in-use":"This email already has an account. Please log in.",
-"auth/invalid-email":"Enter a valid email address.",
-"auth/weak-password":"Password must have at least 6 characters.",
-"auth/user-not-found":"Account not found. Please sign up first.",
-"auth/wrong-password":"Incorrect password.",
-"auth/invalid-credential":"Email or password is incorrect.",
-"auth/network-request-failed":"Check your internet connection.",
-"auth/too-many-requests":"Too many attempts. Try later.",
-"auth/popup-closed-by-user":"Google login was closed.",
-"auth/operation-not-allowed":"Enable Email/Password in Firebase Authentication.",
-"auth/unauthorized-domain":"Add your Netlify domain in Firebase Authorized domains."
-};
-return errors[e.code]||("Error: "+e.code+" - "+e.message);
+ if(!name){showError("Please enter Full Name HD");return}
+ if(!email || !email.includes("@")){showError("Please enter valid Email HD");return}
+ if(!pass || pass.length<6){showError("Complete all fields. Password needs 6 characters. HD");return}
+
+ if(Object.values(users).some(u=>u.email===email)){showError("Email already exists - Login HD");return}
+
+ const uid='u_'+Date.now();
+ const user={uid,name,email,password:pass,country,id:"ce37d7b21f5a9a2a89313349aaa6786c1fe895c8",createdAt:Date.now()};
+ users[uid]=user;current=user;
+ localStorage.setItem('vyzo_users',JSON.stringify(users));
+ localStorage.setItem('vyzo_current',JSON.stringify(user));
+ $("authScreen").style.display="none";
+ showToast("VYZO Account Created HD 4K - Welcome "+name+"!");
 }
 
-window.authenticate=async function(){
-const email=$("email").value.trim();
-const password=$("password").value;
-const name=$("name").value.trim();
-const country=$("country").value;
-if(!email||!password)return status("Enter email and password.");
-if(password.length<6)return status("Password needs at least 6 characters.");
-if(window.authMode==="signup"&&(!name||!country))
-return status("Enter your name and select your country.");
-
-$("authBtn").disabled=true;
-$("authBtn").textContent="Please wait...";
-status("Connecting securely...");
-
-try{
-if(window.authMode==="signup"){
-const result=await createUserWithEmailAndPassword(auth,email,password);
-await firebaseUpdateProfile(result.user,{displayName:name});
-await set(ref(db,"users/"+result.user.uid),{
-name,email,country,bio:"",createdAt:Date.now()
-});
-}else{
-await signInWithEmailAndPassword(auth,email,password);
-}
-status("Success!");
-}catch(e){status(friendlyError(e))}
-finally{
-$("authBtn").disabled=false;
-$("authBtn").textContent=window.authMode==="signup"?"Create Account 🚀":"Log In";
-}
-};
-
-window.googleLogin=async function(){
-try{
-status("Opening Google login...");
-const result=await signInWithPopup(auth,googleProvider);
-const u=result.user;
-await set(ref(db,"users/"+u.uid),{
-name:u.displayName||"VYZO User",email:u.email||""
-});
-}catch(e){status(friendlyError(e))}
-};
-
-onAuthStateChanged(auth,async u=>{
-currentUser=u;
-if(u){
-$("authScreen").style.display="none";
-$("headAvatar").textContent=(u.displayName||u.email||"V")[0].toUpperCase();
-loadProfile(u);
-loadPosts();
-}else{
-$("authScreen").style.display="grid";
-}
-});
-
-function loadProfile(u){
-onValue(ref(db,"users/"+u.uid),snap=>{
-const d=snap.val()||{};
-$("profileName").textContent=d.name||u.displayName||"VYZO Creator";
-$("profileEmail").textContent=d.email||u.email||"";
-$("newName").value=d.name||u.displayName||"";
-$("newBio").value=d.bio||"";
-$("profileAvatar").textContent=(d.name||"V")[0].toUpperCase();
-});
+window.login=()=>{
+ const email=$("email").value.trim().toLowerCase();
+ const pass=$("password").value;
+ if(!email||!pass){showError("Email & Password HD likhein");return}
+ const user=Object.values(users).find(u=>u.email===email);
+ if(!user){showError("Account nahi mila HD - Sign Up karo");return}
+ if(user.password!==pass){showError("Password ghalat HD");return}
+ current=user;localStorage.setItem('vyzo_current',JSON.stringify(user));
+ $("authScreen").style.display="none";
+ showToast("Login HD Success - VYZO");
 }
 
-window.updateProfile=async function(){
-if(!currentUser)return;
-const name=$("newName").value.trim();
-if(!name)return message("Enter your name");
-try{
-await update(ref(db,"users/"+currentUser.uid),{
-name,bio:$("newBio").value.trim()
-});
-await firebaseUpdateProfile(currentUser,{displayName:name});
-message("Profile updated!");
-}catch(e){message(friendlyError(e))}
-};
-
-function loadPosts(){
-onValue(ref(db,"posts"),snap=>{
-allPosts=snap.val()||{};
-renderPosts();
-},e=>message("Database error: "+e.message));
+function init(){
+ if(current){$("authScreen").style.display="none"}
 }
-
-function escapeText(s){
-return String(s||"").replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
-}
-
-function postHTML(id,p){
-const media=p.type==="photo"
-?`<img class="media" src="${p.url}" alt="Post">`
-:`<video class="media" src="${p.url}" controls playsinline preload="metadata"></video>`;
-return `<div class="card">
-<div class="posthead"><div class="avatar">${escapeText((p.name||"V")[0])}</div>
-<div><b>${escapeText(p.name)}</b><br><small>${escapeText(p.country||"Worldwide")}</small></div></div>
-${media}
-<div class="actions">
-<button onclick="likePost('${id}')">❤️ ${p.likes||0}</button>
-<button onclick="commentPost('${id}')">💬 Comment</button>
-<button onclick="sharePost('${id}')">↗ Share</button>
-</div>
-<div class="caption"><b>${escapeText(p.name)}</b> ${escapeText(p.caption)}</div>
-</div>`;
-}
-
-function renderPosts(){
-const entries=Object.entries(allPosts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
-$("feed").innerHTML=entries.map(([id,p])=>postHTML(id,p)).join("")||
-"<p class='status'>No posts yet. Be the first VYZO creator!</p>";
-
-$("longFeed").innerHTML=entries.filter(x=>x[1].type==="long")
-.map(([id,p])=>postHTML(id,p)).join("")||"<p>No long videos yet.</p>";
-
-$("shortFeed").innerHTML=entries.filter(x=>x[1].type==="short")
-.map(([id,p])=>`<div class="reel"><video src="${p.url}" controls playsinline></video></div>
-<div class="card"><b>${escapeText(p.name)}</b><p>${escapeText(p.caption)}</p>
-<button onclick="likePost('${id}')">❤️ ${p.likes||0}</button>
-<button onclick="commentPost('${id}')">💬 Comment</button>
-<button onclick="sharePost('${id}')">↗ Share</button></div>`).join("")||
-"<p>No short videos yet.</p>";
-
-$("exploreGrid").innerHTML=entries.map(([id,p])=>p.type==="photo"
-?`<img src="${p.url}">`:`<video src="${p.url}" controls></video>`).join("");
-
-const mine=entries.filter(x=>x[1].uid===currentUser?.uid);
-$("postCount").textContent=mine.length;
-$("myGrid").innerHTML=mine.map(([id,p])=>p.type==="photo"
-?`<img src="${p.url}">`:`<video src="${p.url}" controls></video>`).join("");
-}
-
-window.uploadPost=async function(){
-if(!currentUser)return message("Please log in");
-const file=$("file").files[0],type=$("kind").value;
-const caption=$("caption").value.trim();
-if(!file)return message("Choose a photo or video first");
-if(type==="photo"&&!file.type.startsWith("image/"))return message("Choose an image");
-if(type!=="photo"&&!file.type.startsWith("video/"))return message("Choose a video");
-if(file.size>100*1024*1024)return message("Maximum upload size is 100 MB");
-
-const btn=$("uploadBtn");
-btn.disabled=true;btn.textContent="Uploading...";
-try{
-const path="posts/"+currentUser.uid+"/"+Date.now()+"_"+file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-const task=uploadBytesResumable(storageRef(storage,path),file);
-
-const url=await new Promise((resolve,reject)=>{
-task.on("state_changed",s=>{
-$("uploadStatus").textContent="Uploading: "+
-Math.round(s.bytesTransferred/s.totalBytes*100)+"%";
-},reject,async()=>resolve(await getDownloadURL(task.snapshot.ref)));
-});
-
-const snap=await get(ref(db,"users/"+currentUser.uid));
-const profile=snap.val()||{};
-const postRef=push(ref(db,"posts"));
-
-await set(postRef,{
-uid:currentUser.uid,
-name:profile.name||currentUser.displayName||"VYZO Creator",
-country:profile.country||"Worldwide",
-caption,type,url,path,likes:0,createdAt:Date.now()
-});
-$("file").value="";$("caption").value="";
-$("uploadStatus").textContent="Upload complete!";
-message("Your post is online!");
-page("home");
-}catch(e){
-message(friendlyError(e));
-$("uploadStatus").textContent="Upload failed: "+e.message;
-}finally{
-btn.disabled=false;btn.textContent="Publish ↑";
-}
-};
-
-window.likePost=async function(id){
-if(!currentUser)return message("Log in first");
-try{
-await runTransaction(ref(db,"posts/"+id+"/likes"),v=>(v||0)+1);
-}catch(e){message(e.message)}
-};
-
-window.commentPost=async function(id){
-if(!currentUser)return;
-const text=prompt("Write your comment:");
-if(!text||!text.trim())return;
-try{
-const snap=await get(ref(db,"users/"+currentUser.uid));
-const p=snap.val()||{};
-await set(push(ref(db,"comments/"+id)),{
-uid:currentUser.uid,name:p.name||"VYZO User",
-text:text.trim(),createdAt:Date.now()
-});
-message("Comment posted!");
-}catch(e){message(e.message)}
-};
-
-window.sharePost=async function(id){
-const url=location.href.split("#")[0]+"#post-"+id;
-try{
-if(navigator.share)await navigator.share({title:"VYZO",url});
-else await navigator.clipboard.writeText(url);
-}catch(e){message("Sharing cancelled or unavailable")}
-};
-
-window.page=function(id,el){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-$(id).classList.add("active");
-document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
-if(el)el.classList.add("active");
-};
-
-window.startCamera=async function(){
-try{
-stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
-$("camera").srcObject=stream;
-}catch(e){message("Camera permission or HTTPS required")}
-};
-window.stopCamera=function(){
-if(stream)stream.getTracks().forEach(t=>t.stop());
-$("camera").srcObject=null;
-};
-
-window.logout=async function(){
-try{
-if(stream)stopCamera();
-await signOut(auth);
-message("Logged out");
-}catch(e){message(e.message)}
-};
-
-$("search").addEventListener("input",e=>{
-const q=e.target.value.toLowerCase();
-$("exploreGrid").innerHTML=Object.entries(allPosts)
-.filter(([id,p])=>(p.caption+" "+p.name+" "+p.country).toLowerCase().includes(q))
-.map(([id,p])=>p.type==="photo"?`<img src="${p.url}">`:
-`<video src="${p.url}" controls></video>`).join("");
-page("explore");
-});
+init();
 </script>
 </body>
 </html>
