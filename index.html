@@ -3,611 +3,513 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#050711">
-<title>VYRA | The World in Motion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090817">
+<title>VYZO - Social Universe</title>
+
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
- --bg:#050711;--panel:#0d1528;--panel2:#14223c;
- --blue:#087cff;--cyan:#00dfff;--white:#f7faff;
- --muted:#9aabc5;--line:#203453;--pink:#ff397e;
+--bg:#090817;--panel:#15132a;--purple:#925cff;
+--pink:#f34cbd;--blue:#398cff;--white:#fff;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
-button,input,select,textarea{font:inherit}
+body{background:var(--bg);color:white;font-family:Arial,sans-serif}
+button,input{font:inherit}
 button{cursor:pointer}
-.hidden{display:none!important}
-.primary{background:linear-gradient(110deg,#086bff,#00cfff);color:white;border:0;border-radius:13px;padding:13px 18px;font-weight:bold;box-shadow:0 5px 22px #087cff38}
-.secondary{background:#13213a;color:white;border:1px solid var(--line);padding:11px 15px;border-radius:12px}
-.danger{background:#45182d;color:#ff9ab6;border:0;padding:10px;border-radius:11px}
-input,select,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#080f20;color:white;outline:none;margin:6px 0}
-input:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 12px #00caff30}
-label{font-size:13px;color:#b8c9e4}
-.muted{font-size:13px;color:var(--muted)}
-.card{background:linear-gradient(145deg,#111d34,#091020);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}
-.msg{font-size:13px;color:#ff8da9;line-height:1.5;margin:10px 0}
-.good{color:#43e7af}
-svg{width:24px;height:24px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.iconButton{display:grid;place-items:center;border:0;background:transparent;color:white}
-#authScreen{min-height:100dvh;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse at 20% 10%,#0754a055,transparent 42%),radial-gradient(ellipse at 90% 90%,#003d7755,transparent 40%),#050711}
-.authBox{width:100%;max-width:420px;background:#091225;border:1px solid #168cff55;border-radius:26px;padding:25px;box-shadow:0 0 55px #007bff25}
-.brandLogo{width:86px;height:86px;margin:0 auto 15px;border-radius:27px;display:grid;place-items:center;font-size:39px;font-weight:1000;background:linear-gradient(135deg,#006dff,#00e2ff);box-shadow:0 0 35px #008cff88}
-.authBox h1{text-align:center;font-size:30px;letter-spacing:4px}
-.authSub{text-align:center;color:var(--cyan);font-size:10px;letter-spacing:3px;margin:8px 0 23px}
-.tabs{display:flex;gap:8px;margin-bottom:15px}.tabs button{flex:1}
-header{height:58px;position:fixed;z-index:20;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:#070c19ed;border-bottom:1px solid var(--line);backdrop-filter:blur(15px)}
-.brand{display:flex;align-items:center;gap:10px}
-.brandMark{height:37px;width:37px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#087cff,#00ddff);font-weight:1000}
-.brand b{letter-spacing:2px;font-size:18px}.brand small{display:block;font-size:9px;color:var(--cyan);letter-spacing:2px;margin-top:2px}
-.headActions{display:flex;gap:13px;align-items:center}
-.headActions button{color:white;background:none;border:0}
-#app{padding-top:58px;padding-bottom:66px}
-.page{display:none}.page.active{display:block}
-.bottomNav{position:fixed;z-index:30;bottom:0;left:0;right:0;height:65px;padding-bottom:env(safe-area-inset-bottom);display:flex;justify-content:space-around;align-items:center;background:#080e1cf5;border-top:1px solid var(--line);backdrop-filter:blur(15px)}
-.bottomNav button{border:0;background:none;color:#8799b9;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:55px}
-.bottomNav button svg{width:22px;height:22px}
-.bottomNav button.active{color:var(--cyan)}
-.title{font-size:23px;margin:17px 15px}
-.content{max-width:760px;margin:auto;padding:0 13px}
-/* FULL SCREEN SHORT VIDEO FEED */
-#homePage{height:calc(100dvh - 123px);overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-#homePage::-webkit-scrollbar{display:none}
-.videoCard{height:calc(100dvh - 123px);min-height:430px;position:relative;background:#000;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
-.videoMedia{width:100%;height:100%;object-fit:contain;background:#000}
-.videoShade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 45%,#0009 100%)}
-.videoTop{position:absolute;top:13px;left:0;right:0;z-index:2;display:flex;justify-content:center;gap:23px;text-shadow:0 2px 8px #000}
-.videoTop button{border:0;background:none;color:#ffffffa8;font-weight:bold;font-size:15px}
-.videoTop button.selected{color:white;border-bottom:2px solid var(--cyan);padding-bottom:6px}
-.videoInfo{position:absolute;left:14px;right:85px;bottom:21px;z-index:3;text-shadow:0 2px 7px #000}
-.videoInfo .creator{font-size:15px;font-weight:bold}
-.videoInfo p{font-size:14px;margin-top:7px;line-height:1.4}
-.videoInfo .music{font-size:12px;margin-top:9px}
-.videoActions{position:absolute;right:12px;bottom:28px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:16px}
-.videoActions button{border:0;background:#101a2b99;color:white;border-radius:50%;width:46px;height:46px;display:grid;place-items:center;backdrop-filter:blur(8px)}
-.videoActions button svg{width:25px;height:25px}
-.videoActions small{font-size:11px;text-shadow:0 1px 5px black}
-.videoActions .follow{background:var(--blue);width:26px;height:26px;margin-top:-15px;border-radius:50%;font-weight:bold;font-size:19px}
-.videoActions .liked{color:#ff397e}
-.videoAvatar{width:45px;height:45px;border-radius:50%;border:2px solid white;object-fit:cover}
-.feedMessage{height:100%;display:grid;place-items:center;text-align:center;padding:25px;color:#a7bad7;line-height:1.8}
-/* OTHER SECTIONS */
-.postImage,.postVideo{width:100%;max-height:550px;object-fit:contain;background:#000;border-radius:12px;margin-top:10px}
-.row{display:flex;align-items:center;gap:10px}
-.avatar{width:43px;height:43px;border-radius:50%;object-fit:cover;background:#152b4c;border:1px solid var(--blue)}
-.actions{display:flex;gap:17px;margin-top:12px;flex-wrap:wrap}
-.actions button{background:none;border:0;color:#b9cce9}
-.profile{text-align:center;padding:20px}
-.profilePic{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--cyan)}
-.stats{display:flex;justify-content:space-around;margin:18px}
-.stats b{display:block;font-size:20px}.stats small{color:var(--muted)}
+header{
+height:65px;position:sticky;top:0;z-index:20;
+background:#100e20;border-bottom:1px solid #292440;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 18px
+}
+.logo{font-size:28px;font-weight:900;letter-spacing:1px;
+background:linear-gradient(90deg,#a45cff,#ff52b8);
+background-clip:text;color:transparent}
+.search{background:#211e35;border:1px solid #39334f;
+padding:10px;border-radius:25px;color:white;width:35%;outline:none}
+.avatar{width:38px;height:38px;border-radius:50%;
+background:linear-gradient(135deg,#a45cff,#ff52b8);
+display:grid;place-items:center;font-weight:bold}
+.layout{display:grid;grid-template-columns:220px 1fr 260px;
+max-width:1450px;margin:auto}
+.sidebar{padding:20px 12px;position:sticky;top:65px;height:calc(100vh - 65px)}
+.nav{
+display:flex;align-items:center;gap:14px;padding:14px;
+border-radius:12px;color:#ccc;cursor:pointer;margin-bottom:5px;
+font-size:15px
+}
+.nav:hover,.nav.active{background:#282044;color:white}
+.nav b{font-size:21px}
+main{padding:18px;min-width:0;border-left:1px solid #252039;
+border-right:1px solid #252039}
+.right{padding:20px 14px}
+.section-title{font-size:20px;margin:12px 0 18px}
+.stories{display:flex;gap:14px;overflow:auto;padding:10px 0 20px}
+.story{min-width:65px;text-align:center;font-size:11px;color:#ccc}
+.story-circle{width:60px;height:60px;border-radius:50%;
+padding:3px;background:linear-gradient(45deg,#ff48a7,#925cff,#36cfff);
+margin:auto auto 6px}
+.story-circle div{background:#211c36;border:2px solid #090817;
+width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+font-size:22px}
+.card{background:var(--panel);border:1px solid #292440;
+border-radius:16px;padding:15px;margin-bottom:17px}
+.post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.post-head .avatar{width:40px;height:40px}
+.post-head small{color:#aaa}
+.video{
+width:100%;aspect-ratio:9/12;max-height:600px;
+border-radius:13px;object-fit:cover;background:#211d37
+}
+.post-actions{display:flex;gap:22px;padding-top:13px}
+.action{border:0;background:none;color:white;font-size:21px}
+.action small{font-size:12px;color:#aaa}
+.caption{padding-top:10px;font-size:14px;line-height:1.6}
+.page{display:none}
+.page.active{display:block}
+.reel{
+position:relative;max-width:450px;margin:15px auto;
+height:min(75vh,680px);background:#201c35;
+border-radius:18px;overflow:hidden
+}
+.reel video,.reel img{width:100%;height:100%;object-fit:cover}
+.reel-info{position:absolute;bottom:15px;left:14px;right:70px;
+text-shadow:0 2px 5px black}
+.reel-buttons{position:absolute;right:12px;bottom:35px;
+display:grid;gap:20px;text-align:center}
+.reel-buttons button{background:#ffffff22;border:0;color:white;
+font-size:23px;border-radius:50%;width:43px;height:43px}
+.reel-buttons small{display:block;font-size:11px}
+.gradient{
+background:linear-gradient(120deg,#692fff,#db35b8,#248dff);
+padding:22px;border-radius:16px;margin-bottom:15px
+}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.grid img,.grid video{width:100%;height:135px;object-fit:cover;border-radius:7px;background:#111}
-.newsItem a{color:var(--cyan);text-decoration:none}
-.sportRow{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);gap:12px}
-.liveTag{color:#ff5685;font-weight:bold}
-.progress{height:7px;border-radius:9px;background:#192743;overflow:hidden}
-.progress div{height:100%;width:0;background:linear-gradient(90deg,#087cff,#00eaff)}
-#cameraPreview{width:100%;max-height:65vh;background:#000;border-radius:12px}
-@media(min-width:750px){#homePage{max-width:500px;margin:auto}.videoCard{height:calc(100dvh - 123px)}}
+.grid img,.grid video{width:100%;aspect-ratio:1;object-fit:cover;
+background:#24203b;border-radius:5px}
+input,textarea,select{
+width:100%;padding:12px;margin:7px 0;background:#211e35;
+border:1px solid #39334f;border-radius:9px;color:white
+}
+.primary{background:linear-gradient(90deg,#925cff,#e84cba);
+border:0;padding:12px 20px;color:white;border-radius:25px;font-weight:bold}
+.secondary{background:#292441;border:0;color:white;
+padding:10px 15px;border-radius:20px}
+.news-item{padding:15px 0;border-bottom:1px solid #332d49}
+.news-item small{color:#aaa}
+.sport{display:flex;justify-content:space-between;align-items:center;
+background:#211d37;padding:17px;border-radius:12px;margin:12px 0}
+.bottom{
+display:none;position:fixed;bottom:0;left:0;right:0;
+background:#121024;border-top:1px solid #39334f;
+justify-content:space-around;padding:12px 3px;z-index:30
+}
+.bottom button{background:none;border:0;color:white;font-size:21px}
+.right p{color:#aaa;font-size:13px;line-height:1.7}
+.login{
+position:fixed;inset:0;background:#090817;z-index:100;
+display:grid;place-items:center;padding:20px
+}
+.login-box{background:#17142b;padding:28px;border-radius:20px;
+width:min(400px,100%);text-align:center}
+.login-box h1{font-size:42px;margin-bottom:8px}
+.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);
+background:#30244f;padding:12px 20px;border-radius:30px;
+display:none;z-index:150}
+@media(max-width:850px){
+.layout{grid-template-columns:65px 1fr}
+.sidebar{padding:15px 5px}
+.nav{justify-content:center;padding:14px 4px}
+.nav span{display:none}
+.right{display:none}
+}
+@media(max-width:550px){
+header{padding:0 12px}
+.search{width:42%}
+.layout{display:block}
+.sidebar{display:none}
+main{border:0;padding:12px;padding-bottom:75px}
+.bottom{display:flex}
+.logo{font-size:24px}
+.card{padding:11px}
+}
 </style>
 </head>
+
 <body>
 
-<!-- SVG ICON LIBRARY -->
-<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></symbol>
-<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></symbol>
-<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/></symbol>
-<symbol id="i-comment" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.5-4A8.5 8.5 0 1 1 21 11.5z"/></symbol>
-<symbol id="i-share" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 14v6h16v-6"/></symbol>
-<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
-<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8m-4-4v4M7 4h10v6a5 5 0 0 1-10 0zM7 6H3v2a5 5 0 0 0 5 5m9-7h4v2a5 5 0 0 1-5 5"/></symbol>
-<symbol id="i-news" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h5v5H7zm8 0h2m-2 4h2M7 16h10"/></symbol>
-<symbol id="i-live" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
-<symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 8l12-2"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
-</svg>
-
-<section id="authScreen">
- <div class="authBox">
-  <div class="brandLogo">V</div>
-  <h1>VYRA</h1>
-  <div class="authSub">THE WORLD IN MOTION</div>
-  <div class="tabs">
-   <button class="primary" id="loginTab" onclick="showAuth('login')">LOGIN</button>
-   <button class="secondary" id="signupTab" onclick="showAuth('signup')">SIGN UP</button>
-  </div>
-  <div id="loginForm">
-   <label>Email</label><input id="loginEmail" type="email" placeholder="Your email">
-   <label>Password</label><input id="loginPassword" type="password" placeholder="Your password">
-   <button class="primary" style="width:100%;margin-top:10px" onclick="login()">Login to VYRA</button>
-  </div>
-  <div id="signupForm" class="hidden">
-   <label>Full name</label><input id="signupName" placeholder="Your name">
-   <label>Email</label><input id="signupEmail" type="email" placeholder="Your email">
-   <label>Password (minimum 6 characters)</label><input id="signupPassword" type="password" placeholder="Create password">
-   <label>Country</label><select id="signupCountry"></select>
-   <button class="primary" style="width:100%;margin-top:10px" onclick="signup()">Create Account</button>
-  </div>
-  <div id="authMsg" class="msg"></div>
-  <p class="muted" style="text-align:center;margin-top:15px">Create. Connect. Discover.</p>
- </div>
-</section>
-
-<div id="app" class="hidden">
 <header>
- <div class="brand"><div class="brandMark">V</div><div><b>VYRA</b><small>THE WORLD IN MOTION</small></div></div>
- <div class="headActions">
-  <button onclick="openPage('news')" aria-label="News"><svg><use href="#i-news"/></svg></button>
-  <button onclick="openPage('sports')" aria-label="Sports"><svg><use href="#i-trophy"/></svg></button>
- </div>
+<div class="logo">VYZO ✦</div>
+<input class="search" id="search" placeholder="Search VYZO...">
+<div class="avatar" id="headAvatar">V</div>
 </header>
 
-<!-- VIDEO FEED -->
-<section id="homePage" class="page active">
- <div id="videoFeed"><div class="feedMessage">Welcome to VYRA<br>Loading videos...</div></div>
+<div class="layout">
+
+<aside class="sidebar">
+<div class="nav active" onclick="showPage('home',this)"><b>⌂</b><span>Home</span></div>
+<div class="nav" onclick="showPage('reels',this)"><b>▶</b><span>Short Videos</span></div>
+<div class="nav" onclick="showPage('videos',this)"><b>▣</b><span>Videos</span></div>
+<div class="nav" onclick="showPage('explore',this)"><b>⌕</b><span>Explore</span></div>
+<div class="nav" onclick="showPage('news',this)"><b>🌍</b><span>World News</span></div>
+<div class="nav" onclick="showPage('sports',this)"><b>⚽</b><span>Sports Live</span></div>
+<div class="nav" onclick="showPage('upload',this)"><b>＋</b><span>Create Post</span></div>
+<div class="nav" onclick="showPage('profile',this)"><b>◉</b><span>Profile</span></div>
+<div class="nav" onclick="showPage('live',this)"><b>🔴</b><span>Go Live</span></div>
+<div class="nav" onclick="showPage('settings',this)"><b>⚙</b><span>Settings</span></div>
+</aside>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="page active">
+<div class="stories">
+<div class="story"><div class="story-circle"><div>＋</div></div>Your story</div>
+<div class="story"><div class="story-circle"><div>🌎</div></div>World</div>
+<div class="story"><div class="story-circle"><div>🎵</div></div>Music</div>
+<div class="story"><div class="story-circle"><div>⚽</div></div>Sports</div>
+<div class="story"><div class="story-circle"><div>🎮</div></div>Gaming</div>
+<div class="story"><div class="story-circle"><div>📸</div></div>Friends</div>
+</div>
+
+<div class="gradient">
+<h2>Welcome to VYZO ✨</h2>
+<p>One world. One community. Endless creativity.</p>
+<button class="primary" onclick="showPage('upload')">＋ Create now</button>
+</div>
+
+<h2 class="section-title">Your Feed ✨</h2>
+<div id="homeFeed"></div>
+</section>
+
+<!-- SHORT VIDEOS -->
+<section id="reels" class="page">
+<h2 class="section-title">VYZO Shorts ▶</h2>
+<div id="reelContainer">
+<div class="reel">
+<div style="display:grid;place-items:center;height:100%;color:#aaa">
+<h2>🎬</h2><p>Upload a video to start your feed</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" class="page">
+<h2 class="section-title">Discover Videos</h2>
+<div id="videoFeed"></div>
 </section>
 
 <!-- EXPLORE -->
-<section id="explorePage" class="page">
- <h2 class="title">Discover VYRA ✨</h2>
- <div class="content"><div id="exploreFeed"></div></div>
-</section>
-
-<!-- CREATE -->
-<section id="createPage" class="page">
- <h2 class="title">Create your video ＋</h2>
- <div class="content">
-  <div class="card">
-   <h3>Upload video or photo</h3>
-   <p class="muted" style="margin:8px 0">Select media from your phone gallery.</p>
-   <input id="mediaFile" type="file" accept="video/*,image/*">
-   <textarea id="caption" rows="3" placeholder="Write caption... #VYRA"></textarea>
-   <div class="progress hidden" id="uploadProgress"><div id="uploadBar"></div></div>
-   <p id="uploadStatus" class="muted"></p>
-   <button class="primary" style="width:100%" onclick="uploadPost()">Upload to VYRA</button>
-  </div>
-  <div class="card">
-   <h3>Record with camera</h3>
-   <button class="secondary" style="margin-top:10px" onclick="openCamera()">📷 Open camera</button>
-   <video id="cameraPreview" autoplay muted playsinline class="hidden"></video>
-   <div id="cameraControls" class="hidden" style="margin-top:8px">
-    <button class="primary" onclick="capturePhoto()">Capture photo</button>
-    <button class="secondary" onclick="closeCamera()">Close camera</button>
-   </div>
-   <canvas id="canvas" class="hidden"></canvas>
-  </div>
- </div>
+<section id="explore" class="page">
+<h2 class="section-title">Explore the World 🌍</h2>
+<input placeholder="Find creators, videos and topics..." oninput="searchPosts(this.value)">
+<div class="grid" id="exploreGrid"></div>
 </section>
 
 <!-- NEWS -->
-<section id="newsPage" class="page">
- <h2 class="title">World News 🌍</h2>
- <div class="content">
-  <div class="card">
-   <label>Select country</label><select id="newsCountry"></select>
-   <button class="primary" style="width:100%" onclick="loadNews()">Get latest news</button>
-  </div>
-  <div id="newsResults"></div>
- </div>
+<section id="news" class="page">
+<h2 class="section-title">🌍 World News</h2>
+<select id="country">
+<option value="">All Countries</option>
+<option>Pakistan</option><option>United States</option>
+<option>United Kingdom</option><option>India</option>
+<option>China</option><option>Saudi Arabia</option>
+<option>Turkey</option><option>Japan</option>
+</select>
+<div id="newsFeed" class="card">
+<h3>Connect a verified news API</h3>
+<p>Real-time international news will appear here after API integration.</p>
+</div>
 </section>
 
 <!-- SPORTS -->
-<section id="sportsPage" class="page">
- <h2 class="title">All Sports Live 🏆</h2>
- <div class="content">
-  <div class="card">
-   <h3>Sports Centre</h3>
-   <p class="muted" style="margin:8px 0">Football, cricket, tennis, basketball, baseball, hockey, rugby, volleyball and more.</p>
-   <label>Select sport</label>
-   <select id="sportSelect">
-    <option value="football">⚽ Football</option>
-    <option value="cricket">🏏 Cricket</option>
-    <option value="basketball">🏀 Basketball</option>
-    <option value="tennis">🎾 Tennis</option>
-    <option value="baseball">⚾ Baseball</option>
-    <option value="hockey">🏒 Hockey</option>
-    <option value="rugby">🏉 Rugby</option>
-    <option value="volleyball">🏐 Volleyball</option>
-    <option value="handball">🤾 Handball</option>
-   </select>
-   <label>Sports data API key</label>
-   <input id="sportsKey" type="password" placeholder="Enter your API provider key">
-   <button class="secondary" style="width:100%" onclick="saveSportsKey()">Save API key</button>
-   <button class="primary" style="width:100%;margin-top:8px" onclick="loadSports()">Load live scores</button>
-   <p class="muted" style="margin-top:10px">Real live scores require a sports-data provider account and an API key with access to the selected sport.</p>
-  </div>
-  <div class="card" id="sportsResults">Select a sport and connect your data API.</div>
- </div>
+<section id="sports" class="page">
+<h2 class="section-title">⚽ Sports Universe</h2>
+<div class="gradient"><h2>LIVE SPORTS</h2>
+<p>Football • Cricket • Basketball • Tennis</p></div>
+<div id="sportsFeed" class="card">
+<h3>Live sports scores</h3>
+<p>Connect a live sports data provider to display real matches and scores.</p>
+</div>
 </section>
 
-<!-- LIVE -->
-<section id="livePage" class="page">
- <h2 class="title">VYRA Live 🔴</h2>
- <div class="content">
-  <div class="card">
-   <h3>Start your live room</h3>
-   <p class="muted" style="margin:9px 0">Create a room and chat with members.</p>
-   <button class="primary" style="width:100%" onclick="startLive()">🔴 Go Live</button>
-  </div>
-  <div class="card hidden" id="livePanel">
-   <b style="color:#ff5483">● LIVE ROOM</b>
-   <video id="livePreview" autoplay muted playsinline style="width:100%;background:#000;border-radius:12px;margin-top:10px"></video>
-   <p id="liveStatus" class="muted"></p>
-   <div id="liveChat" style="max-height:180px;overflow:auto;margin:12px 0"></div>
-   <div style="display:flex;gap:5px"><input id="liveText" placeholder="Write comment"><button class="primary" onclick="sendLive()">Send</button></div>
-   <button class="danger" style="margin-top:10px" onclick="endLive()">End Live</button>
-  </div>
-  <h3 style="margin:20px 0 10px">Active rooms</h3><div id="liveRooms"></div>
- </div>
+<!-- UPLOAD -->
+<section id="upload" class="page">
+<h2 class="section-title">Create Something ✨</h2>
+<div class="card">
+<h3>Upload your content</h3>
+<select id="postType">
+<option value="video">Short Video</option>
+<option value="long">Long Video</option>
+<option value="photo">Photo</option>
+</select>
+<input type="file" id="media" accept="image/*,video/*">
+<textarea id="caption" placeholder="Write your caption..."></textarea>
+<input id="hashtags" placeholder="#VYZO #World">
+<button class="primary" onclick="createPost()">Publish Post ↑</button>
+<p style="color:#aaa;font-size:12px;margin-top:12px">
+This starter stores posts locally on this device. Cloud uploads need Firebase Storage.
+</p>
+</div>
 </section>
 
 <!-- PROFILE -->
-<section id="profilePage" class="page">
- <h2 class="title">My Profile</h2>
- <div class="content">
-  <div class="card profile">
-   <img class="profilePic" id="profilePhoto" src="https://placehold.co/150x150">
-   <h2 id="profileName" style="margin-top:10px">VYRA User</h2>
-   <p class="muted" id="profileCountry"></p>
-   <div class="stats">
-    <div><b id="postCount">0</b><small>Videos</small></div>
-    <div><b id="followerCount">0</b><small>Followers</small></div>
-    <div><b id="followingCount">0</b><small>Following</small></div>
-   </div>
-   <label>Profile photo</label><input id="profileFile" type="file" accept="image/*">
-   <button class="primary" style="width:100%" onclick="updatePhoto()">Update photo</button>
-   <label>Display name</label><input id="newName" placeholder="Your name">
-   <button class="secondary" style="width:100%" onclick="saveName()">Save name</button>
-   <button class="danger" style="width:100%;margin-top:12px" onclick="logout()">Logout</button>
-  </div>
-  <h3 style="margin:15px 0">My videos</h3>
-  <div class="grid" id="myGrid"></div>
- </div>
+<section id="profile" class="page">
+<div class="card">
+<div style="display:flex;gap:15px;align-items:center">
+<div class="avatar" style="width:75px;height:75px;font-size:28px" id="profileAvatar">V</div>
+<div><h2 id="profileName">VYZO Creator</h2>
+<p style="color:#aaa" id="profileEmail">Welcome to VYZO</p></div>
+</div>
+<div style="display:flex;justify-content:space-around;padding:20px 0">
+<div><b id="postCount">0</b><br><small>Posts</small></div>
+<div><b>0</b><br><small>Followers</small></div>
+<div><b>0</b><br><small>Following</small></div>
+</div>
+<button class="secondary" onclick="showPage('settings')">Edit Profile</button>
+</div>
+<h3 class="section-title">My Posts</h3>
+<div class="grid" id="myGrid"></div>
 </section>
 
-<nav class="bottomNav">
- <button class="active" data-page="home" onclick="openPage('home')"><svg><use href="#i-home"/></svg>Home</button>
- <button data-page="explore" onclick="openPage('explore')"><svg><use href="#i-search"/></svg>Explore</button>
- <button data-page="create" onclick="openPage('create')"><svg><use href="#i-plus"/></svg>Create</button>
- <button data-page="sports" onclick="openPage('sports')"><svg><use href="#i-trophy"/></svg>Sports</button>
- <button data-page="profile" onclick="openPage('profile')"><svg><use href="#i-user"/></svg>Profile</button>
-</nav>
+<!-- LIVE -->
+<section id="live" class="page">
+<h2 class="section-title">🔴 Live Studio</h2>
+<div class="card">
+<h3>Go Live on VYZO</h3>
+<p style="color:#aaa;margin:12px 0">Broadcast to your worldwide audience.</p>
+<button class="primary" onclick="startLive()">Start Camera</button>
+<video id="camera" autoplay muted playsinline style="width:100%;margin-top:15px;border-radius:12px"></video>
+<p style="color:#aaa;font-size:12px">Camera preview only. Real multi-user streaming needs a WebRTC streaming server.</p>
+</div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="page">
+<h2 class="section-title">Settings ⚙</h2>
+<div class="card">
+<h3>Account settings</h3>
+<input id="editName" placeholder="Your display name">
+<input id="editCountry" placeholder="Your country">
+<textarea id="editBio" placeholder="About you"></textarea>
+<button class="primary" onclick="saveProfile()">Save Changes</button>
+</div>
+<div class="card">
+<h3>Account</h3>
+<button class="secondary" onclick="logout()">Log Out</button>
+</div>
+</section>
+
+</main>
+
+<aside class="right">
+<div class="card">
+<h3>🌍 Global Community</h3>
+<p>Meet creators from every corner of the world.</p>
+</div>
+<div class="card">
+<h3>🔥 Trending</h3>
+<p>#VYZO<br>#WorldNews<br>#Football<br>#Music<br>#Technology</p>
+</div>
+<div class="card">
+<h3>⚽ Sports</h3>
+<p>Cricket • Football • Tennis • Basketball</p>
+</div>
+</aside>
 </div>
 
-<script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {getDatabase,ref,set,push,onValue,update,remove} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import {getStorage,ref as storageRef,uploadBytesResumable,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+<nav class="bottom">
+<button onclick="showPage('home')">⌂</button>
+<button onclick="showPage('reels')">▶</button>
+<button onclick="showPage('upload')">＋</button>
+<button onclick="showPage('news')">🌍</button>
+<button onclick="showPage('profile')">◉</button>
+</nav>
 
-/* ORIGINAL FIREBASE CONFIG */
-const firebaseConfig={
- apiKey:"AIzaSyBYBWflKXiqBSSDbyGdTGXJ6C1RCJziZFA",
- authDomain:"ag-world-7310e.firebaseapp.com",
- databaseURL:"https://ag-world-7310e-default-rtdb.firebaseio.com",
- projectId:"ag-world-7310e",
- storageBucket:"ag-world-7310e.firebasestorage.app",
- messagingSenderId:"874059134274",
- appId:"1:874059134274:web:2ad78f97cc0101f46c44db",
- measurementId:"G-7J5C992B7Q"
-};
-const firebaseApp=initializeApp(firebaseConfig);
-const auth=getAuth(firebaseApp),db=getDatabase(firebaseApp),storage=getStorage(firebaseApp);
-const $=id=>document.getElementById(id);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const countries=["Pakistan","United States","United Kingdom","Canada","Australia","India","Saudi Arabia","United Arab Emirates","Italy","Germany","France","Turkey","Japan","China","Brazil","South Africa","Indonesia","Malaysia","Bangladesh","Afghanistan","New Zealand","Spain","Netherlands","Sweden","Norway","Egypt","Nigeria","Mexico","South Korea","Russia","Qatar","Kuwait","Oman"];
-countries.forEach(c=>{$("signupCountry").add(new Option(c,c));$("newsCountry").add(new Option(c,c))});
-$("signupCountry").value="Pakistan";$("newsCountry").value="Pakistan";
+<div class="login" id="login">
+<div class="login-box">
+<h1 class="logo">VYZO ✦</h1>
+<p style="color:#aaa;margin:10px 0 20px">Your world. Your voice. Your VYZO.</p>
+<div id="signupFields">
+<input id="username" placeholder="Your name">
+<input id="email" type="email" placeholder="Email address">
+<input id="password" type="password" placeholder="Password">
+<select id="userCountry">
+<option value="">Select your country</option>
+<option>Pakistan</option><option>United States</option>
+<option>United Kingdom</option><option>India</option>
+<option>Saudi Arabia</option><option>Other</option>
+</select>
+<button class="primary" style="width:100%;margin-top:10px" onclick="signup()">Create Account</button>
+<p style="color:#aaa;margin-top:15px;font-size:12px">Demo local account. Connect Firebase Authentication for real worldwide signup.</p>
+</div>
+</div>
+</div>
 
-let user=null,profile={},posts={},cameraStream=null,liveStream=null,liveId=null,chatStop=null;
-window.currentLiveRoom=null;
+<div class="toast" id="toast"></div>
 
-window.showAuth=mode=>{
- $("loginForm").classList.toggle("hidden",mode!=="login");
- $("signupForm").classList.toggle("hidden",mode!=="signup");
- $("loginTab").className=mode==="login"?"primary":"secondary";
- $("signupTab").className=mode==="signup"?"primary":"secondary";
- $("authMsg").textContent="";
-};
-function authError(e){
- const m={
- "auth/operation-not-allowed":"Firebase Console mein Email/Password sign-in enable karein.",
- "auth/unauthorized-domain":"Firebase Authentication > Settings > Authorized domains mein Netlify domain add karein.",
- "auth/email-already-in-use":"Email ka account pehle se bana hai. Login karein.",
- "auth/weak-password":"Password minimum 6 characters hona chahiye.",
- "auth/invalid-email":"Email address check karein.",
- "auth/invalid-credential":"Email ya password ghalat hai.",
- "auth/network-request-failed":"Internet connection check karein.",
- "auth/too-many-requests":"Kuch dair baad dobara try karein."
- };
- return m[e.code]||e.message||"Unknown error";
+<script>
+let posts=JSON.parse(localStorage.getItem("vyzo_posts")||"[]");
+let user=JSON.parse(localStorage.getItem("vyzo_user")||"null");
+let currentStream=null;
+
+function toast(msg){
+let t=document.getElementById("toast");
+t.textContent=msg;t.style.display="block";
+setTimeout(()=>t.style.display="none",2500);
 }
-function authMsg(t,ok=false){$("authMsg").textContent=t;$("authMsg").className=ok?"msg good":"msg"}
 
-window.signup=async()=>{
- const name=$("signupName").value.trim(),email=$("signupEmail").value.trim(),password=$("signupPassword").value,country=$("signupCountry").value;
- if(!name||!email||!password){authMsg("Name, email aur password enter karein.");return}
- if(password.length<6){authMsg("Password minimum 6 characters hona chahiye.");return}
- try{
-  authMsg("Creating account...",true);
-  const result=await createUserWithEmailAndPassword(auth,email,password);
-  await updateProfile(result.user,{displayName:name});
-  await set(ref(db,"users/"+result.user.uid),{uid:result.user.uid,name,email,country,photoURL:"",bio:"Welcome to VYRA",createdAt:Date.now()});
- }catch(e){authMsg(authError(e))}
-};
-window.login=async()=>{
- const email=$("loginEmail").value.trim(),password=$("loginPassword").value;
- if(!email||!password){authMsg("Email aur password enter karein.");return}
- try{authMsg("Logging in...",true);await signInWithEmailAndPassword(auth,email,password)}
- catch(e){authMsg(authError(e))}
-};
-window.logout=()=>signOut(auth).catch(e=>alert(e.message));
+function showPage(id,el){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
+if(el)el.classList.add("active");
+if(id==="profile")renderProfile();
+if(id==="home"||id==="videos"||id==="reels")renderPosts();
+}
 
-onAuthStateChanged(auth,async u=>{
- if(!u){user=null;$("app").classList.add("hidden");$("authScreen").classList.remove("hidden");return}
- user=u;
- try{
-  const snap=await new Promise(resolve=>onValue(ref(db,"users/"+u.uid),resolve,{onlyOnce:true}));
-  if(!snap.exists())await set(ref(db,"users/"+u.uid),{uid:u.uid,name:u.displayName||"VYRA User",email:u.email||"",country:"Pakistan",photoURL:"",createdAt:Date.now()});
-  $("authScreen").classList.add("hidden");$("app").classList.remove("hidden");
-  listenProfile();listenPosts();listenLiveRooms();
- }catch(e){alert("Database access error: "+e.message)}
+function signup(){
+let name=document.getElementById("username").value.trim();
+let email=document.getElementById("email").value.trim();
+let pass=document.getElementById("password").value;
+let country=document.getElementById("userCountry").value;
+if(!name||!email||pass.length<6||!country){
+toast("Complete all fields. Password needs 6 characters.");
+return;
+}
+user={name,email,country,bio:"",password:pass};
+localStorage.setItem("vyzo_user",JSON.stringify(user));
+openApp();
+}
+
+function openApp(){
+if(!user)return;
+document.getElementById("login").style.display="none";
+document.getElementById("headAvatar").textContent=user.name[0].toUpperCase();
+document.getElementById("profileAvatar").textContent=user.name[0].toUpperCase();
+document.getElementById("profileName").textContent=user.name;
+document.getElementById("profileEmail").textContent=user.country;
+renderPosts();
+}
+function logout(){
+localStorage.removeItem("vyzo_user");
+user=null;
+document.getElementById("login").style.display="grid";
+toast("Logged out");
+}
+
+function createPost(){
+if(!user){toast("Please sign up first");return}
+let file=document.getElementById("media").files[0];
+let caption=document.getElementById("caption").value;
+let type=document.getElementById("postType").value;
+if(!file){toast("Please select a photo or video");return}
+if(file.size>15*1024*1024){
+toast("Starter upload limit: 15 MB");return;
+}
+if(type==="photo"&&!file.type.startsWith("image/")){
+toast("Please select a photo");return;
+}
+if(type!=="photo"&&!file.type.startsWith("video/")){
+toast("Please select a video");return;
+}
+let reader=new FileReader();
+reader.onload=e=>{
+posts.unshift({
+id:Date.now(),name:user.name,country:user.country,
+caption, type,media:e.target.result,
+likes:0,liked:false
 });
-
-function listenProfile(){
- onValue(ref(db,"users/"+user.uid),s=>{
-  profile=s.val()||{};
-  $("profileName").textContent=profile.name||user.displayName||"VYRA User";
-  $("profileCountry").textContent="🌍 "+(profile.country||"");
-  $("profilePhoto").src=profile.photoURL||"https://placehold.co/150x150/10294b/ffffff?text=V";
-  $("newName").value=profile.name||"";
- });
- onValue(ref(db,"followers/"+user.uid),s=>$("followerCount").textContent=Object.keys(s.val()||{}).length);
- onValue(ref(db,"follows/"+user.uid),s=>$("followingCount").textContent=Object.keys(s.val()||{}).length);
-}
-function listenPosts(){onValue(ref(db,"posts"),s=>{posts=s.val()||{};renderVideos();renderExplore();renderProfile()})}
-function orderedPosts(){return Object.entries(posts).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0))}
-
-function renderVideos(){
- const list=orderedPosts().filter(([id,p])=>p.mediaURL);
- if(!list.length){$("videoFeed").innerHTML='<div class="feedMessage">Welcome to VYRA 💙<br>No videos yet.<br>Be the first creator!</div>';return}
- $("videoFeed").innerHTML=list.map(([id,p])=>{
-  const liked=!!p.likes?.[user.uid],likeCount=Object.keys(p.likes||{}).length;
-  const media=p.mediaType==="video"
-   ?`<video class="videoMedia" src="${esc(p.mediaURL)}" playsinline loop preload="metadata"></video>`
-   :`<img class="videoMedia" src="${esc(p.mediaURL)}" alt="VYRA post">`;
-  return `<article class="videoCard" data-id="${esc(id)}">
-   ${media}<div class="videoShade"></div>
-   <div class="videoTop"><button class="selected" onclick="feedMode('forYou')">For You</button><button onclick="feedMode('following')">Following</button></div>
-   <div class="videoInfo">
-    <div class="creator">@${esc(p.name||"VYRA User")}</div>
-    <p>${esc(p.caption||"")}</p>
-    <p class="music"><svg style="width:15px;height:15px;display:inline-block;vertical-align:middle"><use href="#i-music"/></svg> Original sound · VYRA</p>
-   </div>
-   <div class="videoActions">
-    <img class="videoAvatar" src="${esc(p.photoURL||"https://placehold.co/100x100/10294b/ffffff?text=V")}" alt="">
-    ${p.uid!==user.uid?`<button class="follow" onclick="followUser('${esc(p.uid)}')">+</button>`:""}
-    <button class="${liked?"liked":""}" onclick="likePost('${esc(id)}')"><svg><use href="#i-heart"/></svg></button><small>${likeCount}</small>
-    <button onclick="commentPost('${esc(id)}')"><svg><use href="#i-comment"/></svg></button><small>${Object.keys(p.comments||{}).length}</small>
-    <button onclick="sharePost('${esc(id)}')"><svg><use href="#i-share"/></svg></button><small>Share</small>
-   </div>
-  </article>`;
- }).join("");
- activateVideoPlayback();
-}
-function activateVideoPlayback(){
- const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-   const v=entry.target.querySelector("video");
-   if(!v)return;
-   if(entry.isIntersecting){v.play().catch(()=>{})}else{v.pause()}
-  });
- },{threshold:.7});
- document.querySelectorAll(".videoCard").forEach(card=>observer.observe(card));
- // Tap the media to pause/play.
- document.querySelectorAll(".videoCard video").forEach(v=>{
-  v.addEventListener("click",()=>{if(v.paused)v.play().catch(()=>{});else v.pause()});
- });
-}
-window.feedMode=mode=>{
- document.querySelectorAll(".videoTop button").forEach(b=>b.classList.toggle("selected",b.textContent.toLowerCase().replace(" ","")===(mode==="forYou"?"foryou":"following")));
- if(mode==="following"){
-  onValue(ref(db,"follows/"+user.uid),s=>{
-   const follows=s.val()||{};
-   const filtered=orderedPosts().filter(([id,p])=>p.mediaURL&&(follows[p.uid]||p.uid===user.uid));
-   renderVideoList(filtered);
-  },{onlyOnce:true});
- }else renderVideos();
+localStorage.setItem("vyzo_posts",JSON.stringify(posts));
+document.getElementById("media").value="";
+document.getElementById("caption").value="";
+toast("Post published on this device!");
+renderPosts();
+showPage("home");
 };
-function renderVideoList(list){
- if(!list.length){$("videoFeed").innerHTML='<div class="feedMessage">Following creators ki videos yahan nazar aayengi.</div>';return}
- const original=posts;const subset={};list.forEach(([id,p])=>subset[id]=p);
- const saved=posts;posts=subset;renderVideos();posts=saved;
+reader.readAsDataURL(file);
 }
-function renderExplore(){
- $("exploreFeed").innerHTML=orderedPosts().slice(0,30).map(([id,p])=>`
- <div class="card"><div class="row"><img class="avatar" src="${esc(p.photoURL||"https://placehold.co/100x100")}"><b>${esc(p.name||"VYRA User")}</b></div>
- <p style="margin:10px 0">${esc(p.caption||"")}</p>
- ${p.mediaURL?(p.mediaType==="video"?`<video class="postVideo" src="${esc(p.mediaURL)}" controls playsinline></video>`:`<img class="postImage" src="${esc(p.mediaURL)}">`):""}
- <div class="actions"><button onclick="likePost('${esc(id)}')">♡ Like</button><button onclick="commentPost('${esc(id)}')">Comment</button><button onclick="sharePost('${esc(id)}')">Share</button></div></div>`).join("")||'<p class="muted">No posts yet.</p>';
+
+function renderPosts(){
+let feed=document.getElementById("homeFeed");
+let videos=document.getElementById("videoFeed");
+let reels=document.getElementById("reelContainer");
+let html=posts.map(p=>`
+<div class="card">
+<div class="post-head"><div class="avatar">${p.name[0]}</div>
+<div><b>${escapeHTML(p.name)}</b><br><small>${escapeHTML(p.country)}</small></div></div>
+${p.type==="photo"?`<img class="video" style="aspect-ratio:4/5" src="${p.media}">`:
+`<video class="video" controls playsinline src="${p.media}"></video>`}
+<div class="post-actions">
+<button class="action" onclick="likePost(${p.id})">❤️ <small>${p.likes}</small></button>
+<button class="action" onclick="commentPost(${p.id})">💬</button>
+<button class="action" onclick="sharePost(${p.id})">↗</button>
+<button class="action" onclick="followPost('${escapeHTML(p.name)}')">＋ <small>Follow</small></button>
+</div>
+<div class="caption"><b>${escapeHTML(p.name)}</b> ${escapeHTML(p.caption)}</div>
+</div>`).join("");
+feed.innerHTML=html||"<p style='color:#aaa;padding:20px'>No posts yet. Be the first creator!</p>";
+videos.innerHTML=html||"<p>No videos yet.</p>";
+let shorts=posts.filter(p=>p.type!=="photo");
+reels.innerHTML=shorts.length?shorts.map(p=>`
+<div class="reel">
+<video controls playsinline src="${p.media}"></video>
+<div class="reel-info"><b>@${escapeHTML(p.name)}</b><p>${escapeHTML(p.caption)}</p></div>
+<div class="reel-buttons">
+<button onclick="likePost(${p.id})">♥</button><small>${p.likes} Likes</small>
+<button onclick="commentPost(${p.id})">💬</button>
+<button onclick="sharePost(${p.id})">↗</button>
+</div></div>`).join(""):"<p style='color:#aaa;text-align:center'>Upload your first short video!</p>";
+renderProfile();
 }
+
+function likePost(id){
+let p=posts.find(x=>x.id===id);
+if(p){p.likes++;localStorage.setItem("vyzo_posts",JSON.stringify(posts));renderPosts()}
+}
+function commentPost(id){
+let c=prompt("Write your comment:");
+if(c)toast("Comment saved in this demo session");
+}
+function sharePost(id){
+let p=posts.find(x=>x.id===id);
+if(navigator.share)navigator.share({title:"VYZO",text:p.caption});
+else toast("Share is not supported on this device");
+}
+function followPost(name){toast("Follow feature needs cloud database")}
 function renderProfile(){
- const mine=orderedPosts().filter(([id,p])=>p.uid===user.uid);
- $("postCount").textContent=mine.length;
- $("myGrid").innerHTML=mine.map(([id,p])=>p.mediaType==="video"?`<video src="${esc(p.mediaURL)}" controls></video>`:p.mediaURL?`<img src="${esc(p.mediaURL)}">`:`<div>${esc(p.caption)}</div>`).join("");
+if(!user)return;
+document.getElementById("postCount").textContent=posts.filter(p=>p.name===user.name).length;
+document.getElementById("myGrid").innerHTML=posts.filter(p=>p.name===user.name).map(p=>
+p.type==="photo"?`<img src="${p.media}">`:`<video src="${p.media}" controls></video>`).join("");
 }
-window.likePost=async id=>{
- try{if(posts[id]?.likes?.[user.uid])await remove(ref(db,`posts/${id}/likes/${user.uid}`));else await set(ref(db,`posts/${id}/likes/${user.uid}`),true)}
- catch(e){alert(e.message)}
-};
-window.commentPost=async id=>{
- const text=prompt("Write your comment:");
- if(!text?.trim())return;
- try{await set(push(ref(db,`posts/${id}/comments`)),{uid:user.uid,name:profile.name||"VYRA User",text:text.trim(),createdAt:Date.now()})}
- catch(e){alert(e.message)}
-};
-window.sharePost=async id=>{
- const url=location.origin+location.pathname+"#post-"+id;
- try{if(navigator.share)await navigator.share({title:"VYRA video",url});else{await navigator.clipboard.writeText(url);alert("Link copied!")}}
- catch(e){if(e.name!=="AbortError")prompt("Copy link",url)}
-};
-window.followUser=async uid=>{
- if(uid===user.uid)return;
- try{
-  const r=ref(db,`follows/${user.uid}/${uid}`);
-  const s=await new Promise(resolve=>onValue(r,resolve,{onlyOnce:true}));
-  if(s.exists()){await remove(r);await remove(ref(db,`followers/${uid}/${user.uid}`))}
-  else{await set(r,true);await set(ref(db,`followers/${uid}/${user.uid}`),true)}
- }catch(e){alert(e.message)}
-};
-
-window.uploadPost=async()=>{
- const file=$("mediaFile").files[0],caption=$("caption").value.trim();
- if(!file&&!caption){alert("Video/photo ya caption add karein.");return}
- if(file&&file.size>500*1024*1024){alert("Maximum file size 500 MB.");return}
- try{
-  let url="",type="";
-  if(file){
-   $("uploadProgress").classList.remove("hidden");$("uploadStatus").textContent="Uploading...";
-   const name=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-   const task=uploadBytesResumable(storageRef(storage,"uploads/"+user.uid+"/"+Date.now()+"_"+name),file);
-   url=await new Promise((resolve,reject)=>task.on("state_changed",s=>{
-    $("uploadBar").style.width=(s.bytesTransferred/s.totalBytes*100)+"%";
-    $("uploadStatus").textContent="Uploading "+Math.round(s.bytesTransferred/s.totalBytes*100)+"%";
-   },reject,async()=>resolve(await getDownloadURL(task.snapshot.ref))));
-   type=file.type.startsWith("video/")?"video":"image";
-  }
-  await set(push(ref(db,"posts")),{uid:user.uid,name:profile.name||user.displayName||"VYRA User",country:profile.country||"Pakistan",photoURL:profile.photoURL||"",caption,mediaURL:url,mediaType:type,createdAt:Date.now(),likes:{},comments:{}});
-  $("mediaFile").value="";$("caption").value="";$("uploadStatus").textContent="Upload complete!";
-  $("uploadProgress").classList.add("hidden");openPage("home");
- }catch(e){$("uploadStatus").textContent="Upload failed: "+e.message}
-};
-
-window.saveName=async()=>{
- const name=$("newName").value.trim();if(!name)return;
- try{await update(ref(db,"users/"+user.uid),{name});await updateProfile(user,{displayName:name});alert("Name updated")}
- catch(e){alert(e.message)}
-};
-window.updatePhoto=async()=>{
- const file=$("profileFile").files[0];if(!file)return alert("Select photo");
- try{
-  const task=uploadBytesResumable(storageRef(storage,"profile/"+user.uid+"/"+Date.now()),file);
-  const url=await new Promise((resolve,reject)=>task.on("state_changed",null,reject,async()=>resolve(await getDownloadURL(task.snapshot.ref))));
-  await update(ref(db,"users/"+user.uid),{photoURL:url});await updateProfile(user,{photoURL:url});alert("Profile photo updated");
- }catch(e){alert(e.message)}
-};
-
-/* CAMERA */
-window.openCamera=async()=>{
- try{cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:false});$("cameraPreview").srcObject=cameraStream;$("cameraPreview").classList.remove("hidden");$("cameraControls").classList.remove("hidden")}
- catch(e){alert("Camera permission / HTTPS required: "+e.message)}
-};
-window.capturePhoto=()=>{
- const v=$("cameraPreview"),c=$("canvas");if(!v.videoWidth)return;
- c.width=v.videoWidth;c.height=v.videoHeight;c.getContext("2d").drawImage(v,0,0);
- c.toBlob(blob=>{
-  const f=new File([blob],"vyra-photo.jpg",{type:"image/jpeg"});
-  const dt=new DataTransfer();dt.items.add(f);$("mediaFile").files=dt.files;
-  alert("Photo ready. Upload button dabayein.");closeCamera();
- },"image/jpeg",.95);
-};
-window.closeCamera=()=>{
- if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null}
- $("cameraPreview").srcObject=null;$("cameraPreview").classList.add("hidden");$("cameraControls").classList.add("hidden");
-};
-
-/* NAV */
-window.openPage=page=>{
- const ids={home:"homePage",explore:"explorePage",create:"createPage",news:"newsPage",sports:"sportsPage",live:"livePage",profile:"profilePage"};
- Object.values(ids).forEach(id=>$(id).classList.remove("active"));
- if(ids[page])$(ids[page]).classList.add("active");
- document.querySelectorAll(".bottomNav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
- if(page==="news")loadNews();
- if(page==="profile")renderProfile();
-};
-window.loadNews=async()=>{
- const country=$("newsCountry").value;
- $("newsResults").innerHTML='<div class="card muted">Loading news...</div>';
- try{
-  const rss="https://news.google.com/rss/search?q="+encodeURIComponent(country+" latest news")+"&hl=en&gl=US&ceid=US:en";
-  const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);
-  const res=await fetch(url);if(!res.ok)throw Error("News provider unavailable");
-  const data=await res.json();if(!data.items?.length)throw Error("No headlines");
-  $("newsResults").innerHTML=data.items.slice(0,20).map(n=>`
-   <div class="card newsItem"><b>${esc(n.title)}</b><p class="muted" style="margin:8px 0">${esc(n.pubDate||"")}</p><a target="_blank" rel="noopener" href="${esc(n.link)}">Read full news ↗</a></div>`).join("");
- }catch(e){$("newsResults").innerHTML='<div class="card muted">News service abhi available nahi. Baad mein try karein.</div>'}
-};
-
-/* SPORTS DATA PROVIDER CONNECTION */
-const sportHosts={
- football:"v3.football.api-sports.io",
- basketball:"v1.basketball.api-sports.io",
- baseball:"v1.baseball.api-sports.io",
- hockey:"v1.hockey.api-sports.io",
- rugby:"v1.rugby.api-sports.io",
- volleyball:"v1.volleyball.api-sports.io",
- handball:"v1.handball.api-sports.io"
-};
-$("sportsKey").value=localStorage.getItem("vyra_sports_key")||"";
-window.saveSportsKey=()=>{
- const key=$("sportsKey").value.trim();if(!key)return alert("API key enter karein");
- localStorage.setItem("vyra_sports_key",key);alert("Sports key saved on this device");
-};
-window.loadSports=async()=>{
- const sport=$("sportSelect").value,key=$("sportsKey").value.trim()||localStorage.getItem("vyra_sports_key");
- if(!key){$("sportsResults").textContent="Real sports scores ke liye provider API key required hai.";return}
- if(sport==="tennis"||sport==="cricket"){
-  $("sportsResults").textContent="Is sport ke liye provider ki dedicated API aur endpoint configuration required hai. Generic football API key har sport par kaam nahi karti.";return;
- }
- $("sportsResults").textContent="Loading...";
- try{
-  const response=await fetch("https://"+sportHosts[sport]+"/games?live=all",{headers:{"x-apisports-key":key}});
-  if(!response.ok)throw Error("API error "+response.status+"; key/plan check karein");
-  const data=await response.json(),games=data.response||[];
-  if(!games.length){$("sportsResults").textContent="Is waqt live games nahi mile.";return}
-  $("sportsResults").innerHTML=games.map(g=>{
-   const t=g.teams||{},sc=g.scores||g.goals||{};
-   return `<div class="sportRow"><div><small class="muted">${esc(g.league?.name||sport)}</small><p>${esc(t.home?.name||"Home")}</p><p>${esc(t.away?.name||"Away")}</p></div><div style="text-align:right"><b>${esc(sc.home??"-")} - ${esc(sc.away??"-")}</b><p class="liveTag">${esc(g.status?.long||"LIVE")}</p></div></div>`;
-  }).join("");
- }catch(e){$("sportsResults").textContent="Scores load nahi huay: "+e.message}
-};
-
-/* LIVE ROOMS AND CHAT. Remote video broadcast requires WebRTC/signaling integration. */
-function listenLiveRooms(){
- onValue(ref(db,"liveRooms"),s=>{
-  const rooms=s.val()||{},active=Object.entries(rooms).filter(([id,r])=>r.active);
-  $("liveRooms").innerHTML=active.map(([id,r])=>`<div class="card"><b class="liveTag">● LIVE</b><p style="margin:8px 0">${esc(r.name||"VYRA User")}</p><p class="muted">${esc(r.country||"")}</p><button class="secondary" onclick="joinLiveChat('${esc(id)}')">Join chat</button></div>`).join("")||'<p class="muted">No active rooms.</p>';
- });
+function searchPosts(q){
+let found=posts.filter(p=>(p.caption+" "+p.name+" "+p.country).toLowerCase().includes(q.toLowerCase()));
+document.getElementById("exploreGrid").innerHTML=found.map(p=>p.type==="photo"?`<img src="${p.media}">`:`<video src="${p.media}" controls></video>`).join("");
 }
-window.startLive=async()=>{
- try{
-  liveStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
-  const room=push(ref(db,"liveRooms"));liveId=room.key;
-  await set(room,{uid:user.uid,name:profile.name||"VYRA User",country:profile.country||"Pakistan",active:true,createdAt:Date.now()});
-  $("livePanel").classList.remove("hidden");$("livePreview").srcObject=liveStream;
-  $("liveStatus").textContent="Your local camera preview is active. Remote broadcast requires WebRTC.";
-  joinLiveChat(liveId);
- }catch(e){alert("Live error: "+e.message)}
-};
-window.joinLiveChat=id=>{
- window.currentLiveRoom=id;$("livePanel").classList.remove("hidden");
- if(chatStop)chatStop();
- chatStop=onValue(ref(db,"liveRooms/"+id+"/messages"),s=>{
-  $("liveChat").innerHTML=Object.values(s.val()||{}).map(m=>`<p style="padding:7px;border-bottom:1px solid #203453"><b>${esc(m.name)}:</b> ${esc(m.text)}</p>`).join("");
- });
-};
-window.sendLive=async()=>{
- const text=$("liveText").value.trim(),id=window.currentLiveRoom;if(!text||!id)return;
- try{await set(push(ref(db,"liveRooms/"+id+"/messages")),{uid:user.uid,name:profile.name||"VYRA User",text,createdAt:Date.now()});$("liveText").value=""}
- catch(e){alert(e.message)}
-};
-window.endLive=async()=>{
- if(liveStream){liveStream.getTracks().forEach(t=>t.stop());liveStream=null}
- if(liveId){try{await update(ref(db,"liveRooms/"+liveId),{active:false})}catch(e){}liveId=null}
- if(chatStop){chatStop();chatStop=null}
- $("livePreview").srcObject=null;$("livePanel").classList.add("hidden");window.currentLiveRoom=null;
-};
+function escapeHTML(s){
+return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function saveProfile(){
+if(!user)return;
+user.name=document.getElementById("editName").value||user.name;
+user.country=document.getElementById("editCountry").value||user.country;
+user.bio=document.getElementById("editBio").value;
+localStorage.setItem("vyzo_user",JSON.stringify(user));
+openApp();toast("Profile updated");
+}
+async function startLive(){
+try{
+currentStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+document.getElementById("camera").srcObject=currentStream;
+toast("Camera started. Streaming server still required.");
+}catch(e){toast("Camera permission denied or unavailable")}
+}
+document.getElementById("search").addEventListener("input",e=>{
+showPage("explore");searchPosts(e.target.value);
+});
+if(user)openApp();
 </script>
 </body>
 </html>
